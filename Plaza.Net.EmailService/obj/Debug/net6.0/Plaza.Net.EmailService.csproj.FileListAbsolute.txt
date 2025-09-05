@@ -1,0 +1,12 @@
+C:\Users\Lenovo\Desktop\CSharp项目\就业项目\Plaza\Plaza.Net.EmailService\bin\Debug\net6.0\Plaza.Net.EmailService.deps.json
+C:\Users\Lenovo\Desktop\CSharp项目\就业项目\Plaza\Plaza.Net.EmailService\bin\Debug\net6.0\Plaza.Net.EmailService.dll
+C:\Users\Lenovo\Desktop\CSharp项目\就业项目\Plaza\Plaza.Net.EmailService\bin\Debug\net6.0\Plaza.Net.EmailService.pdb
+C:\Users\Lenovo\Desktop\CSharp项目\就业项目\Plaza\Plaza.Net.EmailService\obj\Debug\net6.0\Plaza.Net.EmailService.csproj.AssemblyReference.cache
+C:\Users\Lenovo\Desktop\CSharp项目\就业项目\Plaza\Plaza.Net.EmailService\obj\Debug\net6.0\Plaza.Net.EmailService.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Lenovo\Desktop\CSharp项目\就业项目\Plaza\Plaza.Net.EmailService\obj\Debug\net6.0\Plaza.Net.EmailService.AssemblyInfoInputs.cache
+C:\Users\Lenovo\Desktop\CSharp项目\就业项目\Plaza\Plaza.Net.EmailService\obj\Debug\net6.0\Plaza.Net.EmailService.AssemblyInfo.cs
+C:\Users\Lenovo\Desktop\CSharp项目\就业项目\Plaza\Plaza.Net.EmailService\obj\Debug\net6.0\Plaza.Net.EmailService.csproj.CoreCompileInputs.cache
+C:\Users\Lenovo\Desktop\CSharp项目\就业项目\Plaza\Plaza.Net.EmailService\obj\Debug\net6.0\Plaza.Net.EmailService.dll
+C:\Users\Lenovo\Desktop\CSharp项目\就业项目\Plaza\Plaza.Net.EmailService\obj\Debug\net6.0\refint\Plaza.Net.EmailService.dll
+C:\Users\Lenovo\Desktop\CSharp项目\就业项目\Plaza\Plaza.Net.EmailService\obj\Debug\net6.0\Plaza.Net.EmailService.pdb
+C:\Users\Lenovo\Desktop\CSharp项目\就业项目\Plaza\Plaza.Net.EmailService\obj\Debug\net6.0\ref\Plaza.Net.EmailService.dll

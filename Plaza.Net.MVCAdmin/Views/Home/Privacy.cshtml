@@ -1,0 +1,128 @@
+﻿<div class="container-fluid">
+	<!-- 关键指标卡片 -->
+	<div class="row">
+		<div class="col-md-6 col-xl-3">
+			<div class="card bg-primary text-white">
+				<div class="card-body">
+					<div class="d-flex justify-content-between">
+						<span class="avatar-md rounded-circle bg-white bg-opacity-25 avatar-box">
+							<i class="mdi mdi-cash-multiple fs-4"></i>
+						</span>
+                        <span class="fs-4 scroll-numbers">@Model.TotalOrderMoney.ToString("C")</span>
+					</div>
+					<div class="text-end">总销售额</div>
+				</div>
+			</div>
+		</div>
+
+		<div class="col-md-6 col-xl-3">
+			<div class="card bg-success text-white">
+				<div class="card-body">
+					<div class="d-flex justify-content-between">
+						<span class="avatar-md rounded-circle bg-white bg-opacity-25 avatar-box">
+                            <i class="mdi mdi-shopping fs-4"></i>
+						</span>
+                        <span class="fs-4 scroll-numbers">@Model.PlazaCount</span>
+					</div>
+					<div class="text-end">连锁商场数量</div>
+				</div>
+			</div>
+		</div>
+
+		<div class="col-md-6 col-xl-3">
+			<div class="card bg-info text-white">
+				<div class="card-body">
+					<div class="d-flex justify-content-between">
+						<span class="avatar-md rounded-circle bg-white bg-opacity-25 avatar-box">
+							<i class="mdi mdi-account-group fs-4"></i>
+						</span>
+                        <span class="fs-4 scroll-numbers">@Model.UserCount</span>
+					</div>
+					<div class="text-end">用户数量</div>
+				</div>
+			</div>
+		</div>
+
+		<div class="col-md-6 col-xl-3">
+			<div class="card bg-warning text-white">
+				<div class="card-body">
+					<div class="d-flex justify-content-between">
+						<span class="avatar-md rounded-circle bg-white bg-opacity-25 avatar-box">
+							<i class="mdi mdi-cart fs-4"></i>
+						</span>
+                        <span class="fs-4 scroll-numbers">@Model.OrderCount</span>
+					</div>
+					<div class="text-end">总订单数</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<!-- 地图 -->
+	<div class="row mt-3">
+		<div class="col-lg-12">
+			<div class="card">
+				<div class="card-header">
+					<div class="card-title">全国商场分布</div>
+				</div>
+				<div class="card-body">
+					<div id="map-container" style="width:100%; height:550px;"></div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+@section Scripts {
+<script>
+	// 初始化地图
+	function initMap() {
+		// 创建地图实例
+		var map = new AMap.Map('map-container', {
+			viewMode: '2D', // 默认使用2D模式，开启3D视图
+			zoom: 4, // 初始化地图级别
+			center: [105.0, 35.0] // 初始化地图中心点
+		});
+
+
+		$.ajax({
+			url: '/Home/Map',
+			type: 'GET',
+                dataType: 'json',
+			success: function(response) {
+				// 遍历数据并添加标记点
+				response.data.forEach(function(mall) {
+					// 创建信息窗口
+					var infoWindow = new AMap.InfoWindow({
+						content: `<div class="info-window">${mall.name}
+                        <p><strong>地址:</strong> ${mall.address}</p>
+                        <p><strong>纬度:</strong> ${mall.latitude}</p>
+                        <p><strong>经度:</strong> ${mall.longitude}</p> </div>`,
+						offset: new AMap.Pixel(0, -30)
+					});
+
+					// 创建标记
+					var marker = new AMap.Marker({
+						position: new AMap.LngLat(mall.longitude, mall.latitude),
+						map: map,
+						title: mall.name
+					});
+
+					// 点击标记打开信息窗口
+					marker.on('click', function() {
+						infoWindow.open(map, marker.getPosition());
+					});
+				});
+			},
+			error: function(xhr, status, error) {
+				console.error('Error fetching plaza data:', error);
+			}
+		});
+	}
+
+	// 页面加载完成后初始化地图
+	$(document).ready(function() {
+		initMap();
+	});
+</script>
+}

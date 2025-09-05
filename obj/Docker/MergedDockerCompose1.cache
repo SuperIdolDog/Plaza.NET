@@ -1,0 +1,136 @@
+name: dockercompose13648564756914834160
+services:
+  Plaza.Net.mvcadmin:
+    build:
+      context: C:\Users\Lenovo\Desktop\CSharp项目\就业项目\Plaza
+      dockerfile: Plaza.Net.MVCAdmin/Dockerfile
+      args:
+        BUILD_CONFIGURATION: Debug
+        LAUNCHING_FROM_VS: "true"
+      labels:
+        com.microsoft.created-by: visual-studio
+        com.microsoft.visual-studio.project-name: Plaza.Net.MVCAdmin
+      target: base
+    container_name: mvcadmin-container
+    depends_on:
+      sqlserver:
+        condition: service_started
+        required: true
+    entrypoint:
+      - dotnet
+      - --roll-forward
+      - Major
+      - /VSTools/DistrolessHelper/DistrolessHelper.dll
+      - --wait
+    environment:
+      ASPNETCORE_ENVIRONMENT: Development
+      ASPNETCORE_LOGGING__CONSOLE__DISABLECOLORS: "true"
+      DOTNET_USE_POLLING_FILE_WATCHER: "1"
+      NUGET_FALLBACK_PACKAGES: /.nuget/fallbackpackages
+    image: plazanetmvcadmin:dev
+    labels:
+      com.microsoft.visualstudio.debuggee.arguments: ' --additionalProbingPath /.nuget/packages --additionalProbingPath /.nuget/fallbackpackages  "/app/bin/Debug/net6.0/Plaza.Net.MVCAdmin.dll"'
+      com.microsoft.visualstudio.debuggee.killprogram: dotnet --roll-forward Major /VSTools/DistrolessHelper/DistrolessHelper.dll --stop dotnet
+      com.microsoft.visualstudio.debuggee.program: dotnet
+      com.microsoft.visualstudio.debuggee.workingdirectory: /app
+    networks:
+      app-network: null
+    ports:
+      - mode: ingress
+        target: 80
+        published: "5200"
+        protocol: tcp
+      - mode: ingress
+        target: 80
+        protocol: tcp
+    tty: true
+    volumes:
+      - type: bind
+        source: C:\Users\Lenovo\Desktop\CSharp项目\就业项目\Plaza\Plaza.Net.MVCAdmin
+        target: /app
+        bind:
+          create_host_path: true
+      - type: bind
+        source: C:\Users\Lenovo\Desktop\CSharp项目\就业项目\Plaza
+        target: /src
+        bind:
+          create_host_path: true
+      - type: bind
+        source: C:\Users\Lenovo\vsdbg\vs2017u5
+        target: /remote_debugger
+        bind:
+          create_host_path: true
+      - type: bind
+        source: C:\Users\Lenovo\.nuget\packages
+        target: /.nuget/packages
+        read_only: true
+        bind:
+          create_host_path: true
+      - type: bind
+        source: D:\Visual Studio\共享组件工具SDK\NuGetPackages
+        target: /.nuget/fallbackpackages
+        read_only: true
+        bind:
+          create_host_path: true
+      - type: bind
+        source: C:\Users\Lenovo\AppData\Roaming\ASP.NET\Https
+        target: /root/.aspnet/https
+        read_only: true
+        bind:
+          create_host_path: true
+      - type: bind
+        source: C:\Users\Lenovo\AppData\Roaming\ASP.NET\Https
+        target: /home/app/.aspnet/https
+        read_only: true
+        bind:
+          create_host_path: true
+      - type: bind
+        source: C:\Users\Lenovo\AppData\Roaming\Microsoft\UserSecrets
+        target: /root/.microsoft/usersecrets
+        read_only: true
+        bind:
+          create_host_path: true
+      - type: bind
+        source: C:\Users\Lenovo\AppData\Roaming\Microsoft\UserSecrets
+        target: /home/app/.microsoft/usersecrets
+        read_only: true
+        bind:
+          create_host_path: true
+      - type: bind
+        source: D:\Visual Studio\IDE\MSBuild\Sdks\Microsoft.Docker.Sdk\tools\linux-x64\net6.0
+        target: /VSTools
+        read_only: true
+        bind:
+          create_host_path: true
+      - type: bind
+        source: D:\Visual Studio\IDE\Common7\IDE\CommonExtensions\Microsoft\HotReload
+        target: /HotReloadAgent
+        read_only: true
+        bind:
+          create_host_path: true
+  sqlserver:
+    container_name: sqlserver-container
+    environment:
+      ACCEPT_EULA: "Y"
+      MSSQL_PID: Express
+      SA_PASSWORD: Access123!@#
+    image: mcr.microsoft.com/mssql/server:2022-latest
+    networks:
+      app-network: null
+    ports:
+      - mode: ingress
+        target: 1433
+        published: "5433"
+        protocol: tcp
+    volumes:
+      - type: volume
+        source: sqlserver-data
+        target: /var/opt/mssql
+        volume: {}
+networks:
+  app-network:
+    name: dockercompose13648564756914834160_app-network
+    driver: bridge
+volumes:
+  sqlserver-data:
+    name: dockercompose13648564756914834160_sqlserver-data

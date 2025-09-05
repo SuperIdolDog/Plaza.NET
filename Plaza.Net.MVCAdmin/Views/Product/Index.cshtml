@@ -1,0 +1,1096 @@
+﻿
+@{
+    ViewData["Title"] = "商品管理";
+}
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="card shadow-sm">
+                <div class="card-body">
+                    <nav>
+                        <div class="nav nav-tabs mb-3" id="nav-tab" role="tablist">
+                            <button class="nav-link active" id="nav-list-tab" data-bs-toggle="tab"
+                                    data-bs-target="#nav-list" type="button" role="tab" aria-controls="nav-list"
+                                    aria-selected="true">
+                                商品列表
+                            </button>
+                        </div>
+                    </nav>
+
+                    <div class="tab-content" id="nav-tabContent">
+                        <div class="tab-pane fade show active" id="nav-list" role="tabpanel"
+                             aria-labelledby="nav-list-tab">
+                            <div id="toolbar" class="d-flex justify-content-between align-items-center mb-3">
+                                <div class="btn-group me-2 mb-2 mb-lg-0">
+                                    <button class="btn btn-success btn-sm btn-round" onclick="showAddModal()">
+                                        <span class="mdi mdi-plus me-1"></span> 新增
+                                    </button>
+                                    <button id="edit-btn" class="btn btn-primary btn-sm btn-round edit-btn" disabled>
+                                        <span class="mdi mdi-pencil me-1"></span> 编辑
+                                    </button>
+                                    <button id="del-btn" class="btn btn-danger btn-sm btn-round del-btn" disabled>
+                                        <span class="mdi mdi-close me-1"></span> 删除
+                                    </button>
+                                </div>
+                                <div class="input-group d-flex justify-content-center">
+                                    <button id="searchplus-btn" class="btn btn-outline-secondary btn-sm btn-round"
+                                            data-bs-toggle="modal" data-bs-target="#searchModal">
+                                        <span class="mdi mdi-magnify-plus"></span>高级搜索
+                                    </button>
+                                    <input type="text" id="searchBox" class="form-control form-control-sm"
+                                           placeholder="搜索商品名称、描述、条码等...">
+                                    <button id="searchButton" class="btn btn-outline-secondary btn-sm btn-round">
+                                        <span class="mdi mdi-magnify"></span>查询
+                                    </button>
+                                    <button class="btn btn-outline-secondary btn-sm btn-round" id="clearButton">
+                                        <span class="mdi mdi-delete"></span>清除
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="table-responsive">
+                                <table id="productTable" class="table table-hover table-striped align-middle"
+                                       style="text-align:center;"></table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- 高级搜索模态框 -->
+<div class="modal fade" id="searchModal" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header bg-light">
+                <h5 class="modal-title">高级搜索</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form id="searchForm">
+                    <div class="row g-3">
+                        <div class="col-md-6">
+                            <label class="form-label">所属广场</label>
+                            <select class="form-select" name="plazaId" id="search-plazaId">
+                                <option value="">全部</option>
+                                @foreach (var plaza in Model.Plazas)
+                                {
+                                    <option value="@plaza.Id">@plaza.Name</option>
+                                }
+                            </select>
+                        </div>
+                        <div class="col-md-6">
+                            <label class="form-label">所属楼层</label>
+                            <select class="form-select" name="floorId" id="search-floorId">
+                                <option value="">全部</option>
+                            </select>
+                        </div>
+                        <div class="col-md-6">
+                            <label class="form-label">所属店铺</label>
+                            <select class="form-select" name="storeId" id="search-storeId">
+                                <option value="">全部</option>
+                            </select>
+                        </div>
+                        <div class="col-md-6">
+                            <label class="form-label">商品类型</label>
+                            <select class="form-select" name="productTypeId" id="search-productTypeId">
+                                <option value="">全部</option>
+                               @*  @foreach (var type in Model.ProductTypes)
+                                {
+                                    <option value="@type.Id">@type.Name</option>
+                                } *@
+                            </select>
+                        </div>
+                        <div class="col-md-6">
+                            <label class="form-label">商品名称</label>
+                            <input type="text" class="form-control" name="productName" id="search-productName">
+                        </div>
+                        <div class="col-md-6">
+                            <label class="form-label">状态</label>
+                            <select class="form-select" name="status" id="search-status">
+                                <option value="">全部</option>
+                                <option value="0">启用</option>
+                                <option value="1">禁用</option>
+                            </select>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-outline-secondary btn-sm" onclick="resetSearchForm()">重置</button>
+                <button type="button" class="btn btn-primary btn-sm" onclick="submitSearchForm()">搜索</button>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- 详情模态框 -->
+<div class="modal fade" id="detailModal" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header bg-light">
+                <h5 class="modal-title">商品详情</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <div class="row g-3">
+                    <div class="col-md-6">
+                        <label class="form-label">商品名称</label>
+                        <div class="form-control" id="detail-name">无</div>
+                    </div>
+                    <div class="col-md-6">
+                        <label class="form-label">商品条码</label>
+                        <div class="form-control" id="detail-barCode">无</div>
+                    </div>
+                    <div class="col-md-6">
+                        <label class="form-label">商品图片</label>
+                        <div id="detail-imageUrl">
+                            <img src="" alt="商品图片" class="img-thumbnail" style="max-width: 200px; display: none;">
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <label class="form-label">价格</label>
+                        <div class="form-control" id="detail-price">无</div>
+                    </div>
+                    <div class="col-md-6">
+                        <label class="form-label">库存数量</label>
+                        <div class="form-control" id="detail-stockQuantity">无</div>
+                    </div>
+                    <div class="col-md-12">
+                        <label class="form-label">商品描述</label>
+                        <div class="form-control" id="detail-description" style="height: auto;">无</div>
+                    </div>
+                    <div class="col-md-6">
+                        <label class="form-label">所属广场</label>
+                        <div class="form-control" id="detail-plazaName">无</div>
+                    </div>
+                    <div class="col-md-6">
+                        <label class="form-label">所属楼层</label>
+                        <div class="form-control" id="detail-floorName">无</div>
+                    </div>
+                    <div class="col-md-6">
+                        <label class="form-label">所属店铺</label>
+                        <div class="form-control" id="detail-storeName">无</div>
+                    </div>
+                    <div class="col-md-6">
+                        <label class="form-label">商品类型</label>
+                        <div class="form-control" id="detail-productType">无</div>
+                    </div>
+                    <div class="col-md-6">
+                        <label class="form-label">状态</label>
+                        <div class="form-control" id="detail-isDeleted">无</div>
+                    </div>
+                    <div class="col-md-6">
+                        <label class="form-label">创建时间</label>
+                        <div class="form-control" id="detail-createTime">无</div>
+                    </div>
+                    <div class="col-md-6">
+                        <label class="form-label">更新时间</label>
+                        <div class="form-control" id="detail-updateTime">无</div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-outline-secondary btn-sm" data-bs-dismiss="modal">关闭</button>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- 商品信息模态框（新增/编辑） -->
+<div class="modal fade" id="productModal" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header bg-light">
+                <h5 class="modal-title" id="productModalTitle">新增商品</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form id="productForm">
+                    <input type="hidden" name="id" id="product-id">
+                    <div class="row g-3">
+                        <div class="col-md-6">
+                            <label class="form-label">商品名称 <span class="text-danger">*</span></label>
+                            <input type="text" class="form-control" name="name" id="product-name" required>
+                        </div>
+                        <div class="col-md-6">
+                            <label class="form-label">商品图片 <span class="text-danger">*</span></label>
+                            <div class="input-group">
+                                <input type="text" class="form-control" id="product-imageUrl" readonly>
+                                <button class="btn btn-outline-secondary" type="button"
+                                        onclick="uploadImage()">
+                                    上传
+                                </button>
+                            </div>
+                            <div id="image-preview" class="mt-2">
+                                <img src="" alt="商品图片" class="img-thumbnail" style="max-width: 200px; display: none;">
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <label class="form-label">商品条码 <span class="text-danger">*</span></label>
+                            <input type="text" class="form-control" name="barCode" id="product-barCode" required>
+                        </div>
+                        <div class="col-md-6">
+                            <label class="form-label">所属广场 <span class="text-danger">*</span></label>
+                            <select class="form-select" name="plazaId" id="product-plazaId" required>
+                                <option value="">请选择广场</option>
+                                @foreach (var plaza in Model.Plazas)
+                                {
+                                    <option value="@plaza.Id">@plaza.Name</option>
+                                }
+                            </select>
+                        </div>
+                        <div class="col-md-6">
+                            <label class="form-label">所属楼层 <span class="text-danger">*</span></label>
+                            <select class="form-select" name="floorId" id="product-floorId" required>
+                                <option value="">请选择楼层</option>
+                            </select>
+                        </div>
+                        <div class="col-md-6">
+                            <label class="form-label">所属店铺 <span class="text-danger">*</span></label>
+                            <select class="form-select" name="storeId" id="product-storeId" required>
+                                <option value="">请选择店铺</option>
+                            </select>
+                        </div>
+                        <div class="col-md-6">
+                            <label class="form-label">商品类型 <span class="text-danger">*</span></label>
+                            <select class="form-select" name="productTypeId" id="product-productTypeId" required>
+                                <option value="">请选择商品类型</option>
+                               @*  @foreach (var type in Model.ProductTypes)
+                                {
+                                    <option value="@type.Id">@type.Name</option>
+                                } *@
+                            </select>
+                        </div>
+                        <div class="col-md-6">
+                            <label class="form-label">价格 <span class="text-danger">*</span></label>
+                            <input type="number" step="0.01" class="form-control" name="price" id="product-price" required>
+                        </div>
+                        <div class="col-md-6">
+                            <label class="form-label">库存数量 <span class="text-danger">*</span></label>
+                            <input type="number" class="form-control" name="stockQuantity" id="product-stockQuantity" required>
+                        </div>
+                        <div class="col-md-12">
+                            <label class="form-label">商品描述 <span class="text-danger">*</span></label>
+                            <textarea class="form-control" name="description" id="product-description" rows="3"
+                                      required></textarea>
+                        </div>
+                        <div class="col-md-6">
+                            <label class="form-label">状态</label>
+                            <select class="form-select" name="isDeleted" id="product-isDeleted">
+                                <option value="0">启用</option>
+                                <option value="1">禁用</option>
+                            </select>
+                        </div>
+                        <div class="col-md-6">
+                            <label class="form-label">创建时间</label>
+                            <input type="text" class="form-control" readonly name="createTime" id="product-createTime">
+                        </div>
+                        <div class="col-md-6">
+                            <label class="form-label">更新时间</label>
+                            <input type="text" class="form-control" readonly name="updateTime" id="product-updateTime">
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-outline-secondary btn-sm" data-bs-dismiss="modal">取消</button>
+                <button type="button" class="btn btn-primary btn-sm" onclick="submitProductForm()">提交</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- 删除确认模态框 -->
+<div class="modal fade" id="deleteConfirmModal" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header bg-light">
+                <h5 class="modal-title">确认删除</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <div class="d-flex align-items-center">
+                    <div class="me-3">
+                        <span class="mdi mdi-alert-circle text-danger" style="font-size: 1.5rem;"></span>
+                    </div>
+                    <div>
+                        <p class="mb-1">确定要删除选中的记录吗？</p>
+                        <p id="deleteCountInfo" class="text-muted small mb-0"></p>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-outline-secondary btn-sm" data-bs-dismiss="modal">取消</button>
+                <button type="button" class="btn btn-danger btn-sm" onclick="confirmDelete()">确认删除</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <script>
+        // ====================== 全局变量声明 ======================
+        let currentMode = 'add'; // 当前操作模式：'add' 或 'edit'
+        let currentDeleteMode = null; // 当前删除模式：'single' 或 'multiple'
+
+        // ====================== 页面初始化函数 ======================
+        $(document).ready(function() {
+            initTable();
+            bindEventHandlers();
+            initDefaultPlaza();
+        });
+
+        // ====================== 初始化默认广场数据 ======================
+        function initDefaultPlaza() {
+            const plazaId = $('#product-plazaId option:first').val();
+            if (plazaId && plazaId !== '0') {
+                loadFloorDropdown(plazaId);
+                loadStoreDropdown(plazaId, null);
+            }
+        }
+
+        // ====================== 图片上传相关函数 ======================
+        function cleanImageUrl(imageUrl) {
+            if (!imageUrl) return '';
+            return imageUrl.replace('http://localhost:5132/', '');
+        }
+
+        function uploadImage() {
+            const currentImageUrl = $('#product-imageUrl').val();
+
+            if (currentImageUrl) {
+                $.ajax({
+                    url: '/Product/DeleteImage',
+                    type: 'POST',
+                    data: { imageUrl: currentImageUrl },
+                    success: function(response) {
+                        if (response.success) {
+                            uploadNewImage();
+                        } else {
+                            showToast('删除旧图片失败: ' + (response.message || '未知错误'), true);
+                        }
+                    },
+                    error: function(xhr) {
+                        const errorMsg = xhr.responseJSON?.message || xhr.statusText || '服务器错误';
+                        showToast(`删除旧图片失败: ${errorMsg}`, true);
+                    }
+                });
+            } else {
+                uploadNewImage();
+            }
+        }
+
+        function uploadNewImage() {
+            const input = document.createElement('input');
+            input.type = 'file';
+            input.accept = 'image/*';
+
+            input.onchange = function(e) {
+                const file = e.target.files[0];
+                if (!file) return;
+
+                const formData = new FormData();
+                formData.append('file', file);
+                formData.append('uploadType', 'product');
+
+                $.ajax({
+                    url: '/Product/UploadImage',
+                    type: 'POST',
+                    data: formData,
+                    processData: false,
+                    contentType: false,
+                    success: function(response) {
+                        if (response.success) {
+                            const relativeImageUrl = cleanImageUrl(response.imageUrl);
+                            $('#product-imageUrl').val(relativeImageUrl);
+                            $('#image-preview img').attr('src', `http://localhost:5132/${relativeImageUrl}`).show();
+                            showToast('图片上传成功');
+                        } else {
+                            showToast('图片上传失败: ' + (response.message || '未知错误'), true);
+                        }
+                    },
+                    error: function(xhr) {
+                        const errorMsg = xhr.responseJSON?.message || xhr.statusText || '服务器错误';
+                        showToast(`图片上传失败: ${errorMsg}`, true);
+                    }
+                });
+            };
+
+            input.click();
+        }
+
+        // ====================== 表格相关函数 ======================
+        function initTable() {
+            $('#productTable').bootstrapTable({
+                classes: 'table table-bordered table-hover table-striped',
+                url: '/Product/GetProductData',
+                uniqueId: 'id',
+                idField: 'id',
+                clickToSelect: true,
+                dataType: 'json',
+                method: 'get',
+                toolbar: '#toolbar',
+                pagination: true,
+                showColumns: true,
+                showRefresh: true,
+                showButtonIcons: true,
+                showButtonText: false,
+                showFullscreen: true,
+                totalField: 'total',
+                undefinedText: '-',
+                sortOrder: "asc",
+                sidePagination: "server",
+                pageNumber: 1,
+                pageSize: 10,
+                pageList: [10, 25, 50, 100],
+                paginationLoop: true,
+                paginationPagesBySide: 2,
+                buttonsClass: 'default',
+                buttonsPrefix: 'btn',
+                iconsPrefix: 'mdi',
+                iconSize: 'mini',
+                icons: {
+                    refresh: 'mdi-refresh',
+                    export: 'mdi-export',
+                    columns: 'mdi-table-column-remove',
+                    fullscreen: 'mdi-monitor-screenshot'
+                },
+                showExport: true,
+                buttonsAlign: "right",
+                exportDataType: "basic",
+                exportOptions: {
+                    ignoreColumn: [0],
+                    fileName: '商品数据',
+                    worksheetName: 'Sheet1',
+                    tableName: '商品信息表',
+                    excelstyles: ['background-color', 'color', 'font-size', 'font-weight'],
+                },
+                exportTypes: ['json', 'xml', 'csv', 'txt', 'sql', 'doc', 'excel'],
+                columns: [
+                    {
+                        field: 'state',
+                        checkbox: true,
+                        widthUnit: 'rem'
+                    },
+                    {
+                        field: 'id',
+                        title: '编号',
+                        align: 'center',
+                        sortable: true,
+                        sortName: 'sortId',
+                        switchable: false,
+                        widthUnit: 'rem'
+                    },
+                    {
+                        field: 'name',
+                        align: 'center',
+                        title: '商品名称'
+                    },
+                    {
+                        field: 'barCode',
+                        align: 'center',
+                        title: '商品条码'
+                    },
+                    {
+                        field: 'imageUrl',
+                        title: '商品图片',
+                        formatter: function(value) {
+                            if (!value) return '<span class="text-muted">无图片</span>';
+                            const fullImageUrl = `http://localhost:5132/${value}`;
+                            return `<img src="${fullImageUrl}" alt="商品图片" class="img-thumbnail" style="max-width: 100px; max-height: 100px;">`;
+                        }
+                    },
+                    {
+                        field: 'productTypeName',
+                        align: 'center',
+                        title: '商品类型'
+                    },
+                    {
+                        field: 'storeName',
+                        align: 'center',
+                        title: '所属店铺'
+                    },
+                    {
+                        field: 'storeFloorName',
+                        align: 'center',
+                        title: '所属楼层'
+                    },
+                    {
+                        field: 'plazaName',
+                        align: 'center',
+                        title: '所属广场'
+                    },
+                    {
+                        field: 'price',
+                        align: 'center',
+                        title: '价格',
+                        formatter: function(value) {
+                            return `¥${value.toFixed(2)}`;
+                        }
+                    },
+                    {
+                        field: 'stockQuantity',
+                        align: 'center',
+                        title: '库存数量'
+                    },
+                    {
+                        field: 'isDeleted',
+                        title: '状态',
+                        formatter: function(value) {
+                            return value == 0 ?
+                                '<span class="badge bg-success">启用</span>' :
+                                '<span class="badge bg-danger">禁用</span>';
+                        }
+                    },
+                    {
+                        field: 'operate',
+                        title: '操作',
+                        formatter: function() {
+                            return `<div class="btn-group">
+                                <button class="btn btn-sm btn-indigo btn-round detail-btn" title="详情"><span class="mdi mdi-information"></span></button>
+                                <button class="btn btn-sm btn-primary btn-round edit-btn" title="编辑"><span class="mdi mdi-pencil"></span></button>
+                                <button class="btn btn-sm btn-danger btn-round del-btn" title="删除"><span class="mdi mdi-close"></span></button>
+                            </div>`;
+                        },
+                        events: {
+                            'click .detail-btn': function(event, value, row) {
+                                event.stopPropagation();
+                                showDetail(row);
+                            },
+                            'click .edit-btn': function(event, value, row) {
+                                event.stopPropagation();
+                                showEditModal(row);
+                            },
+                            'click .del-btn': function(event, value, row) {
+                                event.stopPropagation();
+                                showDeleteConfirm([row]);
+                            }
+                        }
+                    }
+                ],
+                queryParams: function(params) {
+                    return {
+                        pageSize: params.limit,
+                        pageIndex: Math.floor(params.offset / params.limit) + 1,
+                        sort: params.sort || "Id",
+                        sortOrder: params.order || "asc",
+                        keyword: $('#searchBox').val().trim(),
+                        productName: $('#search-productName').val().trim(),
+                        plazaId: $('#search-plazaId').val(),
+                        floorId: $('#search-floorId').val(),
+                        storeId: $('#search-storeId').val(),
+                        productTypeId: $('#search-productTypeId').val(),
+                        status: $('#search-status').val()
+                    };
+                },
+                onLoadSuccess: function() {
+                    $("[data-bs-toggle='tooltip']").tooltip();
+                    updateButtonState();
+                },
+                onCheck: updateButtonState,
+                onUncheck: updateButtonState,
+                onCheckAll: updateButtonState,
+                onUncheckAll: updateButtonState
+            });
+        }
+
+        // ====================== 事件处理函数 ======================
+        function showAddModal() {
+            currentMode = 'add';
+            $('#productModalTitle').text('新增商品');
+            $('#productForm')[0].reset();
+            $('#productForm').find('[name="isDeleted"]').val('0');
+            resetDropdowns();
+            $('#product-imageUrl').val('');
+            $('#image-preview img').hide();
+            $('#productModal').modal('show');
+        }
+
+        function showEditModal(row) {
+            currentMode = 'edit';
+            $('#productModalTitle').text('编辑商品');
+            resetDropdowns();
+
+            $('#product-id').val(row.id);
+            $('#product-name').val(row.name);
+            $('#product-barCode').val(row.barCode);
+            $('#product-price').val(row.price);
+            $('#product-stockQuantity').val(row.stockQuantity);
+            $('#product-description').val(row.description);
+            $('#product-isDeleted').val(row.isDeleted ? '1' : '0');
+            $('#product-createTime').val(row.createTime || '');
+            $('#product-updateTime').val(row.updateTime || '');
+
+            if (row.imageUrl) {
+                const fullImageUrl = `http://localhost:5132/${row.imageUrl}`;
+                $('#product-imageUrl').val(row.imageUrl);
+                $('#image-preview img').attr('src', fullImageUrl).show();
+            }
+
+            $('#product-plazaId').val(row.plazaId);
+            loadFloorDropdown(row.plazaId).then(() => {
+                $('#product-floorId').val(row.floorId);
+                return loadStoreDropdown(row.plazaId, row.floorId);
+            }).then(() => {
+                $('#product-storeId').val(row.storeId);
+                return loadProductTypeDropdown(row.plazaId, row.floorId, row.storeId);
+            }).then(() => {
+                $('#product-productTypeId').val(row.productTypeId);
+                $('#productForm').removeClass('was-validated');
+                $('#productModal').modal('show');
+            });
+        }
+
+        function showDetail(row) {
+            const detailModal = new bootstrap.Modal(document.getElementById('detailModal'));
+
+            $('#detail-id').text(row.id || '无');
+            $('#detail-name').text(row.name || '无');
+            $('#detail-barCode').text(row.barCode || '无');
+            $('#detail-price').text(row.price ? `¥${row.price.toFixed(2)}` : '无');
+            $('#detail-stockQuantity').text(row.stockQuantity || '无');
+            $('#detail-description').text(row.description || '无');
+            $('#detail-plazaName').text(row.plazaName || '无');
+            $('#detail-floorName').text(row.storeFloorName || '无');
+            $('#detail-storeName').text(row.storeName || '无');
+            $('#detail-productType').text(row.productTypeName || '无');
+
+            const statusText = row.isDeleted === 0 ? '启用' :
+                              row.isDeleted === 1 ? '禁用' : '未知';
+            $('#detail-isDeleted').text(statusText);
+
+            $('#detail-createTime').text(formatDateTime(row.createTime) || '无');
+            $('#detail-updateTime').text(formatDateTime(row.updateTime) || '无');
+
+            if (row.imageUrl) {
+                const fullImageUrl = `http://localhost:5132/${row.imageUrl}`;
+                $('#detail-imageUrl img').attr('src', fullImageUrl).show();
+            } else {
+                $('#detail-imageUrl img').hide();
+            }
+
+            detailModal.show();
+        }
+
+        function submitProductForm() {
+            if (!validateProductForm()) return;
+
+            const formData = {
+                name: $('#product-name').val(),
+                barCode: $('#product-barCode').val(),
+                imageUrl: $('#product-imageUrl').val(),
+                plazaId: $('#product-plazaId').val(),
+                floorId: $('#product-floorId').val(),
+                storeId: $('#product-storeId').val(),
+                productTypeId: $('#product-productTypeId').val(),
+                price: $('#product-price').val(),
+                stockQuantity: $('#product-stockQuantity').val(),
+                description: $('#product-description').val(),
+                isDeleted: $('#product-isDeleted').val() === '1'
+            };
+             if (currentMode === 'edit') {
+                formData.id = $('#product-id').val();
+            }
+            const url = currentMode === 'add' ? '/Product/Add' : '/Product/Edit';
+            const successMessage = currentMode === 'add' ? '新增成功' : '更新成功';
+
+            $.ajax({
+                url: url,
+                type: 'POST',
+                data: formData,
+                success: function(response) {
+                    if (response.success) {
+                        $('#productModal').modal('hide');
+                        $('#productTable').bootstrapTable('refresh');
+                        showToast(successMessage);
+                    } else {
+                        showToast(`操作失败: ${response.message || '未知错误'}`, true);
+                    }
+                },
+                error: function(xhr, status, error) {
+                    const errorMsg = xhr.responseJSON?.message || xhr.statusText || '服务器错误';
+                    showToast(`操作失败: ${errorMsg}`, true);
+                }
+            });
+        }
+
+        function validateProductForm() {
+            const form = $('#productForm')[0];
+            form.classList.add('was-validated');
+
+            let isValid = true;
+            $('#productForm [required]').each(function() {
+                if (!$(this).val()) {
+                    isValid = false;
+                    $(this).addClass('is-invalid');
+                } else {
+                    $(this).removeClass('is-invalid');
+                }
+            });
+
+            if ($('#product-plazaId').val() === '') {
+                isValid = false;
+                $('#product-plazaId').addClass('is-invalid');
+            }
+
+            if ($('#product-floorId').val() === '') {
+                isValid = false;
+                $('#product-floorId').addClass('is-invalid');
+            }
+
+            if ($('#product-storeId').val() === '') {
+                isValid = false;
+                $('#product-storeId').addClass('is-invalid');
+            }
+
+            if ($('#product-productTypeId').val() === '') {
+                isValid = false;
+                $('#product-productTypeId').addClass('is-invalid');
+            }
+
+            if ($('#product-imageUrl').val() === '') {
+                isValid = false;
+                showToast('请上传商品图片', true);
+            }
+
+            return isValid;
+        }
+
+        function resetDropdowns() {
+            $('#product-floorId').empty().append('<option value="">请选择楼层</option>');
+            $('#product-storeId').empty().append('<option value="">请选择店铺</option>');
+            $('#product-productTypeId').empty().append('<option value="">请选择商品类型</option>');
+        }
+
+        function loadFloorDropdown(plazaId) {
+            return new Promise((resolve, reject) => {
+                if (!plazaId) {
+                    $('#product-floorId').empty().append('<option value="">请选择楼层</option>');
+                    resolve();
+                    return;
+                }
+
+                $.ajax({
+                    url: '/Product/GetFloorsByPlazaId',
+                    type: 'GET',
+                    data: { plazaId: plazaId },
+                    success: function(floors) {
+                        const $select = $('#product-floorId');
+                        $select.empty().append('<option value="">请选择楼层</option>');
+
+                        if (floors && floors.length > 0) {
+                            floors.forEach(floor => {
+                                $select.append(`<option value="${floor.id}">${floor.name}</option>`);
+                            });
+                        }
+                        resolve();
+                    },
+                    error: function(xhr) {
+                        const errorMsg = xhr.responseJSON?.message || xhr.statusText || '服务器错误';
+                        showToast(`获取楼层数据失败: ${errorMsg}`, true);
+                        reject(errorMsg);
+                    }
+                });
+            });
+        }
+
+        function loadStoreDropdown(plazaId, floorId) {
+            return new Promise((resolve, reject) => {
+                if (!plazaId || !floorId) {
+                    $('#product-storeId').empty().append('<option value="">请选择店铺</option>');
+                    resolve();
+                    return;
+                }
+
+                $.ajax({
+                    url: '/Product/GetStoresByFloorId',
+                    type: 'GET',
+                    data: { plazaId: plazaId, floorId: floorId },
+                    success: function(stores) {
+                        const $select = $('#product-storeId');
+                        console.log('Loaded product types:', stores);
+                        $select.empty().append('<option value="">请选择店铺</option>');
+
+                        if (stores && stores.length > 0) {
+                            stores.forEach(store => {
+                                $select.append(`<option value="${store.id}">${store.name}</option>`);
+                            });
+                        }
+                        resolve();
+                    },
+                    error: function(xhr) {
+                        const errorMsg = xhr.responseJSON?.message || xhr.statusText || '服务器错误';
+                        showToast(`获取店铺数据失败: ${errorMsg}`, true);
+                        reject(errorMsg);
+                    }
+                });
+            });
+        }
+
+        function loadProductTypeDropdown(plazaId, floorId, storeId) {
+            return new Promise((resolve, reject) => {
+                if (!plazaId || !floorId || !storeId) {
+                    $('#product-productTypeId').empty().append('<option value="">请选择商品类型</option>');
+                    resolve();
+                    return;
+                }
+
+                $.ajax({
+                    url: '/Product/GetProductTypesByStoreId',
+                    type: 'GET',
+                    data: { plazaId: plazaId, floorId: floorId, storeId: storeId },
+                    success: function(productTypes) {
+                        console.log('Loaded product types:', productTypes);
+                        const $select = $('#product-productTypeId');
+                        $select.empty().append('<option value="">请选择商品类型</option>');
+
+                        if (productTypes && productTypes.length > 0) {
+                            productTypes.forEach(type => {
+                                $select.append(`<option value="${type.id}">${type.name}</option>`);
+                            });
+                        }
+                        resolve();
+                    },
+                    error: function(xhr) {
+                        const errorMsg = xhr.responseJSON?.message || xhr.statusText || '服务器错误';
+                        showToast(`获取商品类型数据失败: ${errorMsg}`, true);
+                        reject(errorMsg);
+                    }
+                });
+            });
+        }
+
+        function bindEventHandlers() {
+            $('#product-plazaId').change(function() {
+                const plazaId = $(this).val();
+                loadFloorDropdown(plazaId).then(() => {
+                    loadStoreDropdown(plazaId, $('#product-floorId').val());
+                });
+            });
+
+        $('#product-floorId').change(function() {
+            const plazaId = $('#product-plazaId').val();
+            const floorId = $(this).val();
+            loadStoreDropdown(plazaId, floorId).then(() => {
+                const storeId = $('#product-storeId').val();
+                if (plazaId && floorId && storeId) {
+                    loadProductTypeDropdown(plazaId, floorId, storeId);
+                }
+            });
+        });
+
+        $('#product-storeId').change(function() {
+            const plazaId = $('#product-plazaId').val();
+            const floorId = $('#product-floorId').val();
+            const storeId = $(this).val();
+            if (plazaId && floorId && storeId) {
+                loadProductTypeDropdown(plazaId, floorId, storeId);
+            }
+        });
+
+            $('#search-plazaId').change(function() {
+                const plazaId = $(this).val();
+                if (plazaId) {
+                    $.ajax({
+                        url: '/Product/GetFloorsByPlazaId',
+                        type: 'GET',
+                        data: { plazaId: plazaId },
+                        success: function(floors) {
+                            const $select = $('#search-floorId');
+                            $select.empty().append('<option value="">全部</option>');
+
+                            if (floors && floors.length > 0) {
+                                floors.forEach(floor => {
+                                    $select.append(`<option value="${floor.id}">${floor.name}</option>`);
+                                });
+                            }
+                        },
+                        error: function(xhr) {
+                            const errorMsg = xhr.responseJSON?.message || xhr.statusText || '服务器错误';
+                            showToast(`获取楼层数据失败: ${errorMsg}`, true);
+                        }
+                    });
+                } else {
+                    $('#search-floorId').empty().append('<option value="">全部</option>');
+                }
+            });
+
+            $('#search-floorId').change(function() {
+                const plazaId = $('#search-plazaId').val();
+                const floorId = $(this).val();
+                if (plazaId && floorId) {
+                    $.ajax({
+                        url: '/Product/GetStoresByFloorId',
+                        type: 'GET',
+                        data: { plazaId: plazaId, floorId: floorId },
+                        success: function(stores) {
+                            const $select = $('#search-storeId');
+                            $select.empty().append('<option value="">全部</option>');
+
+                            if (stores && stores.length > 0) {
+                                stores.forEach(store => {
+                                    $select.append(`<option value="${store.id}">${store.name}</option>`);
+                                });
+                            }
+                        },
+                        error: function(xhr) {
+                            const errorMsg = xhr.responseJSON?.message || xhr.statusText || '服务器错误';
+                            showToast(`获取店铺数据失败: ${errorMsg}`, true);
+                        }
+                    });
+                } else {
+                    $('#search-storeId').empty().append('<option value="">全部</option>');
+                }
+            });
+
+            $('#searchButton').click(performBasicSearch);
+            $('#searchBox').keypress(function(e) {
+                if (e.which === 13) performBasicSearch();
+            });
+            $('#searchBox').keydown(function(e) {
+                if (e.which === 27) {
+                    $('#searchBox').val('');
+                    $('#productTable').bootstrapTable('refresh');
+                }
+            });
+
+            $('#searchplus-btn').click(function() {
+                $('#searchModal').modal('show');
+            });
+            $('#clearButton').click(function() {
+                $('#searchBox').val('');
+                $('#searchForm')[0].reset();
+                $('#productTable').bootstrapTable('refresh');
+            });
+
+            $('#edit-btn').click(function() {
+                const selections = $('#productTable').bootstrapTable('getSelections');
+                if (selections.length !== 1) {
+                    showToast('请选择一条记录进行编辑', true);
+                    return;
+                }
+                showEditModal(selections[0]);
+            });
+
+            $('#del-btn').click(function() {
+                const selections = $('#productTable').bootstrapTable('getSelections');
+                if (selections.length === 0) {
+                    showToast('请至少选择一条记录进行删除', true);
+                    return;
+                }
+                showDeleteConfirm(selections);
+            });
+        }
+
+        function performBasicSearch() {
+            const keyword = $('#searchBox').val().trim();
+            $('#productTable').bootstrapTable('refresh', {
+                query: {
+                    keyword: keyword
+                }
+            });
+        }
+
+        function submitSearchForm() {
+            const plazaId = $('#search-plazaId').val();
+            const floorId = $('#search-floorId').val();
+            const storeId = $('#search-storeId').val();
+            const productTypeId = $('#search-productTypeId').val();
+            const productName = $('#search-productName').val();
+            const status = $('#search-status').val();
+
+            $('#productTable').bootstrapTable('refresh', {
+                query: {
+                    plazaId: plazaId,
+                    floorId: floorId,
+                    storeId: storeId,
+                    productTypeId: productTypeId,
+                    productName: productName,
+                    status: status
+                }
+            });
+
+            $('#searchModal').modal('hide');
+        }
+
+        function resetSearchForm() {
+            $('#searchForm')[0].reset();
+            $('#search-plazaId').trigger('change');
+        }
+
+        function showDeleteConfirm(selections) {
+            currentDeleteMode = selections.length > 1 ? 'multiple' : 'single';
+            const countInfo = selections.length > 1 ?
+                `共选中 ${selections.length} 条记录` :
+                `记录: ${selections[0].name}`;
+
+            $('#deleteCountInfo').text(countInfo);
+            $('#deleteConfirmModal').modal('show');
+        }
+
+        function confirmDelete() {
+            const selections = $('#productTable').bootstrapTable('getSelections');
+            if (selections.length === 0) {
+                showToast('请至少选择一条记录进行删除', true);
+                return;
+            }
+
+            const ids = selections.map(record => record.id);
+            if (!ids || ids.length === 0) {
+                showToast('未获取到有效的ID', true);
+                return;
+            }
+
+            $.ajax({
+                url: '/Product/DeleteRange',
+                type: 'POST',
+                data: {
+                    ids: ids
+                },
+                success: function(response) {
+                    if (response.success) {
+                        $('#productTable').bootstrapTable('refresh');
+                        $('#deleteConfirmModal').modal('hide');
+                        const message = ids.length > 1 ?
+                            `成功删除 ${ids.length} 条记录` :
+                            '成功删除记录';
+                        showToast(message);
+                    } else {
+                        showToast('删除失败: ' + (response.message || '请重试'), true);
+                    }
+                },
+                error: function(xhr) {
+                    const errorMsg = xhr.responseJSON?.message || '服务器错误';
+                    showToast(`操作失败: ${errorMsg}`, true);
+                }
+            });
+        }
+
+        function updateButtonState() {
+            const selections = $('#productTable').bootstrapTable('getSelections');
+            const allRows = $('#productTable').bootstrapTable('getData');
+            const selectedCount = selections.length;
+            const totalRows = allRows.length;
+
+            $('#edit-btn').prop('disabled', selectedCount !== 1);
+            $('#del-btn').prop('disabled', selectedCount === 0);
+
+            const headerCheckbox = $('#productTable').find('thead [type="checkbox"]');
+            if (selectedCount === 0) {
+                headerCheckbox.prop('indeterminate', false).prop('checked', false);
+            } else if (selectedCount === totalRows) {
+                headerCheckbox.prop('indeterminate', false).prop('checked', true);
+            } else {
+                headerCheckbox.prop('indeterminate', true).prop('checked', false);
+            }
+        }
+
+        function formatDateTime(dateTime) {
+            if (!dateTime) return '';
+            return new Date(dateTime).toLocaleString();
+        }
+
+      
+    </script>
+}

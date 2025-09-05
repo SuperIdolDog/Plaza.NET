@@ -1,0 +1,20 @@
+{
+  "Version": 1,
+  "Hash": "9s8WBBH2yHmNhv/bNCxrR3+VgCTsii2rWHHvu5ISfc4=",
+  "Source": "Plaza.Net.WebAPI",
+  "BasePath": "_content/Plaza.Net.WebAPI",
+  "Mode": "Default",
+  "ManifestType": "Build",
+  "ReferencedProjectsConfiguration": [],
+  "DiscoveryPatterns": [
+    {
+      "Name": "Plaza.Net.WebAPI\\wwwroot",
+      "Source": "Plaza.Net.WebAPI",
+      "ContentRoot": "C:\\Users\\Lenovo\\Desktop\\CSharp项目\\就业项目\\Plaza\\Plaza.Net.WebAPI\\wwwroot\\",
+      "BasePath": "_content/Plaza.Net.WebAPI",
+      "Pattern": "**"
+    }
+  ],
+  "Assets": [],
+  "Endpoints": []
+}

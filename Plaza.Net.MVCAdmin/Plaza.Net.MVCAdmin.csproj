@@ -1,0 +1,52 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>net6.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <DockerDefaultTargetOS>Linux</DockerDefaultTargetOS>
+    <DockerComposeProjectPath>..\docker-compose.dcproj</DockerComposeProjectPath>
+    <ApplicationIcon>wwwroot\favicon.ico</ApplicationIcon>
+    <PackageIcon>favicon.png</PackageIcon>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Autofac.Extensions.DependencyInjection" Version="10.0.0" />
+    <PackageReference Include="Microsoft.AspNetCore.Identity.UI" Version="6.0.35" />
+    <PackageReference Include="Microsoft.AspNetCore.Cors" Version="2.3.0" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Sqlite" Version="6.0.35" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="6.0.35">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+    <PackageReference Include="Microsoft.Extensions.Configuration.EnvironmentVariables" Version="8.0.0" />
+    <PackageReference Include="Microsoft.Extensions.Logging" Version="8.0.0" />
+    <PackageReference Include="Microsoft.VisualStudio.Azure.Containers.Tools.Targets" Version="1.21.0" />
+    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="6.0.18" />
+    <PackageReference Include="NLog.Extensions.Logging" Version="5.4.0" />
+    <PackageReference Include="NLog.Web.AspNetCore" Version="5.4.0" />
+
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="wwwroot\images\avatar\" />
+    <Folder Include="wwwroot\images\users\" />
+    <Folder Include="wwwroot\images\review\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Plaza.Net.Auth\Plaza.Net.Auth.csproj" />
+    <ProjectReference Include="..\Plaza.Net.Core\Plaza.Net.Core.csproj" />
+    <ProjectReference Include="..\Plaza.Net.IRepository\Plaza.Net.IRepository.csproj" />
+    <ProjectReference Include="..\Plaza.Net.IServices\Plaza.Net.IServices.csproj" />
+    <ProjectReference Include="..\Plaza.Net.Mapping\Plaza.Net.Mapping.csproj" />
+    <ProjectReference Include="..\Plaza.Net.Utility\Plaza.Net.Utility.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Update="appsettings.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+
+</Project>

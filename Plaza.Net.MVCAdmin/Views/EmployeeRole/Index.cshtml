@@ -1,0 +1,851 @@
+﻿
+@{
+    ViewData["Title"] = "员工角色管理";
+}
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="card shadow-sm">
+                <div class="card-body">
+                    <nav>
+                        <div class="nav nav-tabs mb-3" id="nav-tab" role="tablist">
+                            <button class="nav-link active" id="nav-list-tab" data-bs-toggle="tab"
+                                    data-bs-target="#nav-list" type="button" role="tab" aria-controls="nav-list"
+                                    aria-selected="true">
+                                角色列表
+                            </button>
+                        </div>
+                    </nav>
+
+                    <div class="tab-content" id="nav-tabContent">
+                        <div class="tab-pane fade show active" id="nav-list" role="tabpanel"
+                             aria-labelledby="nav-list-tab">
+                            <div id="toolbar" class="d-flex justify-content-between align-items-center mb-3">
+                                <div class="btn-group me-2 mb-2 mb-lg-0">
+                                    <button class="btn btn-success btn-sm btn-round" onclick="showAddModal()">
+                                        <span class="mdi mdi-plus me-1"></span> 新增
+                                    </button>
+                                    <button id="edit-btn" class="btn btn-primary btn-sm btn-round edit-btn" disabled>
+                                        <span class="mdi mdi-pencil me-1"></span> 编辑
+                                    </button>
+                                    <button id="del-btn" class="btn btn-danger btn-sm btn-round del-btn" disabled>
+                                        <span class="mdi mdi-close me-1"></span> 删除
+                                    </button>
+                                </div>
+                                <div class="input-group d-flex justify-content-center">
+                                    <button id="searchplus-btn" class="btn btn-outline-secondary btn-sm btn-round"
+                                            data-bs-toggle="modal" data-bs-target="#searchModal">
+                                        <span class="mdi mdi-magnify-plus"></span>高级搜索
+                                    </button>
+                                    <input type="text" id="searchBox" class="form-control form-control-sm"
+                                           placeholder="搜索角色名称、描述等...">
+                                    <button id="searchButton" class="btn btn-outline-secondary btn-sm btn-round">
+                                        <span class="mdi mdi-magnify"></span>查询
+                                    </button>
+                                    <button class="btn btn-outline-secondary btn-sm btn-round" id="clearButton">
+                                        <span class="mdi mdi-delete"></span>清除
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="table-responsive">
+                                <table id="employeeRoleTable" class="table table-hover table-striped align-middle"
+                                       style="text-align:center;"></table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- 高级搜索模态框 -->
+<div class="modal fade" id="searchModal" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header bg-light">
+                <h5 class="modal-title">高级搜索</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form id="searchForm">
+                    <div class="row g-3">
+                        <div class="col-md-6">
+                            <label class="form-label">所属广场</label>
+                            <select class="form-select" name="plazaId" id="search-plazaId">
+                                <option value="">全部</option>
+                                @foreach (var plaza in Model.Plazas)
+                                {
+                                    <option value="@plaza.Id">@plaza.Name</option>
+                                }
+                            </select>
+                        </div>
+                        <div class="col-md-6">
+                            <label class="form-label">所属楼层</label>
+                            <select class="form-select" name="floorId" id="search-floorId">
+                                <option value="">全部</option>
+                            </select>
+                        </div>
+                        <div class="col-md-6">
+                            <label class="form-label">所属店铺</label>
+                            <select class="form-select" name="storeId" id="search-storeId">
+                                <option value="">全部</option>
+                            </select>
+                        </div>
+                        <div class="col-md-6">
+                            <label class="form-label">角色名称</label>
+                            <input type="text" class="form-control" name="name" id="search-name">
+                        </div>
+                        <div class="col-md-6">
+                            <label class="form-label">状态</label>
+                            <select class="form-select" name="status" id="search-status">
+                                <option value="">全部</option>
+                                <option value="0">启用</option>
+                                <option value="1">禁用</option>
+                            </select>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-outline-secondary btn-sm" onclick="resetSearchForm()">重置</button>
+                <button type="button" class="btn btn-primary btn-sm" onclick="submitSearchForm()">搜索</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- 详情模态框 -->
+<div class="modal fade" id="detailModal" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header bg-light">
+                <h5 class="modal-title">角色详情</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <div class="row g-3">
+                    <div class="col-md-6">
+                        <label class="form-label">角色名称</label>
+                        <div class="form-control" id="detail-name">无</div>
+                    </div>
+                    <div class="col-md-6">
+                        <label class="form-label">所属店铺</label>
+                        <div class="form-control" id="detail-storeName">无</div>
+                    </div>
+                    <div class="col-md-6">
+                        <label class="form-label">所属楼层</label>
+                        <div class="form-control" id="detail-floorName">无</div>
+                    </div>
+                    <div class="col-md-6">
+                        <label class="form-label">所属广场</label>
+                        <div class="form-control" id="detail-plazaName">无</div>
+                    </div>
+                    <div class="col-md-12">
+                        <label class="form-label">角色描述</label>
+                        <div class="form-control" id="detail-description" style="height: auto;">无</div>
+                    </div>
+                    <div class="col-md-6">
+                        <label class="form-label">状态</label>
+                        <div class="form-control" id="detail-isDeleted">无</div>
+                    </div>
+                    <div class="col-md-6">
+                        <label class="form-label">创建时间</label>
+                        <div class="form-control" id="detail-createTime">无</div>
+                    </div>
+                    <div class="col-md-6">
+                        <label class="form-label">更新时间</label>
+                        <div class="form-control" id="detail-updateTime">无</div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-outline-secondary btn-sm" data-bs-dismiss="modal">关闭</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- 角色信息模态框（新增/编辑） -->
+<div class="modal fade" id="employeeRoleModal" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header bg-light">
+                <h5 class="modal-title" id="employeeRoleModalTitle">新增角色</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form id="employeeRoleForm">
+                    <input type="hidden" name="id" id="employeeRole-id">
+                    <div class="row g-3">
+                        <div class="col-md-6">
+                            <label class="form-label">角色名称 <span class="text-danger">*</span></label>
+                            <input type="text" class="form-control" name="name" id="employeeRole-name" required>
+                        </div>
+                        <div class="col-md-6">
+                            <label class="form-label">所属广场 <span class="text-danger">*</span></label>
+                            <select class="form-select" name="plazaId" id="employeeRole-plazaId" required>
+                                <option value="">请选择广场</option>
+                                @foreach (var plaza in Model.Plazas)
+                                {
+                                    <option value="@plaza.Id">@plaza.Name</option>
+                                }
+                            </select>
+                        </div>
+                        <div class="col-md-6">
+                            <label class="form-label">所属楼层 <span class="text-danger">*</span></label>
+                            <select class="form-select" name="floorId" id="employeeRole-floorId" required>
+                                <option value="">请选择楼层</option>
+                            </select>
+                        </div>
+                        <div class="col-md-6">
+                            <label class="form-label">所属店铺 <span class="text-danger">*</span></label>
+                            <select class="form-select" name="storeId" id="employeeRole-storeId" required>
+                                <option value="">请选择店铺</option>
+                            </select>
+                        </div>
+                        <div class="col-md-12">
+                            <label class="form-label">角色描述 <span class="text-danger">*</span></label>
+                            <textarea class="form-control" name="description" id="employeeRole-description" rows="3"
+                                      required></textarea>
+                        </div>
+                        <div class="col-md-6">
+                            <label class="form-label">状态</label>
+                            <select class="form-select" name="isDeleted" id="employeeRole-isDeleted">
+                                <option value="0">启用</option>
+                                <option value="1">禁用</option>
+                            </select>
+                        </div>
+                        <div class="col-md-6">
+                            <label class="form-label">创建时间</label>
+                            <input type="text" class="form-control" readonly name="createTime" id="employeeRole-createTime">
+                        </div>
+                        <div class="col-md-6">
+                            <label class="form-label">更新时间</label>
+                            <input type="text" class="form-control" readonly name="updateTime" id="employeeRole-updateTime">
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-outline-secondary btn-sm" data-bs-dismiss="modal">取消</button>
+                <button type="button" class="btn btn-primary btn-sm" onclick="submitEmployeeRoleForm()">提交</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- 删除确认模态框 -->
+<div class="modal fade" id="deleteConfirmModal" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header bg-light">
+                <h5 class="modal-title">确认删除</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <div class="d-flex align-items-center">
+                    <div class="me-3">
+                        <span class="mdi mdi-alert-circle text-danger" style="font-size: 1.5rem;"></span>
+                    </div>
+                    <div>
+                        <p class="mb-1">确定要删除选中的记录吗？</p>
+                        <p id="deleteCountInfo" class="text-muted small mb-0"></p>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-outline-secondary btn-sm" data-bs-dismiss="modal">取消</button>
+                <button type="button" class="btn btn-danger btn-sm" onclick="confirmDelete()">确认删除</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <script>
+        // ====================== 全局变量声明 ======================
+        let currentMode = 'add'; // 当前操作模式：'add' 或 'edit'
+        let currentDeleteMode = null; // 当前删除模式：'single' 或 'multiple'
+
+        // ====================== 页面初始化函数 ======================
+        $(document).ready(function() {
+            initTable();
+            bindEventHandlers();
+            initDefaultPlaza();
+        });
+
+        // ====================== 初始化默认广场数据 ======================
+        function initDefaultPlaza() {
+            const plazaId = $('#employeeRole-plazaId option:first').val();
+            if (plazaId && plazaId !== '0') {
+                loadFloorDropdown(plazaId);
+            }
+        }
+
+        // ====================== 表格相关函数 ======================
+        function initTable() {
+            $('#employeeRoleTable').bootstrapTable({
+                classes: 'table table-bordered table-hover table-striped',
+                url: '/EmployeeRole/GetEmployeeRoleData',
+                uniqueId: 'id',
+                idField: 'id',
+                clickToSelect: true,
+                dataType: 'json',
+                method: 'get',
+                toolbar: '#toolbar',
+                pagination: true,
+                showColumns: true,
+                showRefresh: true,
+                showButtonIcons: true,
+                showButtonText: false,
+                showFullscreen: true,
+                totalField: 'total',
+                undefinedText: '-',
+                sortOrder: "asc",
+                sidePagination: "server",
+                pageNumber: 1,
+                pageSize: 5,
+                pageList: [5, 10, 25, 50, 100],
+                paginationLoop: true,
+                paginationPagesBySide: 2,
+                buttonsClass: 'default',
+                buttonsPrefix: 'btn',
+                iconsPrefix: 'mdi',
+                iconSize: 'mini',
+                icons: {
+                    refresh: 'mdi-refresh',
+                    export: 'mdi-export',
+                    columns: 'mdi-table-column-remove',
+                    fullscreen: 'mdi-monitor-screenshot'
+                },
+                showExport: true,
+                buttonsAlign: "right",
+                exportDataType: "basic",
+                exportOptions: {
+                    ignoreColumn: [0],
+                    fileName: '员工角色数据',
+                    worksheetName: 'Sheet1',
+                    tableName: '员工角色信息表',
+                    excelstyles: ['background-color', 'color', 'font-size', 'font-weight'],
+                },
+                exportTypes: ['json', 'xml', 'csv', 'txt', 'sql', 'doc', 'excel'],
+                columns: [
+                    {
+                        field: 'state',
+                        checkbox: true,
+                        widthUnit: 'rem'
+                    },
+                    {
+                        field: 'id',
+                        title: '编号',
+                        align: 'center',
+                        sortable: true,
+                        sortName: 'sortId',
+                        switchable: false,
+                        widthUnit: 'rem'
+                    },
+                    {
+                        field: 'name',
+                        align: 'center',
+                        title: '角色名称'
+                    },
+                    {
+                        field: 'description',
+                        align: 'center',
+                        title: '角色描述'
+                    },
+                    {
+                        field: 'storeName',
+                        align: 'center',
+                        title: '所属店铺'
+                    },
+                    {
+                        field: 'floorName',
+                        align: 'center',
+                        title: '所属楼层'
+                    },
+                    {
+                        field: 'plazaName',
+                        align: 'center',
+                        title: '所属广场'
+                    },
+                    {
+                        field: 'isDeleted',
+                        title: '状态',
+                        formatter: function(value) {
+                            return value == 0 ?
+                                '<span class="badge bg-success">启用</span>' :
+                                '<span class="badge bg-danger">禁用</span>';
+                        }
+                    },
+                    {
+                        field: 'operate',
+                        title: '操作',
+                        formatter: function() {
+                            return `<div class="btn-group">
+                                <button class="btn btn-sm btn-indigo btn-round detail-btn" title="详情"><span class="mdi mdi-information"></span></button>
+                                <button class="btn btn-sm btn-primary btn-round edit-btn" title="编辑"><span class="mdi mdi-pencil"></span></button>
+                                <button class="btn btn-sm btn-danger btn-round del-btn" title="删除"><span class="mdi mdi-close"></span></button>
+                            </div>`;
+                        },
+                        events: {
+                            'click .detail-btn': function(event, value, row) {
+                                event.stopPropagation();
+                                showDetail(row);
+                            },
+                            'click .edit-btn': function(event, value, row) {
+                                event.stopPropagation();
+                                showEditModal(row);
+                            },
+                            'click .del-btn': function(event, value, row) {
+                                event.stopPropagation();
+                                showDeleteConfirm([row]);
+                            }
+                        }
+                    }
+                ],
+                queryParams: function(params) {
+                    return {
+                        pageSize: params.limit,
+                        pageIndex: Math.floor(params.offset / params.limit) + 1,
+                        sort: params.sort || "Id",
+                        sortOrder: params.order || "asc",
+                        keyword: $('#searchBox').val().trim(),
+                        plazaId: $('#search-plazaId').val(),
+                        floorId: $('#search-floorId').val(),
+                        storeId: $('#search-storeId').val(),
+                        name: $('#search-name').val(),
+                        status: $('#search-status').val()
+                    };
+                },
+                onLoadSuccess: function() {
+                    $("[data-bs-toggle='tooltip']").tooltip();
+                    updateButtonState();
+                },
+                onCheck: updateButtonState,
+                onUncheck: updateButtonState,
+                onCheckAll: updateButtonState,
+                onUncheckAll: updateButtonState
+            });
+        }
+
+        // ====================== 事件处理函数 ======================
+        function showAddModal() {
+            currentMode = 'add';
+            $('#employeeRoleModalTitle').text('新增角色');
+            $('#employeeRoleForm')[0].reset();
+            $('#employeeRoleForm').find('[name="isDeleted"]').val('0');
+            $('#employeeRole-createTime').val(formatDateTime(new Date()));
+            $('#employeeRole-updateTime').val(formatDateTime(new Date()));
+            resetDropdowns();
+            $('#employeeRoleModal').modal('show');
+        }
+
+        function showEditModal(row) {
+            currentMode = 'edit';
+            $('#employeeRoleModalTitle').text('编辑角色');
+            resetDropdowns();
+
+            $('#employeeRole-id').val(row.id);
+            $('#employeeRole-name').val(row.name);
+            $('#employeeRole-description').val(row.description);
+            $('#employeeRole-isDeleted').val(row.isDeleted ? '1' : '0');
+            $('#employeeRole-createTime').val(formatDateTime(row.createTime) || '');
+            $('#employeeRole-updateTime').val(formatDateTime(row.updateTime) || '');
+
+            $('#employeeRole-plazaId').val(row.plazaId);
+            loadFloorDropdown(row.plazaId).then(() => {
+                $('#employeeRole-floorId').val(row.floorId);
+                return loadStoreDropdown(row.plazaId, row.floorId);
+            }).then(() => {
+                $('#employeeRole-storeId').val(row.storeId);
+                $('#employeeRoleForm').removeClass('was-validated');
+                $('#employeeRoleModal').modal('show');
+            });
+        }
+
+        function showDetail(row) {
+            const detailModal = new bootstrap.Modal(document.getElementById('detailModal'));
+
+            $('#detail-name').text(row.name || '无');
+            $('#detail-description').text(row.description || '无');
+            $('#detail-storeName').text(row.StoreName || '无');
+            $('#detail-floorName').text(row.FloorName || '无');
+            $('#detail-plazaName').text(row.PlazaName || '无');
+
+            const statusText = row.isDeleted === 0 ? '启用' :
+                              row.isDeleted === 1 ? '禁用' : '未知';
+            $('#detail-isDeleted').text(statusText);
+
+            $('#detail-createTime').text(formatDateTime(row.createTime) || '无');
+            $('#detail-updateTime').text(formatDateTime(row.updateTime) || '无');
+
+            detailModal.show();
+        }
+
+        function submitEmployeeRoleForm() {
+            if (!validateEmployeeRoleForm()) return;
+
+            const formData = {
+                name: $('#employeeRole-name').val(),
+                description: $('#employeeRole-description').val(),
+                plazaId: $('#employeeRole-plazaId').val(),
+                floorId: $('#employeeRole-floorId').val(),
+                storeId: $('#employeeRole-storeId').val(),
+                isDeleted: $('#employeeRole-isDeleted').val() === '1'
+            };
+
+            if (currentMode === 'edit') {
+                formData.id = $('#employeeRole-id').val();
+            }
+
+            const url = currentMode === 'add' ? '/EmployeeRole/Add' : '/EmployeeRole/Edit';
+            const successMessage = currentMode === 'add' ? '新增成功' : '更新成功';
+
+            $.ajax({
+                url: url,
+                type: 'POST',
+                data: formData,
+                success: function(response) {
+                    if (response.success) {
+                        $('#employeeRoleModal').modal('hide');
+                        $('#employeeRoleTable').bootstrapTable('refresh');
+                        showToast(successMessage);
+                    } else {
+                        showToast(`操作失败: ${response.message || '未知错误'}`, true);
+                    }
+                },
+                error: function(xhr, status, error) {
+                    const errorMsg = xhr.responseJSON?.message || xhr.statusText || '服务器错误';
+                    showToast(`操作失败: ${errorMsg}`, true);
+                }
+            });
+        }
+
+        function validateEmployeeRoleForm() {
+            const form = $('#employeeRoleForm')[0];
+            form.classList.add('was-validated');
+
+            let isValid = true;
+            $('#employeeRoleForm [required]').each(function() {
+                if (!$(this).val()) {
+                    isValid = false;
+                    $(this).addClass('is-invalid');
+                } else {
+                    $(this).removeClass('is-invalid');
+                }
+            });
+
+            if ($('#employeeRole-plazaId').val() === '') {
+                isValid = false;
+                $('#employeeRole-plazaId').addClass('is-invalid');
+            }
+
+            if ($('#employeeRole-floorId').val() === '') {
+                isValid = false;
+                $('#employeeRole-floorId').addClass('is-invalid');
+            }
+
+            if ($('#employeeRole-storeId').val() === '') {
+                isValid = false;
+                $('#employeeRole-storeId').addClass('is-invalid');
+            }
+
+            return isValid;
+        }
+
+        function resetDropdowns() {
+            $('#employeeRole-floorId').empty().append('<option value="">请选择楼层</option>');
+            $('#employeeRole-storeId').empty().append('<option value="">请选择店铺</option>');
+        }
+
+        function loadFloorDropdown(plazaId) {
+            return new Promise((resolve, reject) => {
+                if (!plazaId) {
+                    $('#employeeRole-floorId').empty().append('<option value="">请选择楼层</option>');
+                    resolve();
+                    return;
+                }
+
+                $.ajax({
+                    url: '/Product/GetFloorsByPlazaId',
+                    type: 'GET',
+                    data: { plazaId: plazaId },
+                    success: function(floors) {
+                        const $select = $('#employeeRole-floorId');
+                        $select.empty().append('<option value="">请选择楼层</option>');
+
+                        if (floors && floors.length > 0) {
+                            floors.forEach(floor => {
+                                $select.append(`<option value="${floor.id}">${floor.name}</option>`);
+                            });
+                        }
+                        resolve();
+                    },
+                    error: function(xhr) {
+                        const errorMsg = xhr.responseJSON?.message || xhr.statusText || '服务器错误';
+                        showToast(`获取楼层数据失败: ${errorMsg}`, true);
+                        reject(errorMsg);
+                    }
+                });
+            });
+        }
+
+        function loadStoreDropdown(plazaId, floorId) {
+            return new Promise((resolve, reject) => {
+                if (!plazaId || !floorId) {
+                    $('#employeeRole-storeId').empty().append('<option value="">请选择店铺</option>');
+                    resolve();
+                    return;
+                }
+
+                $.ajax({
+                    url: '/EmployeeRole/GetStoresByFloorId',
+                    type: 'GET',
+                    data: { floorId: floorId },
+                    success: function(stores) {
+                        const $select = $('#employeeRole-storeId');
+                        $select.empty().append('<option value="">请选择店铺</option>');
+
+                        if (stores && stores.length > 0) {
+                            stores.forEach(store => {
+                                $select.append(`<option value="${store.id}">${store.name}</option>`);
+                            });
+                        } else {
+                            $select.append('<option value="">无可用店铺</option>');
+                        }
+                        resolve();
+                    },
+                    error: function(xhr) {
+                        const errorMsg = xhr.responseJSON?.message || xhr.statusText || '服务器错误';
+                        showToast(`获取店铺数据失败: ${errorMsg}`, true);
+                        reject(errorMsg);
+                    }
+                });
+            });
+        }
+
+        // ====================== 搜索相关函数 ======================
+        function submitSearchForm() {
+            const plazaId = $('#search-plazaId').val();
+            const floorId = $('#search-floorId').val();
+            const storeId = $('#search-storeId').val();
+            const name = $('#search-name').val().trim();
+            const status = $('#search-status').val();
+
+            $('#employeeRoleTable').bootstrapTable('refresh', {
+                query: {
+                    plazaId: plazaId,
+                    floorId: floorId,
+                    storeId: storeId,
+                    name: name,
+                    status: status
+                }
+            });
+            $('#searchModal').modal('hide');
+        }
+
+        function resetSearchForm() {
+            $('#searchForm')[0].reset();
+            $('#search-floorId').empty().append('<option value="">全部</option>');
+            $('#search-storeId').empty().append('<option value="">全部</option>');
+        }
+
+        // ====================== 删除相关函数 ======================
+        function showDeleteConfirm(rows) {
+            currentDeleteMode = rows.length > 1 ? 'multiple' : 'single';
+            const countInfo = currentDeleteMode === 'multiple'
+                ? `已选择 ${rows.length} 条记录`
+                : `确定要删除 "${rows[0].name}" 吗？`;
+
+            $('#deleteCountInfo').text(countInfo);
+            $('#deleteConfirmModal').modal('show');
+
+            // 存储要删除的ID
+            window.deleteIds = rows.map(row => row.id);
+        }
+
+        function confirmDelete() {
+            $.ajax({
+                url: currentDeleteMode === 'multiple'
+                    ? '/EmployeeRole/DeleteRange'
+                    : '/EmployeeRole/Delete',
+                type: 'POST',
+                data: currentDeleteMode === 'multiple'
+                    ? { ids: window.deleteIds }
+                    : { id: window.deleteIds[0] },
+                success: function(response) {
+                    if (response.success) {
+                        $('#deleteConfirmModal').modal('hide');
+                        $('#employeeRoleTable').bootstrapTable('refresh');
+                        showToast(currentDeleteMode === 'multiple'
+                            ? '批量删除成功'
+                            : '删除成功');
+                    } else {
+                        showToast(`删除失败: ${response.message || '未知错误'}`, true);
+                    }
+                },
+                error: function(xhr) {
+                    const errorMsg = xhr.responseJSON?.message || xhr.statusText || '服务器错误';
+                    showToast(`删除失败: ${errorMsg}`, true);
+                }
+            });
+        }
+
+        // ====================== 工具函数 ======================
+        function formatDateTime(date) {
+            if (!date) return '';
+            const d = new Date(date);
+            return `${d.getFullYear()}-${padZero(d.getMonth() + 1)}-${padZero(d.getDate())} ${padZero(d.getHours())}:${padZero(d.getMinutes())}:${padZero(d.getSeconds())}`;
+        }
+
+        function padZero(num) {
+            return num < 10 ? `0${num}` : num;
+        }
+
+        function showToast(message, isError = false) {
+            const toast = document.createElement('div');
+            toast.className = `toast show${isError ? ' bg-danger text-white' : ' bg-success text-white'}`;
+            toast.style = 'position: fixed; top: 20px; right: 20px; z-index: 9999;';
+            toast.innerHTML = `
+                <div class="d-flex align-items-center">
+                    <div class="me-3">
+                        <span class="mdi ${isError ? 'mdi-alert-circle' : 'mdi-check-circle'}"></span>
+                    </div>
+                    <div>${message}</div>
+                    <button type="button" class="btn-close btn-close-white ms-auto" onclick="this.parentElement.remove()"></button>
+                </div>
+            `;
+            document.body.appendChild(toast);
+
+            setTimeout(() => {
+                toast.classList.add('fade');
+                setTimeout(() => toast.remove(), 300);
+            }, 3000);
+        }
+
+        function updateButtonState() {
+            const selectedRows = $('#employeeRoleTable').bootstrapTable('getSelections');
+            const hasSelection = selectedRows.length > 0;
+
+            $('#edit-btn').prop('disabled', !hasSelection);
+            $('#del-btn').prop('disabled', !hasSelection);
+        }
+
+        function bindEventHandlers() {
+            // 广场变更事件
+            $('#employeeRole-plazaId').change(function() {
+                const plazaId = $(this).val();
+                if (plazaId) {
+                    loadFloorDropdown(plazaId).then(() => {
+                        $('#employeeRole-floorId').val('');
+                        $('#employeeRole-storeId').empty().append('<option value="">请选择店铺</option>');
+                    });
+                } else {
+                    $('#employeeRole-floorId').empty().append('<option value="">请选择楼层</option>');
+                    $('#employeeRole-storeId').empty().append('<option value="">请选择店铺</option>');
+                }
+            });
+
+            // 楼层变更事件
+            $('#employeeRole-floorId').change(function() {
+                const plazaId = $('#employeeRole-plazaId').val();
+                const floorId = $(this).val();
+                if (plazaId && floorId) {
+                    loadStoreDropdown(plazaId, floorId).then(() => {
+                        $('#employeeRole-storeId').val('');
+                    });
+                } else {
+                    $('#employeeRole-storeId').empty().append('<option value="">请选择店铺</option>');
+                }
+            });
+
+            // 搜索框事件
+            $('#searchBox').on('keypress', function(e) {
+                if (e.which === 13) {
+                    $('#employeeRoleTable').bootstrapTable('refresh', {
+                        query: { keyword: $(this).val().trim() }
+                    });
+                }
+            });
+
+            $('#searchButton').click(function() {
+                $('#employeeRoleTable').bootstrapTable('refresh', {
+                    query: { keyword: $('#searchBox').val().trim() }
+                });
+            });
+
+            $('#clearButton').click(function() {
+                $('#searchBox').val('');
+                 resetSearchForm();
+                $('#employeeRoleTable').bootstrapTable('refresh', {
+                    query: {
+                        keyword: '',
+                        plazaId: '',
+                        floorId: '',
+                        storeId: '',
+                        name: '',
+                        status: ''
+                     }
+                });
+            });
+
+            // 搜索模态框中的广场变更事件
+            $('#search-plazaId').change(function() {
+                const plazaId = $(this).val();
+                if (plazaId) {
+                    $.ajax({
+                        url: '/Product/GetFloorsByPlazaId',
+                        type: 'GET',
+                        data: { plazaId: plazaId },
+                        success: function(floors) {
+                            const $select = $('#search-floorId');
+                            $select.empty().append('<option value="">全部</option>');
+
+                            if (floors && floors.length > 0) {
+                                floors.forEach(floor => {
+                                    $select.append(`<option value="${floor.id}">${floor.name}</option>`);
+                                });
+                            }
+
+                            // 重置店铺下拉框
+                            $('#search-storeId').empty().append('<option value="">全部</option>');
+                        }
+                    });
+                } else {
+                    $('#search-floorId').empty().append('<option value="">全部</option>');
+                    $('#search-storeId').empty().append('<option value="">全部</option>');
+                }
+            });
+
+            // 搜索模态框中的楼层变更事件
+            $('#search-floorId').change(function() {
+                const plazaId = $('#search-plazaId').val();
+                const floorId = $(this).val();
+                if (plazaId && floorId) {
+                    $.ajax({
+                        url: '/Store/GetStoresByFloorId',
+                        type: 'GET',
+                        data: { floorId: floorId },
+                        success: function(stores) {
+                            const $select = $('#search-storeId');
+                            $select.empty().append('<option value="">全部</option>');
+
+                            if (stores && stores.length > 0) {
+                                stores.forEach(store => {
+                                    $select.append(`<option value="${store.id}">${store.name}</option>`);
+                                });
+                            } else {
+                                $select.append('<option value="">无可用店铺</option>');
+                            }
+                        }
+                    });
+                } else {
+                    $('#search-storeId').empty().append('<option value="">全部</option>');
+                }
+            });
+        }
+    </script>
+}

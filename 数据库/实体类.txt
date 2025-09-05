@@ -1,0 +1,1337 @@
+  /// <summary>
+  /// 所有实体类的基类，包含通用字段
+  /// </summary>
+  public abstract class BaseEntity:IBaseEntity
+  {
+      /// <summary>
+      /// 主键ID
+      /// </summary>
+      public int Id { get; set; }
+
+      /// <summary>
+      /// 特殊编码
+      /// </summary>
+      public string? Code { get; set; }
+
+      /// <summary>
+      /// 软删除标记
+      /// </summary>
+      public bool IsDeleted { get; set; } = false;
+
+      /// <summary>
+      /// 创建时间
+      /// </summary>
+      public DateTime CreateTime { get; private set; } = DateTime.Now;
+
+      /// <summary>
+      /// 更新时间
+      /// </summary>
+      public DateTime? UpdateTime { get; set; }
+  }
+   /// <summary>
+   /// 楼层实体类
+   /// </summary>
+   public class FloorEntity : BaseEntity
+   {
+       /// <summary>
+       /// 楼层名称
+       /// </summary>
+       public string Name { get; set; } = null!;
+
+       /// <summary>
+       /// 楼层描述
+       /// </summary>
+       public string Description { get; set; } = null!;
+
+       /// <summary>
+       /// 所属广场ID
+       /// </summary>
+       public int PlazaId { get; set; }
+
+       /// <summary>
+       /// 所属广场
+       /// </summary>
+       public virtual PlazaEntity Plaza { get; set; } = null!;
+
+
+       /// <summary>
+       /// 楼层类型
+       /// </summary>
+       public int FloorItemId { get; set; }
+       public virtual DictionaryItemEntity? FloorItem { get; set; }
+   }
+  /// <summary>
+  /// 停车场区域
+  /// </summary>
+  public class ParkingAreaEntity : BaseEntity
+  {
+      /// <summary>
+      /// 区域名称
+      /// </summary>
+      public string Name { get; set; } = null!;
+
+      /// <summary>
+      /// 所属楼层ID
+      /// </summary>
+      public int FloorId { get; set; }
+
+      /// <summary>
+      /// 所属楼层
+      /// </summary>
+      public virtual FloorEntity Floor { get; set; } = null!;
+      /// <summary>
+      /// 停车区域类型
+      /// </summary>
+      public int ParkingAreaItemId { get; set; }
+      public virtual DictionaryItemEntity ParkingAreaItem { get; set; } = null!;
+      public virtual ICollection<ParkingSpotEntity> ParkingSpot { get; set; } = new List<ParkingSpotEntity>();
+  }
+ /// <summary>
+ /// 停车位
+ /// </summary>
+ public class ParkingSpotEntity : BaseEntity
+ {
+     /// <summary>
+     /// 停车位名称
+     /// </summary>
+     public string Name { get; set; } = null!;
+
+     /// <summary>
+     /// 状态：0-空闲, 1-占用, 2-维修中
+     /// </summary>
+     public int ParkingSpotItemId { get; set; }
+     public virtual DictionaryItemEntity ParkingSpotItem { get; set; } = null!;
+
+     /// <summary>
+     /// 所属停车场区域ID
+     /// </summary>
+     public int ParkingAreaId { get; set; }
+
+     /// <summary>
+     /// 所属停车场区域
+     /// </summary>
+     public virtual ParkingAreaEntity ParkingArea { get; set; } = null!;
+ }
+ /// <summary>
+ /// 广场信息
+ /// </summary>
+ public class PlazaEntity : BaseEntity
+ {
+     /// <summary>
+     /// 广场名称
+     /// </summary>
+     public string Name { get; set; } = null!;
+
+     /// <summary>
+     /// 广场地址
+     /// </summary>
+     public string Address { get; set; } = null!;
+
+     /// <summary>
+     /// 纬度
+     /// </summary>
+     public double Latitude { get; set; }
+
+     /// <summary>
+     /// 经度
+     /// </summary>
+     public double Longitude { get; set; }
+
+     /// <summary>
+     /// 所属楼层集合
+     /// </summary>
+     public virtual ICollection<FloorEntity> Floors { get; set; } = new List<FloorEntity>();
+ }
+ /// <summary>
+ /// 店铺信息
+ /// </summary>
+ public class StoreEntity : BaseEntity
+ {
+     /// <summary>
+     /// 店铺名称
+     /// </summary>
+     public string Name { get; set; } = null!;
+
+     /// <summary>
+     /// 图片URL
+     /// </summary>
+     public string ImageUrl { get; set; } = null!;
+     /// <summary>
+     /// 轮播图图片URL
+     /// </summary>
+     public string SwiperImageUrl { get; set; } = null!;
+
+     /// <summary>
+     /// 位置
+     /// </summary>
+     public string Location { get; set; } = null!;
+
+     /// <summary>
+     /// 营业时间
+     /// </summary>
+     public string BusinessHours { get; set; } = null!;
+
+     /// <summary>
+     /// 联系方式
+     /// </summary>
+     public string Contact { get; set; } = null!;
+
+     /// <summary>
+     /// 描述
+     /// </summary>
+     public string Description { get; set; } = null!;
+     /// <summary>
+     /// 评分
+     /// </summary>
+     public double Rating { get; set; }
+     /// <summary>
+     /// 是否营业
+     /// </summary>
+     public bool IsOperating { get; set; }
+     /// <summary>
+     /// 店铺类型ID
+     /// </summary>
+     public int StoreTypeId { get; set; }
+
+     /// <summary>
+     /// 店铺类型
+     /// </summary>
+     public virtual StoreTypeEntity StoreType { get; set; } = null!;
+
+     /// <summary>
+     /// 楼层ID
+     /// </summary>
+     public int FloorId { get; set; }
+
+     /// <summary>
+     /// 楼层
+     /// </summary>
+     public virtual FloorEntity Floor { get; set; } = null!;
+
+     /// <summary>
+     /// 店长ID
+     /// </summary>
+     public int UserId { get; set; }
+
+     /// <summary>
+     /// 店主
+     /// </summary>
+     public virtual UserEntity User { get; set; } = null!;
+ }
+  /// <summary>
+  /// 店铺类型
+  /// </summary>
+  public class StoreTypeEntity : BaseEntity
+  {
+      /// <summary>
+      /// 类型名称
+      /// </summary>
+      public string Name { get; set; } = null!;
+
+      /// <summary>
+      /// 店铺集合
+      /// </summary>
+      public virtual ICollection<StoreEntity> Stores { get; set; } = new List<StoreEntity>();
+  }
+  /// <summary>
+  /// 用户信息
+  /// </summary>
+  public class UserEntity : IdentityUser<int>,IBaseEntity
+  {
+      /// <summary>
+      /// 验证码
+      /// </summary>
+      public string? Code { get; set; }
+
+      ///// <summary>
+      ///// 三方token
+      ///// </summary>
+      //public string? OpenId { get; set; }
+      /// <summary>
+      /// 头像URL
+      /// </summary>
+      public string AvatarUrl { get; set; } = null!;
+
+      /// <summary>
+      /// 用户全名
+      /// </summary>
+      public string? FullName { get; set; }
+
+      /// <summary>
+      /// 身份证号
+      /// </summary>
+      public string? IDNumber { get; set; }
+
+      /// <summary>
+      /// 注册日期
+      /// </summary>
+      public DateTime RegisterDate { get; set; }
+      /// <summary>
+      /// 用户是否在线
+      /// </summary>
+      public int isOnline { get; set; } = 0;
+
+      /// <summary>
+      /// 最后登录时间
+      /// </summary>
+      public DateTime? LastLoginDate { get; set; }
+      /// <summary>
+      /// 软删除
+      /// </summary>
+      public bool IsDeleted { get; set; }=false;
+      /// <summary>
+      /// 角色ID
+      /// </summary>
+      public int UserRoleId { get; set; }
+
+      /// <summary>
+      /// 角色
+      /// </summary>
+      public virtual UserRoleEntity UserRole { get; set; } = null!;
+      /// <summary>
+      /// 订单集合
+      /// </summary>
+      public virtual ICollection<OrderEntity> Orders { get; set; } = new List<OrderEntity>();
+      /// <summary>
+      /// 接收信息集合
+      /// </summary>
+      public virtual  ICollection<NotificationEntity> ReceivedNotifications { get;  set; }= new List<NotificationEntity>();
+      /// <summary>
+      /// 发布信息集合
+      /// </summary>
+      public virtual ICollection<NotificationEntity> PublishedNotifications { get; set; } = new List<NotificationEntity>();
+      /// <summary>
+      /// 收货地址合集
+      /// </summary>
+      public virtual ICollection<AddressEntity> Addresses { get; set; }=new List<AddressEntity>();
+  }
+ /// <summary>
+ /// 用户身份信息
+ /// </summary>
+ public class UserRoleEntity : IdentityRole<int>,IBaseEntity
+ {
+     /// <summary>
+     /// 用户角色信息描述
+     /// </summary>
+     public string? Description { get; set; }
+     /// <summary>
+     /// 唯一标识
+     /// </summary>
+     public string? Code { get; set; }
+     /// <summary>
+     /// 软删除
+     /// </summary>
+     public bool IsDeleted { get; set; }=false;
+
+     /// <summary>
+     /// 权限集合（一个角色可以拥有多个权限）
+     /// </summary>
+     public virtual ICollection<PermissionEntity> Permissions { get; set; } = new List<PermissionEntity>();
+
+     /// <summary>
+     /// 用户集合（一个角色可以属于多个用户）
+     /// </summary>
+     public virtual ICollection<UserEntity> Users { get; set; } = new List<UserEntity>();
+
+
+ }
+ /// <summary>
+ /// 设备数据
+ /// </summary>
+ public class DeviceDataEntity : BaseEntity
+ {
+     /// <summary>
+     /// 数值
+     /// </summary>
+     public double Value { get; set; }
+
+     /// <summary>
+     /// 单位：0-温度℃, 1-湿度%, 2-分贝等
+     /// </summary>
+     public int DeviceDataUnitItemId { get; set; }
+     public virtual DictionaryItemEntity DeviceDataUnitItem { get; set; } = null!;
+     /// <summary>
+     /// 设备ID
+     /// </summary>
+     public int DeviceId { get; set; }
+
+     /// <summary>
+     /// 设备
+     /// </summary>
+     public virtual DeviceEntity Device { get; set; } = null!;
+ }
+/// <summary>
+/// 设备信息
+/// </summary>
+public class DeviceEntity : BaseEntity
+{
+    /// <summary>
+    /// 设备名称
+    /// </summary>
+    public string Name { get; set; } = null!;
+
+    /// <summary>
+    /// 设备位置
+    /// </summary>
+    public string Location { get; set; } = null!;
+
+    /// <summary>
+    /// 状态：0-离线, 1-在线, 2-故障
+    /// </summary>
+    public int DeviceStatusItemId { get; set; }
+    public virtual DictionaryItemEntity DeviceStatusItem { get; set; } = null!;
+
+    /// <summary>
+    /// 最后维护日期
+    /// </summary>
+    public DateTime? LastMaintenanceDate { get; set; }
+
+    /// <summary>
+    /// 设备类型ID
+    /// </summary>
+    public int DeviceTypeId { get; set; }
+
+    /// <summary>
+    /// 设备类型
+    /// </summary>
+    public virtual DeviceTypeEntity DeviceType { get; set; } = null!;
+
+    /// <summary>
+    /// 所属楼层ID
+    /// </summary>
+    public int FloorId { get; set; }
+
+    /// <summary>
+    /// 所属楼层
+    /// </summary>
+    public virtual FloorEntity Floor { get; set; } = null!;
+}
+ /// <summary>
+ /// 设备类型
+ /// </summary>
+ public class DeviceTypeEntity : BaseEntity
+ {
+     /// <summary>
+     /// 类型名称
+     /// </summary>
+     public string Name { get; set; } = null!;
+
+     /// <summary>
+     /// 类型描述
+     /// </summary>
+     public string Description { get; set; } = null!;
+
+     /// <summary>
+     /// 制造商
+     /// </summary>
+     public string Manufacturer { get; set; } = null!;
+
+     /// <summary>
+     /// 设备集合
+     /// </summary>
+     public virtual ICollection<DeviceEntity> Devices { get; set; } = new List<DeviceEntity>();
+ }
+  /// <summary>
+  /// 车辆进出记录
+  /// </summary>
+  public class ParkingRecordEntity : BaseEntity
+  {
+      /// <summary>
+      /// 车牌号码
+      /// </summary>
+      public string PlateNumber { get; set; } = null!;
+      /// <summary>
+      /// 车牌识别图片
+      /// </summary>
+      public string PlateImageUrl { get; set; } = null!;
+      /// <summary>
+      /// 进入时间
+      /// </summary>
+      public DateTime EntryTime { get; set; }
+
+      /// <summary>
+      /// 离开时间
+      /// </summary>
+      public DateTime? ExitTime { get; set; }
+
+      /// <summary>
+      /// 停车费用
+      /// </summary>
+      public decimal ParkingFee { get; set; }
+      /// <summary>
+      /// 是否支付
+      /// </summary>
+      public bool IsPaid { get; set; }
+      /// <summary>
+      /// 设备ID
+      /// </summary>
+      public int DeviceId { get; set; }
+
+      /// <summary>
+      /// 设备
+      /// </summary>
+      public virtual DeviceEntity Device { get; set; } = null!;
+  }
+   /// <summary>
+   /// 订单信息
+   /// </summary>
+   public class OrderEntity : BaseEntity
+   {
+       /// <summary>
+       /// 总金额（由订单项计算得出）
+       /// </summary>
+       public decimal TotalAmount { get; set; }
+       /// <summary>
+       ///  0-自提 1-配送
+       /// </summary>
+       public int DeliveryType { get; set; } 
+       /// <summary>
+       /// 状态：0-待支付, 1-已支付, 2-已发货, 3-已完成, 4-已取消
+       /// </summary>
+       public int OrderStatuItemId { get; set; }
+
+       public virtual DictionaryItemEntity OrderStatuItem { get; set; } = null!;
+
+       /// <summary>
+       /// 配送地址
+       /// </summary>
+       public string ShippingAddress { get; set; } = null!;
+       /// <summary>
+       /// 商店id
+       /// </summary>
+       public int StoreId { get; set; }
+       /// <summary>
+       /// 商店
+       /// </summary>
+       public virtual StoreEntity Store { get; set; } = null!;
+       /// <summary>
+       /// 客户ID
+       /// </summary>
+       public int CustomerId { get; set; }
+
+       /// <summary>
+       /// 客户
+       /// </summary>
+       public virtual UserEntity Customer { get; set; } = null!;
+
+       /// <summary>
+       /// 员工ID（处理订单的员工）
+       /// </summary>
+       public int? EmployeeId { get; set; }
+
+       /// <summary>
+       /// 员工
+       /// </summary>
+       public virtual EmployeeEntity Employee { get; set; } = null!;
+
+       /// <summary>
+       /// 订单项集合
+       /// </summary>
+       public virtual ICollection<OrderItemEntity> Items { get; set; } = new List<OrderItemEntity>();
+   }
+  /// <summary>
+  /// 订单项
+  /// </summary>
+  public class OrderItemEntity : BaseEntity
+  {
+      /// <summary>
+      /// 数量
+      /// </summary>
+      public int Quantity { get; set; }
+
+      /// <summary>
+      /// 单价（下单时的商品价格）
+      /// </summary>
+      public decimal UnitPrice { get; set; }
+
+      /// <summary>
+      /// 订单ID
+      /// </summary>
+      public int OrderId { get; set; }
+
+      /// <summary>
+      /// 订单
+      /// </summary>
+      public virtual OrderEntity Order { get; set; } = null!;
+
+      /// <summary>
+      /// 商品ID
+      /// </summary>
+      public int ProductId { get; set; }
+
+      /// <summary>
+      /// 商品
+      /// </summary>
+      public virtual ProductEntity Product { get; set; } = null!;
+
+  }
+ /// <summary>
+ /// 支付记录
+ /// </summary>
+ public class PaymentRecordEntity : BaseEntity
+ {
+     /// <summary>
+     /// 支付方式：0-现金, 1-支付宝, 2-微信, 3-银行卡
+     /// </summary>
+     public int PaymentMethodItemId { get; set; }
+     /// <summary>
+     /// 支付类型集合
+     /// </summary>
+     public virtual DictionaryItemEntity PaymentMethodItem { get; set; } = null!;
+     /// <summary>
+     /// 金额
+     /// </summary>
+     public decimal Amount { get; set; }
+
+     /// <summary>
+     /// 支付时间
+     /// </summary>
+     public DateTime PaymentTime { get; set; }
+
+     /// <summary>
+     /// 状态：0-处理中, 1-成功, 2-失败
+     /// </summary>
+     public int PaystatuItemId { get; set; }
+     public virtual DictionaryItemEntity PaystatuItem { get; set; } = null!;
+     /// <summary>
+     /// 交易ID
+     /// </summary>
+     public string TransactionId { get; set; } = null!;
+
+     /// <summary>
+     /// 订单ID
+     /// </summary>
+     public int OrderId { get; set; }
+
+     /// <summary>
+     /// 订单
+     /// </summary>
+     public virtual OrderEntity Order { get; set; } = null!;
+
+     /// <summary>
+     /// 用户ID
+     /// </summary>
+     public int UserId { get; set; }
+
+     /// <summary>
+     /// 用户
+     /// </summary>
+     public virtual UserEntity User { get; set; } = null!;
+ }
+ /// <summary>
+ /// 商品评价
+ /// </summary>
+ public class ReviewEntity : BaseEntity
+ {
+     /// <summary>
+     /// 评分：1-5星
+     /// </summary>
+     public int ReviewRatingItemId { get; set; }
+     public virtual DictionaryItemEntity ReviewRatingItem { get; set; } = null!;
+     /// <summary>
+     /// 评价内容
+     /// </summary>
+     public string Content { get; set; } = null!;
+
+     /// <summary>
+     /// 订单项ID
+     /// </summary>
+     public int OrderItemId { get; set; }
+
+     /// <summary>
+     /// 订单项
+     /// </summary>
+     public virtual OrderItemEntity OrderItem { get; set; } = null!;
+
+     /// <summary>
+     /// 用户ID
+     /// </summary>
+     public int UserId { get; set; }
+
+     /// <summary>
+     /// 用户
+     /// </summary>
+     public virtual UserEntity User { get; set; } = null!;
+ }
+  /// <summary>
+  /// 员工信息
+  /// </summary>
+  public class EmployeeEntity : BaseEntity
+  {
+      /// <summary>
+      /// 员工姓名
+      /// </summary>
+      public string Name { get; set; } = null!;
+
+      /// <summary>
+      /// 性别：0-未知, 1-男, 2-女
+      /// </summary>
+      public int Gender { get; set; }
+
+
+      /// <summary>
+      /// 工资
+      /// </summary>
+      public decimal Wage { get; set; }
+
+      /// <summary>
+      /// 佣金率
+      /// </summary>
+      public double CommissionRate { get; set; }
+
+      /// <summary>
+      /// 联系方式
+      /// </summary>
+      public string Contact { get; set; } = null!;
+
+      /// <summary>
+      /// 入职日期
+      /// </summary>
+      public DateTime HireDate { get; set; }
+
+      /// <summary>
+      /// 员工角色ID
+      /// </summary>
+      public int EmployeeRoleId { get; set; }
+
+      /// <summary>
+      /// 员工角色
+      /// </summary>
+      public virtual EmployeeRoleEntity EmployeeRole { get; set; } = null!;
+
+      /// <summary>
+      /// 店铺ID
+      /// </summary>
+      public int StoreId { get; set; }
+
+      /// <summary>
+      /// 店铺
+      /// </summary>
+      public virtual StoreEntity Store { get; set; } = null!;
+
+      /// <summary>
+      /// 订单集合
+      /// </summary>
+      public virtual ICollection<OrderEntity> Orders { get; set; } = new List<OrderEntity>();
+  }
+ /// <summary>
+ /// 员工角色
+ /// </summary>
+ public class EmployeeRoleEntity : BaseEntity
+ {
+     /// <summary>
+     /// 角色名称
+     /// </summary>
+     public string Name { get; set; } = null!;
+
+     /// <summary>
+     /// 角色描述
+     /// </summary>
+     public string Description { get; set; } = null!;
+     /// <summary>
+     /// 商店ID
+     /// </summary>
+     public int StoreId { get; set; }
+     /// <summary>
+     /// 商店
+     /// </summary>
+     public virtual StoreEntity Store { get; set; } = null!;
+
+
+     /// <summary>
+     /// 员工集合
+     /// </summary>
+     public virtual ICollection<EmployeeEntity> Employees { get; set; } = new List<EmployeeEntity>();
+ }
+ /// <summary>
+ /// 商品信息
+ /// </summary>
+ public class ProductEntity : BaseEntity
+ {
+     /// <summary>商品名称</summary>
+     public string Name { get; set; } = null!;
+
+     /// <summary>商品主图 URL</summary>
+     public string ImageUrl { get; set; } = null!;
+
+     /// <summary>商品描述/详情</summary>
+     public string Description { get; set; } = null!;
+
+     /// <summary>商品类型 ID</summary>
+     public int ProductTypeId { get; set; }
+     public virtual ProductTypeEntity ProductType { get; set; } = null!;
+
+     /// <summary>店铺 ID</summary>
+     public int StoreId { get; set; }
+     public virtual StoreEntity Store { get; set; } = null!;
+
+     /// <summary>该商品下的所有 SKU</summary>
+     public virtual ICollection<ProductSkuEntity> Skus { get; set; } = new List<ProductSkuEntity>();
+
+ }
+    /// <summary>
+    /// SKU 名称（例：iPhone 15 Pro 256G 白色钛金属）
+    /// </summary>
+    public string Name { get; set; } = null!;
+
+    /// <summary>
+    /// SKU 编码（商家内部唯一）
+    /// </summary>
+    public string SkuCode { get; set; } = null!;
+
+    /// <summary>
+    /// SKU 条形码（可为空）
+    /// </summary>
+    public string? BarCode { get; set; }
+
+    /// <summary>
+    /// SKU 主图（可覆盖商品主图）
+    /// </summary>
+    public string? ImageUrl { get; set; }
+
+    /// <summary>
+    /// 售价（留空则继承商品级价格）
+    /// </summary>
+    public decimal Price { get; set; }
+
+    /// <summary>
+    /// 成本价
+    /// </summary>
+    public decimal CostPrice { get; set; }
+
+    /// <summary>
+    /// 市场价/划线价
+    /// </summary>
+    public decimal MarketPrice { get; set; }
+
+    /// <summary>
+    /// 库存数量
+    /// </summary>
+    public decimal StockQuantity { get; set; }
+
+    /// <summary>
+    /// 销量
+    /// </summary>
+    public int Sales { get; set; }
+
+    /// <summary>
+    /// 重量（g）
+    /// </summary>
+    public decimal Weight { get; set; }
+
+    /// <summary>
+    /// 是否启用 / 上架
+    /// </summary>
+    public bool IsEnabled { get; set; } = true;
+
+    /// <summary>
+    /// 所属商品 ID
+    /// </summary>
+    public int ProductId { get; set; }
+
+    /// <summary>
+    /// 所属商品
+    /// </summary>
+    public virtual ProductEntity Product { get; set; } = null!;
+
+    /// <summary>
+    /// 该 SKU 选中的所有规格值
+    /// </summary>
+    public virtual ICollection<ProductSkuSpecValueEntity> SpecValueMappings { get; set; } = new List<ProductSkuSpecValueEntity>();
+}
+    /// <summary>
+    /// SKU ID
+    /// </summary>
+    public int ProductSkuId { get; set; }
+
+    /// <summary>
+    /// SKU
+    /// </summary>
+    public virtual ProductSkuEntity ProductSku { get; set; } = null!;
+
+    /// <summary>
+    /// 规格值 ID
+    /// </summary>
+    public int ProductSpecValueId { get; set; }
+
+    /// <summary>
+    /// 规格值
+    /// </summary>
+    public virtual ProductSpecValueEntity ProductSpecValue { get; set; } = null!;
+}
+   public class ProductSpecEntity:BaseEntity
+   {
+       /// <summary>
+       /// 维度名称（例如：颜色、尺码、内存）
+       /// </summary>
+       public string Name { get; set; } = null!;
+
+       /// <summary>
+       /// 前端展示排序
+       /// </summary>
+       public int Sort { get; set; }
+
+       /// <summary>
+       /// 所属商品 ID
+       /// </summary>
+       public int GoodsId { get; set; }
+
+       /// <summary>
+       /// 所属商品
+       /// </summary>
+       public virtual ProductEntity Products { get; set; } = null!;
+   }
+ public class ProductSpecValueEntity:BaseEntity
+ {
+     public int SpecId {  get; set; }
+     public virtual ProductSpecEntity Spec { get; set; } = null!;
+
+     /// <summary>
+     /// 具体规格值（如：红色、XL、256G）
+     /// </summary>
+     public string Value { get; set; } = null!;
+
+
+ }
+
+  /// <summary>
+  /// 商品类型
+  /// </summary>
+  public class ProductTypeEntity : BaseEntity
+  {
+      /// <summary>
+      /// 类型名称
+      /// </summary>
+      public string Name { get; set; } = null!;
+      /// <summary>
+      /// 商店的物品类型
+      /// </summary>
+      public int StoreId { get; set; }
+      public virtual StoreEntity Store { get; set; } = null!;
+      /// <summary>
+      /// 单位：0-个, 1-件, 2-千克等
+      /// </summary>
+      public int ProductTypeUnitItemId { get; set; }
+
+
+      public virtual DictionaryItemEntity ProductTypeUnitItem { get; set; } = null!;
+      /// <summary>
+      /// 商品集合
+      /// </summary>
+      public virtual ICollection<ProductEntity> Products { get; set; } = new List<ProductEntity>();
+  }
+  public class DictionaryEntity:BaseEntity
+  {
+      /// <summary>
+      /// 字典类型名称
+      /// </summary>
+      public string Name { get; set; } = null!;
+
+      /// <summary>
+      /// 字典类型描述
+      /// </summary>
+      public string? Description { get; set; }
+
+      /// <summary>
+      /// 排序号
+      /// </summary>
+      public int SortOrder { get; set; }
+
+      /// <summary>
+      /// 字典详情集合
+      /// </summary>
+      public virtual ICollection<DictionaryItemEntity> DictionaryItems { get; set; } = new List<DictionaryItemEntity>();
+  }
+ /// <summary>
+ /// 字典详情
+ /// </summary>
+ public class DictionaryItemEntity:BaseEntity
+ {
+     /// <summary>
+     /// 字典项标签
+     /// </summary>
+     public string Label { get; set; } = null!;
+
+     /// <summary>
+     /// 字典项值
+     /// </summary>
+     public string Value { get; set; } = null!;
+
+     /// <summary>
+     /// 字典项描述
+     /// </summary>
+     public string? Description { get; set; }
+
+     /// <summary>
+     /// 排序号
+     /// </summary>
+     public int SortOrder { get; set; }
+
+     /// <summary>
+     /// 是否默认项
+     /// </summary>
+     public bool IsDefault { get; set; }
+     /// <summary>
+     /// 字典类型ID
+     /// </summary>
+     public int DictionaryId { get; set; }
+
+     /// <summary>
+     /// 字典类型
+     /// </summary>
+     public virtual DictionaryEntity Dictionary { get; set; } = null!;
+ }
+  /// <summary>
+  /// 登录日志
+  /// </summary>
+  public class LoginLogEntity : BaseEntity
+  {
+      /// <summary>
+      /// 登录时间
+      /// </summary>
+      public DateTime LoginTime { get; set; }
+
+      /// <summary>
+      /// 登出时间
+      /// </summary>
+      public DateTime? LogoutTime { get; set; }
+
+      /// <summary>
+      /// IP地址
+      /// </summary>
+      public string IPAddress { get; set; } = null!;
+
+      /// <summary>
+      /// 设备信息
+      /// </summary>
+      public string DeviceInfo { get; set; } = null!;
+
+      /// <summary>
+      /// 状态：0-失败, 1-成功
+      /// </summary>
+      public int Status { get; set; }
+
+      /// <summary>
+      /// 失败原因
+      /// </summary>
+      public string? FailureReason { get; set; } 
+
+      /// <summary>
+      /// 用户ID
+      /// </summary>
+      public int UserId { get; set; }
+
+      /// <summary>
+      /// 用户
+      /// </summary>
+      public virtual UserEntity User { get; set; } = null!;
+  }
+ public class MenuPermissionEntity:BaseEntity
+ {
+     public int MenuId { get; set; }
+     public virtual SysMenuEntity Menu { get; set; } = null!;
+
+     public int PermissionId { get; set; }
+     public virtual PermissionEntity Permission { get; set; } = null!;
+ }
+  /// <summary>
+  /// 操作日志
+  /// </summary>
+  public class OperationLogEntity : BaseEntity
+  {
+      /// <summary>
+      /// 操作时间
+      /// </summary>
+      public DateTime OperationTime { get; set; }
+
+      /// <summary>
+      /// 操作类型
+      /// </summary>
+      public string OperationType { get; set; } = null!;
+
+      /// <summary>
+      /// 模块
+      /// </summary>
+      public string Module { get; set; } = null!;
+
+      /// <summary>
+      /// 目标
+      /// </summary>
+      public string Target { get; set; } = null!;
+
+      /// <summary>
+      /// 详情
+      /// </summary>
+      public string Details { get; set; } = null!;
+
+      /// <summary>
+      /// IP地址
+      /// </summary>
+      public string IPAddress { get; set; } = null!;
+
+      /// <summary>
+      /// 状态：0-失败, 1-成功
+      /// </summary>
+      public int Status { get; set; }
+
+      /// <summary>
+      /// 执行时间(毫秒)
+      /// </summary>
+      public int ExecutionTime { get; set; }
+
+      /// <summary>
+      /// 用户ID
+      /// </summary>
+      public int UserId { get; set; }
+
+      /// <summary>
+      /// 用户
+      /// </summary>
+      public virtual UserEntity User { get; set; } = null!;
+  }
+  /// <summary>
+  /// 用户权限
+  /// </summary>
+  public class PermissionEntity : BaseEntity
+  {
+      /// <summary>
+      /// 权限名称
+      /// </summary>
+      public string Name { get; set; } = null!;
+
+      /// <summary>
+      /// 权限描述
+      /// </summary>
+      public string Description { get; set; } = null!;
+      /// <summary>
+      /// 所属角色
+      /// </summary>
+      public int RoleId { get; set; }
+      public virtual UserRoleEntity Role { get; set; } = null!;
+      public virtual ICollection<MenuPermissionEntity> MenuPermissions { get; set; } = new List<MenuPermissionEntity>();
+  }
+   /// <summary>
+   /// 系统菜单
+   /// </summary>
+   public class SysMenuEntity : BaseEntity
+   {
+       /// <summary>
+       /// 菜单名称
+       /// </summary>
+       public string Name { get; set; } = null!;
+
+       /// <summary>
+       /// 菜单图标
+       /// </summary>
+       public string? Icon { get; set; }
+
+       /// <summary>
+       /// 菜单URL
+       /// </summary>
+       public string? Url { get; set; }
+
+       /// <summary>
+       /// 菜单类型
+       /// </summary>
+       public string Type { get; set; } = null!;
+
+       /// <summary>
+       /// 排序序号
+       /// </summary>
+       public int Order { get; set; }
+
+       /// <summary>
+       /// 父菜单ID
+       /// </summary>
+       public int? ParentId { get; set; }
+
+       /// <summary>
+       /// 父菜单
+       /// </summary>
+       public virtual SysMenuEntity? Parent { get; set; }
+
+
+       /// <summary>
+       /// 子菜单集合
+       /// </summary>
+       public virtual ICollection<SysMenuEntity> Children { get; set; } = new List<SysMenuEntity>();
+       /// <summary>
+       /// 访问该菜单所需的权限
+       /// </summary>
+       public virtual ICollection<MenuPermissionEntity> MenuPermissions { get; set; } = new List<MenuPermissionEntity>();
+   }
+   public class AddressEntity : BaseEntity
+   {
+       public int UserId { get; set; }
+       public virtual UserEntity User { get; set; } = null!;
+       /// <summary>
+       /// 收货人
+       /// </summary>
+       public string Name { get; set; } = null!;      // 收货人
+       /// <summary>
+       /// 练习方式
+       /// </summary>
+       public string Phone { get; set; } = null!;     // 手机号
+       /// <summary>
+       /// 省
+       /// </summary>
+       public string Province { get; set; } = null!;
+       /// <summary>
+       /// 市
+       /// </summary>
+       public string City { get; set; } = null!;
+       /// <summary>
+       /// 区
+       /// </summary>
+       public string County { get; set; } = null!;
+       /// <summary>
+       /// 详细地址
+       /// </summary>
+       public string Detail { get; set; } = null!;
+       /// <summary>
+       /// 标签
+       /// </summary>
+       public string? Label { get; set; }             // 家/公司/学校
+       /// <summary>
+       /// 是否为默认地址
+       /// </summary>
+       public bool IsDefault { get; set; }
+   }
+  /// <summary>
+  /// 系统通知
+  /// </summary>
+  public class NotificationEntity : BaseEntity
+  {
+      /// <summary>
+      /// 标题
+      /// </summary>
+      public string Title { get; set; } = null!;
+
+      /// <summary>
+      /// 内容
+      /// </summary>
+      public string Content { get; set; } = null!;
+
+      /// <summary>
+      /// 类型
+      /// </summary>
+      public int NotificationTypeItemId { get; set; }
+
+      public virtual DictionaryItemEntity NotificationTypeItem { get; set; } = null!;
+
+      /// <summary>
+      /// 是否已读
+      /// </summary>
+      public bool IsRead { get; set; }
+
+      /// <summary>
+      /// 链接
+      /// </summary>
+      public string Link { get; set; } = null!;
+
+      /// <summary>
+      /// 接收用户ID
+      /// </summary>
+      public int UserId { get; set; }
+
+      /// <summary>
+      /// 接收用户
+      /// </summary>
+      public virtual UserEntity User { get; set; } = null!;
+
+      /// <summary>
+      /// 发布者ID
+      /// </summary>
+      public int PublisherId { get; set; }
+
+      /// <summary>
+      /// 发布者
+      /// </summary>
+      public virtual UserEntity Publisher { get; set; } = null!;
+  }
+  /// <summary>
+  /// 购物车项
+  /// </summary>
+  public class ShoppingCartItemEntity : BaseEntity
+  {
+      /// <summary>
+      /// 数量
+      /// </summary>
+      public int Quantity { get; set; }
+
+      /// <summary>
+      /// 是否选中
+      /// </summary>
+      public bool Selected { get; set; }
+
+      /// <summary>
+      /// 用户ID
+      /// </summary>
+      public int UserId { get; set; }
+
+      /// <summary>
+      /// 用户
+      /// </summary>
+      public virtual UserEntity User { get; set; } = null!;
+
+      /// <summary>
+      /// 商品ID
+      /// </summary>
+      public int ProductId { get; set; }
+
+      /// <summary>
+      /// 商品
+      /// </summary>
+      public virtual ProductEntity Product { get; set; } = null!;
+  }
+   /// <summary>
+   /// 用户反馈
+   /// </summary>
+   public class UserFeedbackEntity : BaseEntity
+   {
+
+       /// <summary>
+       /// 反馈图片
+       /// </summary>
+       public string Imageurl { get; set; } = null!;
+       /// <summary>
+       /// 反馈内容
+       /// </summary>
+       public string Content { get; set; } = null!;
+
+       /// <summary>
+       /// 联系方式
+       /// </summary>
+       public string Contact { get; set; } = null!;
+
+       /// <summary>
+       /// 回复内容
+       /// </summary>
+       public string ReplyContent { get; set; } = null!;
+
+       /// <summary>
+       /// 回复时间
+       /// </summary>
+       public DateTime? ReplyTime { get; set; }
+
+       /// <summary>
+       /// 用户ID
+       /// </summary>
+       public int UserId { get; set; }
+
+       /// <summary>
+       /// 用户
+       /// </summary>
+       public virtual UserEntity User { get; set; } = null!;
+
+       /// <summary>
+       /// 回复者ID
+       /// </summary>
+       public int? RepliedById { get; set; }
+
+       /// <summary>
+       /// 回复者
+       /// </summary>
+       public virtual UserEntity RepliedBy { get; set; } = null!;
+   }
+

@@ -1,0 +1,39 @@
+
+services:
+  # ASP.NET Core MVC 服务
+  Plaza.Net.mvcadmin:
+    build:
+      context: .
+      dockerfile: Plaza.Net.MVCAdmin/Dockerfile
+    container_name: mvcadmin-container
+    ports:
+      - "5200:80"                        # 映射主机端口到容器端口
+    depends_on:
+      - sqlserver                        # 依赖 SQL Server 服务
+  
+    networks:
+      - app-network                      # 加入自定义网络
+
+  # SQL Server 服务
+  sqlserver:
+    image: mcr.microsoft.com/mssql/server:2022-latest
+    container_name: sqlserver-container
+    environment:
+      ACCEPT_EULA: Y                      # 接受 EULA
+      SA_PASSWORD: Access123!@#   # SA 密码（需符合复杂性要求）
+      MSSQL_PID: Express                  # 使用免费版 SQL Server Express
+    ports:
+      - "5433:1433"                       # 映射主机端口到容器端口
+    volumes:
+      - sqlserver-data:/var/opt/mssql     # 数据持久化卷
+    networks:
+      - app-network                      # 加入自定义网络
+
+# 定义数据卷（用于 SQL Server 数据持久化）
+volumes:
+  sqlserver-data:
+
+# 定义自定义网络（所有服务通过该网络通信）
+networks:
+  app-network:
+    driver: bridge

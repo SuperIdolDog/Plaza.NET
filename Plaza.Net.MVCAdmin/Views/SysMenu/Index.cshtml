@@ -1,0 +1,554 @@
+﻿@{
+ViewData["Title"] = "菜单管理";
+}
+
+<div class="container-fluid">
+	<!-- 主内容容器 -->
+	<div class="row">
+		<div class="col-lg-12">
+			<!-- 卡片式布局 -->
+			<div class="card shadow-sm">
+				<!-- 卡片主体 -->
+				<div class="card-body">
+					<!-- 选项卡导航 -->
+					<nav>
+						<div class="nav nav-tabs mb-3" id="nav-tab" role="tablist">
+							<button class="nav-link active" id="nav-list-tab" data-bs-toggle="tab"
+								data-bs-target="#nav-list" type="button" role="tab" aria-controls="nav-list"
+								aria-selected="true">
+								数据列表
+							</button>
+						</div>
+					</nav>
+
+					<div class="tab-content" id="nav-tabContent">
+						<!-- 数据列表标签页 -->
+						<div class="tab-pane fade show active" id="nav-list" role="tabpanel"
+							aria-labelledby="nav-list-tab">
+							<!-- 工具栏区域 -->
+							<div id="toolbar" class="d-flex justify-content-between align-items-center mb-3">
+								<!-- 操作按钮组 -->
+								<div class="btn-group me-2 mb-2 mb-lg-0">
+									<button class="btn btn-success btn-sm btn-round" onclick="add()">
+										<span class="mdi mdi-plus me-1"></span> 新增
+									</button>
+								</div>
+							</div>
+							<!-- 表格响应区域 -->
+							<div class="table-responsive">
+								<!-- 数据表格 -->
+								<table id="table" class="table table-hover table-striped align-middle"
+									style="text-align:center;"></table>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+<!-- 统一的信息管理模态框（新增/编辑） -->
+<div class="modal fade" id="infoModal" tabindex="-1" aria-hidden="true">
+	<div class="modal-dialog modal-lg">
+		<div class="modal-content">
+			<div class="modal-header bg-light">
+				<h5 class="modal-title" id="infoModalTitle">新增信息</h5>
+				<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+			</div>
+			<div class="modal-body">
+				<!-- 信息表单 -->
+				<form id="infoForm">
+					<input type="hidden" name="id" id="info-id">
+					<div class="row g-3">
+						<div class="col-md-6">
+							<label class="form-label">名称 <span class="text-danger">*</span></label>
+							<input type="text" class="form-control" name="name" id="info-name" required>
+						</div>
+						<div class="col-md-6">
+							<label class="form-label">URL </label>
+							<input type="text" class="form-control" name="url" id="info-url">
+						</div>
+						<div class="col-md-6">
+							<label class="form-label">类型 <span class="text-danger">*</span></label>
+							<input type="text" class="form-control" name="type" id="info-type" required>
+						</div>
+						<div class="col-md-6">
+							<label class="form-label">排序序号 <span class="text-danger">*</span></label>
+							<input type="text" class="form-control" name="order" id="info-order" required>
+						</div>
+						<div class="col-md-6">
+							<label class="form-label">父级ID</label>
+							<input type="text" class="form-control" name="parentId" id="info-parentId">
+						</div>
+						<div class="col-md-6">
+							<label class="form-label">权限ID</label>
+							<input type="text" class="form-control" name="requiredPermissionId"
+								id="info-requiredPermissionId">
+						</div>
+						<div class="col-md-6">
+							<label class="form-label">编码 </label>
+							<input type="text" class="form-control" name="code" id="info-code">
+						</div>
+						<div class="col-md-6">
+							<label class="form-label">状态</label>
+							<select class="form-select" name="isDeleted" id="info-isDeleted">
+								<option value="0">正常</option>
+								<option value="1">禁用</option>
+							</select>
+						</div>
+					</div>
+				</form>
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn btn-outline-secondary btn-sm" data-bs-dismiss="modal">取消</button>
+				<button type="button" class="btn btn-primary btn-sm" onclick="submitInfoForm()">提交</button>
+			</div>
+		</div>
+	</div>
+</div>
+
+<!-- 删除确认模态框 -->
+<div class="modal fade" id="deleteConfirmModal" tabindex="-1" aria-hidden="true">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-header bg-light">
+				<h5 class="modal-title">确认删除</h5>
+				<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+			</div>
+			<div class="modal-body">
+				<div class="d-flex align-items-center">
+					<div class="me-3">
+						<span class="mdi mdi-alert-circle text-danger" style="font-size: 1.5rem;"></span>
+					</div>
+					<div>
+						<p class="mb-1">确定要删除选中的记录吗？</p>
+						<p id="deleteCountInfo" class="text-muted small mb-0"></p>
+					</div>
+				</div>
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn btn-outline-secondary btn-sm" data-bs-dismiss="modal">取消</button>
+				<button type="button" class="btn btn-danger btn-sm" onclick="confirmDelete()">确认删除</button>
+			</div>
+		</div>
+	</div>
+</div>
+
+<!-- 详情模态框 -->
+<div class="modal fade" id="detailModal" tabindex="-1" aria-hidden="true">
+	<div class="modal-dialog modal-lg">
+		<div class="modal-content">
+			<div class="modal-header bg-light">
+				<h5 class="modal-title">详情信息</h5>
+				<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+			</div>
+			<div class="modal-body">
+				<div class="row">
+					<!-- 左侧信息列 -->
+					<div class="col-md-6">
+						<div class="mb-3">
+							<label class="form-label text-muted">编号:</label>
+							<div class="form-control-plaintext" id="detail-id">-</div>
+						</div>
+						<div class="mb-3">
+							<label class="form-label text-muted">名称:</label>
+							<div class="form-control-plaintext" id="detail-name">-</div>
+						</div>
+						<div class="mb-3">
+							<label class="form-label text-muted">图标:</label>
+							<div class="form-control-plaintext" id="detail-icon">-</div>
+						</div>
+						<div class="mb-3">
+							<label class="form-label text-muted">地址:</label>
+							<div class="form-control-plaintext" id="detail-url">-</div>
+						</div>
+						<div class="mb-3">
+							<label class="form-label text-muted">类型:</label>
+							<div class="form-control-plaintext" id="detail-type">-</div>
+						</div>
+						<div class="mb-3">
+							<label class="form-label text-muted">顺序:</label>
+							<div class="form-control-plaintext" id="detail-order">-</div>
+						</div>
+					</div>
+
+					<!-- 右侧信息列 -->
+					<div class="col-md-6">
+						<div class="mb-3">
+							<label class="form-label text-muted">父级:</label>
+							<div class="form-control-plaintext" id="detail-parentId">-</div>
+						</div>
+						<div class="mb-3">
+							<label class="form-label text-muted">权限ID:</label>
+							<div class="form-control-plaintext" id="detail-requiredPermissionId">-</div>
+						</div>
+						<div class="mb-3">
+							<label class="form-label text-muted">编码:</label>
+							<div class="form-control-plaintext" id="detail-code">-</div>
+						</div>
+						<div class="mb-3">
+							<label class="form-label text-muted">创建时间:</label>
+							<div class="form-control-plaintext" id="detail-createTime">-</div>
+						</div>
+						<div class="mb-3">
+							<label class="form-label text-muted">状态:</label>
+							<div class="form-control-plaintext" id="detail-isDeleted">-</div>
+						</div>
+						<div class="mb-3">
+							<label class="form-label text-muted">更新时间:</label>
+							<div class="form-control-plaintext" id="detail-updatetime">-</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn btn-outline-secondary btn-sm" data-bs-dismiss="modal">关闭</button>
+			</div>
+		</div>
+	</div>
+</div>
+
+@section Scripts {
+<script>
+	// ====================== 全局变量声明 ======================
+	let currentMode = 'add'; // 当前操作模式：'add' 或 'edit'
+	let currentDeleteRow = null; // 当前要删除的行
+
+	// ====================== 显示Toast消息 ======================
+	function showToast(message, isError = false, delay = 10000) {
+		const toastContainer = document.querySelector('.toast-container') || document.body.querySelector(
+			'.toast-container');
+		const toastId = 'toast-' + Date.now();
+		const toastEl = document.createElement('div');
+		toastEl.id = toastId;
+		toastEl.className = 'toast';
+		toastEl.role = 'alert';
+		toastEl.setAttribute('aria-live', 'assertive');
+		toastEl.setAttribute('aria-atomic', 'true');
+
+		const icon = isError ? 'mdi mdi-alert-circle text-danger' : 'mdi mdi-check-circle text-success';
+		const iconHtml = `<span class="${icon} me-2" style="font-size: 1.2rem;"></span>`;
+		const headerHtml = `
+                <div class="toast-header">
+                    <strong class="me-auto">系统提示</strong>
+                    <small class="text-muted">${new Date().toLocaleTimeString()}</small>
+                    <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+                </div>
+            `;
+		const bodyHtml = `
+                <div class="toast-body d-flex align-items-center">
+                    ${iconHtml}
+                    <span>${message}</span>
+                </div>
+            `;
+		toastEl.innerHTML = headerHtml + bodyHtml;
+		toastContainer.appendChild(toastEl);
+
+		const toast = new bootstrap.Toast(toastEl, {
+			delay: delay
+		});
+		toast.show();
+
+		setTimeout(() => {
+			$(toastEl).remove();
+		}, delay + 1000);
+	}
+
+	// ====================== 页面初始化函数 ======================
+	$(document).ready(function() {
+		initTable(); // 初始化表格
+		bindEventHandlers(); // 绑定事件处理程序
+	});
+
+	// ====================== 表格相关函数 ======================
+	const tableConfig = {
+		classes: 'table table-bordered table-hover table-striped lyear-table',
+		url: '/SysMenu/GetMenu',
+		uniqueId: 'id',
+		idField: 'id',
+		treeShowField: 'name',
+		parentIdField: 'parentId',
+		dataType: 'json',
+		method: 'get',
+		toolbar: '#toolbar',
+		pagination: false,
+		showRefresh: true,
+		showButtonIcons: true,
+		showButtonText: false,
+		showFullscreen: true,
+		undefinedText: '-',
+		buttonsClass: 'default',
+		buttonsPrefix: 'btn',
+		iconsPrefix: 'mdi',
+		iconSize: 'mini',
+		buttonsAlign: "right",
+		icons: {
+			refresh: 'mdi-refresh',
+			fullscreen: 'mdi-monitor-screenshot'
+		},
+		treegrid: true,
+		expanderExpandedClass: 'mdi mdi-menu-down',
+		expanderCollapsedClass: 'mdi mdi-menu-right'
+	};
+
+	const columns = [{
+			field: 'name',
+			align: 'left',
+			title: '菜单名称',
+			formatter: function(value, row, index) {
+				const indent = row.parentId == null ? '&nbsp;&nbsp;&nbsp;&nbsp;'.repeat(row.parentId) : '';
+				return indent + value;
+			}
+		},
+		{
+			field: 'icon',
+			align: 'center',
+			title: '图标',
+			formatter: function(value, row, index) {
+				return row.icon == null ? '-' : '<i class="' + row.icon + '"></i>';
+			}
+		},
+		{
+			field: 'order',
+			align: 'center',
+			title: '顺序'
+		},
+		{
+			field: 'type',
+			align: 'center',
+			title: '类型',
+			formatter: function(value, row, index) {
+				return row.type == "menu" ?
+					'<span class="badge bg-success">菜单</span>' :
+					row.type == "directory" ?
+					'<span class="badge btn-teal">目录</span>' :
+					'<span class="badge bg-secondary">未知</span>';
+			}
+		},
+		{
+			field: 'code',
+			align: 'center',
+			title: '编码'
+		},
+		{
+			field: 'isDeleted',
+			title: '软删除',
+			formatter: function(value, row, index) {
+				return row.isDeleted == 0 ?
+					'<span class="badge bg-success">启用</span>' :
+					row.isDeleted == 1 ?
+					'<span class="badge bg-danger">禁用</span>' :
+					'<span class="badge bg-secondary">未知</span>';
+			}
+		},
+		{
+			field: 'operate',
+			title: '操作',
+			formatter: function() {
+				return `<div class="btn-group">
+                            <button class="btn btn-sm btn-indigo btn-round detial-btn" title="详情"><span class="mdi mdi-information"></span></button>
+                                <button class="btn btn-sm btn-primary btn-round edit-btn" title="编辑"><span class="mdi mdi-pencil"></span></button>
+                                <button class="btn btn-sm btn-danger btn-round del-btn" title="删除"><span class="mdi mdi-close"></span></button>
+                    </div>`;
+			},
+			events: {
+				'click .detial-btn': function(event, value, row, index) {
+					event.stopPropagation();
+					detial(row);
+				},
+				'click .edit-btn': function(event, value, row, index) {
+					event.stopPropagation();
+					edit(row);
+				},
+				'click .del-btn': function(event, value, row, index) {
+					event.stopPropagation();
+					currentDeleteRow = row;
+					del(row);
+				}
+			}
+		}
+	];
+
+	function initTable() {
+		$('table').bootstrapTable({
+			...tableConfig,
+			columns,
+			onLoadSuccess: function(data) {
+				$('#table').treegrid({
+					treeColumn: 0,
+					expanderExpandedClass: tableConfig.expanderExpandedClass,
+					expanderCollapsedClass: tableConfig.expanderCollapsedClass,
+					initialState: 'collapsed'
+				});
+				$("[data-bs-toggle='tooltip']").tooltip();
+			}
+		});
+	}
+
+	// ====================== 事件处理函数 ======================
+	function bindEventHandlers() {
+		// 编辑按钮
+		$('#edit-btn').click(function() {
+			showToast('请使用行内编辑按钮', true);
+		});
+
+		// 删除按钮
+		$('#del-btn').click(function() {
+			showToast('请使用行内删除按钮', true);
+		});
+	}
+
+	function showDeleteConfirm(row) {
+		$('#deleteCountInfo').text(`记录: ${row.name}`);
+		$('#deleteConfirmModal').modal('show');
+	}
+
+	function confirmDelete() {
+		if (!currentDeleteRow) {
+			showToast('请选择一条记录进行删除', true);
+			return;
+		}
+
+		$.ajax({
+			url: '/SysMenu/Delete',
+			type: 'POST',
+			data: {
+				id: [currentDeleteRow.id]
+			},
+			success: function(response) {
+				if (response.success) {
+					$('#table').bootstrapTable('refresh');
+					$('#deleteConfirmModal').modal('hide');
+					showToast('成功删除记录');
+					currentDeleteRow = null;
+				} else {
+					showToast('删除失败: ' + (response.message || '请重试'), true);
+				}
+			},
+			error: function(xhr) {
+				const errorMsg = xhr.responseJSON?.message || '服务器错误';
+				showToast(`操作失败: ${errorMsg}`, true);
+			}
+		});
+	}
+
+	// ====================== 业务操作函数 ======================
+        function del(row) {
+            const hasChildren = row.children && row.children.length > 0;
+
+            if (hasChildren) {
+                // 显示明确的错误提示
+                showToast(`无法删除菜单项【${row.name || row.id}】，因为它包含 ${row.children.length} 个子菜单项`, true);
+                currentDeleteRow = null; // 确保重置当前删除行
+            } else {
+                    $('#deleteCountInfo').text(`记录: ${row.name}`);
+                    $('#deleteConfirmModal').modal('show');
+                     currentDeleteRow = row;
+            }
+        }
+	function add() {
+		currentMode = 'add';
+		$('#infoModalTitle').text('新增信息');
+		$('#infoForm')[0].reset();
+		$('#infoForm').find('[name="isDeleted"]').val('0');
+		$('#infoModal').modal('show');
+	}
+
+	function edit(row) {
+		currentMode = 'edit';
+		$('#infoModalTitle').text('编辑信息');
+
+		$('#infoForm').find('[name="id"]').val(row.id);
+		$('#infoForm').find('[name="name"]').val(row.name);
+		$('#infoForm').find('[name="icon"]').val(row.icon);
+		$('#infoForm').find('[name="url"]').val(row.url);
+		$('#infoForm').find('[name="type"]').val(row.type);
+		$('#infoForm').find('[name="order"]').val(row.order);
+		$('#infoForm').find('[name="parentId"]').val(row.parentId);
+		$('#infoForm').find('[name="requiredPermissionId"]').val(row.requiredPermissionId);
+		$('#infoForm').find('[name="code"]').val(row.code);
+		$('#infoForm').find('[name="createTime"]').val(row.createTime);
+		$('#infoForm').find('[name="isDeleted"]').val(Number(row.isDeleted));
+
+		$('#infoModal').modal('show');
+	}
+
+	function detial(row) {
+		$('#detail-id').text(row.id || '无');
+		$('#detail-name').text(row.name || '无');
+		$('#detail-icon').text(row.icon || '无');
+		$('#detail-type').text(row.type || '无');
+		$('#detail-url').text(row.url || '无');
+		$('#detail-order').text(row.order || '无');
+		$('#detail-parentId').text(row.parentId || '无');
+		$('#detail-requiredPermissionId').text(row.requiredPermissionId || '无');
+		$('#detail-code').text(row.code || '无');
+		const statusText = row.isDeleted == 0 ? '正常' : row.isDeleted == 1 ? '禁用' : '未知';
+		$('#detail-createTime').text(row.createTime || '无');
+		$('#detail-updatetime').text(row.updateTime || '无');
+		$('#detail-isDeleted').text(statusText);
+		$('#detailModal').modal('show');
+	}
+
+	
+
+	function submitInfoForm() {
+		if (!validateInfoForm()) return;
+
+		const formData = {
+			name: $('#info-name').val(),
+			url: $('#info-url').val(),
+			type: $('#info-type').val(),
+			order: $('#info-order').val(),
+			parentId: $('#info-parentId').val(),
+			requiredPermissionId: $('#info-requiredPermissionId').val(),
+			code: $('#info-code').val(),
+			isDeleted: $('#info-isDeleted').val() === '1'
+		};
+
+		if (currentMode === 'edit') {
+			formData.id = $('#info-id').val();
+		}
+
+		const url = currentMode === 'add' ? '/SysMenu/Add' : '/SysMenu/Edit';
+		const successMessage = currentMode === 'add' ? '新增成功' : '更新成功';
+
+		$.ajax({
+			url: url,
+			type: 'POST',
+			data: formData,
+			success: function(response) {
+				if (response.success) {
+					$('#infoModal').modal('hide');
+					$('#table').bootstrapTable('refresh');
+					showToast(successMessage);
+				} else {
+					showToast(`操作失败: ${response.message || '未知错误'}`, true);
+				}
+			},
+			error: function(xhr, status, error) {
+				showToast('请求失败: ' + error, true);
+			}
+		});
+	}
+
+	// ====================== 辅助函数 ======================
+	function validateInfoForm() {
+		let isValid = true;
+
+		$('.form-control').removeClass('is-invalid');
+		$('.invalid-feedback').remove();
+
+		$('#infoForm [required]').each(function() {
+			if (!$(this).val()) {
+				isValid = false;
+				$(this).addClass('is-invalid');
+				$(this).after('<div class="invalid-feedback">此字段为必填项</div>');
+			}
+		});
+
+		return isValid;
+	}
+</script>
+}

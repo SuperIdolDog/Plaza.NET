@@ -1,0 +1,773 @@
+{
+  "Files": [
+    {
+      "Id": "C:\\Users\\Lenovo\\Desktop\\CSharp项目\\就业项目\\Plaza\\Plaza.Net.MVCAdmin\\obj\\Release\\net6.0\\scopedcss\\projectbundle\\Plaza.Net.MVCAdmin.bundle.scp.css",
+      "PackagePath": "staticwebassets\\Plaza.Net.MVCAdmin.wddm6tzbb1.bundle.scp.css"
+    },
+    {
+      "Id": "C:\\Users\\Lenovo\\Desktop\\CSharp项目\\就业项目\\Plaza\\Plaza.Net.MVCAdmin\\wwwroot\\css\\animate.min.css",
+      "PackagePath": "staticwebassets\\css\\animate.min.css"
+    },
+    {
+      "Id": "C:\\Users\\Lenovo\\Desktop\\CSharp项目\\就业项目\\Plaza\\Plaza.Net.MVCAdmin\\wwwroot\\css\\bootstrap.min.css",
+      "PackagePath": "staticwebassets\\css\\bootstrap.min.css"
+    },
+    {
+      "Id": "C:\\Users\\Lenovo\\Desktop\\CSharp项目\\就业项目\\Plaza\\Plaza.Net.MVCAdmin\\wwwroot\\css\\materialdesignicons.min.css",
+      "PackagePath": "staticwebassets\\css\\materialdesignicons.min.css"
+    },
+    {
+      "Id": "C:\\Users\\Lenovo\\Desktop\\CSharp项目\\就业项目\\Plaza\\Plaza.Net.MVCAdmin\\wwwroot\\css\\style.min.css",
+      "PackagePath": "staticwebassets\\css\\style.min.css"
+    },
+    {
+      "Id": "C:\\Users\\Lenovo\\Desktop\\CSharp项目\\就业项目\\Plaza\\Plaza.Net.MVCAdmin\\wwwroot\\favicon.ico",
+      "PackagePath": "staticwebassets\\favicon.ico"
+    },
+    {
+      "Id": "C:\\Users\\Lenovo\\Desktop\\CSharp项目\\就业项目\\Plaza\\Plaza.Net.MVCAdmin\\wwwroot\\favicon.png",
+      "PackagePath": "staticwebassets\\favicon.png"
+    },
+    {
+      "Id": "C:\\Users\\Lenovo\\Desktop\\CSharp项目\\就业项目\\Plaza\\Plaza.Net.MVCAdmin\\wwwroot\\fonts\\materialdesignicons-webfont.eot",
+      "PackagePath": "staticwebassets\\fonts\\materialdesignicons-webfont.eot"
+    },
+    {
+      "Id": "C:\\Users\\Lenovo\\Desktop\\CSharp项目\\就业项目\\Plaza\\Plaza.Net.MVCAdmin\\wwwroot\\fonts\\materialdesignicons-webfont.ttf",
+      "PackagePath": "staticwebassets\\fonts\\materialdesignicons-webfont.ttf"
+    },
+    {
+      "Id": "C:\\Users\\Lenovo\\Desktop\\CSharp项目\\就业项目\\Plaza\\Plaza.Net.MVCAdmin\\wwwroot\\fonts\\materialdesignicons-webfont.woff",
+      "PackagePath": "staticwebassets\\fonts\\materialdesignicons-webfont.woff"
+    },
+    {
+      "Id": "C:\\Users\\Lenovo\\Desktop\\CSharp项目\\就业项目\\Plaza\\Plaza.Net.MVCAdmin\\wwwroot\\fonts\\materialdesignicons-webfont.woff2",
+      "PackagePath": "staticwebassets\\fonts\\materialdesignicons-webfont.woff2"
+    },
+    {
+      "Id": "C:\\Users\\Lenovo\\Desktop\\CSharp项目\\就业项目\\Plaza\\Plaza.Net.MVCAdmin\\wwwroot\\images\\Apple-Azure.png",
+      "PackagePath": "staticwebassets\\images\\Apple-Azure.png"
+    },
+    {
+      "Id": "C:\\Users\\Lenovo\\Desktop\\CSharp项目\\就业项目\\Plaza\\Plaza.Net.MVCAdmin\\wwwroot\\images\\BPlaza.png",
+      "PackagePath": "staticwebassets\\images\\BPlaza.png"
+    },
+    {
+      "Id": "C:\\Users\\Lenovo\\Desktop\\CSharp项目\\就业项目\\Plaza\\Plaza.Net.MVCAdmin\\wwwroot\\images\\Plaza.png",
+      "PackagePath": "staticwebassets\\images\\Plaza.png"
+    },
+    {
+      "Id": "C:\\Users\\Lenovo\\Desktop\\CSharp项目\\就业项目\\Plaza\\Plaza.Net.MVCAdmin\\wwwroot\\images\\PlazaLogo.png",
+      "PackagePath": "staticwebassets\\images\\PlazaLogo.png"
+    },
+    {
+      "Id": "C:\\Users\\Lenovo\\Desktop\\CSharp项目\\就业项目\\Plaza\\Plaza.Net.MVCAdmin\\wwwroot\\images\\avatar\\d3d373ea-06af-44d2-86bd-045bd9f4b8a8.png",
+      "PackagePath": "staticwebassets\\images\\avatar\\d3d373ea-06af-44d2-86bd-045bd9f4b8a8.png"
+    },
+    {
+      "Id": "C:\\Users\\Lenovo\\Desktop\\CSharp项目\\就业项目\\Plaza\\Plaza.Net.MVCAdmin\\wwwroot\\images\\product\\a755493b-11f3-4d18-bf25-1770b63a944b.jpg",
+      "PackagePath": "staticwebassets\\images\\product\\a755493b-11f3-4d18-bf25-1770b63a944b.jpg"
+    },
+    {
+      "Id": "C:\\Users\\Lenovo\\Desktop\\CSharp项目\\就业项目\\Plaza\\Plaza.Net.MVCAdmin\\wwwroot\\images\\product\\e5ced234-c630-45d1-b3ef-658288e28f68.jpg",
+      "PackagePath": "staticwebassets\\images\\product\\e5ced234-c630-45d1-b3ef-658288e28f68.jpg"
+    },
+    {
+      "Id": "C:\\Users\\Lenovo\\Desktop\\CSharp项目\\就业项目\\Plaza\\Plaza.Net.MVCAdmin\\wwwroot\\images\\store\\cad41cf6-3c19-4b26-a78c-76d7d970e2bb.png",
+      "PackagePath": "staticwebassets\\images\\store\\cad41cf6-3c19-4b26-a78c-76d7d970e2bb.png"
+    },
+    {
+      "Id": "C:\\Users\\Lenovo\\Desktop\\CSharp项目\\就业项目\\Plaza\\Plaza.Net.MVCAdmin\\wwwroot\\images\\users\\c4efb874-1e8a-4a4c-a59d-de1ec0fb5f02.png",
+      "PackagePath": "staticwebassets\\images\\users\\c4efb874-1e8a-4a4c-a59d-de1ec0fb5f02.png"
+    },
+    {
+      "Id": "C:\\Users\\Lenovo\\Desktop\\CSharp项目\\就业项目\\Plaza\\Plaza.Net.MVCAdmin\\wwwroot\\js\\bootstrap-multitabs\\multitabs.js",
+      "PackagePath": "staticwebassets\\js\\bootstrap-multitabs\\multitabs.js"
+    },
+    {
+      "Id": "C:\\Users\\Lenovo\\Desktop\\CSharp项目\\就业项目\\Plaza\\Plaza.Net.MVCAdmin\\wwwroot\\js\\bootstrap-multitabs\\multitabs.min.css",
+      "PackagePath": "staticwebassets\\js\\bootstrap-multitabs\\multitabs.min.css"
+    },
+    {
+      "Id": "C:\\Users\\Lenovo\\Desktop\\CSharp项目\\就业项目\\Plaza\\Plaza.Net.MVCAdmin\\wwwroot\\js\\bootstrap-multitabs\\multitabs.min.js",
+      "PackagePath": "staticwebassets\\js\\bootstrap-multitabs\\multitabs.min.js"
+    },
+    {
+      "Id": "C:\\Users\\Lenovo\\Desktop\\CSharp项目\\就业项目\\Plaza\\Plaza.Net.MVCAdmin\\wwwroot\\js\\bootstrap-notify.min.js",
+      "PackagePath": "staticwebassets\\js\\bootstrap-notify.min.js"
+    },
+    {
+      "Id": "C:\\Users\\Lenovo\\Desktop\\CSharp项目\\就业项目\\Plaza\\Plaza.Net.MVCAdmin\\wwwroot\\js\\bootstrap-table\\bootstrap-table-locale-all.js",
+      "PackagePath": "staticwebassets\\js\\bootstrap-table\\bootstrap-table-locale-all.js"
+    },
+    {
+      "Id": "C:\\Users\\Lenovo\\Desktop\\CSharp项目\\就业项目\\Plaza\\Plaza.Net.MVCAdmin\\wwwroot\\js\\bootstrap-table\\bootstrap-table-locale-all.min.js",
+      "PackagePath": "staticwebassets\\js\\bootstrap-table\\bootstrap-table-locale-all.min.js"
+    },
+    {
+      "Id": "C:\\Users\\Lenovo\\Desktop\\CSharp项目\\就业项目\\Plaza\\Plaza.Net.MVCAdmin\\wwwroot\\js\\bootstrap-table\\bootstrap-table-vue.esm.js",
+      "PackagePath": "staticwebassets\\js\\bootstrap-table\\bootstrap-table-vue.esm.js"
+    },
+    {
+      "Id": "C:\\Users\\Lenovo\\Desktop\\CSharp项目\\就业项目\\Plaza\\Plaza.Net.MVCAdmin\\wwwroot\\js\\bootstrap-table\\bootstrap-table-vue.esm.min.js",
+      "PackagePath": "staticwebassets\\js\\bootstrap-table\\bootstrap-table-vue.esm.min.js"
+    },
+    {
+      "Id": "C:\\Users\\Lenovo\\Desktop\\CSharp项目\\就业项目\\Plaza\\Plaza.Net.MVCAdmin\\wwwroot\\js\\bootstrap-table\\bootstrap-table-vue.js",
+      "PackagePath": "staticwebassets\\js\\bootstrap-table\\bootstrap-table-vue.js"
+    },
+    {
+      "Id": "C:\\Users\\Lenovo\\Desktop\\CSharp项目\\就业项目\\Plaza\\Plaza.Net.MVCAdmin\\wwwroot\\js\\bootstrap-table\\bootstrap-table-vue.min.js",
+      "PackagePath": "staticwebassets\\js\\bootstrap-table\\bootstrap-table-vue.min.js"
+    },
+    {
+      "Id": "C:\\Users\\Lenovo\\Desktop\\CSharp项目\\就业项目\\Plaza\\Plaza.Net.MVCAdmin\\wwwroot\\js\\bootstrap-table\\bootstrap-table.css",
+      "PackagePath": "staticwebassets\\js\\bootstrap-table\\bootstrap-table.css"
+    },
+    {
+      "Id": "C:\\Users\\Lenovo\\Desktop\\CSharp项目\\就业项目\\Plaza\\Plaza.Net.MVCAdmin\\wwwroot\\js\\bootstrap-table\\bootstrap-table.js",
+      "PackagePath": "staticwebassets\\js\\bootstrap-table\\bootstrap-table.js"
+    },
+    {
+      "Id": "C:\\Users\\Lenovo\\Desktop\\CSharp项目\\就业项目\\Plaza\\Plaza.Net.MVCAdmin\\wwwroot\\js\\bootstrap-table\\bootstrap-table.min.css",
+      "PackagePath": "staticwebassets\\js\\bootstrap-table\\bootstrap-table.min.css"
+    },
+    {
+      "Id": "C:\\Users\\Lenovo\\Desktop\\CSharp项目\\就业项目\\Plaza\\Plaza.Net.MVCAdmin\\wwwroot\\js\\bootstrap-table\\bootstrap-table.min.js",
+      "PackagePath": "staticwebassets\\js\\bootstrap-table\\bootstrap-table.min.js"
+    },
+    {
+      "Id": "C:\\Users\\Lenovo\\Desktop\\CSharp项目\\就业项目\\Plaza\\Plaza.Net.MVCAdmin\\wwwroot\\js\\bootstrap-table\\extensions\\addrbar\\bootstrap-table-addrbar.js",
+      "PackagePath": "staticwebassets\\js\\bootstrap-table\\extensions\\addrbar\\bootstrap-table-addrbar.js"
+    },
+    {
+      "Id": "C:\\Users\\Lenovo\\Desktop\\CSharp项目\\就业项目\\Plaza\\Plaza.Net.MVCAdmin\\wwwroot\\js\\bootstrap-table\\extensions\\addrbar\\bootstrap-table-addrbar.min.js",
+      "PackagePath": "staticwebassets\\js\\bootstrap-table\\extensions\\addrbar\\bootstrap-table-addrbar.min.js"
+    },
+    {
+      "Id": "C:\\Users\\Lenovo\\Desktop\\CSharp项目\\就业项目\\Plaza\\Plaza.Net.MVCAdmin\\wwwroot\\js\\bootstrap-table\\extensions\\auto-refresh\\bootstrap-table-auto-refresh.js",
+      "PackagePath": "staticwebassets\\js\\bootstrap-table\\extensions\\auto-refresh\\bootstrap-table-auto-refresh.js"
+    },
+    {
+      "Id": "C:\\Users\\Lenovo\\Desktop\\CSharp项目\\就业项目\\Plaza\\Plaza.Net.MVCAdmin\\wwwroot\\js\\bootstrap-table\\extensions\\auto-refresh\\bootstrap-table-auto-refresh.min.js",
+      "PackagePath": "staticwebassets\\js\\bootstrap-table\\extensions\\auto-refresh\\bootstrap-table-auto-refresh.min.js"
+    },
+    {
+      "Id": "C:\\Users\\Lenovo\\Desktop\\CSharp项目\\就业项目\\Plaza\\Plaza.Net.MVCAdmin\\wwwroot\\js\\bootstrap-table\\extensions\\cookie\\bootstrap-table-cookie.js",
+      "PackagePath": "staticwebassets\\js\\bootstrap-table\\extensions\\cookie\\bootstrap-table-cookie.js"
+    },
+    {
+      "Id": "C:\\Users\\Lenovo\\Desktop\\CSharp项目\\就业项目\\Plaza\\Plaza.Net.MVCAdmin\\wwwroot\\js\\bootstrap-table\\extensions\\cookie\\bootstrap-table-cookie.min.js",
+      "PackagePath": "staticwebassets\\js\\bootstrap-table\\extensions\\cookie\\bootstrap-table-cookie.min.js"
+    },
+    {
+      "Id": "C:\\Users\\Lenovo\\Desktop\\CSharp项目\\就业项目\\Plaza\\Plaza.Net.MVCAdmin\\wwwroot\\js\\bootstrap-table\\extensions\\copy-rows\\bootstrap-table-copy-rows.js",
+      "PackagePath": "staticwebassets\\js\\bootstrap-table\\extensions\\copy-rows\\bootstrap-table-copy-rows.js"
+    },
+    {
+      "Id": "C:\\Users\\Lenovo\\Desktop\\CSharp项目\\就业项目\\Plaza\\Plaza.Net.MVCAdmin\\wwwroot\\js\\bootstrap-table\\extensions\\copy-rows\\bootstrap-table-copy-rows.min.js",
+      "PackagePath": "staticwebassets\\js\\bootstrap-table\\extensions\\copy-rows\\bootstrap-table-copy-rows.min.js"
+    },
+    {
+      "Id": "C:\\Users\\Lenovo\\Desktop\\CSharp项目\\就业项目\\Plaza\\Plaza.Net.MVCAdmin\\wwwroot\\js\\bootstrap-table\\extensions\\custom-view\\bootstrap-table-custom-view.js",
+      "PackagePath": "staticwebassets\\js\\bootstrap-table\\extensions\\custom-view\\bootstrap-table-custom-view.js"
+    },
+    {
+      "Id": "C:\\Users\\Lenovo\\Desktop\\CSharp项目\\就业项目\\Plaza\\Plaza.Net.MVCAdmin\\wwwroot\\js\\bootstrap-table\\extensions\\custom-view\\bootstrap-table-custom-view.min.js",
+      "PackagePath": "staticwebassets\\js\\bootstrap-table\\extensions\\custom-view\\bootstrap-table-custom-view.min.js"
+    },
+    {
+      "Id": "C:\\Users\\Lenovo\\Desktop\\CSharp项目\\就业项目\\Plaza\\Plaza.Net.MVCAdmin\\wwwroot\\js\\bootstrap-table\\extensions\\defer-url\\bootstrap-table-defer-url.js",
+      "PackagePath": "staticwebassets\\js\\bootstrap-table\\extensions\\defer-url\\bootstrap-table-defer-url.js"
+    },
+    {
+      "Id": "C:\\Users\\Lenovo\\Desktop\\CSharp项目\\就业项目\\Plaza\\Plaza.Net.MVCAdmin\\wwwroot\\js\\bootstrap-table\\extensions\\defer-url\\bootstrap-table-defer-url.min.js",
+      "PackagePath": "staticwebassets\\js\\bootstrap-table\\extensions\\defer-url\\bootstrap-table-defer-url.min.js"
+    },
+    {
+      "Id": "C:\\Users\\Lenovo\\Desktop\\CSharp项目\\就业项目\\Plaza\\Plaza.Net.MVCAdmin\\wwwroot\\js\\bootstrap-table\\extensions\\editable\\bootstrap-table-editable.js",
+      "PackagePath": "staticwebassets\\js\\bootstrap-table\\extensions\\editable\\bootstrap-table-editable.js"
+    },
+    {
+      "Id": "C:\\Users\\Lenovo\\Desktop\\CSharp项目\\就业项目\\Plaza\\Plaza.Net.MVCAdmin\\wwwroot\\js\\bootstrap-table\\extensions\\editable\\bootstrap-table-editable.min.js",
+      "PackagePath": "staticwebassets\\js\\bootstrap-table\\extensions\\editable\\bootstrap-table-editable.min.js"
+    },
+    {
+      "Id": "C:\\Users\\Lenovo\\Desktop\\CSharp项目\\就业项目\\Plaza\\Plaza.Net.MVCAdmin\\wwwroot\\js\\bootstrap-table\\extensions\\export\\bootstrap-table-export.js",
+      "PackagePath": "staticwebassets\\js\\bootstrap-table\\extensions\\export\\bootstrap-table-export.js"
+    },
+    {
+      "Id": "C:\\Users\\Lenovo\\Desktop\\CSharp项目\\就业项目\\Plaza\\Plaza.Net.MVCAdmin\\wwwroot\\js\\bootstrap-table\\extensions\\export\\bootstrap-table-export.min.js",
+      "PackagePath": "staticwebassets\\js\\bootstrap-table\\extensions\\export\\bootstrap-table-export.min.js"
+    },
+    {
+      "Id": "C:\\Users\\Lenovo\\Desktop\\CSharp项目\\就业项目\\Plaza\\Plaza.Net.MVCAdmin\\wwwroot\\js\\bootstrap-table\\extensions\\filter-control\\bootstrap-table-filter-control.css",
+      "PackagePath": "staticwebassets\\js\\bootstrap-table\\extensions\\filter-control\\bootstrap-table-filter-control.css"
+    },
+    {
+      "Id": "C:\\Users\\Lenovo\\Desktop\\CSharp项目\\就业项目\\Plaza\\Plaza.Net.MVCAdmin\\wwwroot\\js\\bootstrap-table\\extensions\\filter-control\\bootstrap-table-filter-control.js",
+      "PackagePath": "staticwebassets\\js\\bootstrap-table\\extensions\\filter-control\\bootstrap-table-filter-control.js"
+    },
+    {
+      "Id": "C:\\Users\\Lenovo\\Desktop\\CSharp项目\\就业项目\\Plaza\\Plaza.Net.MVCAdmin\\wwwroot\\js\\bootstrap-table\\extensions\\filter-control\\bootstrap-table-filter-control.min.css",
+      "PackagePath": "staticwebassets\\js\\bootstrap-table\\extensions\\filter-control\\bootstrap-table-filter-control.min.css"
+    },
+    {
+      "Id": "C:\\Users\\Lenovo\\Desktop\\CSharp项目\\就业项目\\Plaza\\Plaza.Net.MVCAdmin\\wwwroot\\js\\bootstrap-table\\extensions\\filter-control\\bootstrap-table-filter-control.min.js",
+      "PackagePath": "staticwebassets\\js\\bootstrap-table\\extensions\\filter-control\\bootstrap-table-filter-control.min.js"
+    },
+    {
+      "Id": "C:\\Users\\Lenovo\\Desktop\\CSharp项目\\就业项目\\Plaza\\Plaza.Net.MVCAdmin\\wwwroot\\js\\bootstrap-table\\extensions\\filter-control\\utils.js",
+      "PackagePath": "staticwebassets\\js\\bootstrap-table\\extensions\\filter-control\\utils.js"
+    },
+    {
+      "Id": "C:\\Users\\Lenovo\\Desktop\\CSharp项目\\就业项目\\Plaza\\Plaza.Net.MVCAdmin\\wwwroot\\js\\bootstrap-table\\extensions\\filter-control\\utils.min.js",
+      "PackagePath": "staticwebassets\\js\\bootstrap-table\\extensions\\filter-control\\utils.min.js"
+    },
+    {
+      "Id": "C:\\Users\\Lenovo\\Desktop\\CSharp项目\\就业项目\\Plaza\\Plaza.Net.MVCAdmin\\wwwroot\\js\\bootstrap-table\\extensions\\fixed-columns\\bootstrap-table-fixed-columns.css",
+      "PackagePath": "staticwebassets\\js\\bootstrap-table\\extensions\\fixed-columns\\bootstrap-table-fixed-columns.css"
+    },
+    {
+      "Id": "C:\\Users\\Lenovo\\Desktop\\CSharp项目\\就业项目\\Plaza\\Plaza.Net.MVCAdmin\\wwwroot\\js\\bootstrap-table\\extensions\\fixed-columns\\bootstrap-table-fixed-columns.js",
+      "PackagePath": "staticwebassets\\js\\bootstrap-table\\extensions\\fixed-columns\\bootstrap-table-fixed-columns.js"
+    },
+    {
+      "Id": "C:\\Users\\Lenovo\\Desktop\\CSharp项目\\就业项目\\Plaza\\Plaza.Net.MVCAdmin\\wwwroot\\js\\bootstrap-table\\extensions\\fixed-columns\\bootstrap-table-fixed-columns.min.css",
+      "PackagePath": "staticwebassets\\js\\bootstrap-table\\extensions\\fixed-columns\\bootstrap-table-fixed-columns.min.css"
+    },
+    {
+      "Id": "C:\\Users\\Lenovo\\Desktop\\CSharp项目\\就业项目\\Plaza\\Plaza.Net.MVCAdmin\\wwwroot\\js\\bootstrap-table\\extensions\\fixed-columns\\bootstrap-table-fixed-columns.min.js",
+      "PackagePath": "staticwebassets\\js\\bootstrap-table\\extensions\\fixed-columns\\bootstrap-table-fixed-columns.min.js"
+    },
+    {
+      "Id": "C:\\Users\\Lenovo\\Desktop\\CSharp项目\\就业项目\\Plaza\\Plaza.Net.MVCAdmin\\wwwroot\\js\\bootstrap-table\\extensions\\group-by-v2\\bootstrap-table-group-by.css",
+      "PackagePath": "staticwebassets\\js\\bootstrap-table\\extensions\\group-by-v2\\bootstrap-table-group-by.css"
+    },
+    {
+      "Id": "C:\\Users\\Lenovo\\Desktop\\CSharp项目\\就业项目\\Plaza\\Plaza.Net.MVCAdmin\\wwwroot\\js\\bootstrap-table\\extensions\\group-by-v2\\bootstrap-table-group-by.js",
+      "PackagePath": "staticwebassets\\js\\bootstrap-table\\extensions\\group-by-v2\\bootstrap-table-group-by.js"
+    },
+    {
+      "Id": "C:\\Users\\Lenovo\\Desktop\\CSharp项目\\就业项目\\Plaza\\Plaza.Net.MVCAdmin\\wwwroot\\js\\bootstrap-table\\extensions\\group-by-v2\\bootstrap-table-group-by.min.css",
+      "PackagePath": "staticwebassets\\js\\bootstrap-table\\extensions\\group-by-v2\\bootstrap-table-group-by.min.css"
+    },
+    {
+      "Id": "C:\\Users\\Lenovo\\Desktop\\CSharp项目\\就业项目\\Plaza\\Plaza.Net.MVCAdmin\\wwwroot\\js\\bootstrap-table\\extensions\\group-by-v2\\bootstrap-table-group-by.min.js",
+      "PackagePath": "staticwebassets\\js\\bootstrap-table\\extensions\\group-by-v2\\bootstrap-table-group-by.min.js"
+    },
+    {
+      "Id": "C:\\Users\\Lenovo\\Desktop\\CSharp项目\\就业项目\\Plaza\\Plaza.Net.MVCAdmin\\wwwroot\\js\\bootstrap-table\\extensions\\i18n-enhance\\bootstrap-table-i18n-enhance.js",
+      "PackagePath": "staticwebassets\\js\\bootstrap-table\\extensions\\i18n-enhance\\bootstrap-table-i18n-enhance.js"
+    },
+    {
+      "Id": "C:\\Users\\Lenovo\\Desktop\\CSharp项目\\就业项目\\Plaza\\Plaza.Net.MVCAdmin\\wwwroot\\js\\bootstrap-table\\extensions\\i18n-enhance\\bootstrap-table-i18n-enhance.min.js",
+      "PackagePath": "staticwebassets\\js\\bootstrap-table\\extensions\\i18n-enhance\\bootstrap-table-i18n-enhance.min.js"
+    },
+    {
+      "Id": "C:\\Users\\Lenovo\\Desktop\\CSharp项目\\就业项目\\Plaza\\Plaza.Net.MVCAdmin\\wwwroot\\js\\bootstrap-table\\extensions\\key-events\\bootstrap-table-key-events.js",
+      "PackagePath": "staticwebassets\\js\\bootstrap-table\\extensions\\key-events\\bootstrap-table-key-events.js"
+    },
+    {
+      "Id": "C:\\Users\\Lenovo\\Desktop\\CSharp项目\\就业项目\\Plaza\\Plaza.Net.MVCAdmin\\wwwroot\\js\\bootstrap-table\\extensions\\key-events\\bootstrap-table-key-events.min.js",
+      "PackagePath": "staticwebassets\\js\\bootstrap-table\\extensions\\key-events\\bootstrap-table-key-events.min.js"
+    },
+    {
+      "Id": "C:\\Users\\Lenovo\\Desktop\\CSharp项目\\就业项目\\Plaza\\Plaza.Net.MVCAdmin\\wwwroot\\js\\bootstrap-table\\extensions\\mobile\\bootstrap-table-mobile.js",
+      "PackagePath": "staticwebassets\\js\\bootstrap-table\\extensions\\mobile\\bootstrap-table-mobile.js"
+    },
+    {
+      "Id": "C:\\Users\\Lenovo\\Desktop\\CSharp项目\\就业项目\\Plaza\\Plaza.Net.MVCAdmin\\wwwroot\\js\\bootstrap-table\\extensions\\mobile\\bootstrap-table-mobile.min.js",
+      "PackagePath": "staticwebassets\\js\\bootstrap-table\\extensions\\mobile\\bootstrap-table-mobile.min.js"
+    },
+    {
+      "Id": "C:\\Users\\Lenovo\\Desktop\\CSharp项目\\就业项目\\Plaza\\Plaza.Net.MVCAdmin\\wwwroot\\js\\bootstrap-table\\extensions\\multiple-sort\\bootstrap-table-multiple-sort.js",
+      "PackagePath": "staticwebassets\\js\\bootstrap-table\\extensions\\multiple-sort\\bootstrap-table-multiple-sort.js"
+    },
+    {
+      "Id": "C:\\Users\\Lenovo\\Desktop\\CSharp项目\\就业项目\\Plaza\\Plaza.Net.MVCAdmin\\wwwroot\\js\\bootstrap-table\\extensions\\multiple-sort\\bootstrap-table-multiple-sort.min.js",
+      "PackagePath": "staticwebassets\\js\\bootstrap-table\\extensions\\multiple-sort\\bootstrap-table-multiple-sort.min.js"
+    },
+    {
+      "Id": "C:\\Users\\Lenovo\\Desktop\\CSharp项目\\就业项目\\Plaza\\Plaza.Net.MVCAdmin\\wwwroot\\js\\bootstrap-table\\extensions\\page-jump-to\\bootstrap-table-page-jump-to.css",
+      "PackagePath": "staticwebassets\\js\\bootstrap-table\\extensions\\page-jump-to\\bootstrap-table-page-jump-to.css"
+    },
+    {
+      "Id": "C:\\Users\\Lenovo\\Desktop\\CSharp项目\\就业项目\\Plaza\\Plaza.Net.MVCAdmin\\wwwroot\\js\\bootstrap-table\\extensions\\page-jump-to\\bootstrap-table-page-jump-to.js",
+      "PackagePath": "staticwebassets\\js\\bootstrap-table\\extensions\\page-jump-to\\bootstrap-table-page-jump-to.js"
+    },
+    {
+      "Id": "C:\\Users\\Lenovo\\Desktop\\CSharp项目\\就业项目\\Plaza\\Plaza.Net.MVCAdmin\\wwwroot\\js\\bootstrap-table\\extensions\\page-jump-to\\bootstrap-table-page-jump-to.min.css",
+      "PackagePath": "staticwebassets\\js\\bootstrap-table\\extensions\\page-jump-to\\bootstrap-table-page-jump-to.min.css"
+    },
+    {
+      "Id": "C:\\Users\\Lenovo\\Desktop\\CSharp项目\\就业项目\\Plaza\\Plaza.Net.MVCAdmin\\wwwroot\\js\\bootstrap-table\\extensions\\page-jump-to\\bootstrap-table-page-jump-to.min.js",
+      "PackagePath": "staticwebassets\\js\\bootstrap-table\\extensions\\page-jump-to\\bootstrap-table-page-jump-to.min.js"
+    },
+    {
+      "Id": "C:\\Users\\Lenovo\\Desktop\\CSharp项目\\就业项目\\Plaza\\Plaza.Net.MVCAdmin\\wwwroot\\js\\bootstrap-table\\extensions\\pipeline\\bootstrap-table-pipeline.js",
+      "PackagePath": "staticwebassets\\js\\bootstrap-table\\extensions\\pipeline\\bootstrap-table-pipeline.js"
+    },
+    {
+      "Id": "C:\\Users\\Lenovo\\Desktop\\CSharp项目\\就业项目\\Plaza\\Plaza.Net.MVCAdmin\\wwwroot\\js\\bootstrap-table\\extensions\\pipeline\\bootstrap-table-pipeline.min.js",
+      "PackagePath": "staticwebassets\\js\\bootstrap-table\\extensions\\pipeline\\bootstrap-table-pipeline.min.js"
+    },
+    {
+      "Id": "C:\\Users\\Lenovo\\Desktop\\CSharp项目\\就业项目\\Plaza\\Plaza.Net.MVCAdmin\\wwwroot\\js\\bootstrap-table\\extensions\\print\\bootstrap-table-print.js",
+      "PackagePath": "staticwebassets\\js\\bootstrap-table\\extensions\\print\\bootstrap-table-print.js"
+    },
+    {
+      "Id": "C:\\Users\\Lenovo\\Desktop\\CSharp项目\\就业项目\\Plaza\\Plaza.Net.MVCAdmin\\wwwroot\\js\\bootstrap-table\\extensions\\print\\bootstrap-table-print.min.js",
+      "PackagePath": "staticwebassets\\js\\bootstrap-table\\extensions\\print\\bootstrap-table-print.min.js"
+    },
+    {
+      "Id": "C:\\Users\\Lenovo\\Desktop\\CSharp项目\\就业项目\\Plaza\\Plaza.Net.MVCAdmin\\wwwroot\\js\\bootstrap-table\\extensions\\reorder-columns\\bootstrap-table-reorder-columns.js",
+      "PackagePath": "staticwebassets\\js\\bootstrap-table\\extensions\\reorder-columns\\bootstrap-table-reorder-columns.js"
+    },
+    {
+      "Id": "C:\\Users\\Lenovo\\Desktop\\CSharp项目\\就业项目\\Plaza\\Plaza.Net.MVCAdmin\\wwwroot\\js\\bootstrap-table\\extensions\\reorder-columns\\bootstrap-table-reorder-columns.min.js",
+      "PackagePath": "staticwebassets\\js\\bootstrap-table\\extensions\\reorder-columns\\bootstrap-table-reorder-columns.min.js"
+    },
+    {
+      "Id": "C:\\Users\\Lenovo\\Desktop\\CSharp项目\\就业项目\\Plaza\\Plaza.Net.MVCAdmin\\wwwroot\\js\\bootstrap-table\\extensions\\reorder-rows\\bootstrap-table-reorder-rows.css",
+      "PackagePath": "staticwebassets\\js\\bootstrap-table\\extensions\\reorder-rows\\bootstrap-table-reorder-rows.css"
+    },
+    {
+      "Id": "C:\\Users\\Lenovo\\Desktop\\CSharp项目\\就业项目\\Plaza\\Plaza.Net.MVCAdmin\\wwwroot\\js\\bootstrap-table\\extensions\\reorder-rows\\bootstrap-table-reorder-rows.js",
+      "PackagePath": "staticwebassets\\js\\bootstrap-table\\extensions\\reorder-rows\\bootstrap-table-reorder-rows.js"
+    },
+    {
+      "Id": "C:\\Users\\Lenovo\\Desktop\\CSharp项目\\就业项目\\Plaza\\Plaza.Net.MVCAdmin\\wwwroot\\js\\bootstrap-table\\extensions\\reorder-rows\\bootstrap-table-reorder-rows.min.css",
+      "PackagePath": "staticwebassets\\js\\bootstrap-table\\extensions\\reorder-rows\\bootstrap-table-reorder-rows.min.css"
+    },
+    {
+      "Id": "C:\\Users\\Lenovo\\Desktop\\CSharp项目\\就业项目\\Plaza\\Plaza.Net.MVCAdmin\\wwwroot\\js\\bootstrap-table\\extensions\\reorder-rows\\bootstrap-table-reorder-rows.min.js",
+      "PackagePath": "staticwebassets\\js\\bootstrap-table\\extensions\\reorder-rows\\bootstrap-table-reorder-rows.min.js"
+    },
+    {
+      "Id": "C:\\Users\\Lenovo\\Desktop\\CSharp项目\\就业项目\\Plaza\\Plaza.Net.MVCAdmin\\wwwroot\\js\\bootstrap-table\\extensions\\resizable\\bootstrap-table-resizable.js",
+      "PackagePath": "staticwebassets\\js\\bootstrap-table\\extensions\\resizable\\bootstrap-table-resizable.js"
+    },
+    {
+      "Id": "C:\\Users\\Lenovo\\Desktop\\CSharp项目\\就业项目\\Plaza\\Plaza.Net.MVCAdmin\\wwwroot\\js\\bootstrap-table\\extensions\\resizable\\bootstrap-table-resizable.min.js",
+      "PackagePath": "staticwebassets\\js\\bootstrap-table\\extensions\\resizable\\bootstrap-table-resizable.min.js"
+    },
+    {
+      "Id": "C:\\Users\\Lenovo\\Desktop\\CSharp项目\\就业项目\\Plaza\\Plaza.Net.MVCAdmin\\wwwroot\\js\\bootstrap-table\\extensions\\sticky-header\\bootstrap-table-sticky-header.css",
+      "PackagePath": "staticwebassets\\js\\bootstrap-table\\extensions\\sticky-header\\bootstrap-table-sticky-header.css"
+    },
+    {
+      "Id": "C:\\Users\\Lenovo\\Desktop\\CSharp项目\\就业项目\\Plaza\\Plaza.Net.MVCAdmin\\wwwroot\\js\\bootstrap-table\\extensions\\sticky-header\\bootstrap-table-sticky-header.js",
+      "PackagePath": "staticwebassets\\js\\bootstrap-table\\extensions\\sticky-header\\bootstrap-table-sticky-header.js"
+    },
+    {
+      "Id": "C:\\Users\\Lenovo\\Desktop\\CSharp项目\\就业项目\\Plaza\\Plaza.Net.MVCAdmin\\wwwroot\\js\\bootstrap-table\\extensions\\sticky-header\\bootstrap-table-sticky-header.min.css",
+      "PackagePath": "staticwebassets\\js\\bootstrap-table\\extensions\\sticky-header\\bootstrap-table-sticky-header.min.css"
+    },
+    {
+      "Id": "C:\\Users\\Lenovo\\Desktop\\CSharp项目\\就业项目\\Plaza\\Plaza.Net.MVCAdmin\\wwwroot\\js\\bootstrap-table\\extensions\\sticky-header\\bootstrap-table-sticky-header.min.js",
+      "PackagePath": "staticwebassets\\js\\bootstrap-table\\extensions\\sticky-header\\bootstrap-table-sticky-header.min.js"
+    },
+    {
+      "Id": "C:\\Users\\Lenovo\\Desktop\\CSharp项目\\就业项目\\Plaza\\Plaza.Net.MVCAdmin\\wwwroot\\js\\bootstrap-table\\extensions\\toolbar\\bootstrap-table-toolbar.js",
+      "PackagePath": "staticwebassets\\js\\bootstrap-table\\extensions\\toolbar\\bootstrap-table-toolbar.js"
+    },
+    {
+      "Id": "C:\\Users\\Lenovo\\Desktop\\CSharp项目\\就业项目\\Plaza\\Plaza.Net.MVCAdmin\\wwwroot\\js\\bootstrap-table\\extensions\\toolbar\\bootstrap-table-toolbar.min.js",
+      "PackagePath": "staticwebassets\\js\\bootstrap-table\\extensions\\toolbar\\bootstrap-table-toolbar.min.js"
+    },
+    {
+      "Id": "C:\\Users\\Lenovo\\Desktop\\CSharp项目\\就业项目\\Plaza\\Plaza.Net.MVCAdmin\\wwwroot\\js\\bootstrap-table\\extensions\\treegrid\\bootstrap-table-treegrid.js",
+      "PackagePath": "staticwebassets\\js\\bootstrap-table\\extensions\\treegrid\\bootstrap-table-treegrid.js"
+    },
+    {
+      "Id": "C:\\Users\\Lenovo\\Desktop\\CSharp项目\\就业项目\\Plaza\\Plaza.Net.MVCAdmin\\wwwroot\\js\\bootstrap-table\\extensions\\treegrid\\bootstrap-table-treegrid.min.js",
+      "PackagePath": "staticwebassets\\js\\bootstrap-table\\extensions\\treegrid\\bootstrap-table-treegrid.min.js"
+    },
+    {
+      "Id": "C:\\Users\\Lenovo\\Desktop\\CSharp项目\\就业项目\\Plaza\\Plaza.Net.MVCAdmin\\wwwroot\\js\\bootstrap-table\\extensions\\treegrid\\jquery-treegrid\\css\\jquery.treegrid.min.css",
+      "PackagePath": "staticwebassets\\js\\bootstrap-table\\extensions\\treegrid\\jquery-treegrid\\css\\jquery.treegrid.min.css"
+    },
+    {
+      "Id": "C:\\Users\\Lenovo\\Desktop\\CSharp项目\\就业项目\\Plaza\\Plaza.Net.MVCAdmin\\wwwroot\\js\\bootstrap-table\\extensions\\treegrid\\jquery-treegrid\\js\\jquery.treegrid.min.js",
+      "PackagePath": "staticwebassets\\js\\bootstrap-table\\extensions\\treegrid\\jquery-treegrid\\js\\jquery.treegrid.min.js"
+    },
+    {
+      "Id": "C:\\Users\\Lenovo\\Desktop\\CSharp项目\\就业项目\\Plaza\\Plaza.Net.MVCAdmin\\wwwroot\\js\\bootstrap-table\\locale\\bootstrap-table-en-US.js",
+      "PackagePath": "staticwebassets\\js\\bootstrap-table\\locale\\bootstrap-table-en-US.js"
+    },
+    {
+      "Id": "C:\\Users\\Lenovo\\Desktop\\CSharp项目\\就业项目\\Plaza\\Plaza.Net.MVCAdmin\\wwwroot\\js\\bootstrap-table\\locale\\bootstrap-table-en-US.min.js",
+      "PackagePath": "staticwebassets\\js\\bootstrap-table\\locale\\bootstrap-table-en-US.min.js"
+    },
+    {
+      "Id": "C:\\Users\\Lenovo\\Desktop\\CSharp项目\\就业项目\\Plaza\\Plaza.Net.MVCAdmin\\wwwroot\\js\\bootstrap-table\\locale\\bootstrap-table-zh-CN.js",
+      "PackagePath": "staticwebassets\\js\\bootstrap-table\\locale\\bootstrap-table-zh-CN.js"
+    },
+    {
+      "Id": "C:\\Users\\Lenovo\\Desktop\\CSharp项目\\就业项目\\Plaza\\Plaza.Net.MVCAdmin\\wwwroot\\js\\bootstrap-table\\locale\\bootstrap-table-zh-CN.min.js",
+      "PackagePath": "staticwebassets\\js\\bootstrap-table\\locale\\bootstrap-table-zh-CN.min.js"
+    },
+    {
+      "Id": "C:\\Users\\Lenovo\\Desktop\\CSharp项目\\就业项目\\Plaza\\Plaza.Net.MVCAdmin\\wwwroot\\js\\bootstrap-table\\themes\\bootstrap-table\\bootstrap-table.css",
+      "PackagePath": "staticwebassets\\js\\bootstrap-table\\themes\\bootstrap-table\\bootstrap-table.css"
+    },
+    {
+      "Id": "C:\\Users\\Lenovo\\Desktop\\CSharp项目\\就业项目\\Plaza\\Plaza.Net.MVCAdmin\\wwwroot\\js\\bootstrap-table\\themes\\bootstrap-table\\bootstrap-table.js",
+      "PackagePath": "staticwebassets\\js\\bootstrap-table\\themes\\bootstrap-table\\bootstrap-table.js"
+    },
+    {
+      "Id": "C:\\Users\\Lenovo\\Desktop\\CSharp项目\\就业项目\\Plaza\\Plaza.Net.MVCAdmin\\wwwroot\\js\\bootstrap-table\\themes\\bootstrap-table\\bootstrap-table.min.css",
+      "PackagePath": "staticwebassets\\js\\bootstrap-table\\themes\\bootstrap-table\\bootstrap-table.min.css"
+    },
+    {
+      "Id": "C:\\Users\\Lenovo\\Desktop\\CSharp项目\\就业项目\\Plaza\\Plaza.Net.MVCAdmin\\wwwroot\\js\\bootstrap-table\\themes\\bootstrap-table\\bootstrap-table.min.js",
+      "PackagePath": "staticwebassets\\js\\bootstrap-table\\themes\\bootstrap-table\\bootstrap-table.min.js"
+    },
+    {
+      "Id": "C:\\Users\\Lenovo\\Desktop\\CSharp项目\\就业项目\\Plaza\\Plaza.Net.MVCAdmin\\wwwroot\\js\\bootstrap-table\\themes\\bootstrap-table\\fonts\\bootstrap-table.eot",
+      "PackagePath": "staticwebassets\\js\\bootstrap-table\\themes\\bootstrap-table\\fonts\\bootstrap-table.eot"
+    },
+    {
+      "Id": "C:\\Users\\Lenovo\\Desktop\\CSharp项目\\就业项目\\Plaza\\Plaza.Net.MVCAdmin\\wwwroot\\js\\bootstrap-table\\themes\\bootstrap-table\\fonts\\bootstrap-table.svg",
+      "PackagePath": "staticwebassets\\js\\bootstrap-table\\themes\\bootstrap-table\\fonts\\bootstrap-table.svg"
+    },
+    {
+      "Id": "C:\\Users\\Lenovo\\Desktop\\CSharp项目\\就业项目\\Plaza\\Plaza.Net.MVCAdmin\\wwwroot\\js\\bootstrap-table\\themes\\bootstrap-table\\fonts\\bootstrap-table.ttf",
+      "PackagePath": "staticwebassets\\js\\bootstrap-table\\themes\\bootstrap-table\\fonts\\bootstrap-table.ttf"
+    },
+    {
+      "Id": "C:\\Users\\Lenovo\\Desktop\\CSharp项目\\就业项目\\Plaza\\Plaza.Net.MVCAdmin\\wwwroot\\js\\bootstrap-table\\themes\\bootstrap-table\\fonts\\bootstrap-table.woff",
+      "PackagePath": "staticwebassets\\js\\bootstrap-table\\themes\\bootstrap-table\\fonts\\bootstrap-table.woff"
+    },
+    {
+      "Id": "C:\\Users\\Lenovo\\Desktop\\CSharp项目\\就业项目\\Plaza\\Plaza.Net.MVCAdmin\\wwwroot\\js\\bootstrap-table\\themes\\bulma\\bootstrap-table-bulma.css",
+      "PackagePath": "staticwebassets\\js\\bootstrap-table\\themes\\bulma\\bootstrap-table-bulma.css"
+    },
+    {
+      "Id": "C:\\Users\\Lenovo\\Desktop\\CSharp项目\\就业项目\\Plaza\\Plaza.Net.MVCAdmin\\wwwroot\\js\\bootstrap-table\\themes\\bulma\\bootstrap-table-bulma.js",
+      "PackagePath": "staticwebassets\\js\\bootstrap-table\\themes\\bulma\\bootstrap-table-bulma.js"
+    },
+    {
+      "Id": "C:\\Users\\Lenovo\\Desktop\\CSharp项目\\就业项目\\Plaza\\Plaza.Net.MVCAdmin\\wwwroot\\js\\bootstrap-table\\themes\\bulma\\bootstrap-table-bulma.min.css",
+      "PackagePath": "staticwebassets\\js\\bootstrap-table\\themes\\bulma\\bootstrap-table-bulma.min.css"
+    },
+    {
+      "Id": "C:\\Users\\Lenovo\\Desktop\\CSharp项目\\就业项目\\Plaza\\Plaza.Net.MVCAdmin\\wwwroot\\js\\bootstrap-table\\themes\\bulma\\bootstrap-table-bulma.min.js",
+      "PackagePath": "staticwebassets\\js\\bootstrap-table\\themes\\bulma\\bootstrap-table-bulma.min.js"
+    },
+    {
+      "Id": "C:\\Users\\Lenovo\\Desktop\\CSharp项目\\就业项目\\Plaza\\Plaza.Net.MVCAdmin\\wwwroot\\js\\bootstrap-table\\themes\\foundation\\bootstrap-table-foundation.css",
+      "PackagePath": "staticwebassets\\js\\bootstrap-table\\themes\\foundation\\bootstrap-table-foundation.css"
+    },
+    {
+      "Id": "C:\\Users\\Lenovo\\Desktop\\CSharp项目\\就业项目\\Plaza\\Plaza.Net.MVCAdmin\\wwwroot\\js\\bootstrap-table\\themes\\foundation\\bootstrap-table-foundation.js",
+      "PackagePath": "staticwebassets\\js\\bootstrap-table\\themes\\foundation\\bootstrap-table-foundation.js"
+    },
+    {
+      "Id": "C:\\Users\\Lenovo\\Desktop\\CSharp项目\\就业项目\\Plaza\\Plaza.Net.MVCAdmin\\wwwroot\\js\\bootstrap-table\\themes\\foundation\\bootstrap-table-foundation.min.css",
+      "PackagePath": "staticwebassets\\js\\bootstrap-table\\themes\\foundation\\bootstrap-table-foundation.min.css"
+    },
+    {
+      "Id": "C:\\Users\\Lenovo\\Desktop\\CSharp项目\\就业项目\\Plaza\\Plaza.Net.MVCAdmin\\wwwroot\\js\\bootstrap-table\\themes\\foundation\\bootstrap-table-foundation.min.js",
+      "PackagePath": "staticwebassets\\js\\bootstrap-table\\themes\\foundation\\bootstrap-table-foundation.min.js"
+    },
+    {
+      "Id": "C:\\Users\\Lenovo\\Desktop\\CSharp项目\\就业项目\\Plaza\\Plaza.Net.MVCAdmin\\wwwroot\\js\\bootstrap-table\\themes\\materialize\\bootstrap-table-materialize.css",
+      "PackagePath": "staticwebassets\\js\\bootstrap-table\\themes\\materialize\\bootstrap-table-materialize.css"
+    },
+    {
+      "Id": "C:\\Users\\Lenovo\\Desktop\\CSharp项目\\就业项目\\Plaza\\Plaza.Net.MVCAdmin\\wwwroot\\js\\bootstrap-table\\themes\\materialize\\bootstrap-table-materialize.js",
+      "PackagePath": "staticwebassets\\js\\bootstrap-table\\themes\\materialize\\bootstrap-table-materialize.js"
+    },
+    {
+      "Id": "C:\\Users\\Lenovo\\Desktop\\CSharp项目\\就业项目\\Plaza\\Plaza.Net.MVCAdmin\\wwwroot\\js\\bootstrap-table\\themes\\materialize\\bootstrap-table-materialize.min.css",
+      "PackagePath": "staticwebassets\\js\\bootstrap-table\\themes\\materialize\\bootstrap-table-materialize.min.css"
+    },
+    {
+      "Id": "C:\\Users\\Lenovo\\Desktop\\CSharp项目\\就业项目\\Plaza\\Plaza.Net.MVCAdmin\\wwwroot\\js\\bootstrap-table\\themes\\materialize\\bootstrap-table-materialize.min.js",
+      "PackagePath": "staticwebassets\\js\\bootstrap-table\\themes\\materialize\\bootstrap-table-materialize.min.js"
+    },
+    {
+      "Id": "C:\\Users\\Lenovo\\Desktop\\CSharp项目\\就业项目\\Plaza\\Plaza.Net.MVCAdmin\\wwwroot\\js\\bootstrap-table\\themes\\semantic\\bootstrap-table-semantic.css",
+      "PackagePath": "staticwebassets\\js\\bootstrap-table\\themes\\semantic\\bootstrap-table-semantic.css"
+    },
+    {
+      "Id": "C:\\Users\\Lenovo\\Desktop\\CSharp项目\\就业项目\\Plaza\\Plaza.Net.MVCAdmin\\wwwroot\\js\\bootstrap-table\\themes\\semantic\\bootstrap-table-semantic.js",
+      "PackagePath": "staticwebassets\\js\\bootstrap-table\\themes\\semantic\\bootstrap-table-semantic.js"
+    },
+    {
+      "Id": "C:\\Users\\Lenovo\\Desktop\\CSharp项目\\就业项目\\Plaza\\Plaza.Net.MVCAdmin\\wwwroot\\js\\bootstrap-table\\themes\\semantic\\bootstrap-table-semantic.min.css",
+      "PackagePath": "staticwebassets\\js\\bootstrap-table\\themes\\semantic\\bootstrap-table-semantic.min.css"
+    },
+    {
+      "Id": "C:\\Users\\Lenovo\\Desktop\\CSharp项目\\就业项目\\Plaza\\Plaza.Net.MVCAdmin\\wwwroot\\js\\bootstrap-table\\themes\\semantic\\bootstrap-table-semantic.min.js",
+      "PackagePath": "staticwebassets\\js\\bootstrap-table\\themes\\semantic\\bootstrap-table-semantic.min.js"
+    },
+    {
+      "Id": "C:\\Users\\Lenovo\\Desktop\\CSharp项目\\就业项目\\Plaza\\Plaza.Net.MVCAdmin\\wwwroot\\js\\bootstrap.min.js",
+      "PackagePath": "staticwebassets\\js\\bootstrap.min.js"
+    },
+    {
+      "Id": "C:\\Users\\Lenovo\\Desktop\\CSharp项目\\就业项目\\Plaza\\Plaza.Net.MVCAdmin\\wwwroot\\js\\card-reload.txt",
+      "PackagePath": "staticwebassets\\js\\card-reload.txt"
+    },
+    {
+      "Id": "C:\\Users\\Lenovo\\Desktop\\CSharp项目\\就业项目\\Plaza\\Plaza.Net.MVCAdmin\\wwwroot\\js\\chart.min.js",
+      "PackagePath": "staticwebassets\\js\\chart.min.js"
+    },
+    {
+      "Id": "C:\\Users\\Lenovo\\Desktop\\CSharp项目\\就业项目\\Plaza\\Plaza.Net.MVCAdmin\\wwwroot\\js\\index.min.js",
+      "PackagePath": "staticwebassets\\js\\index.min.js"
+    },
+    {
+      "Id": "C:\\Users\\Lenovo\\Desktop\\CSharp项目\\就业项目\\Plaza\\Plaza.Net.MVCAdmin\\wwwroot\\js\\jquery.bootstrap.wizard.min.js",
+      "PackagePath": "staticwebassets\\js\\jquery.bootstrap.wizard.min.js"
+    },
+    {
+      "Id": "C:\\Users\\Lenovo\\Desktop\\CSharp项目\\就业项目\\Plaza\\Plaza.Net.MVCAdmin\\wwwroot\\js\\jquery.cookie.min.js",
+      "PackagePath": "staticwebassets\\js\\jquery.cookie.min.js"
+    },
+    {
+      "Id": "C:\\Users\\Lenovo\\Desktop\\CSharp项目\\就业项目\\Plaza\\Plaza.Net.MVCAdmin\\wwwroot\\js\\jquery.min.js",
+      "PackagePath": "staticwebassets\\js\\jquery.min.js"
+    },
+    {
+      "Id": "C:\\Users\\Lenovo\\Desktop\\CSharp项目\\就业项目\\Plaza\\Plaza.Net.MVCAdmin\\wwwroot\\js\\lyear-loading.js",
+      "PackagePath": "staticwebassets\\js\\lyear-loading.js"
+    },
+    {
+      "Id": "C:\\Users\\Lenovo\\Desktop\\CSharp项目\\就业项目\\Plaza\\Plaza.Net.MVCAdmin\\wwwroot\\js\\main.min.js",
+      "PackagePath": "staticwebassets\\js\\main.min.js"
+    },
+    {
+      "Id": "C:\\Users\\Lenovo\\Desktop\\CSharp项目\\就业项目\\Plaza\\Plaza.Net.MVCAdmin\\wwwroot\\js\\perfect-scrollbar.min.js",
+      "PackagePath": "staticwebassets\\js\\perfect-scrollbar.min.js"
+    },
+    {
+      "Id": "C:\\Users\\Lenovo\\Desktop\\CSharp项目\\就业项目\\Plaza\\Plaza.Net.MVCAdmin\\wwwroot\\js\\popper.min.js",
+      "PackagePath": "staticwebassets\\js\\popper.min.js"
+    },
+    {
+      "Id": "C:\\Users\\Lenovo\\Desktop\\CSharp项目\\就业项目\\Plaza\\Plaza.Net.MVCAdmin\\wwwroot\\js\\scroll-numbers.js",
+      "PackagePath": "staticwebassets\\js\\scroll-numbers.js"
+    },
+    {
+      "Id": "C:\\Users\\Lenovo\\Desktop\\CSharp项目\\就业项目\\Plaza\\Plaza.Net.MVCAdmin\\wwwroot\\js\\tableexport\\js\\FileSaver.min.js",
+      "PackagePath": "staticwebassets\\js\\tableexport\\js\\FileSaver.min.js"
+    },
+    {
+      "Id": "C:\\Users\\Lenovo\\Desktop\\CSharp项目\\就业项目\\Plaza\\Plaza.Net.MVCAdmin\\wwwroot\\js\\tableexport\\js\\html2canvas.min.js",
+      "PackagePath": "staticwebassets\\js\\tableexport\\js\\html2canvas.min.js"
+    },
+    {
+      "Id": "C:\\Users\\Lenovo\\Desktop\\CSharp项目\\就业项目\\Plaza\\Plaza.Net.MVCAdmin\\wwwroot\\js\\tableexport\\js\\jspdf.min.js",
+      "PackagePath": "staticwebassets\\js\\tableexport\\js\\jspdf.min.js"
+    },
+    {
+      "Id": "C:\\Users\\Lenovo\\Desktop\\CSharp项目\\就业项目\\Plaza\\Plaza.Net.MVCAdmin\\wwwroot\\js\\tableexport\\js\\jspdf.plugin.autotable.js",
+      "PackagePath": "staticwebassets\\js\\tableexport\\js\\jspdf.plugin.autotable.js"
+    },
+    {
+      "Id": "C:\\Users\\Lenovo\\Desktop\\CSharp项目\\就业项目\\Plaza\\Plaza.Net.MVCAdmin\\wwwroot\\js\\tableexport\\js\\polyfills.umd.min.js",
+      "PackagePath": "staticwebassets\\js\\tableexport\\js\\polyfills.umd.min.js"
+    },
+    {
+      "Id": "C:\\Users\\Lenovo\\Desktop\\CSharp项目\\就业项目\\Plaza\\Plaza.Net.MVCAdmin\\wwwroot\\js\\tableexport\\js\\tableexport.min.js",
+      "PackagePath": "staticwebassets\\js\\tableexport\\js\\tableexport.min.js"
+    },
+    {
+      "Id": "C:\\Users\\Lenovo\\Desktop\\CSharp项目\\就业项目\\Plaza\\Plaza.Net.MVCAdmin\\wwwroot\\js\\tableexport\\js\\xlsx.core.min.js",
+      "PackagePath": "staticwebassets\\js\\tableexport\\js\\xlsx.core.min.js"
+    },
+    {
+      "Id": "C:\\Users\\Lenovo\\Desktop\\CSharp项目\\就业项目\\Plaza\\Plaza.Net.MVCAdmin\\wwwroot\\js\\toast.js",
+      "PackagePath": "staticwebassets\\js\\toast.js"
+    },
+    {
+      "Id": "C:\\Users\\Lenovo\\Desktop\\CSharp项目\\就业项目\\Plaza\\Plaza.Net.MVCAdmin\\wwwroot\\js\\zTree\\css\\awesomeStyle\\awesome.css",
+      "PackagePath": "staticwebassets\\js\\zTree\\css\\awesomeStyle\\awesome.css"
+    },
+    {
+      "Id": "C:\\Users\\Lenovo\\Desktop\\CSharp项目\\就业项目\\Plaza\\Plaza.Net.MVCAdmin\\wwwroot\\js\\zTree\\css\\awesomeStyle\\awesome.less",
+      "PackagePath": "staticwebassets\\js\\zTree\\css\\awesomeStyle\\awesome.less"
+    },
+    {
+      "Id": "C:\\Users\\Lenovo\\Desktop\\CSharp项目\\就业项目\\Plaza\\Plaza.Net.MVCAdmin\\wwwroot\\js\\zTree\\css\\awesomeStyle\\fa.less",
+      "PackagePath": "staticwebassets\\js\\zTree\\css\\awesomeStyle\\fa.less"
+    },
+    {
+      "Id": "C:\\Users\\Lenovo\\Desktop\\CSharp项目\\就业项目\\Plaza\\Plaza.Net.MVCAdmin\\wwwroot\\js\\zTree\\css\\awesomeStyle\\img\\loading.gif",
+      "PackagePath": "staticwebassets\\js\\zTree\\css\\awesomeStyle\\img\\loading.gif"
+    },
+    {
+      "Id": "C:\\Users\\Lenovo\\Desktop\\CSharp项目\\就业项目\\Plaza\\Plaza.Net.MVCAdmin\\wwwroot\\js\\zTree\\css\\demo.css",
+      "PackagePath": "staticwebassets\\js\\zTree\\css\\demo.css"
+    },
+    {
+      "Id": "C:\\Users\\Lenovo\\Desktop\\CSharp项目\\就业项目\\Plaza\\Plaza.Net.MVCAdmin\\wwwroot\\js\\zTree\\css\\metroStyle\\img\\line_conn.png",
+      "PackagePath": "staticwebassets\\js\\zTree\\css\\metroStyle\\img\\line_conn.png"
+    },
+    {
+      "Id": "C:\\Users\\Lenovo\\Desktop\\CSharp项目\\就业项目\\Plaza\\Plaza.Net.MVCAdmin\\wwwroot\\js\\zTree\\css\\metroStyle\\img\\loading.gif",
+      "PackagePath": "staticwebassets\\js\\zTree\\css\\metroStyle\\img\\loading.gif"
+    },
+    {
+      "Id": "C:\\Users\\Lenovo\\Desktop\\CSharp项目\\就业项目\\Plaza\\Plaza.Net.MVCAdmin\\wwwroot\\js\\zTree\\css\\metroStyle\\img\\metro.gif",
+      "PackagePath": "staticwebassets\\js\\zTree\\css\\metroStyle\\img\\metro.gif"
+    },
+    {
+      "Id": "C:\\Users\\Lenovo\\Desktop\\CSharp项目\\就业项目\\Plaza\\Plaza.Net.MVCAdmin\\wwwroot\\js\\zTree\\css\\metroStyle\\img\\metro.png",
+      "PackagePath": "staticwebassets\\js\\zTree\\css\\metroStyle\\img\\metro.png"
+    },
+    {
+      "Id": "C:\\Users\\Lenovo\\Desktop\\CSharp项目\\就业项目\\Plaza\\Plaza.Net.MVCAdmin\\wwwroot\\js\\zTree\\css\\metroStyle\\metroStyle.css",
+      "PackagePath": "staticwebassets\\js\\zTree\\css\\metroStyle\\metroStyle.css"
+    },
+    {
+      "Id": "C:\\Users\\Lenovo\\Desktop\\CSharp项目\\就业项目\\Plaza\\Plaza.Net.MVCAdmin\\wwwroot\\js\\zTree\\css\\zTreeStyle\\img\\diy\\1_close.png",
+      "PackagePath": "staticwebassets\\js\\zTree\\css\\zTreeStyle\\img\\diy\\1_close.png"
+    },
+    {
+      "Id": "C:\\Users\\Lenovo\\Desktop\\CSharp项目\\就业项目\\Plaza\\Plaza.Net.MVCAdmin\\wwwroot\\js\\zTree\\css\\zTreeStyle\\img\\diy\\1_open.png",
+      "PackagePath": "staticwebassets\\js\\zTree\\css\\zTreeStyle\\img\\diy\\1_open.png"
+    },
+    {
+      "Id": "C:\\Users\\Lenovo\\Desktop\\CSharp项目\\就业项目\\Plaza\\Plaza.Net.MVCAdmin\\wwwroot\\js\\zTree\\css\\zTreeStyle\\img\\diy\\2.png",
+      "PackagePath": "staticwebassets\\js\\zTree\\css\\zTreeStyle\\img\\diy\\2.png"
+    },
+    {
+      "Id": "C:\\Users\\Lenovo\\Desktop\\CSharp项目\\就业项目\\Plaza\\Plaza.Net.MVCAdmin\\wwwroot\\js\\zTree\\css\\zTreeStyle\\img\\diy\\3.png",
+      "PackagePath": "staticwebassets\\js\\zTree\\css\\zTreeStyle\\img\\diy\\3.png"
+    },
+    {
+      "Id": "C:\\Users\\Lenovo\\Desktop\\CSharp项目\\就业项目\\Plaza\\Plaza.Net.MVCAdmin\\wwwroot\\js\\zTree\\css\\zTreeStyle\\img\\diy\\4.png",
+      "PackagePath": "staticwebassets\\js\\zTree\\css\\zTreeStyle\\img\\diy\\4.png"
+    },
+    {
+      "Id": "C:\\Users\\Lenovo\\Desktop\\CSharp项目\\就业项目\\Plaza\\Plaza.Net.MVCAdmin\\wwwroot\\js\\zTree\\css\\zTreeStyle\\img\\diy\\5.png",
+      "PackagePath": "staticwebassets\\js\\zTree\\css\\zTreeStyle\\img\\diy\\5.png"
+    },
+    {
+      "Id": "C:\\Users\\Lenovo\\Desktop\\CSharp项目\\就业项目\\Plaza\\Plaza.Net.MVCAdmin\\wwwroot\\js\\zTree\\css\\zTreeStyle\\img\\diy\\6.png",
+      "PackagePath": "staticwebassets\\js\\zTree\\css\\zTreeStyle\\img\\diy\\6.png"
+    },
+    {
+      "Id": "C:\\Users\\Lenovo\\Desktop\\CSharp项目\\就业项目\\Plaza\\Plaza.Net.MVCAdmin\\wwwroot\\js\\zTree\\css\\zTreeStyle\\img\\diy\\7.png",
+      "PackagePath": "staticwebassets\\js\\zTree\\css\\zTreeStyle\\img\\diy\\7.png"
+    },
+    {
+      "Id": "C:\\Users\\Lenovo\\Desktop\\CSharp项目\\就业项目\\Plaza\\Plaza.Net.MVCAdmin\\wwwroot\\js\\zTree\\css\\zTreeStyle\\img\\diy\\8.png",
+      "PackagePath": "staticwebassets\\js\\zTree\\css\\zTreeStyle\\img\\diy\\8.png"
+    },
+    {
+      "Id": "C:\\Users\\Lenovo\\Desktop\\CSharp项目\\就业项目\\Plaza\\Plaza.Net.MVCAdmin\\wwwroot\\js\\zTree\\css\\zTreeStyle\\img\\diy\\9.png",
+      "PackagePath": "staticwebassets\\js\\zTree\\css\\zTreeStyle\\img\\diy\\9.png"
+    },
+    {
+      "Id": "C:\\Users\\Lenovo\\Desktop\\CSharp项目\\就业项目\\Plaza\\Plaza.Net.MVCAdmin\\wwwroot\\js\\zTree\\css\\zTreeStyle\\img\\line_conn.gif",
+      "PackagePath": "staticwebassets\\js\\zTree\\css\\zTreeStyle\\img\\line_conn.gif"
+    },
+    {
+      "Id": "C:\\Users\\Lenovo\\Desktop\\CSharp项目\\就业项目\\Plaza\\Plaza.Net.MVCAdmin\\wwwroot\\js\\zTree\\css\\zTreeStyle\\img\\loading.gif",
+      "PackagePath": "staticwebassets\\js\\zTree\\css\\zTreeStyle\\img\\loading.gif"
+    },
+    {
+      "Id": "C:\\Users\\Lenovo\\Desktop\\CSharp项目\\就业项目\\Plaza\\Plaza.Net.MVCAdmin\\wwwroot\\js\\zTree\\css\\zTreeStyle\\img\\zTreeStandard.gif",
+      "PackagePath": "staticwebassets\\js\\zTree\\css\\zTreeStyle\\img\\zTreeStandard.gif"
+    },
+    {
+      "Id": "C:\\Users\\Lenovo\\Desktop\\CSharp项目\\就业项目\\Plaza\\Plaza.Net.MVCAdmin\\wwwroot\\js\\zTree\\css\\zTreeStyle\\img\\zTreeStandard.png",
+      "PackagePath": "staticwebassets\\js\\zTree\\css\\zTreeStyle\\img\\zTreeStandard.png"
+    },
+    {
+      "Id": "C:\\Users\\Lenovo\\Desktop\\CSharp项目\\就业项目\\Plaza\\Plaza.Net.MVCAdmin\\wwwroot\\js\\zTree\\css\\zTreeStyle\\zTreeStyle.css",
+      "PackagePath": "staticwebassets\\js\\zTree\\css\\zTreeStyle\\zTreeStyle.css"
+    },
+    {
+      "Id": "C:\\Users\\Lenovo\\Desktop\\CSharp项目\\就业项目\\Plaza\\Plaza.Net.MVCAdmin\\wwwroot\\js\\zTree\\js\\jquery-1.4.4.min.js",
+      "PackagePath": "staticwebassets\\js\\zTree\\js\\jquery-1.4.4.min.js"
+    },
+    {
+      "Id": "C:\\Users\\Lenovo\\Desktop\\CSharp项目\\就业项目\\Plaza\\Plaza.Net.MVCAdmin\\wwwroot\\js\\zTree\\js\\jquery.ztree.all.js",
+      "PackagePath": "staticwebassets\\js\\zTree\\js\\jquery.ztree.all.js"
+    },
+    {
+      "Id": "C:\\Users\\Lenovo\\Desktop\\CSharp项目\\就业项目\\Plaza\\Plaza.Net.MVCAdmin\\wwwroot\\js\\zTree\\js\\jquery.ztree.all.min.js",
+      "PackagePath": "staticwebassets\\js\\zTree\\js\\jquery.ztree.all.min.js"
+    },
+    {
+      "Id": "C:\\Users\\Lenovo\\Desktop\\CSharp项目\\就业项目\\Plaza\\Plaza.Net.MVCAdmin\\wwwroot\\js\\zTree\\js\\jquery.ztree.core.js",
+      "PackagePath": "staticwebassets\\js\\zTree\\js\\jquery.ztree.core.js"
+    },
+    {
+      "Id": "C:\\Users\\Lenovo\\Desktop\\CSharp项目\\就业项目\\Plaza\\Plaza.Net.MVCAdmin\\wwwroot\\js\\zTree\\js\\jquery.ztree.core.min.js",
+      "PackagePath": "staticwebassets\\js\\zTree\\js\\jquery.ztree.core.min.js"
+    },
+    {
+      "Id": "C:\\Users\\Lenovo\\Desktop\\CSharp项目\\就业项目\\Plaza\\Plaza.Net.MVCAdmin\\wwwroot\\js\\zTree\\js\\jquery.ztree.excheck.js",
+      "PackagePath": "staticwebassets\\js\\zTree\\js\\jquery.ztree.excheck.js"
+    },
+    {
+      "Id": "C:\\Users\\Lenovo\\Desktop\\CSharp项目\\就业项目\\Plaza\\Plaza.Net.MVCAdmin\\wwwroot\\js\\zTree\\js\\jquery.ztree.excheck.min.js",
+      "PackagePath": "staticwebassets\\js\\zTree\\js\\jquery.ztree.excheck.min.js"
+    },
+    {
+      "Id": "C:\\Users\\Lenovo\\Desktop\\CSharp项目\\就业项目\\Plaza\\Plaza.Net.MVCAdmin\\wwwroot\\js\\zTree\\js\\jquery.ztree.exedit.js",
+      "PackagePath": "staticwebassets\\js\\zTree\\js\\jquery.ztree.exedit.js"
+    },
+    {
+      "Id": "C:\\Users\\Lenovo\\Desktop\\CSharp项目\\就业项目\\Plaza\\Plaza.Net.MVCAdmin\\wwwroot\\js\\zTree\\js\\jquery.ztree.exedit.min.js",
+      "PackagePath": "staticwebassets\\js\\zTree\\js\\jquery.ztree.exedit.min.js"
+    },
+    {
+      "Id": "C:\\Users\\Lenovo\\Desktop\\CSharp项目\\就业项目\\Plaza\\Plaza.Net.MVCAdmin\\wwwroot\\js\\zTree\\js\\jquery.ztree.exhide.js",
+      "PackagePath": "staticwebassets\\js\\zTree\\js\\jquery.ztree.exhide.js"
+    },
+    {
+      "Id": "C:\\Users\\Lenovo\\Desktop\\CSharp项目\\就业项目\\Plaza\\Plaza.Net.MVCAdmin\\wwwroot\\js\\zTree\\js\\jquery.ztree.exhide.min.js",
+      "PackagePath": "staticwebassets\\js\\zTree\\js\\jquery.ztree.exhide.min.js"
+    },
+    {
+      "Id": "C:\\Users\\Lenovo\\Desktop\\CSharp项目\\就业项目\\Plaza\\Plaza.Net.MVCAdmin\\wwwroot\\uploads\\images\\06476d9c-1b85-4263-9f51-1a97b6c50af5.jpg",
+      "PackagePath": "staticwebassets\\uploads\\images\\06476d9c-1b85-4263-9f51-1a97b6c50af5.jpg"
+    },
+    {
+      "Id": "C:\\Users\\Lenovo\\Desktop\\CSharp项目\\就业项目\\Plaza\\Plaza.Net.MVCAdmin\\wwwroot\\uploads\\images\\9106ec3b-f4b7-45ae-93ee-5b80fcf6d35f.jpg",
+      "PackagePath": "staticwebassets\\uploads\\images\\9106ec3b-f4b7-45ae-93ee-5b80fcf6d35f.jpg"
+    },
+    {
+      "Id": "C:\\Users\\Lenovo\\Desktop\\CSharp项目\\就业项目\\Plaza\\Plaza.Net.MVCAdmin\\wwwroot\\uploads\\images\\9463be2c-6e35-4868-96a5-9332505b6b39.png",
+      "PackagePath": "staticwebassets\\uploads\\images\\9463be2c-6e35-4868-96a5-9332505b6b39.png"
+    },
+    {
+      "Id": "C:\\Users\\Lenovo\\Desktop\\CSharp项目\\就业项目\\Plaza\\Plaza.Net.MVCAdmin\\wwwroot\\uploads\\images\\b32f8c7d-be4e-45fd-a572-f89992ea9faf.png",
+      "PackagePath": "staticwebassets\\uploads\\images\\b32f8c7d-be4e-45fd-a572-f89992ea9faf.png"
+    },
+    {
+      "Id": "C:\\Users\\Lenovo\\Desktop\\CSharp项目\\就业项目\\Plaza\\Plaza.Net.MVCAdmin\\wwwroot\\uploads\\images\\e8e2096e-af3b-4aa5-82bc-500737b877fe.png",
+      "PackagePath": "staticwebassets\\uploads\\images\\e8e2096e-af3b-4aa5-82bc-500737b877fe.png"
+    },
+    {
+      "Id": "obj\\Release\\net6.0\\staticwebassets\\msbuild.Plaza.Net.MVCAdmin.Microsoft.AspNetCore.StaticWebAssetEndpoints.props",
+      "PackagePath": "build\\Microsoft.AspNetCore.StaticWebAssetEndpoints.props"
+    },
+    {
+      "Id": "obj\\Release\\net6.0\\staticwebassets\\msbuild.Plaza.Net.MVCAdmin.Microsoft.AspNetCore.StaticWebAssets.props",
+      "PackagePath": "build\\Microsoft.AspNetCore.StaticWebAssets.props"
+    },
+    {
+      "Id": "obj\\Release\\net6.0\\staticwebassets\\msbuild.build.Plaza.Net.MVCAdmin.props",
+      "PackagePath": "build\\Plaza.Net.MVCAdmin.props"
+    },
+    {
+      "Id": "obj\\Release\\net6.0\\staticwebassets\\msbuild.buildMultiTargeting.Plaza.Net.MVCAdmin.props",
+      "PackagePath": "buildMultiTargeting\\Plaza.Net.MVCAdmin.props"
+    },
+    {
+      "Id": "obj\\Release\\net6.0\\staticwebassets\\msbuild.buildTransitive.Plaza.Net.MVCAdmin.props",
+      "PackagePath": "buildTransitive\\Plaza.Net.MVCAdmin.props"
+    }
+  ],
+  "ElementsToRemove": []
+}

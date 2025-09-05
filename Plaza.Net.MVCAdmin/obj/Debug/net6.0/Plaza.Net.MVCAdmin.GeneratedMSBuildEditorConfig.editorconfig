@@ -1,0 +1,181 @@
+is_global = true
+build_property.TargetFramework = net6.0
+build_property.TargetPlatformMinVersion = 
+build_property.UsingMicrosoftNETSdkWeb = true
+build_property.ProjectTypeGuids = 
+build_property.InvariantGlobalization = 
+build_property.PlatformNeutralAssembly = 
+build_property.EnforceExtendedAnalyzerRules = 
+build_property._SupportedPlatformList = Linux,macOS,Windows
+build_property.RootNamespace = Plaza.Net.MVCAdmin
+build_property.RootNamespace = Plaza.Net.MVCAdmin
+build_property.ProjectDir = C:\Users\Lenovo\Desktop\CSharp项目\就业项目\Plaza\Plaza.Net.MVCAdmin\
+build_property.EnableComHosting = 
+build_property.EnableGeneratedComInterfaceComImportInterop = 
+build_property.RazorLangVersion = 6.0
+build_property.SupportLocalizedComponentNames = 
+build_property.GenerateRazorMetadataSourceChecksumAttributes = 
+build_property.MSBuildProjectDirectory = C:\Users\Lenovo\Desktop\CSharp项目\就业项目\Plaza\Plaza.Net.MVCAdmin
+build_property._RazorSourceGeneratorDebug = 
+build_property.EffectiveAnalysisLevelStyle = 6.0
+build_property.EnableCodeStyleSeverity = 
+
+[C:/Users/Lenovo/Desktop/CSharp项目/就业项目/Plaza/Plaza.Net.MVCAdmin/Views/Authorize/Coding.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQXV0aG9yaXplXENvZGluZy5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Lenovo/Desktop/CSharp项目/就业项目/Plaza/Plaza.Net.MVCAdmin/Views/Authorize/Error.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQXV0aG9yaXplXEVycm9yLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Lenovo/Desktop/CSharp项目/就业项目/Plaza/Plaza.Net.MVCAdmin/Views/Authorize/ForgotPassword.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQXV0aG9yaXplXEZvcmdvdFBhc3N3b3JkLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Lenovo/Desktop/CSharp项目/就业项目/Plaza/Plaza.Net.MVCAdmin/Views/Authorize/Login.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQXV0aG9yaXplXExvZ2luLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Lenovo/Desktop/CSharp项目/就业项目/Plaza/Plaza.Net.MVCAdmin/Views/Authorize/Register.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQXV0aG9yaXplXFJlZ2lzdGVyLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Lenovo/Desktop/CSharp项目/就业项目/Plaza/Plaza.Net.MVCAdmin/Views/Cart/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ2FydFxJbmRleC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Lenovo/Desktop/CSharp项目/就业项目/Plaza/Plaza.Net.MVCAdmin/Views/DeviceData/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRGV2aWNlRGF0YVxJbmRleC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Lenovo/Desktop/CSharp项目/就业项目/Plaza/Plaza.Net.MVCAdmin/Views/DeviceType/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRGV2aWNlVHlwZVxJbmRleC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Lenovo/Desktop/CSharp项目/就业项目/Plaza/Plaza.Net.MVCAdmin/Views/Device/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRGV2aWNlXEluZGV4LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Lenovo/Desktop/CSharp项目/就业项目/Plaza/Plaza.Net.MVCAdmin/Views/Dictionary/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRGljdGlvbmFyeVxJbmRleC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Lenovo/Desktop/CSharp项目/就业项目/Plaza/Plaza.Net.MVCAdmin/Views/Dictionary/Item.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRGljdGlvbmFyeVxJdGVtLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Lenovo/Desktop/CSharp项目/就业项目/Plaza/Plaza.Net.MVCAdmin/Views/EmployeeRole/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRW1wbG95ZWVSb2xlXEluZGV4LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Lenovo/Desktop/CSharp项目/就业项目/Plaza/Plaza.Net.MVCAdmin/Views/Employee/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRW1wbG95ZWVcSW5kZXguY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Lenovo/Desktop/CSharp项目/就业项目/Plaza/Plaza.Net.MVCAdmin/Views/FeedBack/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRmVlZEJhY2tcSW5kZXguY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Lenovo/Desktop/CSharp项目/就业项目/Plaza/Plaza.Net.MVCAdmin/Views/Floor/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRmxvb3JcSW5kZXguY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Lenovo/Desktop/CSharp项目/就业项目/Plaza/Plaza.Net.MVCAdmin/Views/Home/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxJbmRleC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Lenovo/Desktop/CSharp项目/就业项目/Plaza/Plaza.Net.MVCAdmin/Views/Home/Privacy.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxQcml2YWN5LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Lenovo/Desktop/CSharp项目/就业项目/Plaza/Plaza.Net.MVCAdmin/Views/Home/ResetPassword.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxSZXNldFBhc3N3b3JkLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Lenovo/Desktop/CSharp项目/就业项目/Plaza/Plaza.Net.MVCAdmin/Views/Home/UserInfo.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxVc2VySW5mby5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Lenovo/Desktop/CSharp项目/就业项目/Plaza/Plaza.Net.MVCAdmin/Views/LoginLog/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTG9naW5Mb2dcSW5kZXguY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Lenovo/Desktop/CSharp项目/就业项目/Plaza/Plaza.Net.MVCAdmin/Views/Notification/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTm90aWZpY2F0aW9uXEluZGV4LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Lenovo/Desktop/CSharp项目/就业项目/Plaza/Plaza.Net.MVCAdmin/Views/OperationLog/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcT3BlcmF0aW9uTG9nXEluZGV4LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Lenovo/Desktop/CSharp项目/就业项目/Plaza/Plaza.Net.MVCAdmin/Views/Order/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcT3JkZXJcSW5kZXguY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Lenovo/Desktop/CSharp项目/就业项目/Plaza/Plaza.Net.MVCAdmin/Views/Order/Item.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcT3JkZXJcSXRlbS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Lenovo/Desktop/CSharp项目/就业项目/Plaza/Plaza.Net.MVCAdmin/Views/ParkingRecord/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUGFya2luZ1JlY29yZFxJbmRleC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Lenovo/Desktop/CSharp项目/就业项目/Plaza/Plaza.Net.MVCAdmin/Views/Parking/ParkingArea.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUGFya2luZ1xQYXJraW5nQXJlYS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Lenovo/Desktop/CSharp项目/就业项目/Plaza/Plaza.Net.MVCAdmin/Views/Parking/ParkingSpot.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUGFya2luZ1xQYXJraW5nU3BvdC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Lenovo/Desktop/CSharp项目/就业项目/Plaza/Plaza.Net.MVCAdmin/Views/PaymentRecord/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUGF5bWVudFJlY29yZFxJbmRleC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Lenovo/Desktop/CSharp项目/就业项目/Plaza/Plaza.Net.MVCAdmin/Views/Plaza/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUGxhemFcSW5kZXguY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Lenovo/Desktop/CSharp项目/就业项目/Plaza/Plaza.Net.MVCAdmin/Views/ProductType/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUHJvZHVjdFR5cGVcSW5kZXguY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Lenovo/Desktop/CSharp项目/就业项目/Plaza/Plaza.Net.MVCAdmin/Views/Product/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUHJvZHVjdFxJbmRleC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Lenovo/Desktop/CSharp项目/就业项目/Plaza/Plaza.Net.MVCAdmin/Views/Review/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUmV2aWV3XEluZGV4LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Lenovo/Desktop/CSharp项目/就业项目/Plaza/Plaza.Net.MVCAdmin/Views/StoreType/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3RvcmVUeXBlXEluZGV4LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Lenovo/Desktop/CSharp项目/就业项目/Plaza/Plaza.Net.MVCAdmin/Views/Store/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3RvcmVcSW5kZXguY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Lenovo/Desktop/CSharp项目/就业项目/Plaza/Plaza.Net.MVCAdmin/Views/SysMenu/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3lzTWVudVxJbmRleC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Lenovo/Desktop/CSharp项目/就业项目/Plaza/Plaza.Net.MVCAdmin/Views/UserRole/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVXNlclJvbGVcSW5kZXguY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Lenovo/Desktop/CSharp项目/就业项目/Plaza/Plaza.Net.MVCAdmin/Views/User/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVXNlclxJbmRleC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Lenovo/Desktop/CSharp项目/就业项目/Plaza/Plaza.Net.MVCAdmin/Views/_ViewImports.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdJbXBvcnRzLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Lenovo/Desktop/CSharp项目/就业项目/Plaza/Plaza.Net.MVCAdmin/Views/_ViewStart.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdTdGFydC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Lenovo/Desktop/CSharp项目/就业项目/Plaza/Plaza.Net.MVCAdmin/Views/Shared/_Layout.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9MYXlvdXQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = b-2y9i9ecyf0

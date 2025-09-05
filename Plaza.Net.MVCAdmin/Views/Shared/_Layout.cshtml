@@ -1,0 +1,71 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"]</title>
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-touch-fullscreen" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="default">
+    <!-- CSS 文件 -->
+    <link rel="icon" type="image/x-icon" href="~/favicon.ico">
+    <link href="~/css/materialdesignicons.min.css" rel="stylesheet" />
+    <link href="~/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="~/css/animate.min.css" rel="stylesheet" />
+    <link href="~/js/bootstrap-multitabs/multitabs.min.css" rel="stylesheet" />
+    <link href="~/js/bootstrap-table/bootstrap-table.min.css" rel="stylesheet" />
+    <link href="~/js/bootstrap-table/extensions/treegrid/jquery-treegrid/css/jquery.treegrid.min.css" rel="stylesheet" />
+    <link href="~/css/style.min.css" rel="stylesheet" />
+    <link href="~/js/ztree/css/ztreestyle/ztreestyle.css" rel="stylesheet" />
+    <!-- 高德地图API -->
+    <script type="text/javascript" src="https://webapi.amap.com/maps?v=2.0&key=95ae82f298f2920a0d69a18478516a92&plugin=AMap.Autocomplete"></script>
+</head>
+<body class="lyear-index" style="
+            background-image: linear-gradient(180deg, rgba(255,255,255,0.1), rgba(255,255,255,1) 85%),
+            radial-gradient(ellipse at top left, rgba(13,110,253,0.2), transparent 50%),
+            radial-gradient(ellipse at top right, rgba(255,193,7,0.2), transparent 50%),
+            radial-gradient(ellipse at center right, rgba(111,66,193,0.2), transparent 50%),
+            radial-gradient(ellipse at center left, rgba(214,51,132,0.2), transparent 50%);
+            background-attachment: fixed;
+            background-size: cover;
+            background-repeat: no-repeat;">
+    <!-- 页面主要内容 -->
+    @RenderBody()
+
+    <!-- Toast容器 -->
+    <div class="toast-container position-fixed bottom-0 end-0 p-3" style="z-index: 9999">
+        <!-- Toast消息将在这里动态添加 -->
+    </div>
+
+    <!-- JS 文件 - 确保正确的加载顺序 -->
+    <script src="~/js/jquery.min.js"></script>
+    <script src="~/js/popper.min.js"></script>
+    <script src="~/js/bootstrap.min.js"></script>
+
+    <!-- Bootstrap Table 及其依赖 -->
+    <script src="~/js/tableexport/js/tableexport.min.js"></script>
+    <script src="~/js/tableexport/js/filesaver.min.js"></script>
+    <script src="~/js/tableexport/js/jspdf.min.js"></script>
+    <script src="~/js/tableexport/js/jspdf.plugin.autotable.js"></script>
+    <script src="~/js/tableexport/js/xlsx.core.min.js"></script>
+    <script src="~/js/bootstrap-table/bootstrap-table.js"></script>
+    <script src="~/js/bootstrap-table/locale/bootstrap-table-zh-cn.min.js"></script>
+    <script src="~/js/bootstrap-table/extensions/treegrid/jquery-treegrid/js/jquery.treegrid.min.js"></script>
+    <script src="~/js/bootstrap-table/extensions/treegrid/bootstrap-table-treegrid.js"></script>
+    <script src="~/js/bootstrap-table/extensions/export/bootstrap-table-export.min.js"></script>
+
+    <!-- 其他JS文件 -->
+    <script src="~/js/jquery.bootstrap.wizard.min.js"></script>
+    <script src="~/js/perfect-scrollbar.min.js"></script>
+    <script src="~/js/bootstrap-multitabs/multitabs.min.js"></script>
+    <script src="~/js/jquery.cookie.min.js"></script>
+    <script src="~/js/index.min.js"></script>
+    <script src="~/js/main.min.js"></script>
+    <script src="~/js/chart.min.js"></script>
+    <script src="~/js/scroll-numbers.js"></script>
+    <script src="~/js/ztree/js/jquery.ztree.all.min.js"></script>
+    <script src="~/js/toast.js"></script>
+
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>

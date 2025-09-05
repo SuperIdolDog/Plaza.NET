@@ -1,0 +1,11 @@
+C:\Users\Lenovo\Desktop\CSharp项目\就业项目\Plaza\Plaza.Net.Loging\bin\Debug\net6.0\Plaza.Net.Loging.deps.json
+C:\Users\Lenovo\Desktop\CSharp项目\就业项目\Plaza\Plaza.Net.Loging\bin\Debug\net6.0\Plaza.Net.Loging.dll
+C:\Users\Lenovo\Desktop\CSharp项目\就业项目\Plaza\Plaza.Net.Loging\bin\Debug\net6.0\Plaza.Net.Loging.pdb
+C:\Users\Lenovo\Desktop\CSharp项目\就业项目\Plaza\Plaza.Net.Loging\obj\Debug\net6.0\Plaza.Net.Loging.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Lenovo\Desktop\CSharp项目\就业项目\Plaza\Plaza.Net.Loging\obj\Debug\net6.0\Plaza.Net.Loging.AssemblyInfoInputs.cache
+C:\Users\Lenovo\Desktop\CSharp项目\就业项目\Plaza\Plaza.Net.Loging\obj\Debug\net6.0\Plaza.Net.Loging.AssemblyInfo.cs
+C:\Users\Lenovo\Desktop\CSharp项目\就业项目\Plaza\Plaza.Net.Loging\obj\Debug\net6.0\Plaza.Net.Loging.csproj.CoreCompileInputs.cache
+C:\Users\Lenovo\Desktop\CSharp项目\就业项目\Plaza\Plaza.Net.Loging\obj\Debug\net6.0\Plaza.Net.Loging.dll
+C:\Users\Lenovo\Desktop\CSharp项目\就业项目\Plaza\Plaza.Net.Loging\obj\Debug\net6.0\refint\Plaza.Net.Loging.dll
+C:\Users\Lenovo\Desktop\CSharp项目\就业项目\Plaza\Plaza.Net.Loging\obj\Debug\net6.0\Plaza.Net.Loging.pdb
+C:\Users\Lenovo\Desktop\CSharp项目\就业项目\Plaza\Plaza.Net.Loging\obj\Debug\net6.0\ref\Plaza.Net.Loging.dll

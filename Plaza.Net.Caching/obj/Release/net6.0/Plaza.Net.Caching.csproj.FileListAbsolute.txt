@@ -1,0 +1,12 @@
+C:\Users\Lenovo\Desktop\CSharp项目\就业项目\Plaza\Plaza.Net.Caching\bin\Release\net6.0\Plaza.Net.Caching.deps.json
+C:\Users\Lenovo\Desktop\CSharp项目\就业项目\Plaza\Plaza.Net.Caching\bin\Release\net6.0\Plaza.Net.Caching.dll
+C:\Users\Lenovo\Desktop\CSharp项目\就业项目\Plaza\Plaza.Net.Caching\bin\Release\net6.0\Plaza.Net.Caching.pdb
+C:\Users\Lenovo\Desktop\CSharp项目\就业项目\Plaza\Plaza.Net.Caching\obj\Release\net6.0\Plaza.Net.Caching.csproj.AssemblyReference.cache
+C:\Users\Lenovo\Desktop\CSharp项目\就业项目\Plaza\Plaza.Net.Caching\obj\Release\net6.0\Plaza.Net.Caching.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Lenovo\Desktop\CSharp项目\就业项目\Plaza\Plaza.Net.Caching\obj\Release\net6.0\Plaza.Net.Caching.AssemblyInfoInputs.cache
+C:\Users\Lenovo\Desktop\CSharp项目\就业项目\Plaza\Plaza.Net.Caching\obj\Release\net6.0\Plaza.Net.Caching.AssemblyInfo.cs
+C:\Users\Lenovo\Desktop\CSharp项目\就业项目\Plaza\Plaza.Net.Caching\obj\Release\net6.0\Plaza.Net.Caching.csproj.CoreCompileInputs.cache
+C:\Users\Lenovo\Desktop\CSharp项目\就业项目\Plaza\Plaza.Net.Caching\obj\Release\net6.0\Plaza.Net.Caching.dll
+C:\Users\Lenovo\Desktop\CSharp项目\就业项目\Plaza\Plaza.Net.Caching\obj\Release\net6.0\refint\Plaza.Net.Caching.dll
+C:\Users\Lenovo\Desktop\CSharp项目\就业项目\Plaza\Plaza.Net.Caching\obj\Release\net6.0\Plaza.Net.Caching.pdb
+C:\Users\Lenovo\Desktop\CSharp项目\就业项目\Plaza\Plaza.Net.Caching\obj\Release\net6.0\ref\Plaza.Net.Caching.dll

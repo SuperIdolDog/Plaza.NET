@@ -1,0 +1,782 @@
+﻿@{
+    ViewData["Title"] = "用户反馈管理";
+}
+
+<div class="container-fluid">
+    <!-- 主内容容器 -->
+    <div class="row">
+        <div class="col-lg-12">
+            <!-- 卡片式布局 -->
+            <div class="card shadow-sm">
+                <!-- 卡片主体 -->
+                <div class="card-body">
+                    <!-- 选项卡导航 -->
+                    <nav>
+                        <div class="nav nav-tabs mb-3" id="nav-tab" role="tablist">
+                            <button class="nav-link active" id="nav-list-tab" data-bs-toggle="tab"
+                                    data-bs-target="#nav-list" type="button" role="tab" aria-controls="nav-list"
+                                    aria-selected="true">数据列表</button>
+                            <button class="nav-link" id="nav-stats-tab" data-bs-toggle="tab" data-bs-target="#nav-stats"
+                                    type="button" role="tab" aria-controls="nav-stats" aria-selected="false">统计信息</button>
+                            <button class="nav-link" id="nav-about-tab" data-bs-toggle="tab" data-bs-target="#nav-about"
+                                    type="button" role="tab" aria-controls="nav-about" aria-selected="false">关于</button>
+                        </div>
+                    </nav>
+
+                    <div class="tab-content" id="nav-tabContent">
+                        <!-- 数据列表标签页 -->
+                        <div class="tab-pane fade show active" id="nav-list" role="tabpanel"
+                             aria-labelledby="nav-list-tab">
+                            <!-- 工具栏区域 -->
+                            <div id="toolbar" class="d-flex justify-content-between align-items-center mb-3">
+                                <!-- 操作按钮组 -->
+                                <div class="btn-group me-2 mb-2 mb-lg-0">
+                                    <button class="btn btn-success btn-sm btn-round" onclick="add()">
+                                        <span class="mdi mdi-plus me-1"></span> 新增
+                                    </button>
+                                    <button id="edit-btn" class="btn btn-primary btn-sm btn-round edit-btn" disabled>
+                                        <span class="mdi mdi-pencil me-1"></span> 编辑
+                                    </button>
+                                    <button id="del-btn" class="btn btn-danger btn-sm btn-round del-btn" disabled>
+                                        <span class="mdi mdi-close me-1"></span> 删除
+                                    </button>
+                                </div>
+                                <!-- 搜索区域 -->
+                                <div class="input-group d-flex justify-content-center">
+                                    <button id="searchplus-btn" class="btn btn-outline-secondary btn-sm btn-round"
+                                            data-bs-toggle="modal" data-bs-target="#searchModal">
+                                        <span class="mdi mdi-magnify-plus"></span>高级搜索
+                                    </button>
+                                    <input type="text" id="searchBox" class="form-control form-control-sm"
+                                           placeholder="搜索反馈内容或用户姓名...">
+                                    <button id="searchButton" class="btn btn-outline-secondary btn-sm btn-round">
+                                        <span class="mdi mdi-magnify"></span>查询
+                                    </button>
+                                    <button class="btn btn-outline-secondary btn-sm btn-round" id="clearButton">
+                                        <span class="mdi mdi-delete"></span>清除
+                                    </button>
+                                </div>
+                            </div>
+                            <!-- 表格响应区域 -->
+                            <div class="table-responsive">
+                                <!-- 数据表格 -->
+                                <table id="table" class="table table-hover table-striped align-middle"
+                                       style="text-align:center;"></table>
+                            </div>
+                        </div>
+
+                        <!-- 统计信息标签页 -->
+                        <div class="tab-pane fade" id="nav-stats" role="tabpanel" aria-labelledby="nav-stats-tab">
+                            <!-- 统计内容可以根据需要添加 -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- 高级搜索模态框 -->
+<div class="modal fade" id="searchModal" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header bg-light">
+                <h5 class="modal-title">高级搜索</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <!-- 高级搜索表单 -->
+                <form id="searchForm">
+                    <div class="row g-3">
+                        <div class="col-md-6">
+                            <label class="form-label">用户</label>
+                            <select class="form-select" name="userId" id="searchUserId">
+                                <option value="">全部</option>
+                                <!-- 动态加载用户选项 -->
+                            </select>
+                        </div>
+                        <div class="col-md-6">
+                            <label class="form-label">回复者</label>
+                            <select class="form-select" name="repliedById" id="searchRepliedById">
+                                <option value="">全部</option>
+                                <!-- 动态加载管理员选项 -->
+                            </select>
+                        </div>
+                        <div class="col-md-6">
+                            <label class="form-label">回复状态</label>
+                            <select class="form-select" name="isReplied" id="searchIsReplied">
+                                <option value="">全部</option>
+                                <option value="true">已回复</option>
+                                <option value="false">未回复</option>
+                            </select>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-outline-secondary btn-sm" onclick="resetSearchForm()">重置</button>
+                <button type="button" class="btn btn-primary btn-sm" onclick="submitSearchForm()">搜索</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- 统一的信息管理模态框（新增/编辑） -->
+<div class="modal fade" id="infoModal" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header bg-light">
+                <h5 class="modal-title" id="infoModalTitle">新增用户反馈</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <!-- 信息表单 -->
+                <form id="infoForm">
+                    <input type="hidden" name="id" id="info-id">
+                    <div class="row g-3">
+                        <div class="col-md-6">
+                            <label class="form-label">用户 <span class="text-danger">*</span></label>
+                            <select class="form-select" name="userId" id="info-userId" required>
+                                <!-- 动态加载用户选项 -->
+                            </select>
+                        </div>
+                        <div class="col-md-6">
+                            <label class="form-label">联系方式 <span class="text-danger">*</span></label>
+                            <input type="text" class="form-control" name="contact" id="info-contact" required>
+                        </div>
+                        <div class="col-md-12">
+                            <label class="form-label">反馈内容 <span class="text-danger">*</span></label>
+                            <textarea class="form-control" name="content" id="info-content" rows="3" required></textarea>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-outline-secondary btn-sm" data-bs-dismiss="modal">取消</button>
+                <button type="button" class="btn btn-primary btn-sm" onclick="submitInfoForm()">提交</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- 回复反馈模态框 -->
+<div class="modal fade" id="replyModal" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header bg-light">
+                <h5 class="modal-title">回复用户反馈</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="mb-3">
+                            <label class="form-label text-muted">反馈内容:</label>
+                            <div class="form-control-plaintext" id="reply-content" style="white-space: pre-wrap;"></div>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label text-muted">用户联系方式:</label>
+                            <div class="form-control-plaintext" id="reply-contact"></div>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">回复内容 <span class="text-danger">*</span></label>
+                            <textarea class="form-control" id="reply-text" rows="4" required></textarea>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-outline-secondary btn-sm" data-bs-dismiss="modal">取消</button>
+                <button type="button" class="btn btn-primary btn-sm" onclick="submitReplyForm()">提交回复</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- 反馈详情模态框 -->
+<div class="modal fade" id="detailModal" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header bg-light">
+                <h5 class="modal-title">反馈详情</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    <!-- 左侧信息列 -->
+                    <div class="col-md-6">
+                        <div class="mb-3">
+                            <label class="form-label text-muted">用户:</label>
+                            <div class="form-control-plaintext" id="detail-user">-</div>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label text-muted">联系方式:</label>
+                            <div class="form-control-plaintext" id="detail-contact">-</div>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label text-muted">反馈时间:</label>
+                            <div class="form-control-plaintext" id="detail-createTime">-</div>
+                        </div>
+                    </div>
+
+                    <!-- 右侧信息列 -->
+                    <div class="col-md-6">
+                        <div class="mb-3">
+                            <label class="form-label text-muted">回复者:</label>
+                            <div class="form-control-plaintext" id="detail-repliedBy">-</div>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label text-muted">回复时间:</label>
+                            <div class="form-control-plaintext" id="detail-replyTime">-</div>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label text-muted">回复状态:</label>
+                            <div class="form-control-plaintext" id="detail-replyStatus">-</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="mb-3">
+                            <label class="form-label text-muted">反馈内容:</label>
+                            <div class="form-control-plaintext" id="detail-content" style="white-space: pre-wrap;"></div>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label text-muted">回复内容:</label>
+                            <div class="form-control-plaintext" id="detail-replyContent" style="white-space: pre-wrap;"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-outline-secondary btn-sm" data-bs-dismiss="modal">关闭</button>
+                <button type="button" class="btn btn-primary btn-sm" onclick="showReplyModal()">回复</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- 删除确认模态框 -->
+<div class="modal fade" id="deleteConfirmModal" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header bg-light">
+                <h5 class="modal-title">确认删除</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <div class="d-flex align-items-center">
+                    <div class="me-3">
+                        <span class="mdi mdi-alert-circle text-danger" style="font-size: 1.5rem;"></span>
+                    </div>
+                    <div>
+                        <p class="mb-1">确定要删除选中的记录吗？</p>
+                        <p id="deleteCountInfo" class="text-muted small mb-0"></p>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-outline-secondary btn-sm" data-bs-dismiss="modal">取消</button>
+                <button type="button" class="btn btn-danger btn-sm" onclick="confirmDelete()">确认删除</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <script>
+        // ====================== 全局变量声明 ======================
+        let currentMode = 'add';
+        let currentDeleteMode = null;
+        let currentFeedbackId = null;
+
+        // ====================== 页面初始化函数 ======================
+        $(document).ready(function () {
+            initTable();
+            bindEventHandlers();
+            loadDropdownData();
+        });
+
+        // ====================== 表格相关函数 ======================
+        const tableConfig = {
+            classes: 'table table-bordered table-hover table-striped lyear-table',
+            url: '/Feedback/GetUserFeedbacks',
+            uniqueId: 'id',
+            idField: 'id',
+            clickToSelect: true,
+            dataType: 'json',
+            method: 'get',
+            toolbar: '#toolbar',
+            pagination: true,
+            showColumns: true,
+            showRefresh: true,
+            showButtonIcons: true,
+            showButtonText: false,
+            showFullscreen: true,
+            totalField: 'total',
+            undefinedText: '-',
+            sortOrder: "asc",
+            sidePagination: "server",
+            pageNumber: 1,
+            pageSize: 5,
+            pageList: [5, 10, 25, 50, 100],
+            paginationLoop: true,
+            paginationPagesBySide: 2,
+            buttonsClass: 'default',
+            buttonsPrefix: 'btn',
+            iconsPrefix: 'mdi',
+            iconSize: 'mini',
+            icons: {
+                refresh: 'mdi-refresh',
+                export: 'mdi-export',
+                columns: 'mdi-table-column-remove',
+                fullscreen: 'mdi-monitor-screenshot'
+            },
+            showExport: true,
+            buttonsAlign: "right",
+            exportDataType: "basic",
+            exportOptions: {
+                ignoreColumn: [0],
+                fileName: '用户反馈表',
+                worksheetName: 'sheet1',
+                tableName: '用户反馈信息表',
+                excelstyles: ['background-color', 'color', 'font-size', 'font-weight'],
+            },
+            exportTypes: ['json', 'xml', 'csv', 'txt', 'sql', 'doc', 'excel'],
+        };
+
+        const columns = [{
+                field: 'example',
+                checkbox: true,
+                widthUnit: 'rem'
+            },
+            {
+                field: 'id',
+                title: '编号',
+                align: 'center',
+                sortable: true,
+                sortName: 'sortId',
+                switchable: false,
+                widthUnit: 'rem'
+            },
+            {
+                field: 'user.name',
+                align: 'center',
+                title: '用户姓名'
+            },
+            {
+                field: 'content',
+                align: 'center',
+                title: '反馈内容',
+                formatter: function (value) {
+                    return value.length > 20 ? value.substring(0, 20) + '...' : value;
+                }
+            },
+            {
+                field: 'contact',
+                align: 'center',
+                title: '联系方式'
+            },
+            {
+                field: 'repliedBy.name',
+                align: 'center',
+                title: '回复者'
+            },
+            {
+                field: 'replyTime',
+                align: 'center',
+                title: '回复时间',
+                formatter: function (value) {
+                    return value ? new Date(value).toLocaleString() : '未回复';
+                }
+            },
+            {
+                field: 'operate',
+                title: '操作',
+                formatter: function () {
+                    return `<div class="btn-group">
+                                <button class="btn btn-sm btn-indigo btn-round detial-btn"><span class="mdi mdi-information">详情</span></button>
+                                <button class="btn btn-sm btn-primary btn-round edit-btn"><span class="mdi mdi-pencil">编辑</span></button>
+                                <button class="btn btn-sm btn-danger btn-round del-btn"><span class="mdi mdi-close">删除</span></button>
+                            </div>`;
+                },
+                events: {
+                    'click .detial-btn': function (event, value, row, index) {
+                        event.stopPropagation();
+                        detial(row);
+                    },
+                    'click .edit-btn': function (event, value, row, index) {
+                        event.stopPropagation();
+                        edit(row);
+                    },
+                    'click .del-btn': function (event, value, row, index) {
+                        event.stopPropagation();
+                        del(row);
+                    }
+                }
+            }
+        ];
+
+        function initTable() {
+            $('table').bootstrapTable({
+                ...tableConfig,
+                queryParams: function (params) {
+                    return {
+                        pageSize: params.limit,
+                        pageIndex: Math.floor(params.offset / params.limit) + 1,
+                        sort: params.sort || "Id",
+                        sortOrder: params.order || "asc",
+                        keyword: $('#searchBox').val().trim(),
+                        userId: $('#searchUserId').val(),
+                        repliedById: $('#searchRepliedById').val(),
+                        isReplied: $('#searchIsReplied').val()
+                    };
+                },
+                columns,
+                onLoadSuccess: function (data) {
+                    $("[data-bs-toggle='tooltip']").tooltip();
+                    updateButtonState();
+                },
+                onCheck: updateButtonState,
+                onUncheck: updateButtonState,
+                onCheckAll: updateButtonState,
+                onUncheckAll: updateButtonState
+            });
+        }
+
+        // ====================== 事件处理函数 ======================
+        function bindEventHandlers() {
+            $('#searchButton').click(performBasicSearch);
+            $('#searchBox').keypress(function (e) {
+                if (e.which === 13) performBasicSearch();
+            });
+            $('#searchBox').keydown(function (e) {
+                if (e.which === 27) {
+                    $('#searchBox').val('');
+                    $('#table').bootstrapTable('refresh');
+                }
+            });
+
+            $('#searchplus-btn').click(function () {
+                $('#searchModal').modal('show');
+            });
+            $('#clearButton').click(function () {
+                $('#searchBox').val('');
+                $('#searchForm')[0].reset();
+                $('#table').bootstrapTable('refresh');
+            });
+
+            $('#edit-btn').click(function () {
+                const selections = $('table').bootstrapTable('getSelections');
+                if (selections.length !== 1) {
+                    showToast('请选择一条记录进行编辑', true);
+                    return;
+                }
+                edit(selections[0]);
+            });
+
+            $('#del-btn').click(function () {
+                const selections = $('table').bootstrapTable('getSelections');
+                if (selections.length === 0) {
+                    showToast('请至少选择一条记录进行删除', true);
+                    return;
+                }
+                showDeleteConfirm(selections);
+            });
+        }
+
+        function performBasicSearch() {
+            const keyword = $('#searchBox').val().trim();
+            $('#table').bootstrapTable('refresh', {
+                query: {
+                    keyword: keyword
+                    }
+            });
+        }
+
+        function showDeleteConfirm(selections) {
+            currentDeleteMode = selections.length > 1 ? 'multiple' : 'single';
+            const countInfo = selections.length > 1 ?
+                `共选中 ${selections.length} 条记录` :
+                `记录: ${selections[0].id}`;
+
+            $('#deleteCountInfo').text(countInfo);
+            $('#deleteConfirmModal').modal('show');
+        }
+
+        function confirmDelete() {
+            const selections = $('table').bootstrapTable('getSelections');
+            if (selections.length === 0) {
+                showToast('请至少选择一条记录进行删除', true);
+                return;
+            }
+
+            const ids = selections.map(record => record.id);
+            if (!ids || ids.length === 0) {
+                showToast('未获取到有效的ID', true);
+                return;
+            }
+
+            $.ajax({
+                url: '/UserFeedback/DeleteRange',
+                type: 'POST',
+                data: {
+                    ids: ids
+                },
+                success: function (response) {
+                    if (response.success) {
+                        $('#table').bootstrapTable('refresh');
+                        $('#deleteConfirmModal').modal('hide');
+                        const message = ids.length > 1 ?
+                            `成功删除 ${ids.length} 条记录` :
+                            '成功删除记录';
+                        showToast(message);
+                    } else {
+                        showToast('删除失败: ' + (response.message || '请重试'), true);
+                    }
+                },
+                error: function (xhr) {
+                    const errorMsg = xhr.responseJSON?.message || '服务器错误';
+                    showToast(`操作失败: ${errorMsg}`, true);
+                }
+            });
+        }
+
+        // ====================== 业务操作函数 ======================
+        function add() {
+            currentMode = 'add';
+            $('#infoModalTitle').text('新增用户反馈');
+            $('#infoForm')[0].reset();
+            $('#infoModal').modal('show');
+        }
+
+        function edit(row) {
+            currentMode = 'edit';
+            $('#infoModalTitle').text('编辑用户反馈');
+            clearOtherCheckboxes(row.id);
+
+            $('#infoForm').find('[name="id"]').val(row.id);
+            $('#infoForm').find('[name="userId"]').val(row.userId);
+            $('#infoForm').find('[name="contact"]').val(row.contact);
+            $('#infoForm').find('[name="content"]').val(row.content);
+
+            $('#infoModal').modal('show');
+        }
+
+        function detial(row) {
+            $('#detail-user').text(row.user?.name || '无');
+            $('#detail-contact').text(row.contact || '无');
+            $('#detail-content').text(row.content || '无');
+            $('#detail-repliedBy').text(row.repliedBy?.name || '无');
+            $('#detail-replyContent').text(row.replyContent || '无');
+            $('#detail-createTime').text(new Date(row.createTime).toLocaleString() || '无');
+            $('#detail-replyTime').text(row.replyTime ? new Date(row.replyTime).toLocaleString() : '无');
+            $('#detail-replyStatus').text(row.replyTime ? '已回复' : '未回复');
+
+            $('#detailModal').modal('show');
+        }
+
+        function showReplyModal(row) {
+            const selections = $('table').bootstrapTable('getSelections');
+            const feedback = row || (selections.length === 1 ? selections[0] : null);
+
+            if (!feedback) {
+                showToast('请选择一条反馈进行回复', true);
+                return;
+            }
+
+            currentFeedbackId = feedback.id;
+            $('#reply-content').text(feedback.content);
+            $('#reply-contact').text(feedback.contact);
+            $('#reply-text').val('');
+
+            $('#replyModal').modal('show');
+        }
+
+        function submitReplyForm() {
+            const replyContent = $('#reply-text').val().trim();
+            if (!replyContent) {
+                showToast('回复内容不能为空', true);
+                return;
+            }
+
+            $.ajax({
+                url: '/UserFeedback/ReplyFeedback',
+                type: 'POST',
+                data: {
+                    id: currentFeedbackId,
+                    replyContent: replyContent
+                },
+                success: function (response) {
+                    if (response.success) {
+                        $('#table').bootstrapTable('refresh');
+                        $('#replyModal').modal('hide');
+                        showToast('回复成功');
+                    } else {
+                        showToast('回复失败: ' + (response.message || '请重试'), true);
+                    }
+                },
+                error: function (xhr) {
+                    const errorMsg = xhr.responseJSON?.message || '服务器错误';
+                    showToast(`操作失败: ${errorMsg}`, true);
+                }
+            });
+        }
+
+        function del(row) {
+            showDeleteConfirm([row]);
+        }
+
+        function submitInfoForm() {
+            if (!validateInfoForm()) return;
+
+            const formData = {
+                userId: $('#info-userId').val(),
+                contact: $('#info-contact').val(),
+                content: $('#info-content').val()
+            };
+
+            if (currentMode === 'edit') {
+                formData.id = $('#info-id').val();
+            }
+
+            const url = currentMode === 'add' ? '/UserFeedback/Add' : '/UserFeedback/Edit';
+            const successMessage = currentMode === 'add' ? '新增成功' : '更新成功';
+
+            $.ajax({
+                url: url,
+                type: 'POST',
+                data: formData,
+                success: function (response) {
+                    if (response.success) {
+                        $('#infoModal').modal('hide');
+                        $('#table').bootstrapTable('refresh');
+                        showToast(successMessage);
+                    } else {
+                        showToast(`操作失败: ${response.message || '未知错误'}`, true);
+                    }
+                },
+                error: function (xhr, status, error) {
+                    showToast('请求失败: ' + error, true);
+                }
+            });
+        }
+
+        function submitSearchForm() {
+            const formData = $('#searchForm').serializeArray();
+            const queryParams = {};
+
+            formData.forEach(item => {
+                if (item.value) {
+                    queryParams[item.name] = item.value;
+                }
+            });
+
+            const keyword = $('#searchBox').val().trim();
+            if (keyword) {
+                queryParams.keyword = keyword;
+            }
+
+            $('#table').bootstrapTable('refresh', {
+                query: queryParams
+            });
+
+            $('#searchModal').modal('hide');
+        }
+
+        function resetSearchForm() {
+            $('#searchForm')[0].reset();
+            $('#table').bootstrapTable('refresh');
+        }
+
+        // ====================== 辅助函数 ======================
+        function validateInfoForm() {
+            let isValid = true;
+
+            $('.form-control').removeClass('is-invalid');
+            $('.invalid-feedback').remove();
+
+            $('#infoForm [required]').each(function () {
+                if (!$(this).val()) {
+                    isValid = false;
+                    $(this).addClass('is-invalid');
+                    $(this).after('<div class="invalid-feedback">此字段为必填项</div>');
+                }
+            });
+
+            return isValid;
+        }
+
+        function clearOtherCheckboxes(keepId) {
+            const $table = $('table');
+            const data = $table.bootstrapTable('getData');
+            $table.bootstrapTable('uncheckAll');
+            const rowToKeep = data.find(item => item.id === keepId);
+            if (rowToKeep) {
+                $table.bootstrapTable('checkBy', {
+                    field: 'id',
+                    values: [keepId]
+                });
+            }
+            updateButtonState();
+        }
+
+        function updateButtonState() {
+            const selections = $('table').bootstrapTable('getSelections');
+            const allRows = $('table').bootstrapTable('getData');
+            const selectedCount = selections.length;
+            const totalRows = allRows.length;
+
+            $('#edit-btn').prop('disabled', selectedCount !== 1);
+            $('#del-btn').prop('disabled', selectedCount === 0);
+
+            const headerCheckbox = $('table').find('thead [type="checkbox"]');
+            if (selectedCount === 0) {
+                headerCheckbox.prop('indeterminate', false).prop('checked', false);
+            } else if (selectedCount === totalRows) {
+                headerCheckbox.prop('indeterminate', false).prop('checked', true);
+            } else {
+                headerCheckbox.prop('indeterminate', true).prop('checked', false);
+            }
+        }
+
+        function loadDropdownData() {
+            $.get('/UserFeedback/GetUserFeedbackDropdownData', function (data) {
+                // 加载用户下拉数据
+                data.users.forEach(user => {
+                    $('#searchUserId').append(new Option(user.name, user.id));
+                    $('#info-userId').append(new Option(user.name, user.id));
+                });
+
+                // 加载管理员下拉数据
+                data.admins.forEach(admin => {
+                    $('#searchRepliedById').append(new Option(admin.name, admin.id));
+                });
+            });
+        }
+
+        // Toast 提示工具函数
+        function showToast(message, isError = false) {
+            const toast = document.createElement('div');
+            toast.className = `toast align-items-center text-bg-${isError ? 'danger' : 'success'} border-0`;
+            toast.setAttribute('role', 'alert');
+            toast.setAttribute('aria-live', 'assertive');
+            toast.setAttribute('aria-atomic', 'true');
+            toast.innerHTML = `
+                <div class="d-flex">
+                    <div class="toast-body">${message}</div>
+                    <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast" aria-label="Close"></button>
+                </div>
+            `;
+
+            document.getElementById('toast-container').appendChild(toast);
+            const toastEl = new bootstrap.Toast(toast);
+            toastEl.show();
+
+            // 自动隐藏
+            setTimeout(() => {
+                toastEl.hide();
+            }, 3000);
+        }
+    </script>
+}

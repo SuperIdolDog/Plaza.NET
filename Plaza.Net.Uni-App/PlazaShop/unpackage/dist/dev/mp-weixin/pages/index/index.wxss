@@ -1,0 +1,181 @@
+@charset "UTF-8";
+/**
+ * 这里是uni-app内置的常用样式变量
+ *
+ * uni-app 官方扩展插件及插件市场（https://ext.dcloud.net.cn）上很多三方插件均使用了这些样式变量
+ * 如果你是插件开发者，建议你使用scss预处理，并在插件代码中直接使用这些变量（无需 import 这个文件），方便用户通过搭积木的方式开发整体风格一致的App
+ *
+ */
+/**
+ * 如果你是App开发者（插件使用者），你可以通过修改这些变量来定制自己的插件主题，实现自定义主题功能
+ *
+ * 如果你的项目同样使用了scss预处理，你也可以直接在你的 scss 代码中使用如下变量，同时无需 import 这个文件
+ */
+/* 颜色变量 */
+/* 行为相关颜色 */
+/* 文字基本颜色 */
+/* 背景颜色 */
+/* 边框颜色 */
+/* 尺寸变量 */
+/* 文字尺寸 */
+/* 图片尺寸 */
+/* Border Radius */
+/* 水平间距 */
+/* 垂直间距 */
+/* 透明度 */
+/* 文章场景相关 */
+/* uni.scss */
+/* 保留第二段核心样式，新增通知条样式 */
+.page-container.data-v-57280228 {
+  position: relative;
+  width: 100%;
+  min-height: 100vh;
+  background-color: #FCFAF7;
+}
+/* 横向滚动卡片 */
+.scroll-item.data-v-57280228 {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0 40rpx;
+  box-sizing: border-box;
+  white-space: nowrap;
+  /* 防止文字换行 */
+}
+.capsule.data-v-57280228 {
+  position: fixed;
+  left: 20rpx;
+  z-index: 999;
+  display: flex;
+  align-items: center;
+  padding: 0 24rpx;
+  background-color: rgba(255, 255, 255, 0.8);
+  box-shadow: 0 2rpx 10rpx rgba(0, 0, 0, 0.05);
+  -webkit-backdrop-filter: blur(10px);
+          backdrop-filter: blur(10px);
+}
+.capsule.data-v-57280228:active {
+  opacity: 0.8;
+  -webkit-transform: scale(0.98);
+          transform: scale(0.98);
+}
+.capsule .capsule-text.data-v-57280228 {
+  margin: 0 10rpx;
+  font-size: 14px;
+  color: #333;
+  max-width: 200rpx;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+/* 新增通知条样式 */
+.notice-bar.data-v-57280228 {
+  background: rgba(255, 245, 230, 0.9);
+  margin: 20rpx 30rpx;
+  padding: 20rpx;
+  border-radius: 8rpx;
+  display: flex;
+  align-items: center;
+}
+.notice-bar .notice-text.data-v-57280228 {
+  font-size: 13px;
+  color: #e6a23c;
+  margin-left: 10rpx;
+  flex: 1;
+}
+/* 调整活动卡片阴影效果 */
+.activity-card.data-v-57280228 {
+  box-shadow: 0 4rpx 16rpx rgba(0, 0, 0, 0.08);
+  transition: -webkit-transform 0.2s;
+  transition: transform 0.2s;
+  transition: transform 0.2s, -webkit-transform 0.2s;
+}
+.activity-card.data-v-57280228:active {
+  -webkit-transform: translateY(2rpx);
+          transform: translateY(2rpx);
+}
+/* 保持其他核心样式不变 */
+.banner.data-v-57280228 {
+  border-radius: 0 0 30rpx 30rpx;
+  overflow: hidden;
+  margin-bottom: 40rpx;
+}
+.container.data-v-57280228 {
+  padding-bottom: 120rpx;
+}
+.section-title.data-v-57280228 {
+  display: flex;
+  align-items: center;
+  margin: 40rpx 0;
+  padding: 0 30rpx;
+}
+.section-title .title-text.data-v-57280228 {
+  font-size: 32rpx;
+  color: #5D4037;
+  font-weight: 500;
+  padding-right: 20rpx;
+}
+.section-title .title-line.data-v-57280228 {
+  flex: 1;
+  height: 1rpx;
+  background-color: #D7CCC8;
+}
+.category-section.data-v-57280228 {
+  margin: 0 0 60rpx;
+}
+.category-section .category-name.data-v-57280228 {
+  display: block;
+  margin-top: 16rpx;
+  font-size: 26rpx;
+  color: #666;
+  text-align: center;
+}
+.activity-section.data-v-57280228 {
+  margin: 40rpx 0;
+  padding: 0 30rpx;
+}
+.activity-carousel.data-v-57280228 {
+  margin-top: 20rpx;
+}
+.card-content.data-v-57280228 {
+  padding: 20rpx;
+}
+.activity-title.data-v-57280228 {
+  font-size: 30rpx;
+  font-weight: 500;
+  color: #333;
+  display: block;
+  margin-bottom: 10rpx;
+}
+.activity-desc.data-v-57280228 {
+  font-size: 24rpx;
+  color: #666;
+  display: block;
+  margin-bottom: 20rpx;
+  line-height: 1.4;
+}
+.activity-footer.data-v-57280228 {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.activity-time.data-v-57280228 {
+  font-size: 22rpx;
+  color: #999;
+}
+.tag.data-v-57280228 {
+  font-size: 20rpx;
+  color: white;
+  padding: 4rpx 12rpx;
+  border-radius: 20rpx;
+}
+.icon-wrapper.data-v-57280228 {
+  width: 70px;
+  height: 70px;
+  border-radius: 50%;
+  background: #fff;
+  box-shadow: 0 4rpx 12rpx rgba(0, 0, 0, 0.06);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}

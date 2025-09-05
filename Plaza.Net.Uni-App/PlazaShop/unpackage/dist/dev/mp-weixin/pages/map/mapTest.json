@@ -1,0 +1,9 @@
+{
+  "navigationBarTitleText": "附近商场",
+  "usingComponents": {
+    "u-icon": "/uni_modules/uview-ui/components/u-icon/u-icon",
+    "u-text": "/uni_modules/uview-ui/components/u-text/u-text",
+    "u-search": "/uni_modules/uview-ui/components/u-search/u-search",
+    "u-empty": "/uni_modules/uview-ui/components/u-empty/u-empty"
+  }
+}

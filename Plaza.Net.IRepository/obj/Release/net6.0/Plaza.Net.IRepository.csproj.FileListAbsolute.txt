@@ -1,0 +1,17 @@
+C:\Users\Lenovo\Desktop\CSharp项目\就业项目\Plaza\Plaza.NET.IRepository\bin\Release\net6.0\Plaza.Net.IRepository.deps.json
+C:\Users\Lenovo\Desktop\CSharp项目\就业项目\Plaza\Plaza.NET.IRepository\bin\Release\net6.0\Plaza.Net.IRepository.dll
+C:\Users\Lenovo\Desktop\CSharp项目\就业项目\Plaza\Plaza.NET.IRepository\bin\Release\net6.0\Plaza.Net.IRepository.pdb
+C:\Users\Lenovo\Desktop\CSharp项目\就业项目\Plaza\Plaza.NET.IRepository\bin\Release\net6.0\Plaza.Net.Configruation.dll
+C:\Users\Lenovo\Desktop\CSharp项目\就业项目\Plaza\Plaza.NET.IRepository\bin\Release\net6.0\Plaza.Net.Model.dll
+C:\Users\Lenovo\Desktop\CSharp项目\就业项目\Plaza\Plaza.NET.IRepository\bin\Release\net6.0\Plaza.Net.Model.pdb
+C:\Users\Lenovo\Desktop\CSharp项目\就业项目\Plaza\Plaza.NET.IRepository\bin\Release\net6.0\Plaza.Net.Configruation.pdb
+C:\Users\Lenovo\Desktop\CSharp项目\就业项目\Plaza\Plaza.NET.IRepository\obj\Release\net6.0\Plaza.Net.IRepository.csproj.AssemblyReference.cache
+C:\Users\Lenovo\Desktop\CSharp项目\就业项目\Plaza\Plaza.NET.IRepository\obj\Release\net6.0\Plaza.Net.IRepository.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Lenovo\Desktop\CSharp项目\就业项目\Plaza\Plaza.NET.IRepository\obj\Release\net6.0\Plaza.Net.IRepository.AssemblyInfoInputs.cache
+C:\Users\Lenovo\Desktop\CSharp项目\就业项目\Plaza\Plaza.NET.IRepository\obj\Release\net6.0\Plaza.Net.IRepository.AssemblyInfo.cs
+C:\Users\Lenovo\Desktop\CSharp项目\就业项目\Plaza\Plaza.NET.IRepository\obj\Release\net6.0\Plaza.Net.IRepository.csproj.CoreCompileInputs.cache
+C:\Users\Lenovo\Desktop\CSharp项目\就业项目\Plaza\Plaza.NET.IRepository\obj\Release\net6.0\Plaza.Ne.F1EFDEF7.Up2Date
+C:\Users\Lenovo\Desktop\CSharp项目\就业项目\Plaza\Plaza.NET.IRepository\obj\Release\net6.0\Plaza.Net.IRepository.dll
+C:\Users\Lenovo\Desktop\CSharp项目\就业项目\Plaza\Plaza.NET.IRepository\obj\Release\net6.0\refint\Plaza.Net.IRepository.dll
+C:\Users\Lenovo\Desktop\CSharp项目\就业项目\Plaza\Plaza.NET.IRepository\obj\Release\net6.0\Plaza.Net.IRepository.pdb
+C:\Users\Lenovo\Desktop\CSharp项目\就业项目\Plaza\Plaza.NET.IRepository\obj\Release\net6.0\ref\Plaza.Net.IRepository.dll

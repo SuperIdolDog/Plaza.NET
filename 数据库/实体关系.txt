@@ -1,0 +1,27 @@
+| 实体                                                      | 建议     | 一句话理由                   |
+| ------------------------------------------------------- | ------ | ----------------------- |
+| **AddressEntity → UserEntity**                          | 单向即可   | 系统几乎不会“查某用户所有地址”以外的场景。  |
+| **ParkingAreaEntity → FloorEntity**                     | 单向即可   | 楼层→区域需求极少，用区域查楼层即可。     |
+| **ParkingSpotEntity → ParkingAreaEntity**               | **双向** | 经常需要“某区域下所有车位”列表展示。     |
+| **FloorEntity → PlazaEntity**                           | **双向** | 广场详情页/楼层导航都要列出楼层。       |
+| **StoreEntity → FloorEntity**                           | 单向即可   | 楼层→店铺可用楼层导航，反向需求不高。     |
+| **StoreEntity → UserEntity (店长)**                       | 单向即可   | 店长→店铺一对一，无需反向集合。        |
+| **StoreEntity → StoreTypeEntity**                       | 单向即可   | 类型→店铺列表可在商店列表页过滤，不必集合。  |
+| **ProductEntity → StoreEntity**                         | **双向** | 店铺详情/后台必须列出店内全部商品。      |
+| **ProductSkuEntity → ProductEntity**                    | **双向** | 商品详情页必须一次性展示所有 SKU。     |
+| **ProductTypeEntity → StoreEntity**                     | 单向即可   | 商店→商品类型过滤即可。            |
+| **DeviceEntity → FloorEntity**                          | 单向即可   | 设备管理通常按楼层过滤，反向需求低。      |
+| **DeviceEntity → DeviceTypeEntity**                     | 单向即可   | 类型→设备列表可在设备管理页过滤。       |
+| **ParkingRecordEntity → DeviceEntity**                  | 单向即可   | 记录→设备即可，设备→记录很少一次性加载全部。 |
+| **OrderEntity → StoreEntity**                           | **双向** | 店铺后台必须看到本店所有订单。         |
+| **OrderEntity → UserEntity (Customer)**                 | **双向** | 用户中心必须显示“我的订单”。         |
+| **OrderEntity → EmployeeEntity (处理人)**                  | 单向即可   | 员工→订单可在员工详情页单独查询。       |
+| **OrderItemEntity → OrderEntity**                       | **双向** | 订单详情必须一次性列出所有项。         |
+| **OrderItemEntity → ProductEntity**                     | 单向即可   | 项→商品即可，商品→订单项量巨大，避免大集合。 |
+| **PaymentRecordEntity → OrderEntity**                   | 单向即可   | 订单→支付记录即可。              |
+| **ReviewEntity → OrderItemEntity**                      | 单向即可   | 评价→订单项即可。               |
+| **ReviewEntity → UserEntity**                           | 单向即可   | 评价→用户即可。                |
+| **ShoppingCartItemEntity → UserEntity / ProductEntity** | 单向即可   | 购物项→用户/商品即可，无需反向集合。     |
+| **NotificationEntity → UserEntity (接收/发布)**             | 单向即可   | 通知→用户即可，用户→通知可分页查询。     |
+| **UserFeedbackEntity → UserEntity / RepliedBy**         | 单向即可   | 反馈→用户/回复者即可。            |
+| **DictionaryEntity ↔ DictionaryItemEntity**             | **双向** | 字典管理必须一次性列出所有项。         |

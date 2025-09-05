@@ -1,0 +1,1067 @@
+﻿
+
+@{
+ViewData["Title"] = "店铺管理";
+}
+
+<div class="container-fluid">
+	<!-- 主内容容器 -->
+	<div class="row">
+		<div class="col-lg-12">
+			<!-- 卡片式布局 -->
+			<div class="card shadow-sm">
+				<!-- 卡片主体 -->
+				<div class="card-body">
+					<!-- 选项卡导航 -->
+					<nav>
+						<div class="nav nav-tabs mb-3" id="nav-tab" role="tablist">
+							<button class="nav-link active" id="nav-list-tab" data-bs-toggle="tab"
+								data-bs-target="#nav-list" type="button" role="tab" aria-controls="nav-list"
+								aria-selected="true">
+								店铺列表
+							</button>
+						</div>
+					</nav>
+
+					<div class="tab-content" id="nav-tabContent">
+						<!-- 店铺列表标签页 -->
+						<div class="tab-pane fade show active" id="nav-list" role="tabpanel"
+							aria-labelledby="nav-list-tab">
+							<!-- 工具栏区域 -->
+							<div id="toolbar" class="d-flex justify-content-between align-items-center mb-3">
+								<!-- 操作按钮组 -->
+								<div class="btn-group me-2 mb-2 mb-lg-0">
+									<button class="btn btn-success btn-sm btn-round" onclick="add()">
+										<span class="mdi mdi-plus me-1"></span> 新增
+									</button>
+									<button id="edit-btn" class="btn btn-primary btn-sm btn-round edit-btn" disabled>
+										<span class="mdi mdi-pencil me-1"></span> 编辑
+									</button>
+									<button id="del-btn" class="btn btn-danger btn-sm btn-round del-btn" disabled>
+										<span class="mdi mdi-close me-1"></span> 删除
+									</button>
+								</div>
+								<!-- 搜索区域 -->
+								<div class="input-group d-flex justify-content-center">
+									<button id="searchplus-btn" class="btn btn-outline-secondary btn-sm btn-round"
+										data-bs-toggle="modal" data-bs-target="#searchModal">
+										<span class="mdi mdi-magnify-plus"></span>高级搜索
+									</button>
+									<input type="text" id="searchBox" class="form-control form-control-sm"
+										placeholder="搜索...">
+									<button id="searchButton" class="btn btn-outline-secondary btn-sm btn-round">
+										<span class="mdi mdi-magnify"></span>查询
+									</button>
+									<button class="btn btn-outline-secondary btn-sm btn-round" id="clearButton">
+										<span class="mdi mdi-delete"></span>清除
+									</button>
+								</div>
+							</div>
+							<!-- 表格响应区域 -->
+							<div class="table-responsive">
+								<!-- 数据表格 -->
+								<table id="table" class="table table-hover table-striped align-middle"
+									style="text-align:center;"></table>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+<!-- 高级搜索模态框 -->
+<div class="modal fade" id="searchModal" tabindex="-1" aria-hidden="true">
+	<div class="modal-dialog modal-lg">
+		<div class="modal-content">
+			<div class="modal-header bg-light">
+				<h5 class="modal-title">高级搜索</h5>
+				<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+			</div>
+			<div class="modal-body">
+				<!-- 高级搜索表单 -->
+				<form id="searchForm">
+					<div class="row g-3">
+						<div class="col-md-6">
+							<label class="form-label">所属广场</label>
+							<select class="form-select" name="plazaId" id="search-plazaId">
+								<option value="">全部</option>
+								@foreach (var plaza in Model.Plazas)
+								{
+								<option value="@plaza.Id">@plaza.Name</option>
+								}
+							</select>
+						</div>
+						<div class="col-md-6">
+							<label class="form-label">所属楼层</label>
+							<select class="form-select" name="floorId" id="search-floorId">
+								<option value="">全部</option>
+							</select>
+						</div>
+						<div class="col-md-6">
+							<label class="form-label">店铺类型</label>
+							<select class="form-select" name="storeTypeId" id="search-storeTypeId">
+								<option value="">全部</option>
+								@foreach (var type in Model.StoreTypes)
+								{
+								<option value="@type.Id">@type.Name</option>
+								}
+							</select>
+						</div>
+						<div class="col-md-6">
+							<label class="form-label">店长</label>
+							<select class="form-select" name="userId" id="search-userId">
+								<option value="">全部</option>
+								@foreach (var user in Model.Users)
+								{
+								<option value="@user.Id">@user.UserName</option>
+								}
+							</select>
+						</div>
+						<div class="col-md-6">
+							<label class="form-label">店铺名称</label>
+							<input type="text" class="form-control" name="storeName" id="search-storeName">
+						</div>
+						<div class="col-md-6">
+							<label class="form-label">状态</label>
+							<select class="form-select" name="status" id="search-status">
+								<option value="">全部</option>
+								<option value="0">启用</option>
+								<option value="1">禁用</option>
+							</select>
+						</div>
+					</div>
+				</form>
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn btn-outline-secondary btn-sm" onclick="resetSearchForm()">重置</button>
+				<button type="button" class="btn btn-primary btn-sm" onclick="submitSearchForm()">搜索</button>
+			</div>
+		</div>
+	</div>
+</div>
+
+<!-- 店铺信息模态框（新增/编辑） -->
+<div class="modal fade" id="storeModal" tabindex="-1" aria-hidden="true">
+	<div class="modal-dialog modal-lg">
+		<div class="modal-content">
+			<div class="modal-header bg-light">
+				<h5 class="modal-title" id="storeModalTitle">新增店铺</h5>
+				<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+			</div>
+			<div class="modal-body">
+				<!-- 店铺表单 -->
+				<form id="storeForm">
+					<input type="hidden" name="id" id="store-id">
+					<div class="row g-3">
+						<div class="col-md-6">
+							<label class="form-label">店铺名称 <span class="text-danger">*</span></label>
+							<input type="text" class="form-control" name="name" id="store-name" required>
+						</div>
+						<div class="col-md-6">
+							<label class="form-label">店铺图片 <span class="text-danger">*</span></label>
+							<div class="input-group">
+								<input type="text" class="form-control" id="store-imageUrl" readonly>
+								<button class="btn btn-outline-secondary" type="button"
+									onclick="uploadImage()">上传</button>
+								@* <button class="btn btn-outline-danger" type="button" onclick="clearImage()"
+									id="clear-image-btn" disabled>清除</button> *@
+							</div>
+							<div id="image-preview" class="mt-2">
+								<img src="" alt="店铺图片" class="img-thumbnail" style="max-width: 200px; display: none;">
+							</div>
+						</div>
+						<div class="col-md-6">
+							<label class="form-label">所属广场 <span class="text-danger">*</span></label>
+							<select class="form-select" name="plazaId" id="store-plazaId" required>
+								<option value="">请选择广场</option>
+								@foreach (var plaza in Model.Plazas)
+								{
+								<option value="@plaza.Id">@plaza.Name</option>
+								}
+							</select>
+						</div>
+						<div class="col-md-6">
+							<label class="form-label">所属楼层 <span class="text-danger">*</span></label>
+							<select class="form-select" name="floorId" id="store-floorId" required>
+								 <option value="">请选择楼层</option> 
+							</select>
+						</div>
+						<div class="col-md-6">
+							<label class="form-label">店铺类型 <span class="text-danger">*</span></label>
+							<select class="form-select" name="storeTypeId" id="store-storeTypeId" required>
+								<option value="">请选择店铺类型</option>
+								@foreach (var type in Model.StoreTypes)
+								{
+								<option value="@type.Id">@type.Name</option>
+								}
+							</select>
+						</div>
+						<div class="col-md-6">
+							<label class="form-label">店长 <span class="text-danger">*</span></label>
+							<select class="form-select" name="userId" id="store-userId" required>
+								<option value="">请选择店长</option>
+								@foreach (var user in Model.Users)
+								{
+								<option value="@user.Id">@user.UserName</option>
+								}
+							</select>
+						</div>
+						<div class="col-md-6">
+							<label class="form-label">位置 <span class="text-danger">*</span></label>
+							<input type="text" class="form-control" name="location" id="store-location" required>
+						</div>
+						<div class="col-md-6">
+							<label class="form-label">营业时间 <span class="text-danger">*</span></label>
+							<input type="text" class="form-control" name="businessHours" id="store-businessHours"
+								required>
+						</div>
+						<div class="col-md-6">
+							<label class="form-label">联系方式 <span class="text-danger">*</span></label>
+							<input type="text" class="form-control" name="contact" id="store-contact" required>
+						</div>
+						<div class="col-md-6">
+							<label class="form-label">状态</label>
+							<select class="form-select" name="isDeleted" id="store-isDeleted">
+								<option value="0">启用</option>
+								<option value="1">禁用</option>
+							</select>
+						</div>
+						<div class="col-md-12">
+							<label class="form-label">店铺描述 <span class="text-danger">*</span></label>
+							<textarea class="form-control" name="description" id="store-description" rows="3"
+								required></textarea>
+						</div>
+						<div class="col-md-6">
+							<label class="form-label">创建时间</label>
+							<input type="text" class="form-control" readonly name="createTime" id="store-createTime">
+						</div>
+						<div class="col-md-6">
+							<label class="form-label">更新时间</label>
+							<input type="text" class="form-control" readonly name="updateTime" id="store-updateTime">
+						</div>
+					</div>
+				</form>
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn btn-outline-secondary btn-sm" data-bs-dismiss="modal">取消</button>
+				<button type="button" class="btn btn-primary btn-sm" onclick="submitStoreForm()">提交</button>
+			</div>
+		</div>
+	</div>
+</div>
+
+<!-- 删除确认模态框 -->
+<div class="modal fade" id="deleteConfirmModal" tabindex="-1" aria-hidden="true">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-header bg-light">
+				<h5 class="modal-title">确认删除</h5>
+				<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+			</div>
+			<div class="modal-body">
+				<div class="d-flex align-items-center">
+					<div class="me-3">
+						<span class="mdi mdi-alert-circle text-danger" style="font-size: 1.5rem;"></span>
+					</div>
+					<div>
+						<p class="mb-1">确定要删除选中的记录吗？</p>
+						<p id="deleteCountInfo" class="text-muted small mb-0"></p>
+					</div>
+				</div>
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn btn-outline-secondary btn-sm" data-bs-dismiss="modal">取消</button>
+				<button type="button" class="btn btn-danger btn-sm" onclick="confirmDelete()">确认删除</button>
+			</div>
+		</div>
+	</div>
+</div>
+
+<!-- 详情模态框 -->
+<div class="modal fade" id="detailModal" tabindex="-1" aria-hidden="true">
+	<div class="modal-dialog modal-lg">
+		<div class="modal-content">
+			<div class="modal-header bg-light">
+				<h5 class="modal-title">店铺详情</h5>
+				<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+			</div>
+			<div class="modal-body">
+				<div class="row">
+					<!-- 左侧信息列 -->
+					<div class="col-md-6">
+						<div class="mb-3">
+							<label class="form-label text-muted">编号:</label>
+							<div class="form-control-plaintext" id="detail-id">-</div>
+						</div>
+						<div class="mb-3">
+							<label class="form-label text-muted">店铺名称:</label>
+							<div class="form-control-plaintext" id="detail-name">-</div>
+						</div>
+                        <div class="col-md-6">
+                            <div class="mb-3">
+                                <label class="form-label text-muted">店铺图片:</label>
+                                <div id="detail-imageUrl">
+                                    <img src="" alt="店铺图片" class="img-thumbnail" style="max-width: 200px; display: none;">
+                                </div>
+                            </div>
+                        </div>
+						<div class="mb-3">
+							<label class="form-label text-muted">所属广场:</label>
+							<div class="form-control-plaintext" id="detail-plazaName">-</div>
+						</div>
+						<div class="mb-3">
+							<label class="form-label text-muted">所属楼层:</label>
+							<div class="form-control-plaintext" id="detail-floorName">-</div>
+						</div>
+						<div class="mb-3">
+							<label class="form-label text-muted">店铺类型:</label>
+							<div class="form-control-plaintext" id="detail-storeType">-</div>
+						</div>
+					</div>
+
+					<!-- 右侧信息列 -->
+					<div class="col-md-6">
+						<div class="mb-3">
+							<label class="form-label text-muted">店长:</label>
+							<div class="form-control-plaintext" id="detail-userName">-</div>
+						</div>
+						<div class="mb-3">
+							<label class="form-label text-muted">位置:</label>
+							<div class="form-control-plaintext" id="detail-location">-</div>
+						</div>
+						<div class="mb-3">
+							<label class="form-label text-muted">营业时间:</label>
+							<div class="form-control-plaintext" id="detail-businessHours">-</div>
+						</div>
+						<div class="mb-3">
+							<label class="form-label text-muted">联系方式:</label>
+							<div class="form-control-plaintext" id="detail-contact">-</div>
+						</div>
+						<div class="mb-3">
+							<label class="form-label text-muted">状态:</label>
+							<div class="form-control-plaintext" id="detail-isDeleted">-</div>
+						</div>
+					</div>
+					<div class="col-md-12">
+						<div class="mb-3">
+							<label class="form-label text-muted">店铺描述:</label>
+							<div class="form-control-plaintext" id="detail-description" style="white-space: pre-wrap;">-
+							</div>
+						</div>
+					</div>
+					<div class="col-md-6">
+						<div class="mb-3">
+							<label class="form-label text-muted">创建时间:</label>
+							<div class="form-control-plaintext" id="detail-createTime">-</div>
+						</div>
+					</div>
+					<div class="col-md-6">
+						<div class="mb-3">
+							<label class="form-label text-muted">更新时间:</label>
+							<div class="form-control-plaintext" id="detail-updateTime">-</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn btn-outline-secondary btn-sm" data-bs-dismiss="modal">关闭</button>
+			</div>
+		</div>
+	</div>
+</div>
+
+@section Scripts {
+    <script>
+        // ====================== 全局变量声明 ======================
+        let currentMode = 'add'; // 当前操作模式：'add' 或 'edit'
+        let currentDeleteMode = null; // 当前删除模式：'single' 或 'multiple'
+
+        // ====================== 页面初始化函数 ======================
+        $(document).ready(function() {
+            inittable();
+           
+            bindEventHandlers();
+            initDefaultPlaza(); // 初始化默认广场
+        });
+
+        // ====================== 初始化默认广场数据 ======================
+        function initDefaultPlaza() {
+            // 获取第一个广场（假设是默认广场）
+            const plazaId = $('#store-plazaId option:first').val();
+            if (plazaId && plazaId !== '0') {
+                loadDropdownData('floors', plazaId, undefined, $('#store-floorId').val());
+            }
+        }
+
+        // ====================== 图片上传相关函数 ======================
+                function cleanImageUrl(imageUrl) {
+            if (!imageUrl) return '';
+            return imageUrl.replace('http://localhost:5132/', '');
+        }
+                   function uploadImage() {
+            const currentImageUrl = $('#store-imageUrl').val();
+
+            // 如果已经有图片，先删除旧图片
+            if (currentImageUrl) {
+                // 调用删除图片的 API
+                $.ajax({
+                    url: '/Store/DeleteImage', // 假设这是删除图片的 API 端点
+                    type: 'POST',
+                    data: { imageUrl: currentImageUrl },
+                    success: function(response) {
+                        if (response.success) {
+                            // 删除成功后，继续上传新图片
+                            uploadNewImage();
+                        } else {
+                            showToast('删除旧图片失败: ' + (response.message || '未知错误'), true);
+                        }
+                    },
+                    error: function(xhr) {
+                        const errorMsg = xhr.responseJSON?.message || xhr.statusText || '服务器错误';
+                        showToast(`删除旧图片失败: ${errorMsg}`, true);
+                    }
+                });
+            } else {
+                // 如果没有图片，直接上传新图片
+                uploadNewImage();
+            }
+        }
+
+        function uploadNewImage() {
+            const input = document.createElement('input');
+            input.type = 'file';
+            input.accept = 'image/*';
+
+            input.onchange = function(e) {
+                const file = e.target.files[0];
+                if (!file) return;
+
+                const formData = new FormData();
+                formData.append('file', file);
+                formData.append('uploadType', 'store');
+
+                $.ajax({
+                    url: '/Store/UploadImage',
+                    type: 'POST',
+                    data: formData,
+                    processData: false,
+                    contentType: false,
+                    success: function(response) {
+                        if (response.success) {
+                            // 去掉服务器地址部分
+                            const relativeImageUrl = cleanImageUrl(response.imageUrl);
+
+                            // 保存相对路径到表单和数据库
+                            $('#store-imageUrl').val(relativeImageUrl);
+                            $('#image-preview img').attr('src', `http://localhost:5132/${relativeImageUrl}`).show();
+                            //$('#clear-image-btn').prop('disabled', false);
+                            showToast('图片上传成功');
+                        } else {
+                            showToast('图片上传失败: ' + (response.message || '未知错误'), true);
+                        }
+                    },
+                    error: function(xhr) {
+                        const errorMsg = xhr.responseJSON?.message || xhr.statusText || '服务器错误';
+                        showToast(`图片上传失败: ${errorMsg}`, true);
+                    }
+                });
+            };
+
+            input.click();
+        }
+
+        // function clearImage() {
+        //     $('#store-imageUrl').val('');
+        //     $('#image-preview img').hide();
+        //     $('#clear-image-btn').prop('disabled', true);
+        // }
+
+        // ====================== 表格相关函数 ======================
+        const tableConfig = {
+            classes: 'table table-bordered table-hover table-striped lyear-table',
+            url: '/Store/GetStoreData',
+            uniqueId: 'id',
+            idField: 'id',
+            clickToSelect: true,
+            dataType: 'json',
+            method: 'get',
+            toolbar: '#toolbar',
+            pagination: true,
+            showColumns: true,
+            showRefresh: true,
+            showButtonIcons: true,
+            showButtonText: false,
+            showFullscreen: true,
+            totalField: 'total',
+            undefinedText: '-',
+            sortOrder: "asc",
+            sidePagination: "server",
+            pageNumber: 1,
+            pageSize: 5,
+            pageList: [5, 10, 25, 50, 100],
+            paginationLoop: true,
+            paginationPagesBySide: 2,
+            buttonsClass: 'default',
+            buttonsPrefix: 'btn',
+            iconsPrefix: 'mdi',
+            iconSize: 'mini',
+            icons: {
+                refresh: 'mdi-refresh',
+                export: 'mdi-export',
+                columns: 'mdi-table-column-remove',
+                fullscreen: 'mdi-monitor-screenshot'
+            },
+            showExport: true,
+            buttonsAlign: "right",
+            exportDataType: "basic",
+            exportOptions: {
+                ignoreColumn: [0],
+                fileName: '店铺数据',
+                worksheetName: 'Sheet1',
+                tableName: '店铺信息表',
+                excelstyles: ['background-color', 'color', 'font-size', 'font-weight'],
+            },
+            exportTypes: ['json', 'xml', 'csv', 'txt', 'sql', 'doc', 'excel'],
+        };
+
+        const columns = [
+            {
+                field: 'example',
+                checkbox: true,
+                widthUnit: 'rem'
+            },
+            {
+                field: 'id',
+                title: '编号',
+                align: 'center',
+                sortable: true,
+                sortName: 'sortId',
+                switchable: false,
+                widthUnit: 'rem'
+            },
+            {
+                field: 'name',
+                align: 'center',
+                title: '店铺名称'
+            },
+                              {
+            field: 'imageUrl',
+            title: '店铺图片',
+            formatter: function(value) {
+                if (!value) return '<span class="text-muted">无图片</span>';
+
+                // 确保 src 使用完整的 URL
+                const fullImageUrl = `http://localhost:5132/${value}`;
+
+                return `<img src="${fullImageUrl}" alt="店铺图片" class="img-thumbnail" style="max-width: 100px; max-height: 100px;">`;
+            }
+        },
+            {
+                field: 'storeTypeName',
+                align: 'center',
+                title: '店铺类型'
+            },
+            {
+                field: 'plazaName',
+                align: 'center',
+                title: '所属广场'
+            },
+            {
+                field: 'floorName',
+                align: 'center',
+                title: '所属楼层'
+            },
+            {
+                field: 'userName',
+                align: 'center',
+                title: '店长'
+            },
+            {
+                field: 'isDeleted',
+                title: '状态',
+                formatter: function(value) {
+                    return value == 0 ?
+                        '<span class="badge bg-success">启用</span>' :
+                        '<span class="badge bg-danger">禁用</span>';
+                }
+            },
+            {
+                field: 'operate',
+                title: '操作',
+                formatter: function() {
+                    return `<div class="btn-group">
+                        <button class="btn btn-sm btn-indigo btn-round detail-btn" title="详情"><span class="mdi mdi-information"></span></button>
+                        <button class="btn btn-sm btn-primary btn-round edit-btn" title="编辑"><span class="mdi mdi-pencil"></span></button>
+                        <button class="btn btn-sm btn-danger btn-round del-btn" title="删除"><span class="mdi mdi-close"></span></button>
+                    </div>`;
+                },
+                events: {
+                    'click .detail-btn': function(event, value, row) {
+                        event.stopPropagation();
+                        detail(row);
+                    },
+                    'click .edit-btn': function(event, value, row) {
+                        event.stopPropagation();
+                        edit(row);
+                    },
+                    'click .del-btn': function(event, value, row) {
+                        event.stopPropagation();
+                        del(row);
+                    }
+                }
+            }
+        ];
+
+        function inittable() {
+            $('#table').bootstrapTable({
+                ...tableConfig,
+                queryParams: function(params) {
+                    return {
+                        pageSize: params.limit,
+                        pageIndex: Math.floor(params.offset / params.limit) + 1,
+                        sort: params.sort || "Id",
+                        sortOrder: params.order || "asc",
+                        keyword: $('#searchBox').val().trim(),
+                        storeName: $('#search-storeName').val().trim(),
+                        plazaId: $('#search-plazaId').val(),
+                        floorId: $('#search-floorId').val(),
+                        storeTypeId: $('#search-storeTypeId').val(),
+                        userId: $('#search-userId').val(),
+                        status: $('#search-status').val()
+                    };
+                },
+                columns,
+                onLoadSuccess: function() {
+                    $("[data-bs-toggle='tooltip']").tooltip();
+                    updateButtonState();
+                },
+                onCheck: updateButtonState,
+                onUncheck: updateButtonState,
+                onCheckAll: updateButtonState,
+                onUncheckAll: updateButtonState
+            });
+        }
+
+        // ====================== 事件处理函数 ======================
+                function submitSearchForm() {
+            // 获取搜索表单的值
+            const plazaId = $('#search-plazaId').val();
+            const floorId = $('#search-floorId').val();
+            const storeTypeId = $('#search-storeTypeId').val();
+            const userId = $('#search-userId').val();
+            const storeName = $('#search-storeName').val();
+            const status = $('#search-status').val();
+
+            // 刷新表格数据
+            $('#table').bootstrapTable('refresh', {
+                query: {
+                    plazaId: plazaId,
+                    floorId: floorId,
+                    storeTypeId: storeTypeId,
+                    userId: userId,
+                    storeName: storeName,
+                    status: status
+                }
+            });
+
+            // 关闭搜索模态框（如果需要）
+            $('#searchModal').modal('hide');
+        }
+        function bindEventHandlers() {
+                // 广场下拉列表变化事件
+        $('#store-plazaId').change(function() {
+            const plazaId = $(this).val();
+            loadDropdownData('floors', plazaId);
+        });
+
+        // 搜索模态框中的广场下拉列表变化事件
+        $('#search-plazaId').change(function() {
+            const plazaId = $(this).val();
+            if (plazaId) {
+                $.ajax({
+                    url: '/Store/GetFloorsByPlazaId',
+                    type: 'GET',
+                    data: { plazaId: plazaId },
+                    success: function(floors) {
+                        const $select = $('#search-floorId');
+                        $select.empty().append('<option value="">全部</option>');
+
+                        if (floors && floors.length > 0) {
+                            floors.forEach(floor => {
+                                $select.append(`<option value="${floor.id}">${floor.name}</option>`);
+                            });
+                        }
+                    },
+                    error: function(xhr) {
+                        const errorMsg = xhr.responseJSON?.message || xhr.statusText || '服务器错误';
+                        showToast(`获取楼层数据失败: ${errorMsg}`, true);
+                    }
+                });
+            } else {
+                $('#search-floorId').empty().append('<option value="">全部</option>');
+            }
+        });
+
+            $('#searchButton').click(performBasicSearch);
+            $('#searchBox').keypress(function(e) {
+                if (e.which === 13) performBasicSearch();
+            });
+            $('#searchBox').keydown(function(e) {
+                if (e.which === 27) {
+                    $('#searchBox').val('');
+                    $('#table').bootstrapTable('refresh');
+                }
+            });
+
+            $('#searchplus-btn').click(function() {
+                $('#searchModal').modal('show');
+            });
+            $('#clearButton').click(function() {
+                $('#searchBox').val('');
+                $('#searchForm')[0].reset();
+                $('#table').bootstrapTable('refresh');
+            });
+
+            $('#edit-btn').click(function() {
+                const selections = $('#table').bootstrapTable('getSelections');
+                if (selections.length !== 1) {
+                    showToast('请选择一条记录进行编辑', true);
+                    return;
+                }
+                edit(selections[0]);
+            });
+
+            $('#del-btn').click(function() {
+                const selections = $('#table').bootstrapTable('getSelections');
+                if (selections.length === 0) {
+                    showToast('请至少选择一条记录进行删除', true);
+                    return;
+                }
+                showDeleteConfirm(selections);
+            });
+        }
+
+        function performBasicSearch() {
+            const keyword = $('#searchBox').val().trim();
+            $('#table').bootstrapTable('refresh', {
+                query: {
+                    keyword: keyword
+                }
+            });
+        }
+
+        function showDeleteConfirm(selections) {
+            currentDeleteMode = selections.length > 1 ? 'multiple' : 'single';
+            const countInfo = selections.length > 1 ?
+                `共选中 ${selections.length} 条记录` :
+                `记录: ${selections[0].name}`;
+
+            $('#deleteCountInfo').text(countInfo);
+            $('#deleteConfirmModal').modal('show');
+        }
+
+        function confirmDelete() {
+            const selections = $('#table').bootstrapTable('getSelections');
+            if (selections.length === 0) {
+                showToast('请至少选择一条记录进行删除', true);
+                return;
+            }
+
+            const ids = selections.map(record => record.id);
+            if (!ids || ids.length === 0) {
+                showToast('未获取到有效的ID', true);
+                return;
+            }
+
+            $.ajax({
+                url: '/Store/DeleteRange',
+                type: 'POST',
+                data: {
+                    ids: ids
+                },
+                success: function(response) {
+                    if (response.success) {
+                        $('#table').bootstrapTable('refresh');
+                        $('#deleteConfirmModal').modal('hide');
+                        const message = ids.length > 1 ?
+                            `成功删除 ${ids.length} 条记录` :
+                            '成功删除记录';
+                        showToast(message);
+                    } else {
+                        showToast('删除失败: ' + (response.message || '请重试'), true);
+                    }
+                },
+                error: function(xhr) {
+                    const errorMsg = xhr.responseJSON?.message || '服务器错误';
+                    showToast(`操作失败: ${errorMsg}`, true);
+                }
+            });
+        }
+               /**
+         * 重置所有下拉框到初始状态
+         */
+        function resetDropdowns() {
+            // 重置楼层下拉框
+            $('#store-floorId').empty().append('<option value="">请选择楼层</option>');
+
+        }
+        // ====================== 业务操作函数 ======================
+        function add() {
+            currentMode = 'add';
+            $('#storeModalTitle').text('新增店铺');
+            $('#storeForm')[0].reset();
+            $('#storeForm').find('[name="isDeleted"]').val('0');
+            resetDropdowns();
+            $('#store-imageUrl').val('');
+            $('#image-preview img').hide();
+            $('#clear-image-btn').prop('disabled', true);
+            $('#storeModal').modal('show');
+        }
+
+        function edit(row) {
+            currentMode = 'edit';
+            $('#storeModalTitle').text('编辑店铺');
+            clearOtherCheckboxes(row.id);
+
+            $('#store-id').val(row.id);
+            $('#store-name').val(row.name);
+            $('#store-imageUrl').val(row.imageUrl);
+                if (row.imageUrl) {
+            // 确保使用完整的 URL 设置 src
+            const fullImageUrl = `http://localhost:5132/${row.imageUrl}`;
+            $('#image-preview img').attr('src', fullImageUrl).show();
+            $('#clear-image-btn').prop('disabled', false);
+        } else {
+            $('#image-preview img').hide();
+            $('#clear-image-btn').prop('disabled', true);
+        }
+            resetDropdowns();
+            $('#store-plazaId').val(row.plazaId);
+      
+            //$('#store-floorId').val(row.floorId);
+            $('#store-storeTypeId').val(row.storeTypeId);
+            $('#store-userId').val(row.userId);
+            $('#store-location').val(row.location);
+            $('#store-businessHours').val(row.businessHours);
+            $('#store-contact').val(row.contact);
+            $('#store-description').val(row.description);
+            $('#store-isDeleted').val(row.isDeleted ? '1' : '0');
+            $('#store-createTime').val(row.createTime || '');
+            $('#store-updateTime').val(row.updateTime || '');
+                              // 加载对应的楼层
+            loadDropdownData('floors', row.plazaId, undefined, row.floorId);
+
+
+            $('#storeForm').removeClass('was-validated');
+            $('#storeModal').modal('show');
+        }
+
+        function detail(row) {
+            if (!row) {
+                showToast('未获取到有效的数据', true);
+                return;
+            }
+
+            $('#detail-id').text(row.id || '无');
+            $('#detail-name').text(row.name || '无');
+            $('#detail-imageUrl').text(row.imageUrl || '无');
+            $('#detail-plazaName').text(row.plazaName || '无');
+            $('#detail-floorName').text(row.floorName || '无');
+            $('#detail-storeType').text(row.storeTypeName || '无');
+            $('#detail-userName').text(row.userName || '无');
+            $('#detail-location').text(row.location || '无');
+            $('#detail-businessHours').text(row.businessHours || '无');
+            $('#detail-contact').text(row.contact || '无');
+            $('#detail-description').text(row.description || '无');
+
+            const statusText = row.isDeleted === 0 ? '启用' :
+                              row.isDeleted === 1 ? '禁用' : '未知';
+            $('#detail-isDeleted').text(statusText);
+
+            $('#detail-createTime').text(formatDateTime(row.createTime) || '无');
+            $('#detail-updateTime').text(formatDateTime(row.updateTime) || '无');
+
+            $('#detailModal').modal('show');
+        }
+
+        function formatDateTime(dateTime) {
+            if (!dateTime) return '';
+            return new Date(dateTime).toLocaleString();
+        }
+
+        function del(row) {
+            showDeleteConfirm([row]);
+        }
+
+        function submitStoreForm() {
+            if (!validateStoreForm()) return;
+
+            const formData = {
+                name: $('#store-name').val(),
+                imageUrl: $('#store-imageUrl').val(),
+                plazaId: $('#store-plazaId').val(),
+                floorId: $('#store-floorId').val(),
+                storeTypeId: $('#store-storeTypeId').val(),
+                userId: $('#store-userId').val(),
+                location: $('#store-location').val(),
+                businessHours: $('#store-businessHours').val(),
+                contact: $('#store-contact').val(),
+                description: $('#store-description').val(),
+                isDeleted: $('#store-isDeleted').val() === '1'
+            };
+
+            if (currentMode === 'edit') {
+                formData.id = $('#store-id').val();
+            }
+
+            const url = currentMode === 'add' ? '/Store/Add' : '/Store/Edit';
+            const successMessage = currentMode === 'add' ? '新增成功' : '更新成功';
+
+            $.ajax({
+                url: url,
+                type: 'POST',
+                data: formData,
+                success: function(response) {
+                    if (response.success) {
+                        $('#storeModal').modal('hide');
+                        $('#table').bootstrapTable('refresh');
+                        showToast(successMessage);
+                    } else {
+                        showToast(`操作失败: ${response.message || '未知错误'}`, true);
+                    }
+                },
+                error: function(xhr, status, error) {
+                    const errorMsg = xhr.responseJSON?.message || xhr.statusText || '服务器错误';
+                    showToast(`操作失败: ${errorMsg}`, true);
+                }
+            });
+        }
+
+        function validateStoreForm() {
+            const form = $('#storeForm')[0];
+            form.classList.add('was-validated');
+
+            let isValid = true;
+            $('#storeForm [required]').each(function() {
+                if (!$(this).val()) {
+                    isValid = false;
+                    $(this).addClass('is-invalid');
+                } else {
+                    $(this).removeClass('is-invalid');
+                }
+            });
+
+            // 特殊验证逻辑
+            if ($('#store-plazaId').val() === '') {
+                isValid = false;
+                $('#store-plazaId').addClass('is-invalid');
+            }
+
+            if ($('#store-floorId').val() === '') {
+                isValid = false;
+                $('#store-floorId').addClass('is-invalid');
+            }
+
+            if ($('#store-storeTypeId').val() === '') {
+                isValid = false;
+                $('#store-storeTypeId').addClass('is-invalid');
+            }
+
+            if ($('#store-userId').val() === '') {
+                isValid = false;
+                $('#store-userId').addClass('is-invalid');
+            }
+
+            // 验证图片
+            if ($('#store-imageUrl').val() === '') {
+                isValid = false;
+                showToast('请上传店铺图片', true);
+            }
+
+            return isValid;
+        }
+
+        function clearOtherCheckboxes(keepId) {
+            const $table = $('#table');
+            const data = $table.bootstrapTable('getData');
+            $table.bootstrapTable('uncheckAll');
+            const rowToKeep = data.find(item => item.id === keepId);
+            if (rowToKeep) {
+                $table.bootstrapTable('checkBy', {
+                    field: 'id',
+                    values: [keepId]
+                });
+            }
+            updateButtonState();
+        }
+
+        function updateButtonState() {
+            const selections = $('#table').bootstrapTable('getSelections');
+            const allRows = $('#table').bootstrapTable('getData');
+            const selectedCount = selections.length;
+            const totalRows = allRows.length;
+
+            $('#edit-btn').prop('disabled', selectedCount !== 1);
+            $('#del-btn').prop('disabled', selectedCount === 0);
+
+            const headerCheckbox = $('#table').find('thead [type="checkbox"]');
+            if (selectedCount === 0) {
+                headerCheckbox.prop('indeterminate', false).prop('checked', false);
+            } else if (selectedCount === totalRows) {
+                headerCheckbox.prop('indeterminate', false).prop('checked', true);
+            } else {
+                headerCheckbox.prop('indeterminate', true).prop('checked', false);
+            }
+        }
+
+     
+
+               // ====================== 通用下拉数据加载函数 ======================
+        function loadDropdownData(type, plazaId, selectedId, currentFloorId) {
+            if (type !== 'floors') {
+                console.error('当前仅支持楼层数据加载');
+                return;
+            }
+
+            if (!plazaId) {
+                $('#store-floorId').empty().append('<option value="">请选择楼层</option>');
+                $('#search-floorId').empty().append('<option value="">全部</option>');
+                return;
+            }
+
+            $.ajax({
+                url: '/Store/GetFloorsByPlazaId',
+                type: 'GET',
+                data: { plazaId: plazaId },
+                success: function(floors) {
+                    // 更新主表单的下拉框
+                    const $mainFloorSelect = $('#store-floorId');
+                    $mainFloorSelect.empty().append('<option value="">请选择楼层</option>');
+
+                    // 更新搜索模态框的下拉框
+                    const $searchFloorSelect = $('#search-floorId');
+                    $searchFloorSelect.empty().append('<option value="">全部</option>');
+
+                    // 添加选项
+                    if (floors && floors.length > 0) {
+                        floors.forEach(floor => {
+                            $mainFloorSelect.append(`<option value="${floor.id}">${floor.name}</option>`);
+                            $searchFloorSelect.append(`<option value="${floor.id}">${floor.name}</option>`);
+                        });
+                    }
+
+                    // 设置选中的值
+                    if (currentFloorId) {
+                        $mainFloorSelect.val(currentFloorId);
+                    }
+                },
+                error: function(xhr) {
+                    const errorMsg = xhr.responseJSON?.message || xhr.statusText || '服务器错误';
+                    showToast(`获取楼层数据失败: ${errorMsg}`, true);
+                }
+            });
+        }
+    </script>
+}

@@ -1,0 +1,6 @@
+docker run -e "ACCEPT_EULA=Y"    -e "MSSQL_SA_PASSWORD=Access123!@#"    -p 1433:1433 `  -v plazasqlvolume:/var/opt/mssql    -v "$env:USERPROFILE\.aspnet\https:/https/"    --name plazasql    --network plazanet    --network-alias plaza-sql    -d mcr.microsoft.com/mssql/server:2022-latest
+
+
+
+
+docker run --name plazaadmin-container  --network my-network   -p 80:80   -d plazanetmvcadmin:dev

@@ -1,0 +1,49 @@
+name: dockercompose13648564756914834160
+services:
+  Plaza.Net.mvcadmin:
+    build:
+      context: C:\Users\Lenovo\Desktop\CSharp项目\就业项目\Plaza
+      dockerfile: Plaza.Net.MVCAdmin/Dockerfile
+    container_name: mvcadmin-container
+    depends_on:
+      sqlserver:
+        condition: service_started
+        required: true
+    environment:
+      ASPNETCORE_ENVIRONMENT: Development
+    networks:
+      app-network: null
+    ports:
+      - mode: ingress
+        target: 80
+        published: "5200"
+        protocol: tcp
+      - mode: ingress
+        target: 80
+        protocol: tcp
+  sqlserver:
+    container_name: sqlserver-container
+    environment:
+      ACCEPT_EULA: "Y"
+      MSSQL_PID: Express
+      SA_PASSWORD: Access123!@#
+    image: mcr.microsoft.com/mssql/server:2022-latest
+    networks:
+      app-network: null
+    ports:
+      - mode: ingress
+        target: 1433
+        published: "5433"
+        protocol: tcp
+    volumes:
+      - type: volume
+        source: sqlserver-data
+        target: /var/opt/mssql
+        volume: {}
+networks:
+  app-network:
+    name: dockercompose13648564756914834160_app-network
+    driver: bridge
+volumes:
+  sqlserver-data:
+    name: dockercompose13648564756914834160_sqlserver-data

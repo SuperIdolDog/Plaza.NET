@@ -1,0 +1,190 @@
+﻿@{
+    Layout = null;
+}
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="Viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimal-ui">
+    <title>后台登录</title>
+    <link href="~/css/materialdesignicons.min.css" rel="stylesheet" />
+    <link href="~/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="~/css/animate.min.css" rel="stylesheet" />
+    <link href="~/css/style.min.css" rel="stylesheet" />
+    <style>
+        .signin-form .has-feedback {
+            position: relative;
+        }
+
+            .signin-form .has-feedback .form-control {
+                padding-left: 36px;
+            }
+
+            .signin-form .has-feedback .mdi {
+                position: absolute;
+                top: 0;
+                left: 0;
+                right: auto;
+                width: 36px;
+                height: 36px;
+                line-height: 36px;
+                z-index: 4;
+                color: #dcdcdc;
+                display: block;
+                text-align: center;
+                pointer-events: none;
+            }
+
+            .signin-form .has-feedback.row .mdi {
+                left: 15px;
+            }
+    </style>
+</head>
+<body class="bg-white overflow-x-hidden">
+    <div class="row bg-white vh-100"
+         style="background-image: linear-gradient(180deg, rgba(255,255,255,0.1), rgba(255,255,255,1) 85%),
+                radial-gradient(ellipse at top left, rgba(13,110,253,0.2), transparent 50%),
+                radial-gradient(ellipse at top right, rgba(255,193,7,0.2), transparent 50%),
+                radial-gradient(ellipse at center right, rgba(111,66,193,0.2), transparent 50%),
+                radial-gradient(ellipse at center left, rgba(214,51,132,0.2), transparent 50%);
+                background-attachment: fixed; background-size: cover; background-repeat: no-repeat;">
+        <!-- 左侧背景图区域（完全不变） -->
+        <div class="col-md-6 col-lg-7 col-xl-8 d-none d-md-block"
+             style="background-image: url(/images/Apple-Azure.png); background-size: cover; background-position: center;">
+            <div class="d-flex vh-100">
+                <div class="p-5 align-self-end">
+                    <p class="text-white">PlazaAdmin 是一个基于 Asp.Net Core MVC 和 Bootstrap 框架开发的商业广场后台管理系统。</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- 右侧登录表单区域 -->
+        <div class="col-md-6 col-lg-5 col-xl-4 align-self-center">
+            <div class="p-5">
+                <div class="text-center">
+                    <a href="/Home/dsfs">
+                        <img alt="plaza admin" src="~/images/Plaza.png">
+                    </a>
+                </div>
+                <p class="text-center text-muted"><small>请使用您的账号登录系统</small></p>
+
+                <form id="loginForm" method="post" class="signin-form needs-validation" novalidate>
+                    @Html.AntiForgeryToken()
+                    <div class="mb-3 has-feedback">
+                        <span class="mdi mdi-account form-control-feedback" aria-hidden="true"></span>
+                        <input type="text" class="form-control" name="UserName" id="username" placeholder="用户名" value="SuperIdol" required>
+                    </div>
+
+                    <div class="mb-3 has-feedback">
+                        <span class="mdi mdi-lock form-control-feedback" aria-hidden="true"></span>
+                        <input type="password" class="form-control" name="Password" id="password" placeholder="密码" value="Access123!@@#" required>
+                    </div>
+
+                    <!-- 验证码区域（默认隐藏，失败 3 次后出现） -->
+                    <div id="captchaSection" class="mb-3 has-feedback row d-none">
+                        <div class="col-7">
+                            <span class="mdi mdi-check-all form-control-feedback" aria-hidden="true"></span>
+                            <input type="text" name="Captcha" class="form-control" placeholder="验证码" required>
+                        </div>
+                        <div class="col-5 text-right">
+                            <img src="/Authorize/VerifyCode" class="pull-right" id="captchaImage"
+                                 style="cursor: pointer;" onclick="refreshCaptcha(this)" title="点击刷新" alt="验证码">
+                        </div>
+                    </div>
+
+                    <div class="mb-3">
+                        <div class="form-check">
+                            <input type="checkbox" class="form-check-input" id="rememberme" name="RemeberMe">
+                            <label class="form-check-label not-user-select" for="rememberme">5 天内自动登录</label>
+                        </div>
+                    </div>
+
+                    <div class="mb-3 d-grid">
+                        <button class="btn btn-primary" type="submit" id="loginBtn">立即登录</button>
+                    </div>
+                </form>
+
+                <div class="text-center mt-3">
+                    <a href="/Authorize/ForgotPassword" class="text-decoration-none text-muted small">忘记密码?</a>
+                    <span class="text-muted mx-2">|</span>
+                    <a href="/Authorize/Register" class="text-decoration-none text-muted small">注册账号</a>
+                </div>
+
+                <p class="text-center text-muted mt-3">
+                    © 2025 <a target="_blank" href="http://www.bixiaguangnian.com">Plaza</a>. All rights reserved.<br>
+                    <a href="http://beian.miit.gov.cn/" target="_blank" rel="noopener noreferrer" class="text-muted small">
+                        皖ICP备2025089160号-1
+                    </a>
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <!-- JS 库 -->
+    <script src="~/js/jquery.min.js"></script>
+    <script src="~/js/popper.min.js"></script>
+    <script src="~/js/bootstrap-notify.min.js"></script>
+
+    <!-- 登录逻辑 -->
+    <script>
+        $(document).ready(function () {
+            let requiresCaptcha = false;
+
+            // 刷新验证码
+            function refreshCaptcha(obj) {
+                obj.src = '/Authorize/VerifyCode?' + Math.random();
+            }
+            window.refreshCaptcha = refreshCaptcha;
+
+            $('#loginForm').submit(function (e) {
+                e.preventDefault();
+                const $form = $(this);
+                const $btn  = $('#loginBtn');
+
+                // 需要验证码但未填
+                if (requiresCaptcha) {
+                    const captcha = $form.find('input[name="Captcha"]').val();
+                    if (!captcha) {
+                        $.notify({ message: '请输入验证码' },
+                                 { type: 'danger', placement: { from: 'top', align: 'right' }, z_index: 10800 });
+                        return;
+                    }
+                }
+
+                $btn.html('<span class="spinner-border spinner-border-sm"></span> 登录中…').prop('disabled', true);
+
+                $.ajax({
+                    url: '/Authorize/Login',
+                    type: 'POST',
+                    data: $form.serialize(),
+                   // headers: { '__RequestVerificationToken': $form.find('input[name="__RequestVerificationToken"]').val() },
+                    dataType: 'json',
+                    success: function (res) {
+                        if (res.success && res.redirectUrl) {
+                            $.notify({ message: '登录成功，正在跳转…' },
+                                     { type: 'success', placement: { from: 'top', align: 'right' }, z_index: 10800, delay: 1500 });
+                            setTimeout(() => location.href = res.redirectUrl, 1500);
+                        } else {
+                            requiresCaptcha = res.requiresCaptcha;
+                            if (requiresCaptcha) {
+                                $('#captchaSection').removeClass('d-none');
+                                if (res.captchaUrl) refreshCaptcha($('#captchaImage')[0]);
+                            }
+                            $.notify({ message: res.message || '登录失败' },
+                                     { type: 'warning', placement: { from: 'top', align: 'right' }, z_index: 10800 });
+                        }
+                    },
+                    error: function () {
+                        $.notify({ message: '服务器连接异常' },
+                                 { type: 'danger', placement: { from: 'top', align: 'right' }, z_index: 10800 });
+                    },
+                    complete: function () {
+                        $btn.html('立即登录').prop('disabled', false);
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>

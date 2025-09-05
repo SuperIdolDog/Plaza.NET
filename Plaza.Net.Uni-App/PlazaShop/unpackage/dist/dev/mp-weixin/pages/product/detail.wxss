@@ -1,0 +1,290 @@
+@charset "UTF-8";
+/**
+ * 这里是uni-app内置的常用样式变量
+ *
+ * uni-app 官方扩展插件及插件市场（https://ext.dcloud.net.cn）上很多三方插件均使用了这些样式变量
+ * 如果你是插件开发者，建议你使用scss预处理，并在插件代码中直接使用这些变量（无需 import 这个文件），方便用户通过搭积木的方式开发整体风格一致的App
+ *
+ */
+/**
+ * 如果你是App开发者（插件使用者），你可以通过修改这些变量来定制自己的插件主题，实现自定义主题功能
+ *
+ * 如果你的项目同样使用了scss预处理，你也可以直接在你的 scss 代码中使用如下变量，同时无需 import 这个文件
+ */
+/* 颜色变量 */
+/* 行为相关颜色 */
+/* 文字基本颜色 */
+/* 背景颜色 */
+/* 边框颜色 */
+/* 尺寸变量 */
+/* 文字尺寸 */
+/* 图片尺寸 */
+/* Border Radius */
+/* 水平间距 */
+/* 垂直间距 */
+/* 透明度 */
+/* 文章场景相关 */
+/* uni.scss */
+page.data-v-0e9671aa {
+  background: #f9f9f9;
+}
+.safe-bottom.data-v-0e9671aa {
+  padding-bottom: constant(safe-area-inset-bottom);
+  padding-bottom: env(safe-area-inset-bottom);
+}
+.banner.data-v-0e9671aa {
+  width: 100%;
+  height: 700rpx;
+}
+.info.data-v-0e9671aa {
+  background: #fff;
+  padding: 20rpx 30rpx;
+  margin-bottom: 15rpx;
+}
+.info .title.data-v-0e9671aa {
+  font-size: 32rpx;
+  color: #333;
+  line-height: 1.4;
+  margin-bottom: 15rpx;
+}
+.info .price.data-v-0e9671aa {
+  display: flex;
+  align-items: center;
+  margin-bottom: 10rpx;
+}
+.info .price .now.data-v-0e9671aa {
+  color: #e63946;
+  font-size: 36rpx;
+  font-weight: bold;
+}
+.info .price .old.data-v-0e9671aa {
+  color: #999;
+  text-decoration: line-through;
+  margin-left: 10rpx;
+  font-size: 26rpx;
+}
+.info .price .coupon.data-v-0e9671aa {
+  margin-left: 10rpx;
+  background: #e63946;
+  color: #fff;
+  padding: 2rpx 10rpx;
+  border-radius: 4rpx;
+  font-size: 22rpx;
+}
+.info .meta.data-v-0e9671aa {
+  display: flex;
+  justify-content: space-between;
+  font-size: 22rpx;
+  color: #999;
+}
+.share.data-v-0e9671aa {
+  margin: 0 15rpx 15rpx;
+  background: #e63946;
+  padding: 18rpx 20rpx;
+  border-radius: 8rpx;
+  display: flex;
+  align-items: center;
+  font-size: 26rpx;
+  color: #fff;
+}
+.share .u-icon.data-v-0e9671aa:first-child {
+  margin-right: 8rpx;
+}
+.share text.data-v-0e9671aa {
+  flex: 1;
+}
+.card.data-v-0e9671aa {
+  background: #fff;
+  margin: 0 15rpx 15rpx;
+  padding: 25rpx 20rpx;
+  border-radius: 8rpx;
+}
+.card .hd.data-v-0e9671aa {
+  font-size: 28rpx;
+  color: #333;
+  margin-bottom: 15rpx;
+  padding-bottom: 10rpx;
+  border-bottom: 1px solid #f0f0f0;
+}
+.card .hd.tac.data-v-0e9671aa {
+  text-align: center;
+}
+.card .hd text.data-v-0e9671aa {
+  font-size: 24rpx;
+  color: #666;
+  margin-left: 10rpx;
+}
+.card .bd .row.data-v-0e9671aa {
+  display: flex;
+  align-items: center;
+  padding: 8rpx 0;
+}
+.card .bd .row .tag.data-v-0e9671aa {
+  background: #fef0f0;
+  color: #e63946;
+  font-size: 22rpx;
+  padding: 2rpx 8rpx;
+  border-radius: 4rpx;
+  margin-right: 10rpx;
+}
+.comment.data-v-0e9671aa {
+  display: flex;
+  padding: 15rpx 0;
+}
+.comment .avatar.data-v-0e9671aa {
+  width: 60rpx;
+  height: 60rpx;
+  border-radius: 50%;
+  margin-right: 15rpx;
+}
+.comment .body.data-v-0e9671aa {
+  flex: 1;
+}
+.comment .body .name.data-v-0e9671aa {
+  font-size: 26rpx;
+  color: #333;
+}
+.comment .body .cnt.data-v-0e9671aa {
+  font-size: 26rpx;
+  color: #333;
+  margin: 8rpx 0;
+  line-height: 1.4;
+}
+.comment .body .time.data-v-0e9671aa {
+  font-size: 22rpx;
+  color: #999;
+}
+.more.data-v-0e9671aa {
+  text-align: center;
+  color: #e63946;
+  font-size: 26rpx;
+  padding: 10rpx 0;
+}
+.desc-img.data-v-0e9671aa {
+  width: 100%;
+  margin: 10rpx 0;
+  border-radius: 6rpx;
+}
+.bottom-bar.data-v-0e9671aa {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  display: flex;
+  align-items: center;
+  padding: 14rpx 20rpx;
+  background: #fff;
+  border-top: 1rpx solid #eee;
+}
+.bottom-bar .action.data-v-0e9671aa {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-size: 22rpx;
+  color: #666;
+  margin-right: 30rpx;
+}
+.bottom-bar .btns.data-v-0e9671aa {
+  margin-left: auto;
+  display: flex;
+  gap: 20rpx;
+}
+.spec-panel.data-v-0e9671aa,
+.share-panel.data-v-0e9671aa {
+  padding: 20rpx;
+}
+.spec-panel .spec-top.data-v-0e9671aa,
+.share-panel .spec-top.data-v-0e9671aa {
+  display: flex;
+  padding: 10rpx 0;
+  margin-bottom: 20rpx;
+  border-bottom: 1px solid #f0f0f0;
+}
+.spec-panel .spec-top .spec-img.data-v-0e9671aa,
+.share-panel .spec-top .spec-img.data-v-0e9671aa {
+  width: 140rpx;
+  height: 140rpx;
+  border-radius: 8rpx;
+  flex-shrink: 0;
+}
+.spec-panel .spec-top .spec-info.data-v-0e9671aa,
+.share-panel .spec-top .spec-info.data-v-0e9671aa {
+  margin-left: 15rpx;
+  flex: 1;
+}
+.spec-panel .spec-top .spec-info .spec-price.data-v-0e9671aa,
+.share-panel .spec-top .spec-info .spec-price.data-v-0e9671aa {
+  color: #e63946;
+  font-size: 34rpx;
+  font-weight: bold;
+}
+.spec-panel .spec-top .spec-info .spec-stock.data-v-0e9671aa,
+.spec-panel .spec-top .spec-info .spec-sel.data-v-0e9671aa,
+.share-panel .spec-top .spec-info .spec-stock.data-v-0e9671aa,
+.share-panel .spec-top .spec-info .spec-sel.data-v-0e9671aa {
+  font-size: 24rpx;
+  color: #666;
+  margin-top: 6rpx;
+}
+.spec-panel .spec-top .spec-info .spec-sel.data-v-0e9671aa,
+.share-panel .spec-top .spec-info .spec-sel.data-v-0e9671aa {
+  color: #e63946;
+}
+.spec-panel .spec-title.data-v-0e9671aa,
+.share-panel .spec-title.data-v-0e9671aa {
+  font-size: 26rpx;
+  color: #333;
+  margin: 20rpx 0 10rpx;
+  font-weight: 500;
+}
+.spec-panel .spec-list.data-v-0e9671aa,
+.share-panel .spec-list.data-v-0e9671aa {
+  display: flex;
+  flex-wrap: wrap;
+}
+.spec-panel .spec-list .spec-item.data-v-0e9671aa,
+.share-panel .spec-list .spec-item.data-v-0e9671aa {
+  padding: 12rpx 25rpx;
+  margin: 0 15rpx 15rpx 0;
+  border: 1px solid #ddd;
+  border-radius: 6rpx;
+  font-size: 24rpx;
+  color: #333;
+}
+.spec-panel .spec-list .spec-item.spec-item--active.data-v-0e9671aa,
+.share-panel .spec-list .spec-item.spec-item--active.data-v-0e9671aa {
+  border-color: #e63946;
+  color: #e63946;
+  background: #fef0f0;
+}
+.spec-panel .spec-bottom.data-v-0e9671aa,
+.share-panel .spec-bottom.data-v-0e9671aa {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 30rpx 0 20rpx;
+  padding: 15rpx 0;
+  border-top: 1px solid #f0f0f0;
+}
+.spec-panel .confirm-btn.data-v-0e9671aa,
+.share-panel .confirm-btn.data-v-0e9671aa {
+  width: 100%;
+  height: 90rpx;
+  line-height: 90rpx;
+  font-size: 30rpx;
+  background: #e63946 !important;
+  color: #fff !important;
+}
+.share-panel .share-title.data-v-0e9671aa {
+  text-align: center;
+  font-size: 28rpx;
+  color: #333;
+  margin-bottom: 30rpx;
+}
+.share-panel .cancel-btn.data-v-0e9671aa {
+  width: 100%;
+  margin-top: 20rpx;
+  height: 80rpx;
+  line-height: 80rpx;
+  font-size: 28rpx;
+}

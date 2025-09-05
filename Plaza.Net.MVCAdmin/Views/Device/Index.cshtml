@@ -1,0 +1,948 @@
+﻿
+@{
+    ViewData["Title"] = "设备管理";
+}
+
+<div class="container-fluid">
+    <!-- 主内容容器 -->
+    <div class="row">
+        <div class="col-lg-12">
+            <!-- 卡片式布局 -->
+            <div class="card shadow-sm">
+                <!-- 卡片主体 -->
+                <div class="card-body">
+                    <!-- 选项卡导航 -->
+                    <nav>
+                        <div class="nav nav-tabs mb-3" id="nav-tab" role="tablist">
+                            <button class="nav-link active" id="nav-list-tab" data-bs-toggle="tab"
+                                    data-bs-target="#nav-list" type="button" role="tab" aria-controls="nav-list"
+                                    aria-selected="true">
+                                设备列表
+                            </button>
+                        </div>
+                    </nav>
+
+                    <div class="tab-content" id="nav-tabContent">
+                        <!-- 设备列表标签页 -->
+                        <div class="tab-pane fade show active" id="nav-list" role="tabpanel"
+                             aria-labelledby="nav-list-tab">
+                            <!-- 工具栏区域 -->
+                            <div id="toolbar" class="d-flex justify-content-between align-items-center mb-3">
+                                <!-- 操作按钮组 -->
+                                <div class="btn-group me-2 mb-2 mb-lg-0">
+                                    <button class="btn btn-success btn-sm btn-round" onclick="add()">
+                                        <span class="mdi mdi-plus me-1"></span> 新增
+                                    </button>
+                                    <button id="edit-btn" class="btn btn-primary btn-sm btn-round edit-btn" disabled>
+                                        <span class="mdi mdi-pencil me-1"></span> 编辑
+                                    </button>
+                                    <button id="del-btn" class="btn btn-danger btn-sm btn-round del-btn" disabled>
+                                        <span class="mdi mdi-close me-1"></span> 删除
+                                    </button>
+                                </div>
+                                <!-- 搜索区域 -->
+                                <div class="input-group d-flex justify-content-center">
+                                    <button id="searchplus-btn" class="btn btn-outline-secondary btn-sm btn-round"
+                                            data-bs-toggle="modal" data-bs-target="#searchModal">
+                                        <span class="mdi mdi-magnify-plus"></span>高级搜索
+                                    </button>
+                                    <input type="text" id="searchBox" class="form-control form-control-sm"
+                                           placeholder="搜索...">
+                                    <button id="searchButton" class="btn btn-outline-secondary btn-sm btn-round">
+                                        <span class="mdi mdi-magnify"></span>查询
+                                    </button>
+                                    <button class="btn btn-outline-secondary btn-sm btn-round" id="clearButton">
+                                        <span class="mdi mdi-delete"></span>清除
+                                    </button>
+                                </div>
+                            </div>
+                            <!-- 表格响应区域 -->
+                            <div class="table-responsive">
+                                <!-- 数据表格 -->
+                                <table id="table" class="table table-hover table-striped align-middle"
+                                       style="text-align:center;"></table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- 高级搜索模态框 -->
+<div class="modal fade" id="searchModal" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header bg-light">
+                <h5 class="modal-title">高级搜索</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <!-- 高级搜索表单 -->
+                <form id="searchForm">
+                    <div class="row g-3">
+                        <div class="col-md-6">
+                            <label class="form-label">所属广场 <span class="text-danger">*</span></label>
+                            <select class="form-select" name="plazaId" id="floor-plazaId" required>
+                                <option value="">请选择广场</option>
+                                @foreach (var plaza in Model.Plazas)
+                                {
+                                    <option value="@plaza.Id">@plaza.Name</option>
+                                }
+                            </select>
+                        </div>
+                        <div class="col-md-6">
+                            <label class="form-label">所属楼层</label>
+                            <select class="form-select" name="floorId" id="searchFloor">
+                                <option value="">请选择楼层</option>
+                            </select>
+                        </div>
+                        <div class="col-md-6">
+                            <label class="form-label">设备名称</label>
+                            <input type="text" class="form-control" name="deviceName" id="searchDeviceName">
+                        </div>
+                        <div class="col-md-6">
+                            <label class="form-label">设备类型</label>
+                            <select class="form-select" name="deviceTypeId" id="searchDeviceType">
+                                <option value="">全部</option>
+                                @foreach (var type in Model.DeviceTypes)
+                                {
+                                    <option value="@type.Id">@type.Name</option>
+                                }
+                            </select>
+                        </div>
+                        <div class="col-md-6">
+                            <label class="form-label">设备状态</label>
+                            <select class="form-select" name="status" id="searchStatus">
+                                <option value="">全部</option>
+                                @foreach (var status in Model.DeviceStatuses)
+                                {
+                                    <option value="@status.Id">@status.Label</option>
+                                }
+                            </select>
+                        </div>
+                        <div class="col-md-6">
+                            <label class="form-label">位置</label>
+                            <input type="text" class="form-control" name="location" id="searchLocation">
+                        </div>
+                        <div class="col-md-6">
+                            <label class="form-label">状态</label>
+                            <select class="form-select" name="isDeleted" id="searchIsDeleted">
+                                <option value="0">启用</option>
+                                <option value="1">禁用</option>
+                            </select>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-outline-secondary btn-sm" onclick="resetSearchForm()">重置</button>
+                <button type="button" class="btn btn-primary btn-sm" onclick="submitSearchForm()">搜索</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- 设备信息模态框（新增/编辑） -->
+<div class="modal fade" id="deviceModal" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header bg-light">
+                <h5 class="modal-title" id="deviceModalTitle">新增设备</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <!-- 设备表单 -->
+                <form id="deviceForm">
+                    <input type="hidden" name="id" id="device-id">
+                    <div class="row g-3">
+                        <div class="col-md-6">
+                            <label class="form-label">设备名称 <span class="text-danger">*</span></label>
+                            <input type="text" class="form-control" name="name" id="device-name" required>
+                        </div>
+                        <div class="col-md-6">
+                            <label class="form-label">所属广场 <span class="text-danger">*</span></label>
+                            <select class="form-select" name="plazaId" id="device-plazaId" required>
+                                <option value="">请选择广场</option>
+                                @foreach (var plaza in Model.Plazas)
+                                {
+                                    <option value="@plaza.Id">@plaza.Name</option>
+                                }
+                            </select>
+                        </div>
+                        <div class="col-md-6">
+                            <label class="form-label">所属楼层 <span class="text-danger">*</span></label>
+                            <select class="form-select" name="floorId" id="device-floorId" required>
+                                <option value="">请选择楼层</option>
+                                <!-- 楼层选项将通过AJAX动态加载 -->
+                            </select>
+                        </div>
+                        <div class="col-md-6">
+                            <label class="form-label">设备类型 <span class="text-danger">*</span></label>
+                            <select class="form-select" name="deviceTypeId" id="device-deviceTypeId" required>
+                                <option value="">请选择设备类型</option>
+                                @foreach (var type in Model.DeviceTypes)
+                                {
+                                    <option value="@type.Id">@type.Name</option>
+                                }
+                            </select>
+                        </div>
+                        <div class="col-md-6">
+                            <label class="form-label">设备状态 <span class="text-danger">*</span></label>
+                            <select class="form-select" name="status" id="device-status" required>
+                                <option value="">请选择设备状态</option>
+                                @foreach (var status in Model.DeviceStatuses)
+                                {
+                                    <option value="@status.Id">@status.Label</option>
+                                }
+                            </select>
+                        </div>
+                        <div class="col-md-6">
+                            <label class="form-label">位置</label>
+                            <input type="text" class="form-control" name="location" id="device-location">
+                        </div>
+                        <div class="col-md-6">
+                            <label class="form-label">最后维护日期</label>
+                            <input type="date" class="form-control" name="lastMaintenanceDate" id="device-lastMaintenanceDate">
+                        </div>
+                        <div class="col-md-6">
+                            <label class="form-label">状态</label>
+                            <select class="form-select" name="isDeleted" id="device-isDeleted">
+                                <option value="0">启用</option>
+                                <option value="1">禁用</option>
+                            </select>
+                        </div>
+                        <div class="col-md-6">
+                            <label class="form-label">创建时间</label>
+                            <input type="text" class="form-control" readonly name="createTime" id="device-createTime">
+                        </div>
+                        <div class="col-md-6">
+                            <label class="form-label">更新时间</label>
+                            <input type="text" class="form-control" readonly name="updateTime" id="device-updateTime">
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-outline-secondary btn-sm" data-bs-dismiss="modal">取消</button>
+                <button type="button" class="btn btn-primary btn-sm" onclick="submitDeviceForm()">提交</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- 删除确认模态框 -->
+<div class="modal fade" id="deleteConfirmModal" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header bg-light">
+                <h5 class="modal-title">确认删除</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <div class="d-flex align-items-center">
+                    <div class="me-3">
+                        <span class="mdi mdi-alert-circle text-danger" style="font-size: 1.5rem;"></span>
+                    </div>
+                    <div>
+                        <p class="mb-1">确定要删除选中的记录吗？</p>
+                        <p id="deleteCountInfo" class="text-muted small mb-0"></p>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-outline-secondary btn-sm" data-bs-dismiss="modal">取消</button>
+                <button type="button" class="btn btn-danger btn-sm" onclick="confirmDelete()">确认删除</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- 详情模态框 -->
+<div class="modal fade" id="detailModal" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header bg-light">
+                <h5 class="modal-title">设备详情</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    <!-- 左侧信息列 -->
+                    <div class="col-md-6">
+                        <div class="mb-3">
+                            <label class="form-label text-muted">编号:</label>
+                            <div class="form-control-plaintext" id="detail-id">-</div>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label text-muted">设备名称:</label>
+                            <div class="form-control-plaintext" id="detail-name">-</div>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label text-muted">所属广场:</label>
+                            <div class="form-control-plaintext" id="detail-plazaName">-</div>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label text-muted">所属楼层:</label>
+                            <div class="form-control-plaintext" id="detail-floorName">-</div>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label text-muted">设备类型:</label>
+                            <div class="form-control-plaintext" id="detail-deviceType">-</div>
+                        </div>
+                    </div>
+
+                    <!-- 右侧信息列 -->
+                    <div class="col-md-6">
+                        <div class="mb-3">
+                            <label class="form-label text-muted">设备状态:</label>
+                            <div class="form-control-plaintext" id="detail-status">-</div>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label text-muted">位置:</label>
+                            <div class="form-control-plaintext" id="detail-location">-</div>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label text-muted">最后维护日期:</label>
+                            <div class="form-control-plaintext" id="detail-lastMaintenanceDate">-</div>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label text-muted">状态:</label>
+                            <div class="form-control-plaintext" id="detail-isDeleted">-</div>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label text-muted">编码:</label>
+                            <div class="form-control-plaintext" id="detail-code">-</div>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label text-muted">创建时间:</label>
+                            <div class="form-control-plaintext" id="detail-createTime">-</div>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label text-muted">更新时间:</label>
+                            <div class="form-control-plaintext" id="detail-updatetime">-</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-outline-secondary btn-sm" data-bs-dismiss="modal">关闭</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <script>
+        // ====================== 全局变量声明 ======================
+        let currentMode = 'add'; // 当前操作模式：'add' 或 'edit'
+        let currentDeleteMode = null; // 当前删除模式：'single' 或 'multiple'
+
+        // ====================== 页面初始化函数 ======================
+        $(document).ready(function() {
+            inittable();
+            bindEventHandlers();
+            initDefaultPlaza(); // 初始化默认广场
+        });
+
+        // 初始化默认广场（如果有）
+        function initDefaultPlaza() {
+            const defaultPlazaId = $('#device-plazaId').val();
+            if (defaultPlazaId) {
+                loadFloors(defaultPlazaId, $('#device-floorId').val());
+            }
+        }
+
+        // ====================== 楼层加载函数 ======================
+        /**
+         * 加载楼层数据
+         * param {number} plazaId - 广场ID
+         * param {number} selectedFloorId - 选中的楼层ID（用于编辑时预选）
+         */
+        function loadFloors(plazaId, selectedFloorId) {
+            if (!plazaId) {
+                $('#searchFloor, #device-floorId').empty().append('<option value="">请选择楼层</option>');
+                return;
+            }
+
+            $.ajax({
+                url: '/Device/GetFloorsByPlazaId',
+                type: 'GET',
+                data: { plazaId: plazaId },
+                success: function(floors) {
+                    updateFloorSelect('#searchFloor', floors, null); // 更新搜索楼层
+                    updateFloorSelect('#device-floorId', floors, selectedFloorId); // 更新表单楼层
+                },
+                error: function(xhr, status, error) {
+                    console.error('加载楼层失败:', error);
+                    showToast('加载楼层失败，请重试', true);
+                }
+            });
+        }
+
+        /**
+         * 更新楼层下拉列表
+         * param {string} selector - 选择器
+         * param {Array} floors - 楼层数据
+         * param {number} selectedId - 选中的ID
+         */
+        function updateFloorSelect(selector, floors, selectedId) {
+            const $select = $(selector);
+            $select.empty();
+
+            if (selector === '#searchFloor' || selector === '#device-floorId') {
+                $select.append('<option value="">请选择楼层</option>');
+            } else {
+                $select.append('<option value="">请选择楼层</option>');
+            }
+
+            $.each(floors, function(index, floor) {
+                const isSelected = selectedId && floor.id === selectedId ? 'selected' : '';
+                $select.append(
+                    `<option value="${floor.id}" ${isSelected}>${floor.name}</option>`
+                );
+            });
+        }
+
+        // ====================== 表格相关函数 ======================
+        // 表格配置对象
+        const tableConfig = {
+            classes: 'table table-bordered table-hover table-striped lyear-table',
+            url: '/Device/GetData',
+            uniqueId: 'id',
+            idField: 'id',
+            clickToSelect: true,
+            dataType: 'json',
+            method: 'get',
+            toolbar: '#toolbar',
+            pagination: true,
+            showColumns: true,
+            showRefresh: true,
+            showButtonIcons: true,
+            showButtonText: false,
+            showFullscreen: true,
+            totalField: 'total',
+            undefinedText: '-',
+            sortOrder: "asc",
+            sidePagination: "server",
+            pageNumber: 1,
+            pageSize: 5,
+            pageList: [5, 10, 25, 50, 100],
+            paginationLoop: true,
+            paginationPagesBySide: 2,
+            buttonsClass: 'default',
+            buttonsPrefix: 'btn',
+            iconsPrefix: 'mdi',
+            iconSize: 'mini',
+            icons: {
+                refresh: 'mdi-refresh',
+                export: 'mdi-export',
+                columns: 'mdi-table-column-remove',
+                fullscreen: 'mdi-monitor-screenshot'
+            },
+            showExport: true,
+            buttonsAlign: "right",
+            exportDataType: "basic",
+            exportOptions: {
+                ignoreColumn: [0],
+                fileName: '设备数据',
+                worksheetName: 'Sheet1',
+                tableName: '设备信息表',
+                excelstyles: ['background-color', 'color', 'font-size', 'font-weight'],
+            },
+            exportTypes: ['json', 'xml', 'csv', 'txt', 'sql', 'doc', 'excel'],
+        };
+
+        // 表格列定义
+        const columns = [
+            {
+                field: 'example',
+                checkbox: true,
+                widthUnit: 'rem'
+            },
+            {
+                field: 'id',
+                title: '编号',
+                align: 'center',
+                sortable: true,
+                sortName: 'sortId',
+                switchable: false,
+                widthUnit: 'rem'
+            },
+            {
+                field: 'name',
+                align: 'center',
+                title: '设备名称'
+            },
+            {
+                field: 'deviceTypeName',
+                align: 'center',
+                title: '设备类型'
+            },
+            {
+                field: 'floorName',
+                align: 'center',
+                title: '所属楼层'
+            },
+            {
+                field: 'floorPlazaName',
+                align: 'center',
+                title: '所属广场'
+            },
+            {
+                field: 'statusText',
+                align: 'center',
+                title: '设备状态'
+            },
+            {
+                field: 'isDeleted',
+                title: '状态',
+                formatter: function(value) {
+                    return value == 0 ?
+                        '<span class="badge bg-success">启用</span>' :
+                        '<span class="badge bg-danger">禁用</span>';
+                }
+            },
+            {
+                field: 'operate',
+                title: '操作',
+                formatter: function() {
+                    return `<div class="btn-group">
+                        <button class="btn btn-sm btn-indigo btn-round detail-btn" title="详情"><span class="mdi mdi-information"></span></button>
+                        <button class="btn btn-sm btn-primary btn-round edit-btn" title="编辑"><span class="mdi mdi-pencil"></span></button>
+                        <button class="btn btn-sm btn-danger btn-round del-btn" title="删除"><span class="mdi mdi-close"></span></button>
+                    </div>`;
+                },
+                events: {
+                    'click .detail-btn': function(event, value, row) {
+                        event.stopPropagation();
+                        detail(row);
+                    },
+                    'click .edit-btn': function(event, value, row) {
+                        event.stopPropagation();
+                        edit(row);
+                    },
+                    'click .del-btn': function(event, value, row) {
+                        event.stopPropagation();
+                        del(row);
+                    }
+                }
+            }
+        ];
+
+        /**
+         * 初始化表格
+         */
+        function inittable() {
+            $('#table').bootstrapTable({
+                ...tableConfig,
+                queryParams: function(params) {
+                    return {
+                        pageSize: params.limit,
+                        pageIndex: Math.floor(params.offset / params.limit) + 1,
+                        sort: params.sort || "Id",
+                        sortOrder: params.order || "asc",
+                        keyword: $('#searchBox').val().trim(),
+                        deviceName: $('#searchDeviceName').val().trim(),
+                        deviceTypeId: $('#searchDeviceType').val(),
+                        floorId: $('#searchFloor').val(),
+                        plazaId: $('#searchPlaza').val(),
+                        statusText: $('#searchStatus').val(),
+                        location: $('#searchLocation').val(),
+                        isDeleted:$('#searchIsDelete').val()
+                    };
+                },
+                columns,
+                onLoadSuccess: function() {
+                    $("[data-bs-toggle='tooltip']").tooltip();
+                    updateButtonState();
+                },
+                onCheck: updateButtonState,
+                onUncheck: updateButtonState,
+                onCheckAll: updateButtonState,
+                onUncheckAll: updateButtonState
+            });
+        }
+
+        // ====================== 事件处理函数 ======================
+        /**
+         * 绑定页面事件处理程序
+         */
+        function bindEventHandlers() {
+            // 广场下拉列表变化事件
+            $('#device-plazaId, #floor-plazaId').change(function() {
+                const plazaId = $(this).val();
+                if (!plazaId || plazaId === '0') {
+                    $('#device-floorId').empty().append('<option value="">请选择楼层</option>');
+                    $('#searchFloor').empty().append('<option value="">请选择楼层</option>');
+                    return;
+                }
+                loadFloors(plazaId);
+            });
+
+            // 基本搜索
+            $('#searchButton').click(performBasicSearch);
+            $('#searchBox').keypress(function(e) {
+                if (e.which === 13) performBasicSearch();
+            });
+            $('#searchBox').keydown(function(e) {
+                if (e.which === 27) {
+                    $('#searchBox').val('');
+                    $('#table').bootstrapTable('refresh');
+                }
+            });
+
+            // 高级搜索
+            $('#searchplus-btn').click(function() {
+                $('#searchModal').modal('show');
+            });
+            $('#clearButton').click(function() {
+                $('#searchBox').val('');
+                $('#searchForm')[0].reset();
+                $('#table').bootstrapTable('refresh');
+            });
+
+            // 编辑按钮
+            $('#edit-btn').click(function() {
+                const selections = $('#table').bootstrapTable('getSelections');
+                if (selections.length !== 1) {
+                    showToast('请选择一条记录进行编辑', true);
+                    return;
+                }
+                edit(selections[0]);
+            });
+
+            // 删除按钮
+            $('#del-btn').click(function() {
+                const selections = $('#table').bootstrapTable('getSelections');
+                if (selections.length === 0) {
+                    showToast('请至少选择一条记录进行删除', true);
+                    return;
+                }
+                showDeleteConfirm(selections);
+            });
+        }
+
+        /**
+         * 执行基本搜索
+         */
+        function performBasicSearch() {
+            const keyword = $('#searchBox').val().trim();
+            $('#table').bootstrapTable('refresh', {
+                query: {
+                    keyword: keyword
+                }
+            });
+        }
+
+        /**
+         * 显示删除确认对话框
+         * param {Array} selections - 选中的记录数组
+         */
+        function showDeleteConfirm(selections) {
+            currentDeleteMode = selections.length > 1 ? 'multiple' : 'single';
+            const countInfo = selections.length > 1 ?
+                `共选中 ${selections.length} 条记录` :
+                `记录: ${selections[0].name}`;
+
+            $('#deleteCountInfo').text(countInfo);
+            $('#deleteConfirmModal').modal('show');
+        }
+
+        /**
+         * 确认删除操作
+         */
+        function confirmDelete() {
+            const selections = $('#table').bootstrapTable('getSelections');
+            if (selections.length === 0) {
+                showToast('请至少选择一条记录进行删除', true);
+                return;
+            }
+
+            const ids = selections.map(record => record.id);
+            if (!ids || ids.length === 0) {
+                showToast('未获取到有效的ID', true);
+                return;
+            }
+
+            $.ajax({
+                url: '/Device/DeleteRange',
+                type: 'POST',
+                data: {
+                    ids: ids
+                },
+                success: function(response) {
+                    if (response.success) {
+                        $('#table').bootstrapTable('refresh');
+                        $('#deleteConfirmModal').modal('hide');
+                        const message = ids.length > 1 ?
+                            `成功删除 ${ids.length} 条记录` :
+                            '成功删除记录';
+                        showToast(message);
+                    } else {
+                        showToast('删除失败: ' + (response.message || '请重试'), true);
+                    }
+                },
+                error: function(xhr) {
+                    const errorMsg = xhr.responseJSON?.message || '服务器错误';
+                    showToast(`操作失败: ${errorMsg}`, true);
+                }
+            });
+        }
+
+        // ====================== 业务操作函数 ======================
+        /**
+         * 新增设备
+         */
+        function add() {
+            currentMode = 'add';
+            $('#deviceModalTitle').text('新增设备');
+            $('#deviceForm')[0].reset();
+            $('#deviceForm').find('[name="isDeleted"]').val('0');
+            $('#deviceForm').removeClass('was-validated');
+            $('#deviceModal').modal('show');
+        }
+
+        /**
+         * 编辑设备
+         * param {Object} row - 要编辑的行数据
+         */
+        function edit(row) {
+            currentMode = 'edit';
+            $('#deviceModalTitle').text('编辑设备');
+            clearOtherCheckboxes(row.id);
+
+            $('#device-id').val(row.id);
+            $('#device-name').val(row.name);
+            $('#device-plazaId').val(row.plazaId);
+            $('#device-floorId').val(row.floorId);
+            $('#device-deviceTypeId').val(row.deviceTypeId);
+            $('#device-status').val(row.deviceStatusItemId);
+            $('#device-location').val(row.location);
+            $('#device-lastMaintenanceDate').val(formatDate(row.lastMaintenanceDate));
+            $('#device-isDeleted').val(row.isDeleted ? '1' : '0');
+            $('#device-createTime').val(formatDateTime(row.createTime));
+            $('#device-updateTime').val(formatDateTime(row.updateTime));
+
+            // 加载对应的楼层
+            loadFloors(row.plazaId, row.floorId);
+
+            $('#deviceForm').removeClass('was-validated');
+            $('#deviceModal').modal('show');
+        }
+
+        /**
+         * 显示设备详情
+         * param {Object} row - 要显示的行数据
+         */
+        function detail(row) {
+            // 确保行数据不为空
+            if (!row) {
+                showToast('未获取到有效的数据', true);
+                return;
+            }
+
+            // 绑定数据到详情模态框
+            $('#detail-id').text(row.id || '无');
+            $('#detail-name').text(row.name || '无');
+            $('#detail-deviceType').text(row.deviceTypeName || '无');
+            $('#detail-plazaName').text(row.floorPlazaName || '无');
+            $('#detail-floorName').text(row.floorName || '无');
+            $('#detail-status').text(row.statusText || '无');
+            $('#detail-location').text(row.location || '无');
+            $('#detail-lastMaintenanceDate').text(formatDate(row.lastMaintenanceDate) || '无');
+
+            // 状态显示优化
+            const isDeleted = row.isDeleted === 0 ? '启用' :
+                              row.isDeleted === 1 ? '禁用' : '未知';
+            $('#detail-isDeleted').text(isDeleted);
+
+            // 时间格式化显示
+            $('#detail-createTime').text(formatDateTime(row.createTime) || '无');
+            $('#detail-updateTime').text(formatDateTime(row.updateTime) || '无');
+
+            // 显示编码
+            $('#detail-code').text(row.code || '无');
+
+            $('#detailModal').modal('show');
+        }
+
+        /**
+         * 格式化日期
+         * param {string} dateString - 日期字符串
+         * returns {string} 格式化后的日期
+         */
+        function formatDate(dateString) {
+            if (!dateString) return '';
+            return new Date(dateString).toLocaleDateString();
+        }
+
+        /**
+         * 格式化日期时间
+         * param {string} dateTime - 日期时间字符串
+         * returns {string} 格式化后的日期时间
+         */
+        function formatDateTime(dateTime) {
+            if (!dateTime) return '';
+            return new Date(dateTime).toLocaleString();
+        }
+
+        /**
+         * 删除单条记录
+         * param {Object} row - 要删除的行数据
+         */
+        function del(row) {
+            showDeleteConfirm([row]);
+        }
+
+        /**
+         * 提交表单数据
+         */
+        function submitDeviceForm() {
+            if (!validateDeviceForm()) return;
+
+            const formData = {
+                name: $('#device-name').val(),
+                plazaId: $('#device-plazaId').val(),
+                floorId: $('#device-floorId').val(),
+                deviceTypeId: $('#device-deviceTypeId').val(),
+                deviceStatusItemId: $('#device-status').val(),
+                location: $('#device-location').val(),
+                lastMaintenanceDate: $('#device-lastMaintenanceDate').val(),
+                isDeleted: $('#device-isDeleted').val() === '1'
+            };
+            if (currentMode === 'edit') {
+                formData.id = $('#device-id').val();
+            }
+            const url = currentMode === 'add' ? '/Device/Add' : '/Device/Edit';
+            const successMessage = currentMode === 'add' ? '新增成功' : '更新成功';
+
+            $.ajax({
+                url: url,
+                type: 'POST',
+                data: formData,
+                success: function(response) {
+                    if (response.success) {
+                        $('#deviceModal').modal('hide');
+                        $('#table').bootstrapTable('refresh');
+                        showToast(successMessage);
+                    } else {
+                        showToast(`操作失败: ${response.message || '未知错误'}`, true);
+                    }
+                },
+                error: function(xhr, status, error) {
+                    showToast('请求失败: ' + error, true);
+                }
+            });
+        }
+
+        /**
+         * 提交高级搜索表单
+         */
+        function submitSearchForm() {
+            const formData = $('#searchForm').serializeArray();
+            const queryParams = {};
+
+            formData.forEach(item => {
+                if (item.value) {
+                    queryParams[item.name] = item.value;
+                }
+            });
+
+            const keyword = $('#searchBox').val().trim();
+            if (keyword) {
+                queryParams.keyword = keyword;
+            }
+
+            $('#table').bootstrapTable('refresh', {
+                query: queryParams
+            });
+
+            $('#searchModal').modal('hide');
+        }
+
+        /**
+         * 重置高级搜索表单
+         */
+        function resetSearchForm() {
+            $('#searchForm')[0].reset();
+            $('#table').bootstrapTable('refresh');
+        }
+
+        // ====================== 辅助函数 ======================
+        /**
+         * 验证表单数据
+         * returns {boolean} 表单是否有效
+         */
+        function validateDeviceForm() {
+            const form = $('#deviceForm')[0];
+            form.classList.add('was-validated');
+
+            let isValid = true;
+            $('#deviceForm [required]').each(function() {
+                if (!$(this).val()) {
+                    isValid = false;
+                }
+            });
+
+            // 特殊验证逻辑
+            if ($('#device-plazaId').val() === '') {
+                isValid = false;
+                $('#device-plazaId').addClass('is-invalid');
+            }
+
+            if ($('#device-floorId').val() === '') {
+                isValid = false;
+                $('#device-floorId').addClass('is-invalid');
+            }
+
+            if ($('#device-deviceTypeId').val() === '') {
+                isValid = false;
+                $('#device-deviceTypeId').addClass('is-invalid');
+            }
+
+            return isValid;
+        }
+
+        /**
+         * 清除其他复选框，只保留当前选中的记录
+         * param {number} keepId - 要保留的记录ID
+         */
+        function clearOtherCheckboxes(keepId) {
+            const $table = $('#table');
+            const data = $table.bootstrapTable('getData');
+            $table.bootstrapTable('uncheckAll');
+            const rowToKeep = data.find(item => item.id === keepId);
+            if (rowToKeep) {
+                $table.bootstrapTable('checkBy', {
+                    field: 'id',
+                    values: [keepId]
+                });
+            }
+            updateButtonState();
+        }
+
+        /**
+         * 更新按钮状态（根据选中的记录数）
+         */
+        function updateButtonState() {
+            const selections = $('#table').bootstrapTable('getSelections');
+            const allRows = $('#table').bootstrapTable('getData');
+            const selectedCount = selections.length;
+            const totalRows = allRows.length;
+
+            $('#edit-btn').prop('disabled', selectedCount !== 1);
+            $('#del-btn').prop('disabled', selectedCount === 0);
+
+            const headerCheckbox = $('#table').find('thead [type="checkbox"]');
+            if (selectedCount === 0) {
+                headerCheckbox.prop('indeterminate', false).prop('checked', false);
+            } else if (selectedCount === totalRows) {
+                headerCheckbox.prop('indeterminate', false).prop('checked', true);
+            } else {
+                headerCheckbox.prop('indeterminate', true).prop('checked', false);
+            }
+        }
+    </script>
+}

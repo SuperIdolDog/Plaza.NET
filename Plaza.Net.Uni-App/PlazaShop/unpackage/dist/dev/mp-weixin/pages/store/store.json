@@ -1,0 +1,9 @@
+{
+  "navigationBarTitleText": "",
+  "usingComponents": {
+    "u-search": "/uni_modules/uview-ui/components/u-search/u-search",
+    "u-text": "/uni_modules/uview-ui/components/u-text/u-text",
+    "u-empty": "/uni_modules/uview-ui/components/u-empty/u-empty",
+    "u-icon": "/uni_modules/uview-ui/components/u-icon/u-icon"
+  }
+}

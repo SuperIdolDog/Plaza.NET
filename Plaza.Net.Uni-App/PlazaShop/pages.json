@@ -1,0 +1,237 @@
+{
+	"easycom": {
+		"^u-(.*)": "@/uni_modules/uview-ui/components/u-$1/u-$1.vue"
+	},
+	"pages": [ //pages数组中第一项表示应用启动页，参考：https://uniapp.dcloud.io/collocation/pages
+		{
+			"path": "pages/index/indexTest",
+			"style": {
+				"navigationBarTitleText": "首页",
+				"navigationStyle": "custom"
+			}
+		},
+		{
+			"path": "pages/index/login",
+			"style": {
+				"navigationBarTitleText": "",
+				"navigationStyle": "custom"
+			}
+		},
+		{
+			"path": "pages/index/index",
+			"style": {
+				"navigationBarTitleText": "",
+				"navigationStyle": "custom"
+			}
+		},
+	
+		{
+			"path" : "pages/personal/personal",
+			"style" : 
+			{
+				"navigationBarTitleText" : "",
+				"navigationStyle": "custom"
+			}
+		},
+		{
+			"path" : "pages/personal/personalTest",
+			"style" : 
+			{
+				"navigationBarTitleText" : "",
+				"navigationStyle": "custom"
+			}
+		},
+		{
+			"path" : "pages/map/choosecity",
+			"style" : 
+			{
+				"navigationBarTitleText" : "选择城市"
+			}
+		},
+		
+		{
+			"path" : "pages/map/map",
+			"style" : 
+			{
+				"navigationBarTitleText" : "附近商场",
+				"h5": {
+				          "disableScroll": true
+				        }
+			}
+		},
+		{
+			"path" : "pages/map/mapTest",
+			"style" : 
+			{
+				"navigationBarTitleText" : "附近商场",
+				"h5": {
+				          "disableScroll": true
+				        }
+			}
+		},
+		
+		
+		{
+			"path" : "pages/store/store",
+			"style" : 
+			{
+				"navigationBarTitleText" : ""
+			}
+		},
+		{
+			"path" : "pages/store/storeTest",
+			"style" : 
+			{
+				"navigationBarTitleText" : "好店"
+
+			}
+		},
+		{
+			"path" : "pages/store/storedetail",
+			"style" : 
+			{
+				"navigationBarTitleText" : ""
+			}
+		},
+		{
+			"path" : "pages/store/storedetailTest",
+			"style" : 
+			{
+				"navigationBarTitleText" : "店铺信息"
+			}
+		},
+		{
+			"path" : "pages/index/test",
+			"style" : 
+			{
+				"navigationBarTitleText" : ""
+			}
+		},
+		{
+			"path" : "pages/product/detail",
+			"style" : 
+			{
+				"navigationBarTitleText" : "商品详情"
+			}
+		},
+		{
+			"path" : "pages/order/settle",
+			"style" : 
+			{
+				"navigationBarTitleText" : "结算"
+			}
+		},
+		{
+			"path" : "pages/park/park",
+			"style" : 
+			{
+				"navigationBarTitleText" : "停车服务"
+			}
+		},
+		{
+			"path" : "pages/order/list",
+			"style" : 
+			{
+				"navigationBarTitleText" : "订单"
+			}
+		},
+		{
+			"path" : "pages/personal/profile",
+			"style" : 
+			{
+				"navigationBarTitleText" : "个人信息"
+			}
+		},
+		{
+			"path" : "pages/personal/address",
+			"style" : 
+			{
+				"navigationBarTitleText" : "收货地址"
+			}
+		},
+		{
+			"path" : "pages/personal/cart",
+			"style" : 
+			{
+				"navigationBarTitleText" : "购物车"
+			}
+		},
+		
+		{
+			"path" : "pages/personal/feedback",
+			"style" : 
+			{
+				"navigationBarTitleText" : ""
+			}
+		},
+		{
+			"path" : "pages/order/result",
+			"style" : 
+			{
+				"navigationBarTitleText" : ""
+			}
+		},
+		{
+			"path" : "pages/order/review",
+			"style" : 
+			{
+				"navigationBarTitleText" : ""
+			}
+		}
+
+	
+		
+	
+		
+		
+
+	],
+	"globalStyle": {
+		"navigationBarTextStyle": "black",
+		"navigationBarTitleText": "PlazaShop",
+		"navigationBarBackgroundColor": "#F8F8F8",
+		"backgroundColor": "#F8F8F8"
+	},
+	"uniIdRouter": {},
+	"tabBar": {
+		"list": [{
+				"pagePath": "pages/index/indexTest",
+				"text": "首页",
+				"iconPath": "/static/tabbar/home.png",
+				"selectedIconPath": "/static/tabbar/home_fill.png"
+				
+
+			},
+			{
+				"pagePath": "pages/store/storeTest",
+				"text": "找商户",
+				"iconPath": "/static/tabbar/shop.png",
+				"selectedIconPath": "/static/tabbar/shop_fill.png"
+				
+			},
+			{
+				"pagePath": "pages/order/list",
+				"text": "订单",
+				"iconPath": "/static/tabbar/form.png",
+				"selectedIconPath": "/static/tabbar/form_fill.png"
+				
+			},
+			{
+				"pagePath": "pages/personal/cart",
+				"text": "购物车",
+				"iconPath": "/static/tabbar/cart.png",
+				"selectedIconPath": "/static/tabbar/cart_fill.png"
+				
+			},
+			
+			{
+				"pagePath": "pages/personal/personalTest",
+				"text": "我的",
+				"iconPath": "/static/tabbar/people.png",
+				"selectedIconPath": "/static/tabbar/people_fill.png"
+				
+			}
+		]
+	}
+
+}

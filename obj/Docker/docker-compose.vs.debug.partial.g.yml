@@ -1,0 +1,35 @@
+services:
+  Plaza.Net.mvcadmin:
+    image: plazanetmvcadmin:dev
+    build:
+      args:
+        LAUNCHING_FROM_VS: true
+        BUILD_CONFIGURATION: Debug
+      target: base
+      labels:
+        com.microsoft.created-by: "visual-studio"
+        com.microsoft.visual-studio.project-name: "Plaza.Net.MVCAdmin"
+    environment:
+      - DOTNET_USE_POLLING_FILE_WATCHER=1
+      - ASPNETCORE_LOGGING__CONSOLE__DISABLECOLORS=true
+      - NUGET_FALLBACK_PACKAGES=/.nuget/fallbackpackages
+    volumes:
+      - C:\Users\Lenovo\Desktop\CSharp项目\就业项目\Plaza\Plaza.Net.MVCAdmin:/app:rw
+      - C:\Users\Lenovo\Desktop\CSharp项目\就业项目\Plaza:/src:rw
+      - C:\Users\Lenovo\vsdbg\vs2017u5:/remote_debugger:rw
+      - C:\Users\Lenovo\.nuget\packages:/.nuget/packages:ro
+      - D:\Visual Studio\共享组件工具SDK\NuGetPackages:/.nuget/fallbackpackages:ro
+      - C:\Users\Lenovo\AppData\Roaming\ASP.NET\Https:/root/.aspnet/https:ro
+      - C:\Users\Lenovo\AppData\Roaming\ASP.NET\Https:/home/app/.aspnet/https:ro
+      - C:\Users\Lenovo\AppData\Roaming\Microsoft\UserSecrets:/root/.microsoft/usersecrets:ro
+      - C:\Users\Lenovo\AppData\Roaming\Microsoft\UserSecrets:/home/app/.microsoft/usersecrets:ro
+      - D:\Visual Studio\IDE\MSBuild\Sdks\Microsoft.Docker.Sdk\tools\linux-x64\net6.0:/VSTools:ro
+      - D:\Visual Studio\IDE\Common7\IDE\CommonExtensions\Microsoft\HotReload:/HotReloadAgent:ro
+
+    entrypoint: "dotnet --roll-forward Major /VSTools/DistrolessHelper/DistrolessHelper.dll --wait"
+    labels:
+      com.microsoft.visualstudio.debuggee.program: "dotnet"
+      com.microsoft.visualstudio.debuggee.arguments: " --additionalProbingPath /.nuget/packages --additionalProbingPath /.nuget/fallbackpackages  \"/app/bin/Debug/net6.0/Plaza.Net.MVCAdmin.dll\""
+      com.microsoft.visualstudio.debuggee.workingdirectory: "/app"
+      com.microsoft.visualstudio.debuggee.killprogram: "dotnet --roll-forward Major /VSTools/DistrolessHelper/DistrolessHelper.dll --stop dotnet"
+    tty: true

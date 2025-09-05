@@ -1,0 +1,17 @@
+C:\Users\Lenovo\Desktop\CSharp项目\就业项目\Plaza\Plaza.Net.Mapping\bin\Debug\net6.0\Plaza.Net.Mapping.deps.json
+C:\Users\Lenovo\Desktop\CSharp项目\就业项目\Plaza\Plaza.Net.Mapping\bin\Debug\net6.0\Plaza.Net.Mapping.dll
+C:\Users\Lenovo\Desktop\CSharp项目\就业项目\Plaza\Plaza.Net.Mapping\bin\Debug\net6.0\Plaza.Net.Mapping.pdb
+C:\Users\Lenovo\Desktop\CSharp项目\就业项目\Plaza\Plaza.Net.Mapping\bin\Debug\net6.0\Plaza.Net.Configruation.dll
+C:\Users\Lenovo\Desktop\CSharp项目\就业项目\Plaza\Plaza.Net.Mapping\bin\Debug\net6.0\Plaza.Net.Model.dll
+C:\Users\Lenovo\Desktop\CSharp项目\就业项目\Plaza\Plaza.Net.Mapping\bin\Debug\net6.0\Plaza.Net.Model.pdb
+C:\Users\Lenovo\Desktop\CSharp项目\就业项目\Plaza\Plaza.Net.Mapping\bin\Debug\net6.0\Plaza.Net.Configruation.pdb
+C:\Users\Lenovo\Desktop\CSharp项目\就业项目\Plaza\Plaza.Net.Mapping\obj\Debug\net6.0\Plaza.Net.Mapping.csproj.AssemblyReference.cache
+C:\Users\Lenovo\Desktop\CSharp项目\就业项目\Plaza\Plaza.Net.Mapping\obj\Debug\net6.0\Plaza.Net.Mapping.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Lenovo\Desktop\CSharp项目\就业项目\Plaza\Plaza.Net.Mapping\obj\Debug\net6.0\Plaza.Net.Mapping.AssemblyInfoInputs.cache
+C:\Users\Lenovo\Desktop\CSharp项目\就业项目\Plaza\Plaza.Net.Mapping\obj\Debug\net6.0\Plaza.Net.Mapping.AssemblyInfo.cs
+C:\Users\Lenovo\Desktop\CSharp项目\就业项目\Plaza\Plaza.Net.Mapping\obj\Debug\net6.0\Plaza.Net.Mapping.csproj.CoreCompileInputs.cache
+C:\Users\Lenovo\Desktop\CSharp项目\就业项目\Plaza\Plaza.Net.Mapping\obj\Debug\net6.0\Plaza.Ne.62B19379.Up2Date
+C:\Users\Lenovo\Desktop\CSharp项目\就业项目\Plaza\Plaza.Net.Mapping\obj\Debug\net6.0\Plaza.Net.Mapping.dll
+C:\Users\Lenovo\Desktop\CSharp项目\就业项目\Plaza\Plaza.Net.Mapping\obj\Debug\net6.0\refint\Plaza.Net.Mapping.dll
+C:\Users\Lenovo\Desktop\CSharp项目\就业项目\Plaza\Plaza.Net.Mapping\obj\Debug\net6.0\Plaza.Net.Mapping.pdb
+C:\Users\Lenovo\Desktop\CSharp项目\就业项目\Plaza\Plaza.Net.Mapping\obj\Debug\net6.0\ref\Plaza.Net.Mapping.dll

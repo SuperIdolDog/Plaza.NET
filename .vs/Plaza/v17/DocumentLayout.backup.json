@@ -1,0 +1,160 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\Lenovo\\Desktop\\CSharp\u9879\u76EE\\\u5C31\u4E1A\u9879\u76EE\\Plaza\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{5735EF33-7741-414E-86A3-9FB5A63DC9B0}|Plaza.Net.WebAPI\\Plaza.Net.WebAPI.csproj|c:\\users\\lenovo\\desktop\\csharp\u9879\u76EE\\\u5C31\u4E1A\u9879\u76EE\\plaza\\plaza.net.webapi\\controllers\\ordercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{5735EF33-7741-414E-86A3-9FB5A63DC9B0}|Plaza.Net.WebAPI\\Plaza.Net.WebAPI.csproj|solutionrelative:plaza.net.webapi\\controllers\\ordercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9C06440E-7DED-4852-8B8F-92EF9352BA35}|Plaza.NET.Model\\Plaza.Net.Model.csproj|c:\\users\\lenovo\\desktop\\csharp\u9879\u76EE\\\u5C31\u4E1A\u9879\u76EE\\plaza\\plaza.net.model\\entities\\order\\reviewentity.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{9C06440E-7DED-4852-8B8F-92EF9352BA35}|Plaza.NET.Model\\Plaza.Net.Model.csproj|solutionrelative:plaza.net.model\\entities\\order\\reviewentity.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9C06440E-7DED-4852-8B8F-92EF9352BA35}|Plaza.NET.Model\\Plaza.Net.Model.csproj|c:\\users\\lenovo\\desktop\\csharp\u9879\u76EE\\\u5C31\u4E1A\u9879\u76EE\\plaza\\plaza.net.model\\viewmodels\\dto\\orderstatudto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{9C06440E-7DED-4852-8B8F-92EF9352BA35}|Plaza.NET.Model\\Plaza.Net.Model.csproj|solutionrelative:plaza.net.model\\viewmodels\\dto\\orderstatudto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{800CDEA2-54D5-490A-AFF2-D785537FEE9F}|Plaza.Net.MVCAdmin\\Plaza.Net.MVCAdmin.csproj|c:\\users\\lenovo\\desktop\\csharp\u9879\u76EE\\\u5C31\u4E1A\u9879\u76EE\\plaza\\plaza.net.mvcadmin\\controllers\\user\\usercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{800CDEA2-54D5-490A-AFF2-D785537FEE9F}|Plaza.Net.MVCAdmin\\Plaza.Net.MVCAdmin.csproj|solutionrelative:plaza.net.mvcadmin\\controllers\\user\\usercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9C06440E-7DED-4852-8B8F-92EF9352BA35}|Plaza.NET.Model\\Plaza.Net.Model.csproj|c:\\users\\lenovo\\desktop\\csharp\u9879\u76EE\\\u5C31\u4E1A\u9879\u76EE\\plaza\\plaza.net.model\\viewmodels\\dto\\reviewsubmitdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{9C06440E-7DED-4852-8B8F-92EF9352BA35}|Plaza.NET.Model\\Plaza.Net.Model.csproj|solutionrelative:plaza.net.model\\viewmodels\\dto\\reviewsubmitdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{5735EF33-7741-414E-86A3-9FB5A63DC9B0}|Plaza.Net.WebAPI\\Plaza.Net.WebAPI.csproj|c:\\users\\lenovo\\desktop\\csharp\u9879\u76EE\\\u5C31\u4E1A\u9879\u76EE\\plaza\\plaza.net.webapi\\controllers\\usercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{5735EF33-7741-414E-86A3-9FB5A63DC9B0}|Plaza.Net.WebAPI\\Plaza.Net.WebAPI.csproj|solutionrelative:plaza.net.webapi\\controllers\\usercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{5735EF33-7741-414E-86A3-9FB5A63DC9B0}|Plaza.Net.WebAPI\\Plaza.Net.WebAPI.csproj|c:\\users\\lenovo\\desktop\\csharp\u9879\u76EE\\\u5C31\u4E1A\u9879\u76EE\\plaza\\plaza.net.webapi\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{5735EF33-7741-414E-86A3-9FB5A63DC9B0}|Plaza.Net.WebAPI\\Plaza.Net.WebAPI.csproj|solutionrelative:plaza.net.webapi\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9C06440E-7DED-4852-8B8F-92EF9352BA35}|Plaza.NET.Model\\Plaza.Net.Model.csproj|c:\\users\\lenovo\\desktop\\csharp\u9879\u76EE\\\u5C31\u4E1A\u9879\u76EE\\plaza\\plaza.net.model\\entities\\order\\paymentrecordentity.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{9C06440E-7DED-4852-8B8F-92EF9352BA35}|Plaza.NET.Model\\Plaza.Net.Model.csproj|solutionrelative:plaza.net.model\\entities\\order\\paymentrecordentity.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 4,
+          "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{aa2115a1-9712-457b-9047-dbb71ca2cdd2}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "OrderStatuDTO.cs",
+              "DocumentMoniker": "C:\\Users\\Lenovo\\Desktop\\CSharp\u9879\u76EE\\\u5C31\u4E1A\u9879\u76EE\\Plaza\\Plaza.Net.Model\\ViewModels\\DTO\\OrderStatuDTO.cs",
+              "RelativeDocumentMoniker": "Plaza.Net.Model\\ViewModels\\DTO\\OrderStatuDTO.cs",
+              "ToolTip": "C:\\Users\\Lenovo\\Desktop\\CSharp\u9879\u76EE\\\u5C31\u4E1A\u9879\u76EE\\Plaza\\Plaza.Net.Model\\ViewModels\\DTO\\OrderStatuDTO.cs",
+              "RelativeToolTip": "Plaza.Net.Model\\ViewModels\\DTO\\OrderStatuDTO.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAAAQAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-09-05T15:02:18.22Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "ReviewEntity.cs",
+              "DocumentMoniker": "C:\\Users\\Lenovo\\Desktop\\CSharp\u9879\u76EE\\\u5C31\u4E1A\u9879\u76EE\\Plaza\\Plaza.Net.Model\\Entities\\Order\\ReviewEntity.cs",
+              "RelativeDocumentMoniker": "Plaza.Net.Model\\Entities\\Order\\ReviewEntity.cs",
+              "ToolTip": "C:\\Users\\Lenovo\\Desktop\\CSharp\u9879\u76EE\\\u5C31\u4E1A\u9879\u76EE\\Plaza\\Plaza.Net.Model\\Entities\\Order\\ReviewEntity.cs",
+              "RelativeToolTip": "Plaza.Net.Model\\Entities\\Order\\ReviewEntity.cs",
+              "ViewState": "AgIAAA8AAAAAAAAAAAAUwDEAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-09-05T13:11:17.779Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "ReviewSubmitDTO.cs",
+              "DocumentMoniker": "C:\\Users\\Lenovo\\Desktop\\CSharp\u9879\u76EE\\\u5C31\u4E1A\u9879\u76EE\\Plaza\\Plaza.Net.Model\\ViewModels\\DTO\\ReviewSubmitDTO.cs",
+              "RelativeDocumentMoniker": "Plaza.Net.Model\\ViewModels\\DTO\\ReviewSubmitDTO.cs",
+              "ToolTip": "C:\\Users\\Lenovo\\Desktop\\CSharp\u9879\u76EE\\\u5C31\u4E1A\u9879\u76EE\\Plaza\\Plaza.Net.Model\\ViewModels\\DTO\\ReviewSubmitDTO.cs",
+              "RelativeToolTip": "Plaza.Net.Model\\ViewModels\\DTO\\ReviewSubmitDTO.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAAAFAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-09-05T12:00:06.535Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "OrderController.cs",
+              "DocumentMoniker": "C:\\Users\\Lenovo\\Desktop\\CSharp\u9879\u76EE\\\u5C31\u4E1A\u9879\u76EE\\Plaza\\Plaza.Net.WebAPI\\Controllers\\OrderController.cs",
+              "RelativeDocumentMoniker": "Plaza.Net.WebAPI\\Controllers\\OrderController.cs",
+              "ToolTip": "C:\\Users\\Lenovo\\Desktop\\CSharp\u9879\u76EE\\\u5C31\u4E1A\u9879\u76EE\\Plaza\\Plaza.Net.WebAPI\\Controllers\\OrderController.cs",
+              "RelativeToolTip": "Plaza.Net.WebAPI\\Controllers\\OrderController.cs",
+              "ViewState": "AgIAAHoBAAAAAAAAAAAUwGcBAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-09-03T06:13:04.521Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "UserController.cs",
+              "DocumentMoniker": "C:\\Users\\Lenovo\\Desktop\\CSharp\u9879\u76EE\\\u5C31\u4E1A\u9879\u76EE\\Plaza\\Plaza.Net.MVCAdmin\\Controllers\\User\\UserController.cs",
+              "RelativeDocumentMoniker": "Plaza.Net.MVCAdmin\\Controllers\\User\\UserController.cs",
+              "ToolTip": "C:\\Users\\Lenovo\\Desktop\\CSharp\u9879\u76EE\\\u5C31\u4E1A\u9879\u76EE\\Plaza\\Plaza.Net.MVCAdmin\\Controllers\\User\\UserController.cs",
+              "RelativeToolTip": "Plaza.Net.MVCAdmin\\Controllers\\User\\UserController.cs",
+              "ViewState": "AgIAAEYAAAAAAAAAAAAUwFgAAAA1AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-09-05T12:14:44.368Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "UserController.cs",
+              "DocumentMoniker": "C:\\Users\\Lenovo\\Desktop\\CSharp\u9879\u76EE\\\u5C31\u4E1A\u9879\u76EE\\Plaza\\Plaza.Net.WebAPI\\Controllers\\UserController.cs",
+              "RelativeDocumentMoniker": "Plaza.Net.WebAPI\\Controllers\\UserController.cs",
+              "ToolTip": "C:\\Users\\Lenovo\\Desktop\\CSharp\u9879\u76EE\\\u5C31\u4E1A\u9879\u76EE\\Plaza\\Plaza.Net.WebAPI\\Controllers\\UserController.cs",
+              "RelativeToolTip": "Plaza.Net.WebAPI\\Controllers\\UserController.cs",
+              "ViewState": "AgIAALgAAAAAAAAAAAAkwNQAAAANAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-09-04T10:59:19.878Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "PaymentRecordEntity.cs",
+              "DocumentMoniker": "C:\\Users\\Lenovo\\Desktop\\CSharp\u9879\u76EE\\\u5C31\u4E1A\u9879\u76EE\\Plaza\\Plaza.Net.Model\\Entities\\Order\\PaymentRecordEntity.cs",
+              "RelativeDocumentMoniker": "Plaza.Net.Model\\Entities\\Order\\PaymentRecordEntity.cs",
+              "ToolTip": "C:\\Users\\Lenovo\\Desktop\\CSharp\u9879\u76EE\\\u5C31\u4E1A\u9879\u76EE\\Plaza\\Plaza.Net.Model\\Entities\\Order\\PaymentRecordEntity.cs",
+              "RelativeToolTip": "Plaza.Net.Model\\Entities\\Order\\PaymentRecordEntity.cs",
+              "ViewState": "AgIAACgAAAAAAAAAAAAAwEAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-09-04T06:03:37.39Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "Program.cs",
+              "DocumentMoniker": "C:\\Users\\Lenovo\\Desktop\\CSharp\u9879\u76EE\\\u5C31\u4E1A\u9879\u76EE\\Plaza\\Plaza.Net.WebAPI\\Program.cs",
+              "RelativeDocumentMoniker": "Plaza.Net.WebAPI\\Program.cs",
+              "ToolTip": "C:\\Users\\Lenovo\\Desktop\\CSharp\u9879\u76EE\\\u5C31\u4E1A\u9879\u76EE\\Plaza\\Plaza.Net.WebAPI\\Program.cs",
+              "RelativeToolTip": "Plaza.Net.WebAPI\\Program.cs",
+              "ViewState": "AgIAADAAAAAAAAAAAAAowEcAAABNAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-09-03T14:14:36.383Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

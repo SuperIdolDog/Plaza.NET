@@ -1,0 +1,16 @@
+{
+  "navigationBarTitleText": "停车服务",
+  "usingComponents": {
+    "u-text": "/uni_modules/uview-ui/components/u-text/u-text",
+    "u-code-input": "/uni_modules/uview-ui/components/u-code-input/u-code-input",
+    "u-button": "/uni_modules/uview-ui/components/u-button/u-button",
+    "u-scroll-list": "/uni_modules/uview-ui/components/u-scroll-list/u-scroll-list",
+    "u-skeleton": "/uni_modules/uview-ui/components/u-skeleton/u-skeleton",
+    "u-empty": "/uni_modules/uview-ui/components/u-empty/u-empty",
+    "u-icon": "/uni_modules/uview-ui/components/u-icon/u-icon",
+    "u-tag": "/uni_modules/uview-ui/components/u-tag/u-tag",
+    "u-cell-group": "/uni_modules/uview-ui/components/u-cell-group/u-cell-group",
+    "u-cell": "/uni_modules/uview-ui/components/u-cell/u-cell",
+    "u-keyboard": "/uni_modules/uview-ui/components/u-keyboard/u-keyboard"
+  }
+}

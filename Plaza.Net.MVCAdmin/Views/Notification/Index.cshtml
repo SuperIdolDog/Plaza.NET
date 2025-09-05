@@ -1,0 +1,885 @@
+﻿@{
+    ViewData["Title"] = "通知管理";
+}
+
+<div class="container-fluid">
+    <!-- 主内容容器 -->
+    <div class="row">
+        <div class="col-lg-12">
+            <!-- 卡片式布局 -->
+            <div class="card shadow-sm">
+                <!-- 卡片主体 -->
+                <div class="card-body">
+                    <!-- 选项卡导航 -->
+                    <nav>
+                        <div class="nav nav-tabs mb-3" id="nav-tab" role="tablist">
+                            <button class="nav-link active" id="nav-list-tab" data-bs-toggle="tab"
+                                    data-bs-target="#nav-list" type="button" role="tab" aria-controls="nav-list"
+                                    aria-selected="true">通知列表</button>
+                            <button class="nav-link" id="nav-stats-tab" data-bs-toggle="tab" data-bs-target="#nav-stats"
+                                    type="button" role="tab" aria-controls="nav-stats" aria-selected="false">统计信息</button>
+                        </div>
+                    </nav>
+
+                    <div class="tab-content" id="nav-tabContent">
+                        <!-- 通知列表标签页 -->
+                        <div class="tab-pane fade show active" id="nav-list" role="tabpanel"
+                             aria-labelledby="nav-list-tab">
+                            <!-- 工具栏区域 -->
+                            <div id="toolbar" class="d-flex justify-content-between align-items-center mb-3">
+                                <!-- 操作按钮组 -->
+                                <div class="btn-group me-2 mb-2 mb-lg-0">
+                                    <button class="btn btn-success btn-sm btn-round" onclick="add()">
+                                        <span class="mdi mdi-plus me-1"></span> 新增
+                                    </button>
+                                    <button id="edit-btn" class="btn btn-primary btn-sm btn-round edit-btn" disabled>
+                                        <span class="mdi mdi-pencil me-1"></span> 编辑
+                                    </button>
+                                    <button id="del-btn" class="btn btn-danger btn-sm btn-round del-btn" disabled>
+                                        <span class="mdi mdi-close me-1"></span> 删除
+                                    </button>
+                                    <button id="mark-read-btn" class="btn btn-info btn-sm btn-round mark-read-btn" disabled>
+                                        <span class="mdi mdi-check-circle me-1"></span> 标记已读
+                                    </button>
+                                </div>
+                                <!-- 搜索区域 -->
+                                <div class="input-group d-flex justify-content-center">
+                                    <button id="searchplus-btn" class="btn btn-outline-secondary btn-sm btn-round"
+                                            data-bs-toggle="modal" data-bs-target="#searchModal">
+                                        <span class="mdi mdi-magnify-plus"></span>高级搜索
+                                    </button>
+                                    <input type="text" id="searchBox" class="form-control form-control-sm"
+                                           placeholder="搜索标题或内容...">
+                                    <button id="searchButton" class="btn btn-outline-secondary btn-sm btn-round">
+                                        <span class="mdi mdi-magnify"></span>查询
+                                    </button>
+                                    <button class="btn btn-outline-secondary btn-sm btn-round" id="clearButton">
+                                        <span class="mdi mdi-delete"></span>清除
+                                    </button>
+                                </div>
+                            </div>
+                            <!-- 表格响应区域 -->
+                            <div class="table-responsive">
+                                <!-- 数据表格 -->
+                                <table id="table" class="table table-hover table-striped align-middle"
+                                       style="text-align:center;"></table>
+                            </div>
+                        </div>
+
+                        <!-- 统计信息标签页 -->
+                        <div class="tab-pane fade" id="nav-stats" role="tabpanel" aria-labelledby="nav-stats-tab">
+                            <!-- 统计内容可以根据需要添加 -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- 高级搜索模态框 -->
+<div class="modal fade" id="searchModal" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header bg-light">
+                <h5 class="modal-title">高级搜索</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <!-- 高级搜索表单 -->
+                <form id="searchForm">
+                    <div class="row g-3">
+                        <div class="col-md-6">
+                            <label class="form-label">通知标题</label>
+                            <input type="text" class="form-control" name="title" id="searchTitle">
+                        </div>
+                        <div class="col-md-6">
+                            <label class="form-label">通知类型</label>
+                            <select class="form-select" name="type" id="searchType">
+                                <option value="">全部</option>
+                                <option value="1">系统通知</option>
+                                <option value="2">消息提醒</option>
+                                <option value="3">警报通知</option>
+                            </select>
+                        </div>
+                        <div class="col-md-6">
+                            <label class="form-label">状态</label>
+                            <select class="form-select" name="isRead" id="searchIsRead">
+                                <option value="">全部</option>
+                                <option value="true">已读</option>
+                                <option value="false">未读</option>
+                            </select>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-outline-secondary btn-sm" onclick="resetSearchForm()">重置</button>
+                <button type="button" class="btn btn-primary btn-sm" onclick="submitSearchForm()">搜索</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- 统一的信息管理模态框（新增/编辑） -->
+<div class="modal fade" id="infoModal" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header bg-light">
+                <h5 class="modal-title" id="infoModalTitle">新增通知</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <!-- 信息表单 -->
+                <form id="infoForm">
+                    <input type="hidden" name="id" id="info-id">
+                    <div class="row g-3">
+                        <div class="col-md-6">
+                            <label class="form-label">通知标题 <span class="text-danger">*</span></label>
+                            <input type="text" class="form-control" name="title" id="info-title" required>
+                        </div>
+                        <div class="col-md-6">
+                            <label class="form-label">通知类型 <span class="text-danger">*</span></label>
+                            <select class="form-select" name="type" id="info-type" required>
+                                <option value="1">系统通知</option>
+                                <option value="2">消息提醒</option>
+                                <option value="3">警报通知</option>
+                            </select>
+                        </div>
+                        <div class="col-md-12">
+                            <label class="form-label">通知内容 <span class="text-danger">*</span></label>
+                            <textarea class="form-control" name="content" id="info-content" rows="4" required></textarea>
+                        </div>
+                        <div class="col-md-6">
+                            <label class="form-label">关联链接</label>
+                            <input type="text" class="form-control" name="link" id="info-link">
+                        </div>
+                        <div class="col-md-6">
+                            <label class="form-label">接收用户ID</label>
+                            <input type="number" class="form-control" name="userId" id="info-userId">
+                        </div>
+                        <div class="col-md-6">
+                            <label class="form-label">发布者ID</label>
+                            <input type="number" class="form-control" name="publisherId" id="info-publisherId">
+                        </div>
+                        <div class="col-md-6">
+                            <label class="form-label">状态</label>
+                            <select class="form-select" name="isRead" id="info-isRead">
+                                <option value="false">未读</option>
+                                <option value="true">已读</option>
+                            </select>
+                        </div>
+                        <div class="col-md-6">
+                            <label class="form-label">创建时间</label>
+                            <input type="text" class="form-control" readonly name="createTime" id="info-createTime">
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-outline-secondary btn-sm" data-bs-dismiss="modal">取消</button>
+                <button type="button" class="btn btn-primary btn-sm" onclick="submitInfoForm()">提交</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- 删除确认模态框 -->
+<div class="modal fade" id="deleteConfirmModal" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header bg-light">
+                <h5 class="modal-title">确认删除</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <div class="d-flex align-items-center">
+                    <div class="me-3">
+                        <span class="mdi mdi-alert-circle text-danger" style="font-size: 1.5rem;"></span>
+                    </div>
+                    <div>
+                        <p class="mb-1">确定要删除选中的记录吗？</p>
+                        <p id="deleteCountInfo" class="text-muted small mb-0"></p>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-outline-secondary btn-sm" data-bs-dismiss="modal">取消</button>
+                <button type="button" class="btn btn-danger btn-sm" onclick="confirmDelete()">确认删除</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- 详情模态框 -->
+<div class="modal fade" id="detailModal" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header bg-light">
+                <h5 class="modal-title">通知详情</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    <!-- 左侧信息列 -->
+                    <div class="col-md-6">
+                        <div class="mb-3">
+                            <label class="form-label text-muted">编号:</label>
+                            <div class="form-control-plaintext" id="detail-id">-</div>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label text-muted">通知标题:</label>
+                            <div class="form-control-plaintext" id="detail-title">-</div>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label text-muted">通知类型:</label>
+                            <div class="form-control-plaintext" id="detail-type">-</div>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label text-muted">关联链接:</label>
+                            <div class="form-control-plaintext" id="detail-link">-</div>
+                        </div>
+                    </div>
+
+                    <!-- 右侧信息列 -->
+                    <div class="col-md-6">
+                        <div class="mb-3">
+                            <label class="form-label text-muted">接收用户ID:</label>
+                            <div class="form-control-plaintext" id="detail-userId">-</div>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label text-muted">发布者ID:</label>
+                            <div class="form-control-plaintext" id="detail-publisherId">-</div>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label text-muted">状态:</label>
+                            <div class="form-control-plaintext" id="detail-isRead">-</div>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label text-muted">创建时间:</label>
+                            <div class="form-control-plaintext" id="detail-createTime">-</div>
+                        </div>
+                    </div>
+                    <div class="col-md-12">
+                        <div class="mb-3">
+                            <label class="form-label text-muted">通知内容:</label>
+                            <div class="form-control-plaintext" style="white-space: pre-wrap;" id="detail-content">-</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-outline-secondary btn-sm" data-bs-dismiss="modal">关闭</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+<script>
+    // ====================== 全局变量声明 ======================
+    // 操作模式标识
+    let currentMode = 'add'; // 当前操作模式：'add' 或 'edit'
+    let currentDeleteMode = null; // 当前删除模式：'single' 或 'multiple'
+
+    // ====================== 显示Toast消息 ======================
+    function showToast(message, isError = false, delay = 10000) {
+        // 确保Toast容器存在
+        const toastContainer = document.querySelector('.toast-container') || document.body.querySelector(
+            '.toast-container');
+
+        // 创建Toast元素
+        const toastId = 'toast-' + Date.now();
+        const toastEl = document.createElement('div');
+        toastEl.id = toastId;
+        toastEl.className = 'toast';
+        toastEl.role = 'alert';
+        toastEl.setAttribute('aria-live', 'assertive');
+        toastEl.setAttribute('aria-atomic', 'true');
+
+        // 设置Toast图标
+        const icon = isError ? 'mdi mdi-alert-circle text-danger' : 'mdi mdi-check-circle text-success';
+        const iconHtml = `<span class="${icon} me-2" style="font-size: 1.2rem;"></span>`;
+
+        // 设置Toast头部
+        const headerHtml = `
+                <div class="toast-header">
+                    <strong class="me-auto">系统提示</strong>
+                    <small class="text-muted">${new Date().toLocaleTimeString()}</small>
+                    <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+                </div>
+            `;
+
+        // 设置Toast内容
+        const bodyHtml = `
+                <div class="toast-body d-flex align-items-center">
+                    ${iconHtml}
+                    <span>${message}</span>
+                </div>
+            `;
+
+        // 组合Toast
+        toastEl.innerHTML = headerHtml + bodyHtml;
+        toastContainer.appendChild(toastEl);
+
+        // 初始化并显示Toast
+        const toast = new bootstrap.Toast(toastEl, {
+            delay: delay
+        });
+        toast.show();
+
+        // 自动移除Toast元素
+        setTimeout(() => {
+            $(toastEl).remove();
+        }, delay + 1000);
+    }
+
+    // ====================== 页面初始化函数 ======================
+    $(document).ready(function() {
+        initTable(); // 初始化表格
+        bindEventHandlers(); // 绑定事件处理程序
+    });
+
+    // ====================== 表格相关函数 ======================
+    // 表格配置对象
+    const tableConfig = {
+        classes: 'table table-bordered table-hover table-striped lyear-table',
+        url: '/Notification/GetData', // 数据源URL
+        uniqueId: 'id', // 唯一标识字段
+        idField: 'id', // ID字段
+        clickToSelect: true, // 点击行时选中
+        dataType: 'json', // 数据类型
+        method: 'get', // 请求方法
+        toolbar: '#toolbar', // 工具栏选择器
+        pagination: true, // 启用分页
+        showColumns: true, // 显示列选择
+        showRefresh: true, // 显示刷新按钮
+        showButtonIcons: true, // 显示按钮图标
+        showButtonText: false, // 不显示按钮文本
+        showFullscreen: true, // 显示全屏按钮
+        totalField: 'total', // 总记录数字段
+        undefinedText: '-', // 未定义数据的显示文本
+        sortOrder: "desc", // 默认排序方式（按创建时间倒序）
+        sidePagination: "server", // 服务端分页
+        pageNumber: 1, // 默认页码
+        pageSize: 10, // 默认每页记录数
+        pageList: [10, 25, 50, 100], // 可选的每页记录数
+        paginationLoop: true, // 启用分页循环
+        paginationPagesBySide: 2, // 每页显示的页码数
+        buttonsClass: 'default', // 按钮类
+        buttonsPrefix: 'btn', // 按钮前缀
+        iconsPrefix: 'mdi', // 图标前缀
+        iconSize: 'mini', // 图标大小
+        icons: {
+            refresh: 'mdi-refresh', // 刷新图标
+            export: 'mdi-export',
+            columns: 'mdi-table-column-remove', // 列选择图标
+            fullscreen: 'mdi-monitor-screenshot' // 全屏图标
+        },
+        showExport: true, //是否显示导出按钮
+        buttonsAlign: "right", //按钮位置
+        exportDataType: "basic", //导出的数据类型，支持basic、all 、selected
+        exportOptions: {
+            ignoreColumn: [0], //导出数据忽略第一列
+            fileName: '通知列表', //导出数据的文件名
+            worksheetName: 'sheet1', //表格工作区名称
+            tableName: '通知信息表',
+            excelstyles: ['background-color', 'color', 'font-size', 'font-weight'],
+        },
+        exportTypes: ['json', 'xml', 'csv', 'txt', 'sql', 'doc', 'excel'], //导出类型
+    };
+
+    // 表格列定义
+    const columns = [{
+            field: 'example',
+            checkbox: true,
+            widthUnit: 'rem'
+        },
+        {
+            field: 'id',
+            title: '编号',
+            align: 'center',
+            sortable: true,
+            sortName: 'sortId',
+            switchable: false,
+            widthUnit: 'rem'
+        },
+        {
+            field: 'title',
+            align: 'center',
+            title: '通知标题'
+        },
+        {
+            field: 'type',
+            align: 'center',
+            title: '通知类型',
+            formatter: function(value) {
+                const typeMap = {
+                    '1': '系统通知',
+                    '2': '消息提醒',
+                    '3': '警报通知'
+                };
+                return typeMap[value] || '未知类型';
+            }
+        },
+        {
+            field: 'isRead',
+            align: 'center',
+            title: '状态',
+            formatter: function(value) {
+                return value ?
+                    '<span class="badge bg-success">已读</span>' :
+                    '<span class="badge bg-warning text-dark">未读</span>';
+            }
+        },
+        {
+            field: 'createTime',
+            align: 'center',
+            title: '创建时间',
+            sortable: true
+        },
+        {
+            field: 'operate',
+            title: '操作',
+            formatter: function() {
+                return `<div class="btn-group">
+                            <button class="btn btn-sm btn-indigo btn-round detial-btn"><span class="mdi mdi-information">详情</span></button>
+                            <button class="btn btn-sm btn-primary btn-round edit-btn"><span class="mdi mdi-pencil">编辑</span></button>
+                            <button class="btn btn-sm btn-danger btn-round del-btn"><span class="mdi mdi-close">删除</span></button>
+                        </div>`;
+            },
+            events: {
+                'click .detial-btn': function(event, value, row, index) {
+                    event.stopPropagation();
+                    detial(row);
+                },
+                'click .edit-btn': function(event, value, row, index) {
+                    event.stopPropagation();
+                    edit(row);
+                },
+                'click .del-btn': function(event, value, row, index) {
+                    event.stopPropagation();
+                    del(row);
+                }
+            }
+        }
+    ];
+
+    /**
+     * 初始化表格
+     */
+    function initTable() {
+        $('table').bootstrapTable({
+            ...tableConfig,
+            queryParams: function(params) {
+                return {
+                    pageSize: params.limit,
+                    pageIndex: Math.floor(params.offset / params.limit) + 1,
+                    sort: params.sort || "CreateTime",
+                    sortOrder: params.order || "desc",
+                    keyword: $('#searchBox').val().trim(),
+                    title: $('#searchTitle').val().trim(),
+                    type: $('#searchType').val(),
+                    isRead: $('#searchIsRead').val()
+                };
+            },
+            columns,
+            onLoadSuccess: function(data) {
+                $("[data-bs-toggle='tooltip']").tooltip();
+                updateButtonState();
+            },
+            onCheck: updateButtonState,
+            onUncheck: updateButtonState,
+            onCheckAll: updateButtonState,
+            onUncheckAll: updateButtonState
+        });
+    }
+
+    // ====================== 事件处理函数 ======================
+    /**
+     * 绑定页面事件处理程序
+     */
+    function bindEventHandlers() {
+        // 基本搜索
+        $('#searchButton').click(performBasicSearch);
+        $('#searchBox').keypress(function(e) {
+            if (e.which === 13) performBasicSearch();
+        });
+        $('#searchBox').keydown(function(e) {
+            if (e.which === 27) {
+                $('#searchBox').val('');
+                $('#table').bootstrapTable('refresh');
+            }
+        });
+
+        // 高级搜索
+        $('#searchplus-btn').click(function() {
+            $('#searchModal').modal('show');
+        });
+        $('#clearButton').click(function() {
+            $('#searchBox').val('');
+            $('#searchForm')[0].reset();
+            $('#table').bootstrapTable('refresh');
+        });
+
+        // 编辑按钮
+        $('#edit-btn').click(function() {
+            const selections = $('table').bootstrapTable('getSelections');
+            if (selections.length !== 1) {
+                showToast('请选择一条记录进行编辑', true);
+                return;
+            }
+            edit(selections[0]);
+        });
+
+        // 删除按钮
+        $('#del-btn').click(function() {
+            const selections = $('table').bootstrapTable('getSelections');
+            if (selections.length === 0) {
+                showToast('请至少选择一条记录进行删除', true);
+                return;
+            }
+            showDeleteConfirm(selections);
+        });
+
+        // 标记已读按钮
+        $('#mark-read-btn').click(function() {
+            const selections = $('table').bootstrapTable('getSelections');
+            if (selections.length === 0) {
+                showToast('请至少选择一条记录进行标记', true);
+                return;
+            }
+            showMarkReadConfirm(selections);
+        });
+    }
+
+    /**
+     * 执行基本搜索
+     */
+    function performBasicSearch() {
+        const keyword = $('#searchBox').val().trim();
+        $('#table').bootstrapTable('refresh', {
+            query: {
+                keyword: keyword
+            }
+        });
+    }
+
+    /**
+     * 显示删除确认对话框
+     * param {Array} selections - 选中的记录数组
+     */
+    function showDeleteConfirm(selections) {
+        currentDeleteMode = selections.length > 1 ? 'multiple' : 'single';
+        const countInfo = selections.length > 1 ?
+            `共选中 ${selections.length} 条记录` :
+            `记录: ${selections[0].title}`;
+
+        $('#deleteCountInfo').text(countInfo);
+        $('#deleteConfirmModal').modal('show');
+    }
+
+    /**
+     * 显示标记已读确认对话框
+     * param {Array} selections - 选中的记录数组
+     */
+    function showMarkReadConfirm(selections) {
+        const countInfo = selections.length > 1 ?
+            `共选中 ${selections.length} 条记录` :
+            `记录: ${selections[0].title}`;
+
+        $('#deleteCountInfo').text(`确定要将选中的通知标记为已读吗？${countInfo}`);
+        $('#deleteConfirmModal').modal('show').on('confirmed.bs.modal', function() {
+            confirmMarkRead();
+        });
+    }
+
+    /**
+     * 确认删除操作
+     */
+    function confirmDelete() {
+        const selections = $('table').bootstrapTable('getSelections');
+        if (selections.length === 0) {
+            showToast('请至少选择一条记录进行删除', true);
+            return;
+        }
+
+        const ids = selections.map(record => record.id);
+        if (!ids || ids.length === 0) {
+            showToast('未获取到有效的ID', true);
+            return;
+        }
+
+        $.ajax({
+            url: '/Notification/DeleteRange',
+            type: 'POST',
+            data: {
+                ids: ids
+            },
+            success: function(response) {
+                if (response.success) {
+                    $('#table').bootstrapTable('refresh');
+                    $('#deleteConfirmModal').modal('hide');
+                    const message = ids.length > 1 ?
+                        `成功删除 ${ids.length} 条记录` :
+                        '成功删除记录';
+                    showToast(message);
+                } else {
+                    showToast('删除失败: ' + (response.message || '请重试'), true);
+                }
+            },
+            error: function(xhr) {
+                const errorMsg = xhr.responseJSON?.message || '服务器错误';
+                showToast(`操作失败: ${errorMsg}`, true);
+            }
+        });
+    }
+
+    /**
+     * 确认标记已读操作
+     */
+    function confirmMarkRead() {
+        const selections = $('table').bootstrapTable('getSelections');
+        if (selections.length === 0) {
+            showToast('请至少选择一条记录进行标记', true);
+            return;
+        }
+
+        const ids = selections.map(record => record.id);
+        if (!ids || ids.length === 0) {
+            showToast('未获取到有效的ID', true);
+            return;
+        }
+
+        $.ajax({
+            url: '/Notification/MarkAsRead',
+            type: 'POST',
+            data: {
+                ids: ids
+            },
+            success: function(response) {
+                if (response.success) {
+                    $('#table').bootstrapTable('refresh');
+                    $('#deleteConfirmModal').modal('hide');
+                    const message = ids.length > 1 ?
+                        `成功标记 ${ids.length} 条通知为已读` :
+                        '成功标记通知为已读';
+                    showToast(message);
+                } else {
+                    showToast('标记失败: ' + (response.message || '请重试'), true);
+                }
+            },
+            error: function(xhr) {
+                const errorMsg = xhr.responseJSON?.message || '服务器错误';
+                showToast(`操作失败: ${errorMsg}`, true);
+            }
+        });
+    }
+
+    // ====================== 业务操作函数 ======================
+    /**
+     * 新增数据
+     */
+    function add() {
+        currentMode = 'add';
+        $('#infoModalTitle').text('新增通知');
+        $('#infoForm')[0].reset();
+        $('#infoForm').find('[name="isRead"]').val('false');
+        $('#infoModal').modal('show');
+    }
+
+    /**
+     * 编辑数据
+     * param {Object} row - 要编辑的行数据
+     */
+    function edit(row) {
+        currentMode = 'edit';
+        $('#infoModalTitle').text('编辑通知');
+        clearOtherCheckboxes(row.id);
+
+        $('#infoForm').find('[name="id"]').val(row.id);
+        $('#infoForm').find('[name="title"]').val(row.title);
+        $('#infoForm').find('[name="type"]').val(row.type);
+        $('#infoForm').find('[name="content"]').val(row.content);
+        $('#infoForm').find('[name="link"]').val(row.link);
+        $('#infoForm').find('[name="userId"]').val(row.userId);
+        $('#infoForm').find('[name="publisherId"]').val(row.publisherId);
+        $('#infoForm').find('[name="createTime"]').val(row.createTime);
+        $('#infoForm').find('[name="isRead"]').val(row.isRead);
+
+        $('#infoModal').modal('show');
+    }
+
+    /**
+     * 显示详情
+     * param {Object} row - 要显示的行数据
+     */
+    function detial(row) {
+        const typeMap = {
+            '1': '系统通知',
+            '2': '消息提醒',
+            '3': '警报通知'
+        };
+
+        $('#detail-id').text(row.id || '无');
+        $('#detail-title').text(row.title || '无');
+        $('#detail-type').text(typeMap[row.type] || '未知类型');
+        $('#detail-content').text(row.content || '无');
+        $('#detail-link').text(row.link || '无');
+        $('#detail-userId').text(row.userId || '无');
+        $('#detail-publisherId').text(row.publisherId || '无');
+        $('#detail-isRead').html(row.isRead ? 
+            '<span class="badge bg-success">已读</span>' : 
+            '<span class="badge bg-warning text-dark">未读</span>');
+        $('#detail-createTime').text(row.createTime || '无');
+        
+        $('#detailModal').modal('show');
+    }
+
+    /**
+     * 删除单条记录
+     * param {Object} row - 要删除的行数据
+     */
+    function del(row) {
+        showDeleteConfirm([row]);
+    }
+
+    /**
+     * 提交表单数据
+     */
+    function submitInfoForm() {
+        if (!validateInfoForm()) return;
+
+        const formData = {
+            title: $('#info-title').val(),
+            type: $('#info-type').val(),
+            content: $('#info-content').val(),
+            link: $('#info-link').val(),
+            userId: $('#info-userId').val(),
+            publisherId: $('#info-publisherId').val(),
+            isRead: $('#info-isRead').val() === 'true'
+        };
+
+        if (currentMode === 'edit') {
+            formData.id = $('#info-id').val();
+        }
+
+        const url = currentMode === 'add' ? '/Notification/Add' : '/Notification/Edit';
+        const successMessage = currentMode === 'add' ? '新增成功' : '更新成功';
+
+        $.ajax({
+            url: url,
+            type: 'POST',
+            data: formData,
+            success: function(response) {
+                if (response.success) {
+                    $('#infoModal').modal('hide');
+                    $('#table').bootstrapTable('refresh');
+                    showToast(successMessage);
+                } else {
+                    showToast(`操作失败: ${response.message || '未知错误'}`, true);
+                }
+            },
+            error: function(xhr, status, error) {
+                showToast('请求失败: ' + error, true);
+            }
+        });
+    }
+
+    /**
+     * 提交高级搜索表单
+     */
+    function submitSearchForm() {
+        const formData = $('#searchForm').serializeArray();
+        const queryParams = {};
+
+        formData.forEach(item => {
+            if (item.value) {
+                queryParams[item.name] = item.value;
+            }
+        });
+
+        const keyword = $('#searchBox').val().trim();
+        if (keyword) {
+            queryParams.keyword = keyword;
+        }
+
+        $('#table').bootstrapTable('refresh', {
+            query: queryParams
+        });
+
+        $('#searchModal').modal('hide');
+    }
+
+    /**
+     * 重置高级搜索表单
+     */
+    function resetSearchForm() {
+        $('#searchForm')[0].reset();
+        $('#table').bootstrapTable('refresh');
+    }
+
+    // ====================== 辅助函数 ======================
+    /**
+     * 验证表单数据
+     * returns {boolean} 表单是否有效
+     */
+    function validateInfoForm() {
+        let isValid = true;
+
+        $('.form-control').removeClass('is-invalid');
+        $('.invalid-feedback').remove();
+
+        $('#infoForm [required]').each(function() {
+            if (!$(this).val()) {
+                isValid = false;
+                $(this).addClass('is-invalid');
+                $(this).after('<div class="invalid-feedback">此字段为必填项</div>');
+            }
+        });
+
+        return isValid;
+    }
+
+    /**
+     * 清除其他复选框，只保留当前选中的记录
+     * param {number} keepId - 要保留的记录ID
+     */
+    function clearOtherCheckboxes(keepId) {
+        const $table = $('table');
+        const data = $table.bootstrapTable('getData');
+        $table.bootstrapTable('uncheckAll');
+        const rowToKeep = data.find(item => item.id === keepId);
+        if (rowToKeep) {
+            $table.bootstrapTable('checkBy', {
+                field: 'id',
+                values: [keepId]
+            });
+        }
+        updateButtonState();
+    }
+
+    /**
+     * 更新按钮状态（根据选中的记录数）
+     */
+    function updateButtonState() {
+        const selections = $('table').bootstrapTable('getSelections');
+        const allRows = $('table').bootstrapTable('getData');
+        const selectedCount = selections.length;
+        const totalRows = allRows.length;
+
+        $('#edit-btn').prop('disabled', selectedCount !== 1);
+        $('#del-btn').prop('disabled', selectedCount === 0);
+        $('#mark-read-btn').prop('disabled', selectedCount === 0);
+
+        const headerCheckbox = $('table').find('thead [type="checkbox"]');
+        if (selectedCount === 0) {
+            headerCheckbox.prop('indeterminate', false).prop('checked', false);
+        } else if (selectedCount === totalRows) {
+            headerCheckbox.prop('indeterminate', false).prop('checked', true);
+        } else {
+            headerCheckbox.prop('indeterminate', true).prop('checked', false);
+        }
+    }
+</script>
+}

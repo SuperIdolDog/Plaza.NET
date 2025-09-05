@@ -1,0 +1,11 @@
+C:\Users\Lenovo\Desktop\CSharp项目\就业项目\Plaza\PlazaServices\bin\Debug\net6.0\PlazaServices.deps.json
+C:\Users\Lenovo\Desktop\CSharp项目\就业项目\Plaza\PlazaServices\bin\Debug\net6.0\PlazaServices.dll
+C:\Users\Lenovo\Desktop\CSharp项目\就业项目\Plaza\PlazaServices\bin\Debug\net6.0\PlazaServices.pdb
+C:\Users\Lenovo\Desktop\CSharp项目\就业项目\Plaza\PlazaServices\obj\Debug\net6.0\PlazaServices.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Lenovo\Desktop\CSharp项目\就业项目\Plaza\PlazaServices\obj\Debug\net6.0\PlazaServices.AssemblyInfoInputs.cache
+C:\Users\Lenovo\Desktop\CSharp项目\就业项目\Plaza\PlazaServices\obj\Debug\net6.0\PlazaServices.AssemblyInfo.cs
+C:\Users\Lenovo\Desktop\CSharp项目\就业项目\Plaza\PlazaServices\obj\Debug\net6.0\PlazaServices.csproj.CoreCompileInputs.cache
+C:\Users\Lenovo\Desktop\CSharp项目\就业项目\Plaza\PlazaServices\obj\Debug\net6.0\PlazaServices.dll
+C:\Users\Lenovo\Desktop\CSharp项目\就业项目\Plaza\PlazaServices\obj\Debug\net6.0\refint\PlazaServices.dll
+C:\Users\Lenovo\Desktop\CSharp项目\就业项目\Plaza\PlazaServices\obj\Debug\net6.0\PlazaServices.pdb
+C:\Users\Lenovo\Desktop\CSharp项目\就业项目\Plaza\PlazaServices\obj\Debug\net6.0\ref\PlazaServices.dll

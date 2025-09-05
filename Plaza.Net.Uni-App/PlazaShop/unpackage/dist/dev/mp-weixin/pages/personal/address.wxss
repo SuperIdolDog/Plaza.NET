@@ -1,0 +1,160 @@
+@charset "UTF-8";
+/**
+ * 这里是uni-app内置的常用样式变量
+ *
+ * uni-app 官方扩展插件及插件市场（https://ext.dcloud.net.cn）上很多三方插件均使用了这些样式变量
+ * 如果你是插件开发者，建议你使用scss预处理，并在插件代码中直接使用这些变量（无需 import 这个文件），方便用户通过搭积木的方式开发整体风格一致的App
+ *
+ */
+/**
+ * 如果你是App开发者（插件使用者），你可以通过修改这些变量来定制自己的插件主题，实现自定义主题功能
+ *
+ * 如果你的项目同样使用了scss预处理，你也可以直接在你的 scss 代码中使用如下变量，同时无需 import 这个文件
+ */
+/* 颜色变量 */
+/* 行为相关颜色 */
+/* 文字基本颜色 */
+/* 背景颜色 */
+/* 边框颜色 */
+/* 尺寸变量 */
+/* 文字尺寸 */
+/* 图片尺寸 */
+/* Border Radius */
+/* 水平间距 */
+/* 垂直间距 */
+/* 透明度 */
+/* 文章场景相关 */
+/* uni.scss */
+page.data-v-3477a11e {
+  background: #f3f5f7;
+}
+.page.data-v-3477a11e {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+}
+.list-wrapper.data-v-3477a11e {
+  flex: 1;
+  padding: 0 24rpx;
+}
+/* ===== 新地址卡片 ===== */
+.address-card-v2.data-v-3477a11e {
+  display: flex;
+  align-items: center;
+  margin: 0 24rpx 24rpx;
+  padding: 32rpx;
+  background: #fff;
+  border-radius: 20rpx;
+  box-shadow: 0 4rpx 16rpx rgba(0, 0, 0, 0.05);
+  position: relative;
+}
+.address-card-v2__left.data-v-3477a11e {
+  display: flex;
+  align-items: center;
+  margin-right: 24rpx;
+  position: relative;
+}
+.address-card-v2__default-dot.data-v-3477a11e {
+  width: 8rpx;
+  height: 64rpx;
+  background: #f23030;
+  border-radius: 0 4rpx 4rpx 0;
+  margin-right: 20rpx;
+}
+.address-card-v2__center.data-v-3477a11e {
+  flex: 1;
+}
+.address-card-v2__line1.data-v-3477a11e {
+  display: flex;
+  align-items: center;
+  font-size: 32rpx;
+  font-weight: 600;
+  margin-bottom: 8rpx;
+}
+.address-card-v2__line1 .name.data-v-3477a11e {
+  margin-right: 20rpx;
+}
+.address-card-v2__line1 .phone.data-v-3477a11e {
+  margin-right: 20rpx;
+  color: #666;
+}
+.address-card-v2__line2.data-v-3477a11e {
+  font-size: 28rpx;
+  color: #666;
+  line-height: 1.5;
+}
+.address-card-v2__line3.data-v-3477a11e {
+  margin-top: 8rpx;
+}
+.address-card-v2__line3 .label-tag.data-v-3477a11e {
+  display: inline-block;
+  padding: 4rpx 12rpx;
+  font-size: 22rpx;
+  color: #f23030;
+  background: rgba(242, 48, 48, 0.1);
+  border-radius: 6rpx;
+}
+.footer-btn.data-v-3477a11e {
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  padding: 20rpx 32rpx calc(20rpx + env(safe-area-inset-bottom));
+  background: #fff;
+  border-top: 1rpx solid #e8e8e8;
+}
+/* ===== 自适应弹窗（输入框不溢出） ===== */
+.pop-adaptive.data-v-3477a11e {
+  display: flex;
+  flex-direction: column;
+  max-height: 75vh;
+  background: #fff;
+  border-radius: 32rpx 32rpx 0 0;
+  overflow: hidden;
+}
+.pop-adaptive__header.data-v-3477a11e {
+  flex-shrink: 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 112rpx;
+  padding: 0 32rpx;
+  font-size: 34rpx;
+  font-weight: 600;
+  border-bottom: 1rpx solid #f0f0f0;
+}
+.pop-adaptive__body.data-v-3477a11e {
+  flex: 1;
+  overflow-y: scroll;
+}
+.pop-adaptive__footer.data-v-3477a11e {
+  flex-shrink: 0;
+  padding: 24rpx 32rpx calc(24rpx + env(safe-area-inset-bottom));
+  background: #fff;
+}
+.form-inner.data-v-3477a11e {
+  padding: 0 32rpx;
+  /* 仅左右内边距，避免输入框溢出 */
+}
+.tag-list.data-v-3477a11e {
+  display: flex;
+  gap: 16rpx;
+  flex-wrap: wrap;
+}
+.tag-list .tag.data-v-3477a11e {
+  padding: 12rpx 28rpx;
+  border-radius: 8rpx;
+  font-size: 26rpx;
+  color: #666;
+  background: #f7f8fa;
+}
+.tag-list .tag.active.data-v-3477a11e {
+  color: #fff;
+  background: #f23030;
+}
+.row-center.data-v-3477a11e {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 28rpx;
+}

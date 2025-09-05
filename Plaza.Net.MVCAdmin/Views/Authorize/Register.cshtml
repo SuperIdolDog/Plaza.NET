@@ -1,0 +1,369 @@
+﻿@using Plaza.Net.Model.ViewModels.DTO
+@model UserRegisterDTO
+@{
+    ViewData["Title"] = "后台注册";
+}
+
+<div class="auth-page d-flex flex-column min-vh-100 justify-content-center align-items-center">
+    <div class="container-tight py-4" style="max-width: 30rem; width: 100%;">
+        <div class="text-center mb-4">
+            <a href="#" class="navbar-brand navbar-brand-autodark">
+                <img src="~/images/logo.png" height="36" alt="Logo" />
+            </a>
+        </div>
+
+        <div class="card card-md">
+            <div class="card-body">
+                <h2 class="h3 card-title text-center mb-4">创建新账户</h2>
+
+                <form id="registerForm" autocomplete="off" novalidate>
+                    @Html.AntiForgeryToken()
+                    <div id="validationSummary" class="alert alert-danger alert-dismissible d-none" role="alert">
+                        <div class="d-flex">
+                            <div>
+                                <svg xmlns="http://www.w3.org/2000/svg" class="icon alert-icon" width="24" height="24"
+                                     viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none"
+                                     stroke-linecap="round" stroke-linejoin="round">
+                                    <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                                    <path d="M12 9v2m0 4v.01" />
+                                    <path d="M5 19h14a2 2 0 0 0 1.84 -2.75l-7.1 -12.25a2 2 0 0 0 -3.5 0l-7.1 12.25a2 2 0 0 0 1.75 2.75" />
+                                </svg>
+                            </div>
+                            <div>
+                                <h4 class="alert-title">验证错误!</h4>
+                                <div class="text-muted" id="validationSummaryText">请检查以下错误并重试。</div>
+                            </div>
+                        </div>
+                        <a class="btn-close" data-bs-dismiss="alert" aria-label="close"></a>
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="UserName" class="form-label">用户名</label>
+                        <div class="input-group input-group-flat">
+                            <span class="input-group-text">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="icon" width="24" height="24"
+                                     viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none"
+                                     stroke-linecap="round" stroke-linejoin="round">
+                                    <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                                    <circle cx="12" cy="7" r="4" />
+                                    <path d="M6 21v-2a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v2" />
+                                </svg>
+                            </span>
+                            <input id="UserName" name="UserName" class="form-control" placeholder="请输入用户名" required
+                                   autocomplete="off">
+                        </div>
+                        <span id="UserName-error" class="text-danger small"></span>
+                    </div>
+                    <div class="mb-3">
+                        <label for="Email" class="form-label">邮箱</label>
+                        <div class="input-group input-group-flat">
+                            <span class="input-group-text">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="icon" width="24" height="24"
+                                     viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none"
+                                     stroke-linecap="round" stroke-linejoin="round">
+                                    <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                                    <rect x="3" y="5" width="18" height="14" rx="2" />
+                                    <polyline points="3 7 12 13 21 7" />
+                                </svg>
+                            </span>
+                            <input id="Email" name="Email" type="email" class="form-control" placeholder="请输入邮箱"
+                                   required>
+                            <button class="btn-primary" id="CodeBtn">获取验证码</button>
+                        </div>
+                        <span id="Email-error" class="text-danger small"></span>
+                    </div>
+                    <div class="mb-3">
+                        <label for="Code" class="form-label">验证码</label>
+                        <div class="input-group input-group-flat">
+                            <span class="input-group-text">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="icon" width="24" height="24"
+                                     viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none"
+                                     stroke-linecap="round" stroke-linejoin="round">
+                                    <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                                    <rect x="3" y="5" width="18" height="14" rx="2" />
+                                    <polyline points="3 7 12 13 21 7" />
+                                </svg>
+                            </span>
+                            <input id="Code" name="Code" class="form-control" placeholder="请输入验证码" required>
+                        </div>
+                        <span id="Code-error" class="text-danger small"></span>
+                    </div>
+                    <div class="mb-3">
+                        <label for="PhoneNumber" class="form-label">手机号</label>
+                        <div class="input-group input-group-flat">
+                            <span class="input-group-text">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="icon" width="24" height="24"
+                                     viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none"
+                                     stroke-linecap="round" stroke-linejoin="round">
+                                    <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                                    <path d="M5 4h4l2 5l-2.5 1.5a11 11 0 0 0 5 5l1.5 -2.5l5 2v4a2 2 0 0 1 -2 2a16 16 0 0 1 -15 -15a2 2 0 0 1 2 -2" />
+                                </svg>
+                            </span>
+                            <input id="PhoneNumber" name="PhoneNumber" class="form-control" placeholder="请输入手机号"
+                                   required>
+                        </div>
+                        <span id="PhoneNumber-error" class="text-danger small"></span>
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="Password" class="form-label">密码</label>
+                        <div class="input-group input-group-flat">
+                            <span class="input-group-text">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="icon" width="24" height="24"
+                                     viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none"
+                                     stroke-linecap="round" stroke-linejoin="round">
+                                    <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                                    <rect x="5" y="11" width="14" height="10" rx="2" />
+                                    <circle cx="12" cy="16" r="1" />
+                                    <path d="M8 11v-4a4 4 0 0 1 8 0v4" />
+                                </svg>
+                            </span>
+                            <input id="Password" name="Password" type="password" class="form-control"
+                                   placeholder="请输入密码" required>
+                        </div>
+                        <span id="Password-error" class="text-danger small"></span>
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="ConfirmPassword" class="form-label">确认密码</label>
+                        <div class="input-group input-group-flat">
+                            <span class="input-group-text">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="icon" width="24" height="24"
+                                     viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none"
+                                     stroke-linecap="round" stroke-linejoin="round">
+                                    <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                                    <rect x="5" y="11" width="14" height="10" rx="2" />
+                                    <circle cx="12" cy="16" r="1" />
+                                    <path d="M8 11v-4a4 4 0 0 1 8 0v4" />
+                                </svg>
+                            </span>
+                            <input id="ConfirmPassword" name="ConfirmPassword" type="password" class="form-control"
+                                   placeholder="请再次输入密码" required>
+                        </div>
+                        <span id="ConfirmPassword-error" class="text-danger small"></span>
+                    </div>
+
+                    <div class="mb-3">
+                        <label class="form-check">
+                            <input type="checkbox" class="form-check-input" id="agreeTerms" required />
+                            <span class="form-check-label">
+                                我已阅读并同意<a href="#" tabindex="-1">《用户协议》</a>和<a href="#">《隐私政策》</a>
+                            </span>
+                        </label>
+                    </div>
+
+                    <div class="form-footer">
+                        <button type="submit" class="btn btn-primary w-100" id="submitBtn">
+                            <span class="spinner-border spinner-border-sm d-none" id="loadingSpinner"></span>
+                            立即注册
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        <div class="text-center text-muted mt-3">
+            已有账号? <a href="/Authorize/Login">立即登录</a>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <script>
+        $(document).ready(function() {
+                    const $form = $('#registerForm');
+                    const $submitBtn = $('#submitBtn');
+                    const $loadingSpinner = $('#loadingSpinner');
+                    const $validationSummary = $('#validationSummary');
+                    const $validationSummaryText = $('#validationSummaryText');
+                    const $codeBtn = $('#CodeBtn');
+
+                    // 添加实时验证
+                    $form.find('input').on('blur', function() {
+                        validateField($(this));
+                    });
+
+                    $form.on('submit', async function(event) {
+                        event.preventDefault();
+
+                        // 验证所有字段
+                        let isValid = true;
+                        $form.find('input[required]').each(function() {
+                            if (!validateField($(this))) {
+                                isValid = false;
+                            }
+                        });
+
+                        // 验证同意条款
+                        if (!$('#agreeTerms').is(':checked')) {
+                            isValid = false;
+                            showError('必须同意用户协议和隐私政策');
+                        }
+
+                        if (!isValid) {
+                            showError('请填写所有必填字段并同意条款');
+                            return;
+                        }
+
+                        // 清除之前的错误信息
+                        clearErrors();
+
+                        // 显示加载状态
+                        $submitBtn.prop('disabled', true);
+                        $loadingSpinner.removeClass('d-none');
+
+                        try {
+                            const formData = $form.serialize(); // 使用jQuery序列化表单数据
+
+                            const response = await $.ajax({
+                                url: '/Authorize/Register', // 使用UrlHelper生成正确URL
+                                type: 'POST',
+                                data: formData,
+                                headers: {
+                                    'RequestVerificationToken': $(
+                                        'input[name="__RequestVerificationToken"]').val()
+                                }
+                            });
+
+                            if (response.success) {
+                                // 显示注册成功的 Toast 提示
+                                showSuccessToast('注册成功，即将跳转到首页...');
+                                // 注册成功，跳转到指定页面
+                                setTimeout(function() {
+                                    window.location.href = response.redirectUrl || '/';
+                                }, 2000);
+                            } else {
+                                // 显示错误信息
+                                showError(response.message || '注册失败');
+
+                                // 显示字段级错误
+                                if (response.data && response.data.errors) {
+                                    $.each(response.data.errors, function(key, value) {
+                                        $(`#${key}-error`).text(value);
+                                    });
+                                }
+                            }
+                        } catch (error) {
+                            console.error('注册出错:', error);
+                            showError('注册过程中发生错误: ' + (error.responseJSON?.message || '请稍后再试'));
+                        } finally {
+                            // 隐藏加载状态
+                            $submitBtn.prop('disabled', false);
+                            $loadingSpinner.addClass('d-none');
+                        }
+                    });
+
+                    // 添加一个显示成功 Toast 的函数
+                    function showSuccessToast(message) {
+                        // 创建一个唯一的 ID 来标识这个 Toast
+                        const toastId = 'successToast-' + Date.now();
+
+                        // 创建 Toast HTML
+                        const toastHtml = `
+                        <div id="${toastId}" class="toast" role="alert" aria-live="assertive" aria-atomic="true">
+                            <div class="toast-header">
+                                <strong class="me-auto">注册成功</strong>
+                                <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+                            </div>
+                            <div class="toast-body">
+                                ${message}
+                            </div>
+                        </div>
+                    `;
+
+                        // 将 Toast 添加到容器中
+                        $('.toast-container').append(toastHtml);
+
+                        // 初始化并显示 Toast
+                        const toast = new bootstrap.Toast(document.getElementById(toastId), {
+                            autohide: true,
+                            delay: 5000 // 5秒后自动隐藏
+                        });
+                        toast.show();
+
+                        // 在 Toast 隐藏后移除它
+                        toast._element.addEventListener('hidden.bs.toast', function() {
+                            $(this).remove();
+                        });
+                    }
+
+                    function validateField($field) {
+                        const $errorElement = $(`#${$field.attr('id')}-error`);
+
+                        if (!$field[0].checkValidity()) {
+                            $field.addClass('is-invalid');
+                            $errorElement.text($field[0].validationMessage);
+                            return false;
+                        } else {
+                            $field.removeClass('is-invalid');
+                            $errorElement.text('');
+                            return true;
+                        }
+                    }
+
+                    function clearErrors() {
+                        $('.is-invalid').removeClass('is-invalid');
+                        $('[id$="-error"]').text('');
+                        $validationSummary.addClass('d-none');
+                    }
+
+                    function showError(message) {
+                        $validationSummaryText.text(message);
+                        $validationSummary.removeClass('d-none');
+                    }
+                    // 验证码按钮点击事件
+                    $codeBtn.on('click', async function() {
+                        const email = $('#Email').val().trim();
+
+                        // 验证邮箱格式
+                        if (!email) {
+                            showError('请输入邮箱地址');
+                            return;
+                        }
+
+                        if (!/^[^\s@@]+@@[^\s@@]+\.[^\s@@]+$/.test(email)) {
+                            showError('请输入有效的邮箱地址');
+                            return;
+                        }
+
+                        // 禁用按钮并显示倒计时
+                        let countdown = 60;
+                        $codeBtn.prop('disabled', true).text(`${countdown}秒后重试`);
+
+                        const timer = setInterval(() => {
+                            countdown--;
+                            $codeBtn.text(`${countdown}秒后重试`);
+                            if (countdown <= 0) {
+                                clearInterval(timer);
+                                $codeBtn.prop('disabled', false).text('获取验证码');
+                            }
+                        }, 1000);
+
+                        try {
+                            const response = await $.ajax({
+                                url: '/Authorize/SendCode',
+                                type: 'POST',
+                                data: {
+                                    email: email
+                                },
+                                headers: {
+                                    'RequestVerificationToken': $(
+                                        'input[name="__RequestVerificationToken"]').val()
+                                }
+                            });
+
+                            if (!response.success) {
+                                clearInterval(timer);
+                                $codeBtn.prop('disabled', false).text('获取验证码');
+                                showError(response.message || '发送验证码失败');
+                            }
+                        } catch (error) {
+                            console.error('发送验证码出错:', error);
+                            clearInterval(timer);
+                            $codeBtn.prop('disabled', false).text('获取验证码');
+                            showError('发送验证码时发生错误: ' + (error.responseJSON?.message || '请稍后再试'));
+                        }
+                    });
+        });
+    </script>
+}

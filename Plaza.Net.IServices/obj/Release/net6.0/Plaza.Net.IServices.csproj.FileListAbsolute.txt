@@ -1,0 +1,17 @@
+C:\Users\Lenovo\Desktop\CSharp项目\就业项目\Plaza\Plaza.NET.IServices\bin\Release\net6.0\Plaza.Net.IServices.deps.json
+C:\Users\Lenovo\Desktop\CSharp项目\就业项目\Plaza\Plaza.NET.IServices\bin\Release\net6.0\Plaza.Net.IServices.dll
+C:\Users\Lenovo\Desktop\CSharp项目\就业项目\Plaza\Plaza.NET.IServices\bin\Release\net6.0\Plaza.Net.IServices.pdb
+C:\Users\Lenovo\Desktop\CSharp项目\就业项目\Plaza\Plaza.NET.IServices\bin\Release\net6.0\Plaza.Net.Configruation.dll
+C:\Users\Lenovo\Desktop\CSharp项目\就业项目\Plaza\Plaza.NET.IServices\bin\Release\net6.0\Plaza.Net.Model.dll
+C:\Users\Lenovo\Desktop\CSharp项目\就业项目\Plaza\Plaza.NET.IServices\bin\Release\net6.0\Plaza.Net.Model.pdb
+C:\Users\Lenovo\Desktop\CSharp项目\就业项目\Plaza\Plaza.NET.IServices\bin\Release\net6.0\Plaza.Net.Configruation.pdb
+C:\Users\Lenovo\Desktop\CSharp项目\就业项目\Plaza\Plaza.NET.IServices\obj\Release\net6.0\Plaza.Net.IServices.csproj.AssemblyReference.cache
+C:\Users\Lenovo\Desktop\CSharp项目\就业项目\Plaza\Plaza.NET.IServices\obj\Release\net6.0\Plaza.Net.IServices.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Lenovo\Desktop\CSharp项目\就业项目\Plaza\Plaza.NET.IServices\obj\Release\net6.0\Plaza.Net.IServices.AssemblyInfoInputs.cache
+C:\Users\Lenovo\Desktop\CSharp项目\就业项目\Plaza\Plaza.NET.IServices\obj\Release\net6.0\Plaza.Net.IServices.AssemblyInfo.cs
+C:\Users\Lenovo\Desktop\CSharp项目\就业项目\Plaza\Plaza.NET.IServices\obj\Release\net6.0\Plaza.Net.IServices.csproj.CoreCompileInputs.cache
+C:\Users\Lenovo\Desktop\CSharp项目\就业项目\Plaza\Plaza.NET.IServices\obj\Release\net6.0\Plaza.Ne.5E5A6669.Up2Date
+C:\Users\Lenovo\Desktop\CSharp项目\就业项目\Plaza\Plaza.NET.IServices\obj\Release\net6.0\Plaza.Net.IServices.dll
+C:\Users\Lenovo\Desktop\CSharp项目\就业项目\Plaza\Plaza.NET.IServices\obj\Release\net6.0\refint\Plaza.Net.IServices.dll
+C:\Users\Lenovo\Desktop\CSharp项目\就业项目\Plaza\Plaza.NET.IServices\obj\Release\net6.0\Plaza.Net.IServices.pdb
+C:\Users\Lenovo\Desktop\CSharp项目\就业项目\Plaza\Plaza.NET.IServices\obj\Release\net6.0\ref\Plaza.Net.IServices.dll

@@ -1,0 +1,14 @@
+{
+  "navigationBarTitleText": "",
+  "usingComponents": {
+    "u-sticky": "/uni_modules/uview-ui/components/u-sticky/u-sticky",
+    "u-tabs": "/uni_modules/uview-ui/components/u-tabs/u-tabs",
+    "u-empty": "/uni_modules/uview-ui/components/u-empty/u-empty",
+    "u-button": "/uni_modules/uview-ui/components/u-button/u-button",
+    "u-icon": "/uni_modules/uview-ui/components/u-icon/u-icon",
+    "u-tag": "/uni_modules/uview-ui/components/u-tag/u-tag",
+    "u-image": "/uni_modules/uview-ui/components/u-image/u-image",
+    "u-text": "/uni_modules/uview-ui/components/u-text/u-text",
+    "u-loadmore": "/uni_modules/uview-ui/components/u-loadmore/u-loadmore"
+  }
+}

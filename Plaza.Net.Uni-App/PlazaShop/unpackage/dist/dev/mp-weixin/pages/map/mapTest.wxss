@@ -1,0 +1,240 @@
+@charset "UTF-8";
+/**
+ * 这里是uni-app内置的常用样式变量
+ *
+ * uni-app 官方扩展插件及插件市场（https://ext.dcloud.net.cn）上很多三方插件均使用了这些样式变量
+ * 如果你是插件开发者，建议你使用scss预处理，并在插件代码中直接使用这些变量（无需 import 这个文件），方便用户通过搭积木的方式开发整体风格一致的App
+ *
+ */
+/**
+ * 如果你是App开发者（插件使用者），你可以通过修改这些变量来定制自己的插件主题，实现自定义主题功能
+ *
+ * 如果你的项目同样使用了scss预处理，你也可以直接在你的 scss 代码中使用如下变量，同时无需 import 这个文件
+ */
+/* 颜色变量 */
+/* 行为相关颜色 */
+/* 文字基本颜色 */
+/* 背景颜色 */
+/* 边框颜色 */
+/* 尺寸变量 */
+/* 文字尺寸 */
+/* 图片尺寸 */
+/* Border Radius */
+/* 水平间距 */
+/* 垂直间距 */
+/* 透明度 */
+/* 文章场景相关 */
+/* uni.scss */
+.page.data-v-705870f2 {
+  height: 100vh;
+  background-color: #f8f9fa;
+  position: relative;
+}
+.map-container.data-v-705870f2 {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 10;
+  background-color: #fff;
+  transition: height 0.3s ease-out;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+.map-container .map.data-v-705870f2 {
+  width: 100%;
+  height: 100%;
+}
+.map-container .locate-btn.data-v-705870f2 {
+  position: absolute;
+  right: 30rpx;
+  bottom: 80rpx;
+  width: 80rpx;
+  height: 80rpx;
+  background: #fff;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4rpx 16rpx rgba(0, 0, 0, 0.15);
+  transition: all 0.3s ease;
+}
+.map-container .locate-btn.data-v-705870f2:active {
+  -webkit-transform: scale(0.95);
+          transform: scale(0.95);
+}
+.map-container .zoom-controls.data-v-705870f2 {
+  position: absolute;
+  right: 30rpx;
+  bottom: 180rpx;
+  display: flex;
+  flex-direction: column;
+  gap: 20rpx;
+  z-index: 100;
+}
+.map-container .zoom-controls .zoom-btn.data-v-705870f2 {
+  width: 80rpx;
+  height: 80rpx;
+  background: #fff;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 36rpx;
+  font-weight: bold;
+  color: #333;
+  box-shadow: 0 4rpx 16rpx rgba(0, 0, 0, 0.15);
+}
+.plaza-list-container.data-v-705870f2 {
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 20;
+  background-color: #fff;
+  border-radius: 24rpx 24rpx 0 0;
+  box-shadow: 0 -4rpx 20rpx rgba(0, 0, 0, 0.08);
+  transition: top 0.3s ease-out;
+}
+.search-section.data-v-705870f2 {
+  position: -webkit-sticky;
+  position: sticky;
+  top: 0;
+  z-index: 30;
+  background-color: #fff;
+  border-radius: 24rpx 24rpx 0 0;
+  padding: 20rpx 30rpx 30rpx;
+  border-bottom: 1rpx solid #f0f0f0;
+}
+.search-bar .search-content.data-v-705870f2 {
+  display: flex;
+  align-items: center;
+  gap: 20rpx;
+}
+.search-bar .city-selector.data-v-705870f2 {
+  display: flex;
+  align-items: center;
+  gap: 8rpx;
+  padding: 16rpx 20rpx;
+  background-color: #f8f9fa;
+  border-radius: 20rpx;
+  border: 1rpx solid #e9ecef;
+}
+.search-bar .city-selector .city-text.data-v-705870f2 {
+  font-size: 28rpx;
+  color: #333;
+  font-weight: 500;
+}
+.search-bar .search-box.data-v-705870f2 {
+  flex: 1;
+}
+.plaza-list.data-v-705870f2 {
+  padding: 0 30rpx;
+  background-color: #fff;
+  box-sizing: border-box;
+}
+.list-center.data-v-705870f2 {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  /* 水平居中 */
+  padding: 20rpx 0;
+  /* 上下留白 */
+}
+.plaza-card.data-v-705870f2 {
+  width: 92%;
+  max-width: 700rpx;
+  margin: 0 auto 20rpx auto;
+  padding: 30rpx 24rpx;
+  background: #fff;
+  border-radius: 20rpx;
+  box-shadow: 0 8rpx 20rpx rgba(0, 0, 0, 0.06);
+  display: flex;
+  align-items: center;
+  transition: -webkit-transform 0.2s ease;
+  transition: transform 0.2s ease;
+  transition: transform 0.2s ease, -webkit-transform 0.2s ease;
+}
+.plaza-card.data-v-705870f2:last-child {
+  border-bottom: none;
+}
+.plaza-card.data-v-705870f2:active {
+  background-color: #f8f9fa;
+  -webkit-transform: translateX(4rpx);
+          transform: translateX(4rpx);
+}
+.plaza-card .plaza-image.data-v-705870f2 {
+  margin-right: 24rpx;
+  flex-shrink: 0;
+}
+.plaza-card .plaza-info.data-v-705870f2 {
+  flex: 1;
+  min-width: 0;
+}
+.plaza-card .plaza-info .plaza-header.data-v-705870f2 {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 12rpx;
+}
+.plaza-card .plaza-info .plaza-header .plaza-name.data-v-705870f2 {
+  font-size: 32rpx;
+  font-weight: 600;
+  color: #333;
+  line-height: 1.4;
+  flex: 1;
+  margin-right: 16rpx;
+}
+.plaza-card .plaza-info .plaza-header .plaza-distance.data-v-705870f2 {
+  font-size: 26rpx;
+  color: #ff6b35;
+  font-weight: 500;
+  flex-shrink: 0;
+}
+.plaza-card .plaza-info .plaza-status.data-v-705870f2 {
+  margin-bottom: 12rpx;
+}
+.plaza-card .plaza-info .plaza-address.data-v-705870f2 {
+  font-size: 26rpx;
+  color: #666;
+  line-height: 1.5;
+  margin-bottom: 12rpx;
+}
+.plaza-card .plaza-info .plaza-meta.data-v-705870f2 {
+  display: flex;
+  align-items: center;
+  gap: 16rpx;
+  margin-bottom: 12rpx;
+}
+.plaza-card .plaza-info .plaza-meta .business-time.data-v-705870f2 {
+  font-size: 24rpx;
+  color: #999;
+}
+.plaza-card .plaza-info .plaza-meta .takeaway-tag.data-v-705870f2 {
+  font-size: 22rpx;
+  color: #1890ff;
+  background-color: #e6f7ff;
+  padding: 4rpx 12rpx;
+  border-radius: 12rpx;
+  border: 1rpx solid #91d5ff;
+}
+.plaza-card .plaza-info .plaza-contact.data-v-705870f2 {
+  display: flex;
+  align-items: center;
+  gap: 8rpx;
+}
+.plaza-card .plaza-info .plaza-contact .phone-text.data-v-705870f2 {
+  font-size: 26rpx;
+  color: #ff6b35;
+}
+.plaza-card .select-btn.data-v-705870f2 {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 60rpx;
+  height: 60rpx;
+  margin-left: 16rpx;
+  flex-shrink: 0;
+}
+.empty-state.data-v-705870f2 {
+  padding: 60rpx 0;
+}

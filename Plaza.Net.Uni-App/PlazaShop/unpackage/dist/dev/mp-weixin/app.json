@@ -1,0 +1,72 @@
+{
+  "pages": [
+    "pages/index/indexTest",
+    "pages/index/login",
+    "pages/index/index",
+    "pages/personal/personal",
+    "pages/personal/personalTest",
+    "pages/map/choosecity",
+    "pages/map/map",
+    "pages/map/mapTest",
+    "pages/store/store",
+    "pages/store/storeTest",
+    "pages/store/storedetail",
+    "pages/store/storedetailTest",
+    "pages/index/test",
+    "pages/product/detail",
+    "pages/order/detail",
+    "pages/park/park",
+    "pages/order/order",
+    "pages/personal/profile",
+    "pages/personal/address",
+    "pages/personal/cart",
+    "pages/index/wxcallback"
+  ],
+  "subPackages": [],
+  "window": {
+    "navigationBarTextStyle": "black",
+    "navigationBarTitleText": "PlazaShop",
+    "navigationBarBackgroundColor": "#F8F8F8",
+    "backgroundColor": "#F8F8F8"
+  },
+  "tabBar": {
+    "list": [
+      {
+        "pagePath": "pages/index/indexTest",
+        "text": "首页",
+        "iconPath": "/static/tabbar/home.png",
+        "selectedIconPath": "/static/tabbar/home_fill.png"
+      },
+      {
+        "pagePath": "pages/store/storeTest",
+        "text": "找商户",
+        "iconPath": "/static/tabbar/shop.png",
+        "selectedIconPath": "/static/tabbar/shop_fill.png"
+      },
+      {
+        "pagePath": "pages/order/order",
+        "text": "订单",
+        "iconPath": "/static/tabbar/form.png",
+        "selectedIconPath": "/static/tabbar/form_fill.png"
+      },
+      {
+        "pagePath": "pages/personal/cart",
+        "text": "购物车",
+        "iconPath": "/static/tabbar/cart.png",
+        "selectedIconPath": "/static/tabbar/cart_fill.png"
+      },
+      {
+        "pagePath": "pages/personal/personalTest",
+        "text": "我的",
+        "iconPath": "/static/tabbar/people.png",
+        "selectedIconPath": "/static/tabbar/people_fill.png"
+      }
+    ]
+  },
+  "permission": {
+    "scope.userLocation": {
+      "desc": "你的位置信息将用于小程序位置接口的效果展示"
+    }
+  },
+  "usingComponents": {}
+}

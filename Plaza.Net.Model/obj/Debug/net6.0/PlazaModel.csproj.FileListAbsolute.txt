@@ -1,0 +1,14 @@
+C:\Users\Lenovo\Desktop\CSharp项目\就业项目\Plaza\PlazaEntities\bin\Debug\net6.0\PlazaModel.deps.json
+C:\Users\Lenovo\Desktop\CSharp项目\就业项目\Plaza\PlazaEntities\bin\Debug\net6.0\PlazaModel.runtimeconfig.json
+C:\Users\Lenovo\Desktop\CSharp项目\就业项目\Plaza\PlazaEntities\bin\Debug\net6.0\PlazaModel.dll
+C:\Users\Lenovo\Desktop\CSharp项目\就业项目\Plaza\PlazaEntities\bin\Debug\net6.0\PlazaModel.pdb
+C:\Users\Lenovo\Desktop\CSharp项目\就业项目\Plaza\PlazaEntities\obj\Debug\net6.0\PlazaModel.csproj.AssemblyReference.cache
+C:\Users\Lenovo\Desktop\CSharp项目\就业项目\Plaza\PlazaEntities\obj\Debug\net6.0\PlazaModel.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Lenovo\Desktop\CSharp项目\就业项目\Plaza\PlazaEntities\obj\Debug\net6.0\PlazaModel.AssemblyInfoInputs.cache
+C:\Users\Lenovo\Desktop\CSharp项目\就业项目\Plaza\PlazaEntities\obj\Debug\net6.0\PlazaModel.AssemblyInfo.cs
+C:\Users\Lenovo\Desktop\CSharp项目\就业项目\Plaza\PlazaEntities\obj\Debug\net6.0\PlazaModel.csproj.CoreCompileInputs.cache
+C:\Users\Lenovo\Desktop\CSharp项目\就业项目\Plaza\PlazaEntities\obj\Debug\net6.0\PlazaModel.dll
+C:\Users\Lenovo\Desktop\CSharp项目\就业项目\Plaza\PlazaEntities\obj\Debug\net6.0\refint\PlazaModel.dll
+C:\Users\Lenovo\Desktop\CSharp项目\就业项目\Plaza\PlazaEntities\obj\Debug\net6.0\PlazaModel.pdb
+C:\Users\Lenovo\Desktop\CSharp项目\就业项目\Plaza\PlazaEntities\obj\Debug\net6.0\PlazaModel.genruntimeconfig.cache
+C:\Users\Lenovo\Desktop\CSharp项目\就业项目\Plaza\PlazaEntities\obj\Debug\net6.0\ref\PlazaModel.dll

@@ -1,0 +1,854 @@
+﻿@{
+    ViewData["Title"] = "角色权限管理";
+}
+
+<div class="container-fluid">
+    <!-- 主内容容器 -->
+    <div class="row">
+        <div class="col-lg-12">
+            <!-- 卡片式布局 -->
+            <div class="card shadow-sm">
+                <!-- 卡片主体 -->
+                <div class="card-body">
+                    <!-- 选项卡导航 -->
+                    <nav>
+                        <div class="nav nav-tabs mb-3" id="nav-tab" role="tablist">
+                            <button class="nav-link active" id="nav-list-tab" data-bs-toggle="tab"
+                                    data-bs-target="#nav-list" type="button" role="tab" aria-controls="nav-list"
+                                    aria-selected="true">
+                                数据列表
+                            </button>
+                        </div>
+                    </nav>
+
+                    <div class="tab-content" id="nav-tabContent">
+                        <!-- 数据列表标签页 -->
+                        <div class="tab-pane fade show active" id="nav-list" role="tabpanel"
+                             aria-labelledby="nav-list-tab">
+                            <!-- 工具栏区域 -->
+                            <div id="toolbar" class="d-flex justify-content-between align-items-center mb-3">
+                                <!-- 操作按钮组 -->
+                                <div class="btn-group me-2 mb-2 mb-lg-0">
+                                    <button class="btn btn-success btn-sm btn-round" onclick="add()">
+                                        <span class="mdi mdi-plus me-1"></span> 新增
+                                    </button>
+                                    <button id="edit-btn" class="btn btn-primary btn-sm btn-round edit-btn" disabled>
+                                        <span class="mdi mdi-pencil me-1"></span> 编辑
+                                    </button>
+                                    <button id="del-btn" class="btn btn-danger btn-sm btn-round del-btn" disabled>
+                                        <span class="mdi mdi-close me-1"></span> 删除
+                                    </button>
+                                    <button id="permission-btn" class="btn btn-info btn-sm btn-round" disabled>
+                                        <span class="mdi mdi-lock me-1"></span> 权限设置
+                                    </button>
+                                </div>
+                                <!-- 搜索区域 -->
+                                <div class="input-group d-flex justify-content-center">
+                                    <button id="searchplus-btn" class="btn btn-outline-secondary btn-sm btn-round"
+                                            data-bs-toggle="modal" data-bs-target="#searchModal">
+                                        <span class="mdi mdi-magnify-plus"></span>高级搜索
+                                    </button>
+                                    <input type="text" id="searchBox" class="form-control form-control-sm"
+                                           placeholder="搜索角色名称、编码、描述等...">
+                                    <button id="searchButton" class="btn btn-outline-secondary btn-sm btn-round">
+                                        <span class="mdi mdi-magnify"></span>查询
+                                    </button>
+                                    <button class="btn btn-outline-secondary btn-sm btn-round" id="clearButton">
+                                        <span class="mdi mdi-delete"></span>清除
+                                    </button>
+                                </div>
+                            </div>
+                            <!-- 表格响应区域 -->
+                            <div class="table-responsive">
+                                <!-- 数据表格 -->
+                                <table id="table" class="table table-hover table-striped align-middle"
+                                       style="text-align:center;"></table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- 高级搜索模态框 -->
+<div class="modal fade" id="searchModal" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header bg-light">
+                <h5 class="modal-title">高级搜索</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <!-- 高级搜索表单 -->
+                <form id="searchForm">
+                    <div class="row g-3">
+                        <div class="col-md-6">
+                            <label class="form-label">角色名称</label>
+                            <input type="text" class="form-control" name="name">
+                        </div>
+                        <div class="col-md-6">
+                            <label class="form-label">角色编码</label>
+                            <input type="text" class="form-control" name="code">
+                        </div>
+                        <div class="col-md-6">
+                            <label class="form-label">状态</label>
+                            <select class="form-select" name="status">
+                                <option value="">全部</option>
+                                <option value="0">启用</option>
+                                <option value="1">禁用</option>
+                            </select>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-outline-secondary btn-sm" onclick="resetSearchForm()">重置</button>
+                <button type="button" class="btn btn-primary btn-sm" onclick="submitSearchForm()">搜索</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- 统一的信息管理模态框（新增/编辑） -->
+<div class="modal fade" id="infoModal" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header bg-light">
+                <h5 class="modal-title" id="infoModalTitle">新增角色</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <!-- 信息表单 -->
+                <form id="infoForm">
+                    <input type="hidden" name="id" id="info-id">
+                    <div class="row g-3">
+                        <div class="col-md-6">
+                            <label class="form-label">角色名称 <span class="text-danger">*</span></label>
+                            <input type="text" class="form-control" name="name" id="info-name" required>
+                        </div>
+                        <div class="col-md-6">
+                            <label class="form-label">角色编码 <span class="text-danger">*</span></label>
+                            <input type="text" class="form-control" name="code" id="info-code" required>
+                        </div>
+                        <div class="col-md-12">
+                            <label class="form-label">描述</label>
+                            <textarea class="form-control" name="description" id="info-description" rows="3"></textarea>
+                        </div>
+                        <div class="col-md-6">
+                            <label class="form-label">状态</label>
+                            <select class="form-select" name="isDeleted" id="info-status">
+                                <option value="0">启用</option>
+                                <option value="1">禁用</option>
+                            </select>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-outline-secondary btn-sm" data-bs-dismiss="modal">取消</button>
+                <button type="button" class="btn btn-primary btn-sm" onclick="submitInfoForm()">提交</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- 删除确认模态框 -->
+<div class="modal fade" id="deleteConfirmModal" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header bg-light">
+                <h5 class="modal-title">确认删除</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <div class="d-flex align-items-center">
+                    <div class="me-3">
+                        <span class="mdi mdi-alert-circle text-danger" style="font-size: 1.5rem;"></span>
+                    </div>
+                    <div>
+                        <p class="mb-1">确定要删除选中的记录吗？</p>
+                        <p id="deleteCountInfo" class="text-muted small mb-0"></p>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-outline-secondary btn-sm" data-bs-dismiss="modal">取消</button>
+                <button type="button" class="btn btn-danger btn-sm" onclick="confirmDelete()">确认删除</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- 详情模态框 -->
+<div class="modal fade" id="detailModal" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header bg-light">
+                <h5 class="modal-title">角色详情</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    <!-- 左侧信息列 -->
+                    <div class="col-md-6">
+                        <div class="mb-3">
+                            <label class="form-label text-muted">编号:</label>
+                            <div class="form-control-plaintext" id="detail-id">-</div>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label text-muted">角色名称:</label>
+                            <div class="form-control-plaintext" id="detail-name">-</div>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label text-muted">角色编码:</label>
+                            <div class="form-control-plaintext" id="detail-code">-</div>
+                        </div>
+                    </div>
+
+                    <!-- 右侧信息列 -->
+                    <div class="col-md-6">
+                        <div class="mb-3">
+                            <label class="form-label text-muted">状态:</label>
+                            <div class="form-control-plaintext" id="detail-status">-</div>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label text-muted">创建时间:</label>
+                            <div class="form-control-plaintext" id="detail-createTime">-</div>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label text-muted">更新时间:</label>
+                            <div class="form-control-plaintext" id="detail-updateTime">-</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="mb-3">
+                            <label class="form-label text-muted">描述:</label>
+                            <div class="form-control-plaintext" id="detail-description" style="white-space: pre-wrap;">-</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-outline-secondary btn-sm" data-bs-dismiss="modal">关闭</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- 权限设置模态框 -->
+<div class="modal fade" id="permissionModal" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">设置权限</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form id="permissionForm">
+                    <input type="hidden" id="permission-role-id">
+                    <div class="form-group mb-4">
+                        <label for="permission-role-name" class="fw-bold">角色名称</label>
+                        <input class="form-control" type="text" id="permission-role-name" readonly>
+                    </div>
+
+                    <div class="card">
+                        <div class="card-body p-0">
+                            <div id="permissionTree" class="ztree"></div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">取消</button>
+                <button type="button" class="btn btn-primary" onclick="submitPermissionForm()">保存</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+
+    <script>
+        // ====================== 全局变量声明 ======================
+        let currentMode = 'add'; // 当前操作模式：'add' 或 'edit'
+        let currentDeleteMode = null; // 当前删除模式：'single' 或 'multiple'
+
+        // ====================== 页面初始化函数 ======================
+        $(document).ready(function() {
+            initTable();
+            bindEventHandlers();
+        });
+
+        // ====================== 表格相关函数 ======================
+        const tableConfig = {
+            classes: 'table table-bordered table-hover table-striped',
+            url: '/UserRole/GetRoles',
+            uniqueId: 'id',
+            idField: 'id',
+            clickToSelect: true,
+            dataType: 'json',
+            method: 'get',
+            toolbar: '#toolbar',
+            pagination: true,
+            showColumns: true,
+            showRefresh: true,
+            showButtonIcons: true,
+            showButtonText: false,
+            showFullscreen: true,
+            totalField: 'Total',
+            sidePagination: "server",
+            pageNumber: 1,
+            pageSize: 10,
+            pageList: [10, 25, 50, 100],
+            paginationLoop: true,
+            buttonsClass: 'default',
+            buttonsPrefix: 'btn',
+            iconsPrefix: 'mdi',
+            iconSize: 'mini',
+            icons: {
+                refresh: 'mdi-refresh',
+                export: 'mdi-export',
+                columns: 'mdi-table-column-remove',
+                fullscreen: 'mdi-monitor-screenshot'
+            },
+            showExport: true,
+            buttonsAlign: "right",
+            exportDataType: "basic",
+            exportOptions: {
+                ignoreColumn: [0],
+                fileName: '角色数据',
+                worksheetName: 'Sheet1',
+                tableName: '角色信息表',
+                excelstyles: ['background-color', 'color', 'font-size', 'font-weight'],
+            },
+            exportTypes: ['json', 'xml', 'csv', 'txt', 'sql', 'doc', 'excel'],
+            columns: [
+                {
+                    field: 'state',
+                    checkbox: true,
+                    widthUnit: 'rem'
+                },
+                {
+                    field: 'id',
+                    title: '编号',
+                    align: 'center',
+                    sortable: true,
+                    switchable: false,
+                    widthUnit: 'rem'
+                },
+                {
+                    field: 'name',
+                    align: 'center',
+                    title: '角色名称'
+                },
+                {
+                    field: 'code',
+                    align: 'center',
+                    title: '角色编码'
+                },
+                {
+                    field: 'description',
+                    align: 'center',
+                    title: '描述'
+                },
+                {
+                    field: 'isDeleted',
+                    title: '状态',
+                    formatter: function(value) {
+                        return value == 0 ?
+                            '<span class="badge bg-success">启用</span>' :
+                            '<span class="badge bg-danger">禁用</span>';
+                    }
+                },
+                {
+                    field: 'operate',
+                    title: '操作',
+                    formatter: function() {
+                        return `<div class="btn-group">
+                            <button class="btn btn-sm btn-indigo btn-round detail-btn" title="详情"><span class="mdi mdi-information"></span></button>
+                            <button class="btn btn-sm btn-primary btn-round edit-btn" title="编辑"><span class="mdi mdi-pencil"></span></button>
+                            <button class="btn btn-sm btn-info btn-round permission-btn" title="权限设置"><span class="mdi mdi-lock"></span></button>
+                            <button class="btn btn-sm btn-danger btn-round del-btn" title="删除"><span class="mdi mdi-close"></span></button>
+                        </div>`;
+                    },
+                    events: {
+                        'click .detail-btn': function(event, value, row) {
+                            event.stopPropagation();
+                            detail(row);
+                        },
+                        'click .edit-btn': function(event, value, row) {
+                            event.stopPropagation();
+                            edit(row);
+                        },
+                        'click .permission-btn': function(event, value, row) {
+                            event.stopPropagation();
+                            showPermissionModal(row);
+                        },
+                        'click .del-btn': function(event, value, row) {
+                            event.stopPropagation();
+                            del(row);
+                        }
+                    }
+                }
+            ],
+            queryParams: function(params) {
+                return {
+                    pageSize: params.limit,
+                    pageIndex: Math.floor(params.offset / params.limit) + 1,
+                    sort: params.sort || "Id",
+                    sortOrder: params.order || "asc",
+                    keyword: $('#searchBox').val().trim(),
+                    ...serializeFormToObject('#searchForm')
+                };
+            },
+            onLoadSuccess: function(data) {
+                $("[data-bs-toggle='tooltip']").tooltip();
+                updateButtonState();
+            },
+            onCheck: updateButtonState,
+            onUncheck: updateButtonState,
+            onCheckAll: updateButtonState,
+            onUncheckAll: updateButtonState
+        };
+
+        function initTable() {
+            $('#table').bootstrapTable(tableConfig);
+        }
+
+        // ====================== 事件处理函数 ======================
+        function bindEventHandlers() {
+            // 基本搜索
+            $('#searchButton').click(performBasicSearch);
+            $('#searchBox').keypress(function(e) {
+                if (e.which === 13) performBasicSearch();
+            });
+            $('#searchBox').keydown(function(e) {
+                if (e.which === 27) {
+                    $('#searchBox').val('');
+                    $('#table').bootstrapTable('refresh');
+                }
+            });
+
+            // 高级搜索
+            $('#searchplus-btn').click(function() {
+                $('#searchModal').modal('show');
+            });
+            $('#clearButton').click(function() {
+                $('#searchBox').val('');
+                $('#searchForm')[0].reset();
+                $('#table').bootstrapTable('refresh');
+            });
+
+            // 编辑按钮
+            $('#edit-btn').click(function() {
+                const selections = $('#table').bootstrapTable('getSelections');
+                if (selections.length !== 1) {
+                    showToast('请选择一条记录进行编辑', true);
+                    return;
+                }
+                edit(selections[0]);
+            });
+
+            // 删除按钮
+            $('#del-btn').click(function() {
+                const selections = $('#table').bootstrapTable('getSelections');
+                if (selections.length === 0) {
+                    showToast('请至少选择一条记录进行删除', true);
+                    return;
+                }
+                showDeleteConfirm(selections);
+            });
+
+            // 权限设置按钮
+            $('#permission-btn').click(function() {
+                const selections = $('#table').bootstrapTable('getSelections');
+                if (selections.length !== 1) {
+                    showToast('请选择一条记录进行权限设置', true);
+                    return;
+                }
+                showPermissionModal(selections[0]);
+            });
+        }
+
+        function performBasicSearch() {
+            const keyword = $('#searchBox').val().trim();
+            $('#table').bootstrapTable('refresh', {
+                query: {
+                    keyword: keyword
+                }
+            });
+        }
+
+        function showDeleteConfirm(selections) {
+                    currentDeleteMode = selections.length > 1 ? 'multiple' : 'single';
+                    const countInfo = selections.length > 1 ?
+                        `共选中 ${selections.length} 条记录` :
+                        `记录: ${selections[0].name}`;
+
+                    $('#deleteCountInfo').text(countInfo);
+                    $('#deleteConfirmModal').modal('show');
+                }
+
+                function confirmDelete() {
+                    const selections = $('#table').bootstrapTable('getSelections');
+                    if (selections.length === 0) {
+                        showToast('请至少选择一条记录进行删除', true);
+                        return;
+                    }
+
+                    const ids = selections.map(record => record.id);
+                    if (!ids || ids.length === 0) {
+                        showToast('未获取到有效的ID', true);
+                        return;
+                    }
+
+                    $.ajax({
+                        url: '/UserRole/DeleteRange',
+                        type: 'POST',
+                        data: {
+                            ids: ids
+                        },
+                        traditional: true,
+                        success: function(response) {
+                            if (response.success) {
+                                $('#table').bootstrapTable('refresh');
+                                $('#deleteConfirmModal').modal('hide');
+                                const message = ids.length > 1 ?
+                                    `成功删除 ${ids.length} 条记录` :
+                                    '成功删除记录';
+                                showToast(message);
+                            } else {
+                                showToast('删除失败: ' + (response.message || '请重试'), true);
+                            }
+                        },
+                        error: function(xhr) {
+                            try {
+                                const errorResponse = JSON.parse(xhr.responseText);
+                                showToast(`操作失败: ${errorResponse.message || '服务器错误'}`, true);
+                            } catch (e) {
+                                showToast(`操作失败: ${xhr.statusText}`, true);
+                            }
+                        }
+                    });
+                }
+
+                // ====================== 业务操作函数 ======================
+                function add() {
+                    currentMode = 'add';
+                    $('#infoModalTitle').text('新增角色');
+                    $('#infoForm')[0].reset();
+                    $('#infoForm').find('[name="isDeleted"]').val('0');
+                    $('#infoModal').modal('show');
+                }
+
+                function edit(row) {
+                    currentMode = 'edit';
+                    $('#infoModalTitle').text('编辑角色');
+                    clearOtherCheckboxes(row.id);
+
+                    $('#infoForm').find('[name="id"]').val(row.id);
+                    $('#infoForm').find('[name="name"]').val(row.name);
+                    $('#infoForm').find('[name="code"]').val(row.code);
+                    $('#infoForm').find('[name="description"]').val(row.description);
+                    $('#infoForm').find('[name="isDeleted"]').val(row.isDeleted);
+
+                    $('#infoModal').modal('show');
+                }
+
+                function detail(row) {
+                    $('#detail-id').text(row.id || '无');
+                    $('#detail-name').text(row.name || '无');
+                    $('#detail-code').text(row.code || '无');
+                    $('#detail-description').text(row.description || '无');
+                    $('#detail-status').text(row.isDeleted == 0 ? '启用' : '禁用');
+                    $('#detail-createTime').text(formatDateTime(row.createTime) || '无');
+                    $('#detail-updateTime').text(formatDateTime(row.updateTime) || '无');
+                    $('#detailModal').modal('show');
+                }
+
+                function del(row) {
+                    showDeleteConfirm([row]);
+                }
+
+                function submitInfoForm() {
+                    if (!validateInfoForm()) return;
+
+                    const formData = {
+                        name: $('#info-name').val(),
+                        code: $('#info-code').val(),
+                        description: $('#info-description').val(),
+                        isDeleted: $('#info-status').val()
+                    };
+
+                    if (currentMode === 'edit') {
+                        formData.id = $('#info-id').val();
+                    }
+
+                    const url = currentMode === 'add' ? '/UserRole/Add' : '/UserRole/Edit';
+                    const successMessage = currentMode === 'add' ? '新增成功' : '更新成功';
+
+                    $.ajax({
+                        url: url,
+                        type: 'POST',
+                        data: formData,
+                        success: function(response) {
+                            if (response.success) {
+                                $('#infoModal').modal('hide');
+                                $('#table').bootstrapTable('refresh');
+                                showToast(successMessage);
+                            } else {
+                                showToast(`操作失败: ${response.message || '未知错误'}`, true);
+                            }
+                        },
+                        error: function(xhr, status, error) {
+                            try {
+                                const errorResponse = JSON.parse(xhr.responseText);
+                                showToast(`操作失败: ${errorResponse.message || '服务器错误'}`, true);
+                            } catch (e) {
+                                showToast(`操作失败: ${error}`, true);
+                            }
+                        }
+                    });
+                }
+
+                function submitSearchForm() {
+                    const formData = serializeFormToObject('#searchForm');
+                    $('#table').bootstrapTable('refresh', {
+                        query: formData
+                    });
+                    $('#searchModal').modal('hide');
+                }
+
+                function resetSearchForm() {
+                    $('#searchForm')[0].reset();
+                    $('#table').bootstrapTable('refresh');
+                }
+
+                // ====================== 权限相关函数 ======================
+                function showPermissionModal(row) {
+                    $('#permission-role-id').val(row.id);
+                    $('#permission-role-name').val(row.name);
+
+                    loadMenusByRole(row.id);
+                    $('#permissionModal').modal('show');
+                }
+
+                function loadMenusByRole(roleId) {
+                    $.ajax({
+                        url: '/UserRole/GetRoleMenus',
+                        type: 'GET',
+                        data: {
+                            roleId: roleId
+                        },
+                        success: function(response) {
+                            if (response.success) {
+                                initZTree(response.data);
+                            } else {
+                                showToast('获取菜单失败: ' + (response.message || '请重试'), true);
+                            }
+                        },
+                        error: function(xhr) {
+                            try {
+                                const errorResponse = JSON.parse(xhr.responseText);
+                                showToast(`获取菜单失败: ${errorResponse.message || '服务器错误'}`, true);
+                            } catch (e) {
+                                showToast(`获取菜单失败: ${xhr.statusText}`, true);
+                            }
+                        }
+                    });
+                }
+
+                function initZTree(menuData) {
+                    const setting = {
+                        check: {
+                            enable: true,
+                            chkStyle: "checkbox",
+                            chkboxType: {
+                                "Y": "ps",
+                                "N": "ps"
+                            }
+                        },
+                        data: {
+                            simpleData: {
+                                enable: true,
+                                idKey: "id",
+                                pIdKey: "parentId",
+                                rootPId: 0
+                            }
+                        },
+                        callback: {
+                            onCheck: function() {
+                                // 可以在这里添加复选框变化时的处理逻辑
+                            }
+                        }
+                    };
+
+                    const zNodes = convertToZNodes(menuData);
+                    $.fn.zTree.init($("#permissionTree"), setting, zNodes);
+                }
+
+                function convertToZNodes(menuData) {
+                    const zNodes = [];
+
+                    function convert(menu) {
+                        const node = {
+                            id: menu.id,
+                            pId: menu.parentId || 0,
+                            name: menu.name,
+                            open: true,
+                            checked: menu.hasPermission || false
+                        };
+
+                        if (menu.children && menu.children.length > 0) {
+                            node.children = [];
+                            menu.children.forEach(child => {
+                                node.children.push(convert(child));
+                            });
+                        }
+
+                        return node;
+                    }
+
+                    menuData.forEach(root => {
+                        zNodes.push(convert(root));
+                    });
+
+                    return zNodes;
+                }
+
+                function submitPermissionForm() {
+                    const roleId = $('#permission-role-id').val();
+                    const treeObj = $.fn.zTree.getZTreeObj("permissionTree");
+                    const checkedNodes = treeObj.getCheckedNodes(true);
+                    const menuIds = checkedNodes.map(node => node.id);
+
+                    if (!roleId) {
+                        showToast('无效的角色ID', true);
+                        return;
+                    }
+
+                    $.ajax({
+                        url: '/UserRole/AssignPermissions',
+                        type: 'POST',
+                        data: {
+                            roleId: roleId,
+                            menuIds: menuIds
+                        },
+                        traditional: true,
+                        success: function(response) {
+                            if (response.success) {
+                                $('#permissionModal').modal('hide');
+                                showToast('权限设置保存成功');
+                                $('#table').bootstrapTable('refresh');
+                            } else {
+                                showToast('保存失败: ' + (response.message || '请重试'), true);
+                            }
+                        },
+                        error: function(xhr) {
+                            try {
+                                const errorResponse = JSON.parse(xhr.responseText);
+                                showToast(`保存失败: ${errorResponse.message || '服务器错误'}`, true);
+                            } catch (e) {
+                                showToast(`保存失败: ${xhr.statusText}`, true);
+                            }
+                        }
+                    });
+                }
+
+                // ====================== 辅助函数 ======================
+                function validateInfoForm() {
+                    let isValid = true;
+                    $('.form-control').removeClass('is-invalid');
+                    $('.invalid-feedback').remove();
+
+                    $('#infoForm [required]').each(function() {
+                        if (!$(this).val()) {
+                            isValid = false;
+                            $(this).addClass('is-invalid');
+                            $(this).after('<div class="invalid-feedback">此字段为必填项</div>');
+                        }
+                    });
+
+                    // // 检查角色编码是否已存在（编辑时排除当前记录）
+                    // const currentId = $('#info-id').val();
+                    // const code = $('#info-code').val();
+                    // if (code) {
+                    //     $.ajax({
+                    //         url: '/UserRole/CheckCodeExists',
+                    //         type: 'GET',
+                    //         data: {
+                    //             code: code,
+                    //             id: currentId
+                    //         },
+                    //         async: false,
+                    //         success: function(response) {
+                    //             if (response.exists) {
+                    //                 isValid = false;
+                    //                 $('#info-code').addClass('is-invalid');
+                    //                 $('#info-code').after('<div class="invalid-feedback">该角色编码已存在</div>');
+                    //             }
+                    //         }
+                    //     });
+                    // }
+
+                    return isValid;
+                }
+
+                function clearOtherCheckboxes(keepId) {
+                    const $table = $('#table');
+                    const data = $table.bootstrapTable('getData');
+                    $table.bootstrapTable('uncheckAll');
+                    const rowToKeep = data.find(item => item.id === keepId);
+                    if (rowToKeep) {
+                        $table.bootstrapTable('checkBy', {
+                            field: 'id',
+                            values: [keepId]
+                        });
+                    }
+                    updateButtonState();
+                }
+
+                function updateButtonState() {
+                    const selections = $('#table').bootstrapTable('getSelections');
+                    const allRows = $('#table').bootstrapTable('getData');
+                    const selectedCount = selections.length;
+                    const totalRows = allRows.length;
+
+                    $('#edit-btn').prop('disabled', selectedCount !== 1);
+                    $('#del-btn').prop('disabled', selectedCount === 0);
+                    $('#permission-btn').prop('disabled', selectedCount !== 1);
+
+                    const headerCheckbox = $('#table').find('thead [type="checkbox"]');
+                    if (selectedCount === 0) {
+                        headerCheckbox.prop('indeterminate', false).prop('checked', false);
+                    } else if (selectedCount === totalRows) {
+                        headerCheckbox.prop('indeterminate', false).prop('checked', true);
+                    } else {
+                        headerCheckbox.prop('indeterminate', true).prop('checked', false);
+                    }
+                }
+
+                function serializeFormToObject(formSelector) {
+                    const formData = {};
+                    $(formSelector).find('input, select, textarea').each(function() {
+                        const name = $(this).attr('name');
+                        if (name) {
+                            formData[name] = $(this).val();
+                        }
+                    });
+                    return formData;
+                }
+
+                function formatDateTime(dateString) {
+                    if (!dateString) return '无';
+                    const date = new Date(dateString);
+                    return date.toLocaleString();
+                }
+
+
+    </script>
+}

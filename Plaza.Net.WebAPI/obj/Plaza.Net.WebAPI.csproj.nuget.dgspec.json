@@ -1,0 +1,1124 @@
+{
+  "format": 1,
+  "restore": {
+    "C:\\Users\\Lenovo\\Desktop\\CSharp项目\\就业项目\\Plaza\\Plaza.Net.WebAPI\\Plaza.Net.WebAPI.csproj": {}
+  },
+  "projects": {
+    "C:\\Users\\Lenovo\\Desktop\\CSharp项目\\就业项目\\Plaza\\Plaza.Net.Auth\\Plaza.Net.Auth.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Users\\Lenovo\\Desktop\\CSharp项目\\就业项目\\Plaza\\Plaza.Net.Auth\\Plaza.Net.Auth.csproj",
+        "projectName": "Plaza.Net.Auth",
+        "projectPath": "C:\\Users\\Lenovo\\Desktop\\CSharp项目\\就业项目\\Plaza\\Plaza.Net.Auth\\Plaza.Net.Auth.csproj",
+        "packagesPath": "C:\\Users\\Lenovo\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Lenovo\\Desktop\\CSharp项目\\就业项目\\Plaza\\Plaza.Net.Auth\\obj\\",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "D:\\Visual Studio\\共享组件工具SDK\\NuGetPackages"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\Lenovo\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net6.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "C:\\Program Files\\dotnet\\library-packs": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net6.0": {
+            "targetAlias": "net6.0",
+            "projectReferences": {
+              "C:\\Users\\Lenovo\\Desktop\\CSharp项目\\就业项目\\Plaza\\Plaza.Net.EmailService\\Plaza.Net.EmailService.csproj": {
+                "projectPath": "C:\\Users\\Lenovo\\Desktop\\CSharp项目\\就业项目\\Plaza\\Plaza.Net.EmailService\\Plaza.Net.EmailService.csproj"
+              },
+              "C:\\Users\\Lenovo\\Desktop\\CSharp项目\\就业项目\\Plaza\\Plaza.Net.Model\\Plaza.Net.Model.csproj": {
+                "projectPath": "C:\\Users\\Lenovo\\Desktop\\CSharp项目\\就业项目\\Plaza\\Plaza.Net.Model\\Plaza.Net.Model.csproj"
+              },
+              "C:\\Users\\Lenovo\\Desktop\\CSharp项目\\就业项目\\Plaza\\Plaza.Net.Utility\\Plaza.Net.Utility.csproj": {
+                "projectPath": "C:\\Users\\Lenovo\\Desktop\\CSharp项目\\就业项目\\Plaza\\Plaza.Net.Utility\\Plaza.Net.Utility.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        },
+        "restoreAuditProperties": {
+          "enableAudit": "true",
+          "auditLevel": "low",
+          "auditMode": "direct"
+        },
+        "SdkAnalysisLevel": "9.0.100"
+      },
+      "frameworks": {
+        "net6.0": {
+          "targetAlias": "net6.0",
+          "dependencies": {
+            "Microsoft.AspNetCore.Authentication.JwtBearer": {
+              "target": "Package",
+              "version": "[6.0.36, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.102\\RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "C:\\Users\\Lenovo\\Desktop\\CSharp项目\\就业项目\\Plaza\\Plaza.Net.Caching\\Plaza.Net.Caching.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Users\\Lenovo\\Desktop\\CSharp项目\\就业项目\\Plaza\\Plaza.Net.Caching\\Plaza.Net.Caching.csproj",
+        "projectName": "Plaza.Net.Caching",
+        "projectPath": "C:\\Users\\Lenovo\\Desktop\\CSharp项目\\就业项目\\Plaza\\Plaza.Net.Caching\\Plaza.Net.Caching.csproj",
+        "packagesPath": "C:\\Users\\Lenovo\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Lenovo\\Desktop\\CSharp项目\\就业项目\\Plaza\\Plaza.Net.Caching\\obj\\",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "D:\\Visual Studio\\共享组件工具SDK\\NuGetPackages"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\Lenovo\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net6.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "C:\\Program Files\\dotnet\\library-packs": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net6.0": {
+            "targetAlias": "net6.0",
+            "projectReferences": {}
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        },
+        "restoreAuditProperties": {
+          "enableAudit": "true",
+          "auditLevel": "low",
+          "auditMode": "direct"
+        },
+        "SdkAnalysisLevel": "9.0.100"
+      },
+      "frameworks": {
+        "net6.0": {
+          "targetAlias": "net6.0",
+          "dependencies": {
+            "Microsoft.Extensions.Caching.Memory": {
+              "target": "Package",
+              "version": "[7.0.0, )"
+            },
+            "Microsoft.IdentityModel.Tokens": {
+              "target": "Package",
+              "version": "[6.36.0, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.102\\RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "C:\\Users\\Lenovo\\Desktop\\CSharp项目\\就业项目\\Plaza\\Plaza.NET.Configruation\\Plaza.Net.Configruation.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Users\\Lenovo\\Desktop\\CSharp项目\\就业项目\\Plaza\\Plaza.NET.Configruation\\Plaza.Net.Configruation.csproj",
+        "projectName": "Plaza.Net.Configruation",
+        "projectPath": "C:\\Users\\Lenovo\\Desktop\\CSharp项目\\就业项目\\Plaza\\Plaza.NET.Configruation\\Plaza.Net.Configruation.csproj",
+        "packagesPath": "C:\\Users\\Lenovo\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Lenovo\\Desktop\\CSharp项目\\就业项目\\Plaza\\Plaza.NET.Configruation\\obj\\",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "D:\\Visual Studio\\共享组件工具SDK\\NuGetPackages"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\Lenovo\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net6.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "C:\\Program Files\\dotnet\\library-packs": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net6.0": {
+            "targetAlias": "net6.0",
+            "projectReferences": {}
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        },
+        "restoreAuditProperties": {
+          "enableAudit": "true",
+          "auditLevel": "low",
+          "auditMode": "direct"
+        },
+        "SdkAnalysisLevel": "9.0.100"
+      },
+      "frameworks": {
+        "net6.0": {
+          "targetAlias": "net6.0",
+          "dependencies": {
+            "Microsoft.IdentityModel.Tokens": {
+              "target": "Package",
+              "version": "[6.36.0, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.102\\RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "C:\\Users\\Lenovo\\Desktop\\CSharp项目\\就业项目\\Plaza\\Plaza.Net.Core\\Plaza.Net.Core.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Users\\Lenovo\\Desktop\\CSharp项目\\就业项目\\Plaza\\Plaza.Net.Core\\Plaza.Net.Core.csproj",
+        "projectName": "Plaza.Net.Core",
+        "projectPath": "C:\\Users\\Lenovo\\Desktop\\CSharp项目\\就业项目\\Plaza\\Plaza.Net.Core\\Plaza.Net.Core.csproj",
+        "packagesPath": "C:\\Users\\Lenovo\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Lenovo\\Desktop\\CSharp项目\\就业项目\\Plaza\\Plaza.Net.Core\\obj\\",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "D:\\Visual Studio\\共享组件工具SDK\\NuGetPackages"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\Lenovo\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net6.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "C:\\Program Files\\dotnet\\library-packs": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net6.0": {
+            "targetAlias": "net6.0",
+            "projectReferences": {
+              "C:\\Users\\Lenovo\\Desktop\\CSharp项目\\就业项目\\Plaza\\Plaza.Net.Caching\\Plaza.Net.Caching.csproj": {
+                "projectPath": "C:\\Users\\Lenovo\\Desktop\\CSharp项目\\就业项目\\Plaza\\Plaza.Net.Caching\\Plaza.Net.Caching.csproj"
+              },
+              "C:\\Users\\Lenovo\\Desktop\\CSharp项目\\就业项目\\Plaza\\Plaza.Net.EmailService\\Plaza.Net.EmailService.csproj": {
+                "projectPath": "C:\\Users\\Lenovo\\Desktop\\CSharp项目\\就业项目\\Plaza\\Plaza.Net.EmailService\\Plaza.Net.EmailService.csproj"
+              },
+              "C:\\Users\\Lenovo\\Desktop\\CSharp项目\\就业项目\\Plaza\\Plaza.Net.Repository\\Plaza.Net.Repository.csproj": {
+                "projectPath": "C:\\Users\\Lenovo\\Desktop\\CSharp项目\\就业项目\\Plaza\\Plaza.Net.Repository\\Plaza.Net.Repository.csproj"
+              },
+              "C:\\Users\\Lenovo\\Desktop\\CSharp项目\\就业项目\\Plaza\\Plaza.Net.Services\\Plaza.Net.Services.csproj": {
+                "projectPath": "C:\\Users\\Lenovo\\Desktop\\CSharp项目\\就业项目\\Plaza\\Plaza.Net.Services\\Plaza.Net.Services.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        },
+        "restoreAuditProperties": {
+          "enableAudit": "true",
+          "auditLevel": "low",
+          "auditMode": "direct"
+        },
+        "SdkAnalysisLevel": "9.0.100"
+      },
+      "frameworks": {
+        "net6.0": {
+          "targetAlias": "net6.0",
+          "dependencies": {
+            "Autofac.Extensions.DependencyInjection": {
+              "target": "Package",
+              "version": "[10.0.0, )"
+            },
+            "Microsoft.IdentityModel.Tokens": {
+              "target": "Package",
+              "version": "[6.36.0, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.102\\RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "C:\\Users\\Lenovo\\Desktop\\CSharp项目\\就业项目\\Plaza\\Plaza.Net.EmailService\\Plaza.Net.EmailService.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Users\\Lenovo\\Desktop\\CSharp项目\\就业项目\\Plaza\\Plaza.Net.EmailService\\Plaza.Net.EmailService.csproj",
+        "projectName": "Plaza.Net.EmailService",
+        "projectPath": "C:\\Users\\Lenovo\\Desktop\\CSharp项目\\就业项目\\Plaza\\Plaza.Net.EmailService\\Plaza.Net.EmailService.csproj",
+        "packagesPath": "C:\\Users\\Lenovo\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Lenovo\\Desktop\\CSharp项目\\就业项目\\Plaza\\Plaza.Net.EmailService\\obj\\",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "D:\\Visual Studio\\共享组件工具SDK\\NuGetPackages"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\Lenovo\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net6.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "C:\\Program Files\\dotnet\\library-packs": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net6.0": {
+            "targetAlias": "net6.0",
+            "projectReferences": {}
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        },
+        "restoreAuditProperties": {
+          "enableAudit": "true",
+          "auditLevel": "low",
+          "auditMode": "direct"
+        },
+        "SdkAnalysisLevel": "9.0.100"
+      },
+      "frameworks": {
+        "net6.0": {
+          "targetAlias": "net6.0",
+          "dependencies": {
+            "MailKit": {
+              "target": "Package",
+              "version": "[4.8.0, )"
+            },
+            "Microsoft.Extensions.Options.ConfigurationExtensions": {
+              "target": "Package",
+              "version": "[8.0.0, )"
+            },
+            "Microsoft.IdentityModel.Tokens": {
+              "target": "Package",
+              "version": "[6.36.0, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.102\\RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "C:\\Users\\Lenovo\\Desktop\\CSharp项目\\就业项目\\Plaza\\Plaza.NET.IRepository\\Plaza.Net.IRepository.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Users\\Lenovo\\Desktop\\CSharp项目\\就业项目\\Plaza\\Plaza.NET.IRepository\\Plaza.Net.IRepository.csproj",
+        "projectName": "Plaza.Net.IRepository",
+        "projectPath": "C:\\Users\\Lenovo\\Desktop\\CSharp项目\\就业项目\\Plaza\\Plaza.NET.IRepository\\Plaza.Net.IRepository.csproj",
+        "packagesPath": "C:\\Users\\Lenovo\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Lenovo\\Desktop\\CSharp项目\\就业项目\\Plaza\\Plaza.NET.IRepository\\obj\\",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "D:\\Visual Studio\\共享组件工具SDK\\NuGetPackages"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\Lenovo\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net6.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "C:\\Program Files\\dotnet\\library-packs": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net6.0": {
+            "targetAlias": "net6.0",
+            "projectReferences": {
+              "C:\\Users\\Lenovo\\Desktop\\CSharp项目\\就业项目\\Plaza\\Plaza.Net.Model\\Plaza.Net.Model.csproj": {
+                "projectPath": "C:\\Users\\Lenovo\\Desktop\\CSharp项目\\就业项目\\Plaza\\Plaza.Net.Model\\Plaza.Net.Model.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        },
+        "restoreAuditProperties": {
+          "enableAudit": "true",
+          "auditLevel": "low",
+          "auditMode": "direct"
+        },
+        "SdkAnalysisLevel": "9.0.100"
+      },
+      "frameworks": {
+        "net6.0": {
+          "targetAlias": "net6.0",
+          "dependencies": {
+            "Microsoft.AspNetCore.Hosting.Abstractions": {
+              "target": "Package",
+              "version": "[2.3.0, )"
+            },
+            "Microsoft.IdentityModel.Tokens": {
+              "target": "Package",
+              "version": "[6.36.0, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.102\\RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "C:\\Users\\Lenovo\\Desktop\\CSharp项目\\就业项目\\Plaza\\Plaza.NET.IServices\\Plaza.Net.IServices.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Users\\Lenovo\\Desktop\\CSharp项目\\就业项目\\Plaza\\Plaza.NET.IServices\\Plaza.Net.IServices.csproj",
+        "projectName": "Plaza.Net.IServices",
+        "projectPath": "C:\\Users\\Lenovo\\Desktop\\CSharp项目\\就业项目\\Plaza\\Plaza.NET.IServices\\Plaza.Net.IServices.csproj",
+        "packagesPath": "C:\\Users\\Lenovo\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Lenovo\\Desktop\\CSharp项目\\就业项目\\Plaza\\Plaza.NET.IServices\\obj\\",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "D:\\Visual Studio\\共享组件工具SDK\\NuGetPackages"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\Lenovo\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net6.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "C:\\Program Files\\dotnet\\library-packs": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net6.0": {
+            "targetAlias": "net6.0",
+            "projectReferences": {
+              "C:\\Users\\Lenovo\\Desktop\\CSharp项目\\就业项目\\Plaza\\Plaza.Net.Model\\Plaza.Net.Model.csproj": {
+                "projectPath": "C:\\Users\\Lenovo\\Desktop\\CSharp项目\\就业项目\\Plaza\\Plaza.Net.Model\\Plaza.Net.Model.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        },
+        "restoreAuditProperties": {
+          "enableAudit": "true",
+          "auditLevel": "low",
+          "auditMode": "direct"
+        },
+        "SdkAnalysisLevel": "9.0.100"
+      },
+      "frameworks": {
+        "net6.0": {
+          "targetAlias": "net6.0",
+          "dependencies": {
+            "Microsoft.AspNetCore.Http.Features": {
+              "target": "Package",
+              "version": "[2.3.0, )"
+            },
+            "Microsoft.IdentityModel.Tokens": {
+              "target": "Package",
+              "version": "[6.36.0, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.102\\RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "C:\\Users\\Lenovo\\Desktop\\CSharp项目\\就业项目\\Plaza\\Plaza.Net.Mapping\\Plaza.Net.Mapping.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Users\\Lenovo\\Desktop\\CSharp项目\\就业项目\\Plaza\\Plaza.Net.Mapping\\Plaza.Net.Mapping.csproj",
+        "projectName": "Plaza.Net.Mapping",
+        "projectPath": "C:\\Users\\Lenovo\\Desktop\\CSharp项目\\就业项目\\Plaza\\Plaza.Net.Mapping\\Plaza.Net.Mapping.csproj",
+        "packagesPath": "C:\\Users\\Lenovo\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Lenovo\\Desktop\\CSharp项目\\就业项目\\Plaza\\Plaza.Net.Mapping\\obj\\",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "D:\\Visual Studio\\共享组件工具SDK\\NuGetPackages"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\Lenovo\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net6.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "C:\\Program Files\\dotnet\\library-packs": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net6.0": {
+            "targetAlias": "net6.0",
+            "projectReferences": {
+              "C:\\Users\\Lenovo\\Desktop\\CSharp项目\\就业项目\\Plaza\\Plaza.Net.Model\\Plaza.Net.Model.csproj": {
+                "projectPath": "C:\\Users\\Lenovo\\Desktop\\CSharp项目\\就业项目\\Plaza\\Plaza.Net.Model\\Plaza.Net.Model.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        },
+        "restoreAuditProperties": {
+          "enableAudit": "true",
+          "auditLevel": "low",
+          "auditMode": "direct"
+        },
+        "SdkAnalysisLevel": "9.0.100"
+      },
+      "frameworks": {
+        "net6.0": {
+          "targetAlias": "net6.0",
+          "dependencies": {
+            "AutoMapper": {
+              "target": "Package",
+              "version": "[13.0.1, )"
+            },
+            "Microsoft.IdentityModel.Tokens": {
+              "target": "Package",
+              "version": "[6.36.0, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.102\\RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "C:\\Users\\Lenovo\\Desktop\\CSharp项目\\就业项目\\Plaza\\Plaza.NET.Model\\Plaza.Net.Model.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Users\\Lenovo\\Desktop\\CSharp项目\\就业项目\\Plaza\\Plaza.NET.Model\\Plaza.Net.Model.csproj",
+        "projectName": "Plaza.Net.Model",
+        "projectPath": "C:\\Users\\Lenovo\\Desktop\\CSharp项目\\就业项目\\Plaza\\Plaza.NET.Model\\Plaza.Net.Model.csproj",
+        "packagesPath": "C:\\Users\\Lenovo\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Lenovo\\Desktop\\CSharp项目\\就业项目\\Plaza\\Plaza.NET.Model\\obj\\",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "D:\\Visual Studio\\共享组件工具SDK\\NuGetPackages"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\Lenovo\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net6.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "C:\\Program Files\\dotnet\\library-packs": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net6.0": {
+            "targetAlias": "net6.0",
+            "projectReferences": {
+              "C:\\Users\\Lenovo\\Desktop\\CSharp项目\\就业项目\\Plaza\\Plaza.Net.Configruation\\Plaza.Net.Configruation.csproj": {
+                "projectPath": "C:\\Users\\Lenovo\\Desktop\\CSharp项目\\就业项目\\Plaza\\Plaza.Net.Configruation\\Plaza.Net.Configruation.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        },
+        "restoreAuditProperties": {
+          "enableAudit": "true",
+          "auditLevel": "low",
+          "auditMode": "direct"
+        },
+        "SdkAnalysisLevel": "9.0.100"
+      },
+      "frameworks": {
+        "net6.0": {
+          "targetAlias": "net6.0",
+          "dependencies": {
+            "ErikEJ.EntityFrameworkCore.DgmlBuilder": {
+              "target": "Package",
+              "version": "[6.0.0, )"
+            },
+            "Microsoft.AspNetCore.Identity.EntityFrameworkCore": {
+              "target": "Package",
+              "version": "[6.0.36, )"
+            },
+            "Microsoft.EntityFrameworkCore": {
+              "target": "Package",
+              "version": "[6.0.36, )"
+            },
+            "Microsoft.EntityFrameworkCore.Design": {
+              "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[6.0.36, )"
+            },
+            "Microsoft.EntityFrameworkCore.Tools": {
+              "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[6.0.36, )"
+            },
+            "Microsoft.Extensions.Configuration": {
+              "target": "Package",
+              "version": "[8.0.0, )"
+            },
+            "Microsoft.Extensions.Configuration.Json": {
+              "target": "Package",
+              "version": "[8.0.1, )"
+            },
+            "Microsoft.IdentityModel.Tokens": {
+              "target": "Package",
+              "version": "[6.36.0, )"
+            },
+            "Pomelo.EntityFrameworkCore.MySql": {
+              "target": "Package",
+              "version": "[6.0.3, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.102\\RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "C:\\Users\\Lenovo\\Desktop\\CSharp项目\\就业项目\\Plaza\\Plaza.NET.Repository\\Plaza.Net.Repository.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Users\\Lenovo\\Desktop\\CSharp项目\\就业项目\\Plaza\\Plaza.NET.Repository\\Plaza.Net.Repository.csproj",
+        "projectName": "Plaza.Net.Repository",
+        "projectPath": "C:\\Users\\Lenovo\\Desktop\\CSharp项目\\就业项目\\Plaza\\Plaza.NET.Repository\\Plaza.Net.Repository.csproj",
+        "packagesPath": "C:\\Users\\Lenovo\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Lenovo\\Desktop\\CSharp项目\\就业项目\\Plaza\\Plaza.NET.Repository\\obj\\",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "D:\\Visual Studio\\共享组件工具SDK\\NuGetPackages"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\Lenovo\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net6.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "C:\\Program Files\\dotnet\\library-packs": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net6.0": {
+            "targetAlias": "net6.0",
+            "projectReferences": {
+              "C:\\Users\\Lenovo\\Desktop\\CSharp项目\\就业项目\\Plaza\\Plaza.Net.IRepository\\Plaza.Net.IRepository.csproj": {
+                "projectPath": "C:\\Users\\Lenovo\\Desktop\\CSharp项目\\就业项目\\Plaza\\Plaza.Net.IRepository\\Plaza.Net.IRepository.csproj"
+              },
+              "C:\\Users\\Lenovo\\Desktop\\CSharp项目\\就业项目\\Plaza\\Plaza.Net.Model\\Plaza.Net.Model.csproj": {
+                "projectPath": "C:\\Users\\Lenovo\\Desktop\\CSharp项目\\就业项目\\Plaza\\Plaza.Net.Model\\Plaza.Net.Model.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        },
+        "restoreAuditProperties": {
+          "enableAudit": "true",
+          "auditLevel": "low",
+          "auditMode": "direct"
+        },
+        "SdkAnalysisLevel": "9.0.100"
+      },
+      "frameworks": {
+        "net6.0": {
+          "targetAlias": "net6.0",
+          "dependencies": {
+            "Microsoft.IdentityModel.Tokens": {
+              "target": "Package",
+              "version": "[6.36.0, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.102\\RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "C:\\Users\\Lenovo\\Desktop\\CSharp项目\\就业项目\\Plaza\\Plaza.NET.Services\\Plaza.Net.Services.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Users\\Lenovo\\Desktop\\CSharp项目\\就业项目\\Plaza\\Plaza.NET.Services\\Plaza.Net.Services.csproj",
+        "projectName": "Plaza.Net.Services",
+        "projectPath": "C:\\Users\\Lenovo\\Desktop\\CSharp项目\\就业项目\\Plaza\\Plaza.NET.Services\\Plaza.Net.Services.csproj",
+        "packagesPath": "C:\\Users\\Lenovo\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Lenovo\\Desktop\\CSharp项目\\就业项目\\Plaza\\Plaza.NET.Services\\obj\\",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "D:\\Visual Studio\\共享组件工具SDK\\NuGetPackages"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\Lenovo\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net6.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "C:\\Program Files\\dotnet\\library-packs": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net6.0": {
+            "targetAlias": "net6.0",
+            "projectReferences": {
+              "C:\\Users\\Lenovo\\Desktop\\CSharp项目\\就业项目\\Plaza\\Plaza.Net.IRepository\\Plaza.Net.IRepository.csproj": {
+                "projectPath": "C:\\Users\\Lenovo\\Desktop\\CSharp项目\\就业项目\\Plaza\\Plaza.Net.IRepository\\Plaza.Net.IRepository.csproj"
+              },
+              "C:\\Users\\Lenovo\\Desktop\\CSharp项目\\就业项目\\Plaza\\Plaza.Net.IServices\\Plaza.Net.IServices.csproj": {
+                "projectPath": "C:\\Users\\Lenovo\\Desktop\\CSharp项目\\就业项目\\Plaza\\Plaza.Net.IServices\\Plaza.Net.IServices.csproj"
+              },
+              "C:\\Users\\Lenovo\\Desktop\\CSharp项目\\就业项目\\Plaza\\Plaza.Net.Model\\Plaza.Net.Model.csproj": {
+                "projectPath": "C:\\Users\\Lenovo\\Desktop\\CSharp项目\\就业项目\\Plaza\\Plaza.Net.Model\\Plaza.Net.Model.csproj"
+              },
+              "C:\\Users\\Lenovo\\Desktop\\CSharp项目\\就业项目\\Plaza\\Plaza.Net.Repository\\Plaza.Net.Repository.csproj": {
+                "projectPath": "C:\\Users\\Lenovo\\Desktop\\CSharp项目\\就业项目\\Plaza\\Plaza.Net.Repository\\Plaza.Net.Repository.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        },
+        "restoreAuditProperties": {
+          "enableAudit": "true",
+          "auditLevel": "low",
+          "auditMode": "direct"
+        },
+        "SdkAnalysisLevel": "9.0.100"
+      },
+      "frameworks": {
+        "net6.0": {
+          "targetAlias": "net6.0",
+          "dependencies": {
+            "Microsoft.AspNetCore.Http.Abstractions": {
+              "target": "Package",
+              "version": "[2.3.0, )"
+            },
+            "Microsoft.IdentityModel.Tokens": {
+              "target": "Package",
+              "version": "[6.36.0, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.102\\RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "C:\\Users\\Lenovo\\Desktop\\CSharp项目\\就业项目\\Plaza\\Plaza.Net.Utility\\Plaza.Net.Utility.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Users\\Lenovo\\Desktop\\CSharp项目\\就业项目\\Plaza\\Plaza.Net.Utility\\Plaza.Net.Utility.csproj",
+        "projectName": "Plaza.Net.Utility",
+        "projectPath": "C:\\Users\\Lenovo\\Desktop\\CSharp项目\\就业项目\\Plaza\\Plaza.Net.Utility\\Plaza.Net.Utility.csproj",
+        "packagesPath": "C:\\Users\\Lenovo\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Lenovo\\Desktop\\CSharp项目\\就业项目\\Plaza\\Plaza.Net.Utility\\obj\\",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "D:\\Visual Studio\\共享组件工具SDK\\NuGetPackages"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\Lenovo\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net6.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "C:\\Program Files\\dotnet\\library-packs": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net6.0": {
+            "targetAlias": "net6.0",
+            "projectReferences": {
+              "C:\\Users\\Lenovo\\Desktop\\CSharp项目\\就业项目\\Plaza\\Plaza.Net.Configruation\\Plaza.Net.Configruation.csproj": {
+                "projectPath": "C:\\Users\\Lenovo\\Desktop\\CSharp项目\\就业项目\\Plaza\\Plaza.Net.Configruation\\Plaza.Net.Configruation.csproj"
+              },
+              "C:\\Users\\Lenovo\\Desktop\\CSharp项目\\就业项目\\Plaza\\Plaza.Net.Model\\Plaza.Net.Model.csproj": {
+                "projectPath": "C:\\Users\\Lenovo\\Desktop\\CSharp项目\\就业项目\\Plaza\\Plaza.Net.Model\\Plaza.Net.Model.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        },
+        "restoreAuditProperties": {
+          "enableAudit": "true",
+          "auditLevel": "low",
+          "auditMode": "direct"
+        },
+        "SdkAnalysisLevel": "9.0.100"
+      },
+      "frameworks": {
+        "net6.0": {
+          "targetAlias": "net6.0",
+          "dependencies": {
+            "Microsoft.Extensions.Identity.Core": {
+              "target": "Package",
+              "version": "[6.0.36, )"
+            },
+            "Microsoft.IdentityModel.Tokens": {
+              "target": "Package",
+              "version": "[6.36.0, )"
+            },
+            "System.Drawing.Common": {
+              "target": "Package",
+              "version": "[8.0.19, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.102\\RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "C:\\Users\\Lenovo\\Desktop\\CSharp项目\\就业项目\\Plaza\\Plaza.Net.WebAPI\\Plaza.Net.WebAPI.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Users\\Lenovo\\Desktop\\CSharp项目\\就业项目\\Plaza\\Plaza.Net.WebAPI\\Plaza.Net.WebAPI.csproj",
+        "projectName": "Plaza.Net.WebAPI",
+        "projectPath": "C:\\Users\\Lenovo\\Desktop\\CSharp项目\\就业项目\\Plaza\\Plaza.Net.WebAPI\\Plaza.Net.WebAPI.csproj",
+        "packagesPath": "C:\\Users\\Lenovo\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Lenovo\\Desktop\\CSharp项目\\就业项目\\Plaza\\Plaza.Net.WebAPI\\obj\\",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "D:\\Visual Studio\\共享组件工具SDK\\NuGetPackages"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\Lenovo\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net6.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "C:\\Program Files\\dotnet\\library-packs": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net6.0": {
+            "targetAlias": "net6.0",
+            "projectReferences": {
+              "C:\\Users\\Lenovo\\Desktop\\CSharp项目\\就业项目\\Plaza\\Plaza.Net.Auth\\Plaza.Net.Auth.csproj": {
+                "projectPath": "C:\\Users\\Lenovo\\Desktop\\CSharp项目\\就业项目\\Plaza\\Plaza.Net.Auth\\Plaza.Net.Auth.csproj"
+              },
+              "C:\\Users\\Lenovo\\Desktop\\CSharp项目\\就业项目\\Plaza\\Plaza.Net.Core\\Plaza.Net.Core.csproj": {
+                "projectPath": "C:\\Users\\Lenovo\\Desktop\\CSharp项目\\就业项目\\Plaza\\Plaza.Net.Core\\Plaza.Net.Core.csproj"
+              },
+              "C:\\Users\\Lenovo\\Desktop\\CSharp项目\\就业项目\\Plaza\\Plaza.NET.IServices\\Plaza.Net.IServices.csproj": {
+                "projectPath": "C:\\Users\\Lenovo\\Desktop\\CSharp项目\\就业项目\\Plaza\\Plaza.NET.IServices\\Plaza.Net.IServices.csproj"
+              },
+              "C:\\Users\\Lenovo\\Desktop\\CSharp项目\\就业项目\\Plaza\\Plaza.Net.Mapping\\Plaza.Net.Mapping.csproj": {
+                "projectPath": "C:\\Users\\Lenovo\\Desktop\\CSharp项目\\就业项目\\Plaza\\Plaza.Net.Mapping\\Plaza.Net.Mapping.csproj"
+              },
+              "C:\\Users\\Lenovo\\Desktop\\CSharp项目\\就业项目\\Plaza\\Plaza.NET.Model\\Plaza.Net.Model.csproj": {
+                "projectPath": "C:\\Users\\Lenovo\\Desktop\\CSharp项目\\就业项目\\Plaza\\Plaza.NET.Model\\Plaza.Net.Model.csproj"
+              },
+              "C:\\Users\\Lenovo\\Desktop\\CSharp项目\\就业项目\\Plaza\\Plaza.Net.Utility\\Plaza.Net.Utility.csproj": {
+                "projectPath": "C:\\Users\\Lenovo\\Desktop\\CSharp项目\\就业项目\\Plaza\\Plaza.Net.Utility\\Plaza.Net.Utility.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        },
+        "restoreAuditProperties": {
+          "enableAudit": "true",
+          "auditLevel": "low",
+          "auditMode": "direct"
+        },
+        "SdkAnalysisLevel": "9.0.100"
+      },
+      "frameworks": {
+        "net6.0": {
+          "targetAlias": "net6.0",
+          "dependencies": {
+            "AlipaySDKNet.Standard": {
+              "target": "Package",
+              "version": "[4.9.751, )"
+            },
+            "Microsoft.AspNetCore.Cors": {
+              "target": "Package",
+              "version": "[2.3.0, )"
+            },
+            "Microsoft.EntityFrameworkCore.Proxies": {
+              "target": "Package",
+              "version": "[6.0.36, )"
+            },
+            "Newtonsoft.Json": {
+              "target": "Package",
+              "version": "[13.0.3, )"
+            },
+            "Swashbuckle.AspNetCore": {
+              "target": "Package",
+              "version": "[6.5.0, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.AspNetCore.App": {
+              "privateAssets": "none"
+            },
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.102\\RuntimeIdentifierGraph.json"
+        }
+      }
+    }
+  }
+}

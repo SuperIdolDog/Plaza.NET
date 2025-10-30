@@ -51,6 +51,7 @@ Plaza.Net.Uni-App：基于 Uni-App 的前端应用，使用 uView UI 组件库
 <img width="617" height="1307" alt="image" src="https://github.com/user-attachments/assets/35d40738-d3c6-4eed-940c-6869c6974512" />
 <img width="636" height="1308" alt="image" src="https://github.com/user-attachments/assets/af3ee18d-5c30-4c70-931a-84acedb266c4" />
 <img width="632" height="1293" alt="image" src="https://github.com/user-attachments/assets/a1d4b7c5-6827-4e34-90c8-ff1c21ea3fed" />
+<img width="645" height="1322" alt="image" src="https://github.com/user-attachments/assets/f7d676e7-e474-4581-8e32-a0e69bc34bbc" />
 
 
 

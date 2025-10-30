@@ -19,7 +19,7 @@ JSON 处理：Newtonsoft.Json
 
 API 文档： SwaggerUI(未写注释)
 
-容器化：Docker、Docker Compose(配置部分未跑通，部署阿里云的适合不知道为啥连接不上数据库，疑是端口问题)
+容器化：Docker、Docker Compose(配置部分未跑通，部署阿里云的时候不知道为啥连接不上数据库，疑是端口问题)
 
 前端相关：Uni-App 框架及 uView UI 组件库(Vue2版本)
 

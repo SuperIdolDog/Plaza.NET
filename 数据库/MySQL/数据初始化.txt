@@ -2107,8 +2107,37 @@ WHERE o.TotalAmount > 0
 -- 19. 评价数据 (Review) - 动态生成
 -- =====================================================
 TRUNCATE TABLE review;
-
-INSERT INTO review (ReviewRatingItemId, Content, OrderItemId, UserId, Code, IsDeleted, UpdateTime)
+-- 
+-- INSERT INTO review (ReviewRatingItemId, Content,ImageUrl, OrderItemId, UserId, Code, IsDeleted, UpdateTime)
+-- SELECT 
+--     FLOOR(RAND() * 5) + 1 AS ReviewRatingItemId,
+--     CASE 
+--         WHEN FLOOR(RAND() * 5) + 1 = 1 THEN '非常差，不推荐！'
+--         WHEN FLOOR(RAND() * 5) + 1 = 2 THEN '一般般，有待改进'
+--         WHEN FLOOR(RAND() * 5) + 1 = 3 THEN '还不错，可以接受'
+--         WHEN FLOOR(RAND() * 5) + 1 = 4 THEN '很好，值得推荐'
+--         ELSE '非常好，超出预期！'
+--     END AS Content,
+--     '' AS ImageUrl
+--     oi.Id AS OrderItemId,
+--     o.CustomerId AS UserId,
+--     CONCAT('RV', oi.Id) AS Code,
+--     0 AS IsDeleted,
+--     NULL AS UpdateTime
+-- FROM `order` o
+-- JOIN orderitem oi ON o.Id = oi.OrderId
+-- WHERE o.OrderStatuItemId = 79  -- 只给已完成的订单添加评价
+--   AND RAND() < 0.6;  -- 60%的完成订单有评价
+INSERT INTO review (
+    ReviewRatingItemId, 
+    Content, 
+    OrderItemId, 
+    UserId, 
+    Code, 
+    IsDeleted, 
+    UpdateTime,
+    ImageUrl
+)
 SELECT 
     FLOOR(RAND() * 5) + 1 AS ReviewRatingItemId,
     CASE 
@@ -2122,12 +2151,13 @@ SELECT
     o.CustomerId AS UserId,
     CONCAT('RV', oi.Id) AS Code,
     0 AS IsDeleted,
-    NULL AS UpdateTime
+    NULL AS UpdateTime,
+    -- 确保 ImageUrl 非空（根据之前的 NOT NULL 约束）
+    CONCAT('https://example.com/review/img/', oi.Id, '.jpg') AS ImageUrl
 FROM `order` o
-JOIN orderitem oi ON o.Id = oi.OrderId
-WHERE o.OrderStatuItemId = 79  -- 只给已完成的订单添加评价
-  AND RAND() < 0.6;  -- 60%的完成订单有评价
-
+INNER JOIN orderitem oi ON o.Id = oi.OrderId
+WHERE o.OrderStatuItemId = 79 
+  AND RAND() < 0.61364;
 -- =====================================================
 -- 20. 停车记录数据 (ParkingRecord) - 动态生成
 -- =====================================================
@@ -2189,7 +2219,7 @@ TRUNCATE TABLE userfeedback;
 INSERT INTO userfeedback (UserId, Imageurl, Content, Contact, ReplyContent, ReplyTime, Code, IsDeleted, CreateTime, UpdateTime)
 SELECT 
     u.Id AS UserId,
-    '' AS Imageurl,
+    '' AS ImageUrl,
     CASE 
         WHEN FLOOR(RAND() * 5) + 1 = 1 THEN '希望增加更多支付方式'
         WHEN FLOOR(RAND() * 5) + 1 = 2 THEN '支付页面偶尔会出现卡顿'

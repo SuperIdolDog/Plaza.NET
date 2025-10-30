@@ -7,7 +7,7 @@ Plaza 是一个基于 .NET 技术栈开发的应用程序，包含多个模块�
 技术栈：
 后端框架：.NET 6.0、ASP.NET Core WebAPI、ASP.NET Core MVC
 
-数据库：Microsoft SQL Server 2022
+数据库：MySQL (原本是 SQL Server的,但是因为服务器跑不动,无奈切换MySQL)
 
 身份认证：Microsoft.Identity
 
